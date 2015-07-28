@@ -1347,6 +1347,7 @@ public class PregReg extends Activity {
         }
     };
 
+
     public class ExpectedANC extends BaseAdapter {
         private Context mContext;
         String[][] vcode;
@@ -1372,7 +1373,7 @@ public class PregReg extends Activity {
             return 0;
         }
 
-        
+
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View MyView = convertView;
