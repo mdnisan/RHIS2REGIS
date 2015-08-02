@@ -71,6 +71,7 @@ public class PregReg extends Activity {
         }
     }
 
+
     //Top menu
     //--------------------------------------------------------------------------------------------------
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -192,12 +193,12 @@ public class PregReg extends Activity {
     RadioButton rdoIron1;
     RadioButton rdoIron2;
 
-    LinearLayout secIronUnit;
+   /* LinearLayout secIronUnit;
     TextView VlblIronQty;
     EditText txtIronQty;
     TextView VlblIronUnit;
     Spinner spnIronUnit;
-    Spinner spnANCSource;
+    Spinner spnANCSource;*/
 
     LinearLayout secMiso;
     TextView VlblMiso;
@@ -205,11 +206,11 @@ public class PregReg extends Activity {
     RadioButton rdoMiso1;
     RadioButton rdoMiso2;
 
-    LinearLayout secMisoUnit;
+    /*LinearLayout secMisoUnit;
     TextView VlblMisoQty;
     EditText txtMisoQty;
     TextView VlblMisoUnit;
-    Spinner spnMisoUnit;
+    Spinner spnMisoUnit;*/
 
     LinearLayout secANCVisit;
 
@@ -277,15 +278,15 @@ public class PregReg extends Activity {
             rdoIron2 = (RadioButton) findViewById(R.id.rdoIron2);
 
 
-            secIronUnit = (LinearLayout) findViewById(R.id.secIronUnit);
+            /*secIronUnit = (LinearLayout) findViewById(R.id.secIronUnit);
             secIronUnit.setVisibility(View.GONE);
             VlblIronQty = (TextView) findViewById(R.id.VlblIronQty);
             txtIronQty = (EditText) findViewById(R.id.txtIronQty);
             VlblIronUnit = (TextView) findViewById(R.id.VlblIronUnit);
             spnIronUnit = (Spinner) findViewById(R.id.spnIronUnit);
-            spnANCSource= (Spinner) findViewById(R.id.spnANCSource);
+            spnANCSource= (Spinner) findViewById(R.id.spnANCSource);*/
 
-            rdogrpIron.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+           /* rdogrpIron.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
                 public void onCheckedChanged(RadioGroup arg0, int id) {
                     if (id == R.id.rdoIron1) {
                         secIronUnit.setVisibility(View.VISIBLE);
@@ -295,7 +296,7 @@ public class PregReg extends Activity {
                         txtIronQty.setText("");
                     }
                 }
-            });
+            });*/
 
             secMiso = (LinearLayout) findViewById(R.id.secMiso);
             VlblMiso = (TextView) findViewById(R.id.VlblMiso);
@@ -303,7 +304,7 @@ public class PregReg extends Activity {
             rdoMiso1 = (RadioButton) findViewById(R.id.rdoMiso1);
             rdoMiso2 = (RadioButton) findViewById(R.id.rdoMiso2);
 
-            secMisoUnit = (LinearLayout) findViewById(R.id.secMisoUnit);
+           /* secMisoUnit = (LinearLayout) findViewById(R.id.secMisoUnit);
             secMisoUnit.setVisibility(View.GONE);
             VlblMisoQty = (TextView) findViewById(R.id.VlblMisoQty);
             txtMisoQty = (EditText) findViewById(R.id.txtMisoQty);
@@ -319,7 +320,7 @@ public class PregReg extends Activity {
                         txtMisoQty.setText("");
                     }
                 }
-            });
+            });*/
 
             List<String> listPgn = new ArrayList<String>();
             listPgn.add("");
@@ -336,21 +337,21 @@ public class PregReg extends Activity {
             ArrayAdapter<String> adptrspnPgn = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listPgn);
             spnPgn.setAdapter(adptrspnPgn);
 
-            List<String> listPillUnit = new ArrayList<String>();
+            /*List<String> listPillUnit = new ArrayList<String>();
             listPillUnit.add("");
             listPillUnit.add("চক্র");
             listPillUnit.add("পিছ");
             listPillUnit.add("ডোজ");
             ArrayAdapter<String> adptrMethodUnit = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listPillUnit);
             spnIronUnit.setAdapter(adptrMethodUnit);
-            spnMisoUnit.setAdapter(adptrMethodUnit);
+            spnMisoUnit.setAdapter(adptrMethodUnit);*/
 
-            List<String> listAncSource = new ArrayList<String>();
+            /*List<String> listAncSource = new ArrayList<String>();
             listAncSource.add("");
             listAncSource.add("সরকারি");
             listAncSource.add("বেসরকারি");
             ArrayAdapter<String> adptrAncService = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listAncSource);
-            spnANCSource.setAdapter(adptrAncService);
+            spnANCSource.setAdapter(adptrAncService);*/
 
 
 
@@ -391,7 +392,7 @@ public class PregReg extends Activity {
             cmdSave.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     DataSaveANC();
-                    DisplayANCVisit();
+                   // DisplayANCVisit();
                 }
             });
 
@@ -404,6 +405,7 @@ public class PregReg extends Activity {
             });
 
             DisplayTempANCVisit(Global.DateConvertDMY(dtpLMP.getText().toString()));
+            secMiso.setVisibility(View.GONE);
             DisplayANCVisit();
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         } catch (Exception e) {
@@ -414,7 +416,7 @@ public class PregReg extends Activity {
 
 
     private void DataSaveANC() {
-
+        Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
         if (dtpVDate.getText().toString().length() == 0) {
             Connection.MessageBox(PregReg.this, "পরিদর্শনের তারিখ কত লিখুন।");
             dtpVDate.requestFocus();
@@ -426,7 +428,7 @@ public class PregReg extends Activity {
             return;
         }
 
-        if (rdoIron1.isChecked() & secIron.isShown()) {
+        /*if (rdoIron1.isChecked() & secIron.isShown()) {
             if (txtIronQty.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "আয়রন ও ফলিক এসিডের পরিমাণ কত লিখুন।");
                 txtIronQty.requestFocus();
@@ -436,15 +438,19 @@ public class PregReg extends Activity {
                 spnIronUnit.requestFocus();
                 return;
             }
+        }*/
+        if(DiffLMP_VD>=224) {
+            if (!rdoMiso1.isChecked() & !rdoMiso2.isChecked() & secMiso.isShown()) {
+                Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ি পেয়েছেন কিনা  সিলেক্ট করুন।");
+                rdoMiso1.requestFocus();
+                return;
+            }
         }
 
-        if (!rdoMiso1.isChecked() & !rdoMiso2.isChecked() & secMiso.isShown()) {
-            Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ি পেয়েছেন কিনা  সিলেক্ট করুন।");
-            rdoMiso1.requestFocus();
-            return;
-        }
 
-        if (rdoMiso1.isChecked() & secMiso.isShown()) {
+
+
+        /*if (rdoMiso1.isChecked() & secMiso.isShown()) {
             if (txtMisoQty.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ির পরিমাণ কত লিখুন।");
                 txtMisoQty.requestFocus();
@@ -454,13 +460,13 @@ public class PregReg extends Activity {
                 spnMisoUnit.requestFocus();
                 return;
             }
-        }
+        }*/
 
-        if (spnANCSource.getSelectedItemPosition() == 0) {
+        /*if (spnANCSource.getSelectedItemPosition() == 0) {
             Connection.MessageBox(PregReg.this, "গর্ভকালীন সেবার স্থান করুন।।");
             spnANCSource.requestFocus();
             return;
-        }
+        }*/
 
             /*PGNNo();
             String SQ1 = "";
@@ -563,11 +569,12 @@ public class PregReg extends Activity {
 
         SQL = "Insert into " + TableANC + "(healthId,pregNo,serviceId,providerId,visitDate,serviceSource,ironFolStatus," +
                 "ironFolQty,ironFolUnit,misoStatus,misoQty,MisoUnit, sateliteCenterName,systemEntryDate,Upload) VALUES ('" + g.getHealthID() + "','" + MaxPGNNo + "','" + ServiceId + "','" + g.getProvCode() + "'" +
-                ",'" + Global.DateConvertYMD(dtpVDate.getText().toString()) + "','" + spnANCSource.getSelectedItemPosition() + "','" +
-                ((rdoIron1.isChecked() ? "1" : "2")) + "','" + txtIronQty.getText().toString() + "','" + spnIronUnit.getSelectedItemPosition() + "','"
-                + ((rdoMiso1.isChecked() ? "1" : "2")) + "','" + txtMisoQty.getText().toString() + "','" + spnMisoUnit.getSelectedItemPosition() + "','" + "', " + "'" +
+                ",'" + Global.DateConvertYMD(dtpVDate.getText().toString()) + "','','" +//" + spnANCSource.getSelectedItemPosition() + "
+                ((rdoIron1.isChecked() ? "1" : "2")) + "','','','"//" + txtIronQty.getText().toString() + " " + spnIronUnit.getSelectedItemPosition() + "
+                + ((rdoMiso1.isChecked() ? "1" : "2")) + "','','','" + "', " + "'" +//" + txtMisoQty.getText().toString() + " " + spnMisoUnit.getSelectedItemPosition() + "
                 Global.DateTimeNowYMDHMS() + "'," + "'" + "2" + "')";
         C.Save(SQL);
+        DisplayANCVisit();
 
        /* SQL = "Update " + TableNameElcoVisit + " Set ";
         SQL+="CurrStatus = '12'";
@@ -575,12 +582,12 @@ public class PregReg extends Activity {
         C.Save(SQL);*/
 
         rdogrpIron.clearCheck();
-        txtIronQty.setText("");
-        spnIronUnit.getSelectedItemPosition();
+        /*txtIronQty.setText("");
+        spnIronUnit.getSelectedItemPosition();*/
         rdogrpMiso.clearCheck();
-        txtMisoQty.setText("");
+        /*txtMisoQty.setText("");
         spnMisoUnit.setSelection(0);
-        spnANCSource.setSelection(0);
+        spnANCSource.setSelection(0);*/
 
         Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
 
@@ -703,74 +710,20 @@ public class PregReg extends Activity {
             while (!cur.isAfterLast()) {
                 // dtpVDate.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("visitDate"))));
                 if (cur.getString(cur.getColumnIndex("ironFolStatus")).equalsIgnoreCase("1")) {
-                    ((TextView) popupView.findViewById(R.id.VlblIronQty)).setVisibility(View.VISIBLE);
-                    ((TextView) popupView.findViewById(R.id.txtIronQty)).setVisibility(View.VISIBLE);
                     ((TextView) popupView.findViewById(R.id.VlblIronYN)).setText("হ্যাঁ");
-                    ((TextView) popupView.findViewById(R.id.txtIronQty)).setText(cur.getString(cur.getColumnIndex("ironFolQty")));
-
-                    if (!cur.getString(cur.getColumnIndex("ironFolUnit")).toString().equalsIgnoreCase("")) {
-                        if (!cur.getString(cur.getColumnIndex("ironFolUnit")).toString().equalsIgnoreCase("null")) {
-                            if (cur.getString(cur.getColumnIndex("ironFolUnit")).toString().equalsIgnoreCase("1")) {
-                                if (!cur.getString(cur.getColumnIndex("ironFolQty")).equalsIgnoreCase(""))
-                                    ((TextView) popupView.findViewById(R.id.spnIronUnit)).setText("চক্র");
-                            }
-
-                            if (cur.getString(cur.getColumnIndex("ironFolUnit")).toString().equalsIgnoreCase("2")) {
-                                ((TextView) popupView.findViewById(R.id.spnIronUnit)).setText("পিছ");
-                            }
-                            if (cur.getString(cur.getColumnIndex("ironFolUnit")).toString().equalsIgnoreCase("3")) {
-                                ((TextView) popupView.findViewById(R.id.spnIronUnit)).setText("ডোজ");
-                            }
-                            //((TextView) popupView.findViewById(R.id.spnIronUnit)).setText(cur.getString(cur.getColumnIndex("ironFolUnit")));
-                        }
-                    }
-                } else if (cur.getString(cur.getColumnIndex("ironFolStatus")).equalsIgnoreCase("2")) {
+                }
+                else if (cur.getString(cur.getColumnIndex("ironFolStatus")).equalsIgnoreCase("2")) {
                     ((TextView) popupView.findViewById(R.id.VlblIronYN)).setText("না");
-                    ((TextView) popupView.findViewById(R.id.VlblIronQty)).setVisibility(View.GONE);
-                    ((TextView) popupView.findViewById(R.id.txtIronQty)).setVisibility(View.GONE);
                 }
 
 
                 if (cur.getString(cur.getColumnIndex("misoStatus")).equalsIgnoreCase("1")) {
-                    ((TextView) popupView.findViewById(R.id.VlblMisoQty)).setVisibility(View.VISIBLE);
-                    ((TextView) popupView.findViewById(R.id.txtMisoQty)).setVisibility(View.VISIBLE);
                     ((TextView) popupView.findViewById(R.id.VlblMisoYN)).setText("হ্যাঁ");
-                    ((TextView) popupView.findViewById(R.id.txtMisoQty)).setText(cur.getString(cur.getColumnIndex("misoQty")));
-
-                    if (!cur.getString(cur.getColumnIndex("misoUnit")).toString().equalsIgnoreCase("")) {
-                        if (!cur.getString(cur.getColumnIndex("misoUnit")).toString().equalsIgnoreCase("null")) {
-                            if (cur.getString(cur.getColumnIndex("misoUnit")).toString().equalsIgnoreCase("1")) {
-                                if (!cur.getString(cur.getColumnIndex("misoQty")).equalsIgnoreCase(""))
-                                    ((TextView) popupView.findViewById(R.id.spnMisoUnit)).setText("চক্র");
-                            }
-                            if (cur.getString(cur.getColumnIndex("misoUnit")).toString().equalsIgnoreCase("2")) {
-                                ((TextView) popupView.findViewById(R.id.spnMisoUnit)).setText("পিছ");
-                            }
-                            if (cur.getString(cur.getColumnIndex("misoUnit")).toString().equalsIgnoreCase("3")) {
-                                ((TextView) popupView.findViewById(R.id.spnMisoUnit)).setText("ডোজ");
-                            }
-
-                            //((TextView) popupView.findViewById(R.id.spnMisoUnit)).setText(cur.getString(cur.getColumnIndex("misoUnit")));
-                        }
-                    }
-                } else if (cur.getString(cur.getColumnIndex("misoStatus")).equalsIgnoreCase("2")) {
+                }
+               else if (cur.getString(cur.getColumnIndex("misoStatus")).equalsIgnoreCase("2")) {
                     ((TextView) popupView.findViewById(R.id.VlblMisoYN)).setText("না");
-                    ((TextView) popupView.findViewById(R.id.VlblMisoQty)).setVisibility(View.GONE);
-                    ((TextView) popupView.findViewById(R.id.txtMisoQty)).setVisibility(View.GONE);
                 }
 
-                if (!cur.getString(cur.getColumnIndex("serviceSource")).toString().equalsIgnoreCase("null"))
-                {
-                    if(cur.getString(cur.getColumnIndex("serviceSource")).equalsIgnoreCase("1"))
-                    {
-                        ((TextView) popupView.findViewById(R.id.txtserviceSource)).setText("সরকারি");
-                    }
-                    else if(cur.getString(cur.getColumnIndex("serviceSource")).equalsIgnoreCase("2"))
-                    {
-                        ((TextView) popupView.findViewById(R.id.txtserviceSource)).setText("বেসরকারি");
-                    }
-
-                }
 
 
                 cur.moveToNext();
@@ -902,11 +855,11 @@ public class PregReg extends Activity {
         txtAgeY.setText("");
         dtpVDate.setText("");
         rdogrpIron.clearCheck();
-        txtIronQty.setText("");
-        spnIronUnit.getSelectedItemPosition();
+        /*txtIronQty.setText("");
+        spnIronUnit.getSelectedItemPosition();*/
         rdogrpMiso.clearCheck();
-        txtMisoQty.setText("");
-        spnMisoUnit.setSelection(0);
+        /*txtMisoQty.setText("");
+        spnMisoUnit.setSelection(0);*/
     }
 
     private void DataSavePreg() {
@@ -926,10 +879,9 @@ public class PregReg extends Activity {
         adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 DataSavePregnant();
-                DisplayTempANCVisit(Global.DateConvertYMD(dtpLMP.getText().toString()));
 
-                secANCVisit.setVisibility(View.VISIBLE);
-                secPregVisit.setVisibility(View.GONE);
+
+
             }
         });
         adb.show();
@@ -941,13 +893,28 @@ public class PregReg extends Activity {
         return C.ReturnSingleValue(sq);
     }
 
+    private String GetDOB(String HealthId) {
+        String sq = String.format("Select DOB from member WHERE healthId = '%s'", g.getHealthID());
+        return C.ReturnSingleValue(sq);
+    }
+
+    //DOB
+
     private void DataSavePregnant() {
         try {
+            String dob=GetDOB(g.getHealthID());
+            Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(dob.toString()));
+            Integer Age =  Integer.parseInt(txtAge.getText().toString());
+            Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
             if (dtpLMP.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "সর্বশেষ মাসিকের  তারিখ কত লিখুন।");
                 dtpLMP.requestFocus();
                 return;
-            } else if (dtpEDD.getText().toString().length() == 0) {
+            } else if (Age<12) {
+                Connection.MessageBox(PregReg.this, "মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
+                dtpLMP.requestFocus();
+                return;
+            }else if (dtpEDD.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "সম্ভাব্য প্রসবের তারিখ কত লিখুন।");
                 dtpEDD.requestFocus();
                 return;
@@ -1071,6 +1038,9 @@ public class PregReg extends Activity {
                         g.CurrentTime24() + "'," + "'" + g.DateNowYMD() + "')";
 
                 C.Save(SQL);
+                secANCVisit.setVisibility(View.VISIBLE);
+                secPregVisit.setVisibility(View.GONE);
+                DisplayTempANCVisit(Global.DateConvertYMD(dtpLMP.getText().toString()));
             }
                 /*SQL = "Update " + TableName + " Set ";
                 SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
@@ -1121,11 +1091,11 @@ public class PregReg extends Activity {
             //ClearAll();
 
             rdogrpIron.clearCheck();
-            txtIronQty.setText("");
-            spnIronUnit.getSelectedItemPosition();
+            /*txtIronQty.setText("");
+            spnIronUnit.getSelectedItemPosition();*/
             rdogrpMiso.clearCheck();
-            txtMisoQty.setText("");
-            spnMisoUnit.setSelection(0);
+            /*txtMisoQty.setText("");
+            spnMisoUnit.setSelection(0);*/
 
             Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
 
@@ -1299,34 +1269,17 @@ public class PregReg extends Activity {
 
             if (VariableID.equals("btnLMP")) {
                 dtpDate = (EditText) findViewById(R.id.dtpLMP);
-                //dtpEDD.setText(g.addDaysDMY(Global.DateConvertDMY(dtpLMP.getText().toString()),280));
-                //dtpEDD.setText(g.addDaysDMY(Global.DateConvertDMY(dtpLMP.getText().toString()),280));
-                //dtpEDD.setText(g.addDaysYMD(dtpLMP.getText().toString(),280));
-                //dtpEDD.setText(getCalculatedDate(dtpLMP.getText().toString(),280));
-                //addDaysDMY(dtpLMP.setText(),280);
 
-                //dtpEDD.setText(getCalculatedDate1(Global.DateConvertDMY(dtpLMP.getText().toString()),"dd-MM-yyyy",280));
-               /* Calendar cal = Calendar.getInstance();
-                int mYear = cal.get(Calendar.YEAR);
-                int mMonth = cal.get(Calendar.MONTH);
-                int mDay = cal.get(Calendar.DAY_OF_MONTH);
-
-                // display the current date
-                String CurrentDate = dtpDate.toString();//mYear + "/" + mMonth + "/" + mDay;
-                String dateInString = CurrentDate; // Start date
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                cal.add(Calendar.DATE,280);
-
-                /*String dt = sdf.format(cal.getTime());  // dt is now the new date
-                //Toast.makeText(this, "" + dt, 5000).show();
-                dtpEDD.setText(dt);*/
-
-                /*sdf = new SimpleDateFormat("dd/MM/yyyy");
-                Date resultdate = new Date(cal.getTimeInMillis());
-                dateInString = sdf.format(resultdate);
-                dtpEDD.setText(dateInString);*/
             } else if (VariableID.equals("btnVDate")) {
+                Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
                 dtpDate = (EditText) findViewById(R.id.dtpVDate);
+                if(DiffLMP_VD>=224) {
+                    secMiso.setVisibility(View.VISIBLE);
+                    }
+                else
+                {
+                    secMiso.setVisibility(View.GONE);
+                }
             }
 
 
@@ -1374,6 +1327,7 @@ public class PregReg extends Activity {
         }
 
 
+
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View MyView = convertView;
@@ -1392,10 +1346,12 @@ public class PregReg extends Activity {
                     int i = 0;
                     // while(!cur.isAfterLast())
                     //{
-                    vcode[0][0] = "পরিদর্শন 1 " + Global.addDaysDMY(ExpDate, 120);
-                    vcode[0][1] = "পরিদর্শন 2 " + Global.addDaysDMY(ExpDate, 180);
-                    vcode[0][2] = "পরিদর্শন 3 " + Global.addDaysDMY(ExpDate, 240);
-                    vcode[0][3] = "পরিদর্শন 4 " + Global.addDaysDMY(ExpDate, 270);
+                    //dtpEDD.setText(Global.addDays(dtpLMP.getText().toString(), 280));
+
+                    vcode[0][0] = "পরিদর্শন 1 " + Global.addDays(dtpLMP.getText().toString(), 120);
+                    vcode[0][1] = "পরিদর্শন 2 " + Global.addDays(dtpLMP.getText().toString(), 180);
+                    vcode[0][2] = "পরিদর্শন 3 " + Global.addDays(dtpLMP.getText().toString(), 240);
+                    vcode[0][3] = "পরিদর্শন 4 " + Global.addDays(dtpLMP.getText().toString(), 270);
                     //+ String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
                     // vcode[1][i]= "ANC 2 - "+ Global.DateConvertYMD(dtpLMP.getText().toString());//cur.getString(cur.getColumnIndex("imudate"));
                     //vcode[2][i]= "ANC 3 - "+ Global.DateConvertYMD(dtpLMP.getText().toString());//cur.getString(cur.getColumnIndex("imucard"));
