@@ -112,6 +112,7 @@ public class PregReg extends Activity {
     Connection C;
     Global g;
     SimpleAdapter dataAdapter;
+    Calendar c = Calendar.getInstance();
     ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
     private String TableName;
     private String TableANC;
@@ -165,8 +166,11 @@ public class PregReg extends Activity {
     LinearLayout secLMP;
     TextView VlblLMP;
     EditText dtpLMP;
-    EditText txtLiveSonDau;
     ImageButton btnLMP;
+
+    LinearLayout secLive;
+    TextView VlblLiveSonDau;
+    EditText txtLiveSonDau;
 
     LinearLayout secPgn;
     TextView VlblPgn;
@@ -230,7 +234,7 @@ public class PregReg extends Activity {
 
             TableName = "PregWomen";
             TableANC = "ancService";
-            TableNameElcoVisit = "ELCOVisit";
+             TableNameElcoVisit = "ELCOVisit";
 
             secANCVisit = (LinearLayout) findViewById(R.id.secANCVisit);
             secPregVisit = (LinearLayout) findViewById(R.id.secPregVisit);
@@ -254,8 +258,11 @@ public class PregReg extends Activity {
             secLMP = (LinearLayout) findViewById(R.id.secLMP);
             VlblLMP = (TextView) findViewById(R.id.VlblLMP);
             dtpLMP = (EditText) findViewById(R.id.dtpLMP);
-            txtLiveSonDau = (EditText) findViewById(R.id.txtLiveSonDau);
             btnLMP = (ImageButton) findViewById(R.id.btnLMP);
+
+            secLive= (LinearLayout) findViewById(R.id.secLive);
+            VlblLiveSonDau= (TextView) findViewById(R.id.VlblLiveSonDau);
+            txtLiveSonDau = (EditText) findViewById(R.id.txtLiveSonDau);
 
             secPgn = (LinearLayout) findViewById(R.id.secPgn);
             VlblPgn = (TextView) findViewById(R.id.VlblPgn);
@@ -269,6 +276,15 @@ public class PregReg extends Activity {
             VlblAgeL = (TextView) findViewById(R.id.VlblAgeL);
             txtAgeM = (EditText) findViewById(R.id.txtAgeMo);
             txtAgeY = (EditText) findViewById(R.id.txtAgeY);
+
+            if(GetTotalSonGaughter(g.getHealthID()).equalsIgnoreCase("0"))
+            {
+                secAgeL.setVisibility(View.GONE);
+            }
+            else
+            {
+                secAgeL.setVisibility(View.VISIBLE);
+            }
 
             ////////Visit
             secIron = (LinearLayout) findViewById(R.id.secIron);
@@ -416,33 +432,64 @@ public class PregReg extends Activity {
 
 
     private void DataSaveANC() {
+        try
+        {
         Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        String formattedDate = sdf.format(c.getTime());
+        String PrevAncVisit="'" + GetMaxANCDate()=="0"?"":GetMaxANCDate() + "";// '"+  GetMaxANCDate()==0?"":GetMaxANCDate()) +"'";
+        Date date1 = sdf.parse(formattedDate);
+        Date date4 = sdf.parse(dtpVDate.getText().toString());
+        Date date5 = sdf.parse(dtpLMP.getText().toString());
+
+        String DOB=GetDOB(g.getHealthID());
+        Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(DOB.toString()));
         if (dtpVDate.getText().toString().length() == 0) {
             Connection.MessageBox(PregReg.this, "পরিদর্শনের তারিখ কত লিখুন।");
             dtpVDate.requestFocus();
             return;
         }
-        if (!rdoIron1.isChecked() & !rdoIron2.isChecked() & secIron.isShown()) {
+        else if (!rdoIron1.isChecked() & !rdoIron2.isChecked() & secIron.isShown()) {
             Connection.MessageBox(PregReg.this, "আয়রন ও ফলিক এসিড পেয়েছেন কিনা  সিলেক্ট করুন।");
             rdoIron1.requestFocus();
             return;
         }
-
-        /*if (rdoIron1.isChecked() & secIron.isShown()) {
-            if (txtIronQty.getText().toString().length() == 0) {
-                Connection.MessageBox(PregReg.this, "আয়রন ও ফলিক এসিডের পরিমাণ কত লিখুন।");
-                txtIronQty.requestFocus();
-                return;
-            } else if (spnIronUnit.getSelectedItemPosition() == 0) {
-                Connection.MessageBox(PregReg.this, "আয়রন ও ফলিক এসিডের ইউনিট  তালিকা থেকে  সিলেক্ট করুন।।");
-                spnIronUnit.requestFocus();
-                return;
-            }
-        }*/
-        if(DiffLMP_VD>=224) {
+        else if(DiffLMP_VD>=224) {
             if (!rdoMiso1.isChecked() & !rdoMiso2.isChecked() & secMiso.isShown()) {
                 Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ি পেয়েছেন কিনা  সিলেক্ট করুন।");
                 rdoMiso1.requestFocus();
+                return;
+            }
+        }
+
+        else if(date4.after(date1))
+        {
+            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+            dtpVDate.requestFocus();
+            return;
+        }
+        else if(date4.before(date5))
+        {
+            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ এবং সিস্টেমের তারিখের মধ্যে হবে");
+            dtpVDate.requestFocus();
+            return;
+        }
+        else if(DiffLMP_VD>=300)
+        {
+            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ থেকে ৩০০ দিনের বেশি হতে পারে না।");
+            dtpVDate.requestFocus();
+            return;
+        }
+        if(PrevAncVisit.equalsIgnoreCase("0"))
+        {
+
+        }
+        else
+        {
+            Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
+            if (date4.before(MaxAncVisitDate)) {
+                Connection.MessageBox(PregReg.this, "পূর্বের ভিজিটের তারিখ অপেক্ষা বর্তমান ভিজিট বড় হতে হবে।");
+                dtpVDate.requestFocus();
                 return;
             }
         }
@@ -574,6 +621,7 @@ public class PregReg extends Activity {
                 + ((rdoMiso1.isChecked() ? "1" : "2")) + "','','','" + "', " + "'" +//" + txtMisoQty.getText().toString() + " " + spnMisoUnit.getSelectedItemPosition() + "
                 Global.DateTimeNowYMDHMS() + "'," + "'" + "2" + "')";
         C.Save(SQL);
+        secPregVisit.setVisibility(View.GONE);
         DisplayANCVisit();
 
        /* SQL = "Update " + TableNameElcoVisit + " Set ";
@@ -588,8 +636,11 @@ public class PregReg extends Activity {
         /*txtMisoQty.setText("");
         spnMisoUnit.setSelection(0);
         spnANCSource.setSelection(0);*/
-
+    } catch (Exception e) {
         Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
+        return;
+    }
+
 
     }
 
@@ -898,19 +949,37 @@ public class PregReg extends Activity {
         return C.ReturnSingleValue(sq);
     }
 
-    //DOB
+    private String GetMaxANCDate()
+    {
+        String SQL = "";
+        String MaxANCDate = "";
+        SQL="Select ifnull(Max(visitDate),0) from ancService WHERE healthId ='" + g.getHealthID() + "' and pregNo=(select Max(pregNo) from ancService WHERE healthId='" + g.getHealthID() + "')";
+        MaxANCDate = C.ReturnSingleValue(SQL);
+        return MaxANCDate;
+    }
+
+    /*private String GetMaxANCDate(String HealthId) {
+        //Select Max(visitDate) from ancService WHERE healthId='261174' and pregNo=(select Max(pregNo) from ancService WHERE healthId='261174')
+        String sq = String.format("Select Max(visitDate) from ancService WHERE healthId = '%s' and pregNo=(select Max(pregNo) from ancService WHERE healthId='%s')", g.getHealthID());
+        return C.ReturnSingleValue(sq);
+    }*/
+
+
 
     private void DataSavePregnant() {
         try {
             String dob=GetDOB(g.getHealthID());
             Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(dob.toString()));
-            Integer Age =  Integer.parseInt(txtAge.getText().toString());
-            Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
+            Integer DiffDNow_VD =  Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            String formattedDate = sdf.format(c.getTime());
+            Date date1 = sdf.parse(formattedDate);
+            Date date5 = sdf.parse(dtpLMP.getText().toString());
             if (dtpLMP.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "সর্বশেষ মাসিকের  তারিখ কত লিখুন।");
                 dtpLMP.requestFocus();
                 return;
-            } else if (Age<12) {
+            } else if (DobAge<12) {
                 Connection.MessageBox(PregReg.this, "মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
                 dtpLMP.requestFocus();
                 return;
@@ -923,6 +992,25 @@ public class PregReg extends Activity {
                 spnPgn.requestFocus();
                 return;
             }
+            else if(date5.after(date1))
+            {
+                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                dtpLMP.requestFocus();
+                return;
+            }
+            else if(date5.equals(date1))
+            {
+                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
+                dtpLMP.requestFocus();
+                return;
+            }
+            else if(DiffDNow_VD<=29)
+            {
+                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
+                dtpLMP.requestFocus();
+                return;
+            }
+
             if (txtLiveSonDau.getText().toString().equalsIgnoreCase("0")) {
 
             } else {
@@ -1039,7 +1127,7 @@ public class PregReg extends Activity {
 
                 C.Save(SQL);
                 secANCVisit.setVisibility(View.VISIBLE);
-                secPregVisit.setVisibility(View.GONE);
+                secPregVisit.setVisibility(View.VISIBLE);
                 DisplayTempANCVisit(Global.DateConvertYMD(dtpLMP.getText().toString()));
             }
                 /*SQL = "Update " + TableName + " Set ";
@@ -1097,7 +1185,7 @@ public class PregReg extends Activity {
             /*txtMisoQty.setText("");
             spnMisoUnit.setSelection(0);*/
 
-            Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
+            //Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
 
 
         } catch (Exception e) {
@@ -1227,9 +1315,19 @@ public class PregReg extends Activity {
 
                 DisplayAge(cur.getString(cur.getColumnIndex("lastChildAge")));
 
-
+                String PGNNo = PregMaxPGNNo();
                 secANCVisit.setVisibility(View.VISIBLE);
-                secPregVisit.setVisibility(View.GONE);
+                String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableANC, g.getHealthID(), PGNNo);
+                if (!C.Existence(sq))
+                {
+                    secPregVisit.setVisibility(View.VISIBLE);
+
+                }
+                else
+                {
+                    secPregVisit.setVisibility(View.GONE);
+                }
+
                 cur.moveToNext();
             }
             txtLiveSonDau.setText(GetTotalSonGaughter(g.getHealthID()));
@@ -1271,7 +1369,8 @@ public class PregReg extends Activity {
                 dtpDate = (EditText) findViewById(R.id.dtpLMP);
 
             } else if (VariableID.equals("btnVDate")) {
-                Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
+                dtpDate = (EditText) findViewById(R.id.dtpVDate);
+                /*Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
                 dtpDate = (EditText) findViewById(R.id.dtpVDate);
                 if(DiffLMP_VD>=224) {
                     secMiso.setVisibility(View.VISIBLE);
@@ -1279,7 +1378,7 @@ public class PregReg extends Activity {
                 else
                 {
                     secMiso.setVisibility(View.GONE);
-                }
+                }*/
             }
 
 
@@ -1289,7 +1388,122 @@ public class PregReg extends Activity {
                     .append(mYear));
 
             dtpEDD.setText(Global.addDays(dtpLMP.getText().toString(), 280));
-        }
+            Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
+            Integer DiffDNow_VD =  Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
+            if(DiffLMP_VD>=224)
+            {
+                secMiso.setVisibility(View.VISIBLE);
+            }
+            else
+            {
+                secMiso.setVisibility(View.GONE);
+            }
+
+            try
+            {
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+                String formattedDate = sdf.format(c.getTime());
+                String PrevAncVisit="'" + GetMaxANCDate()=="0"?"":GetMaxANCDate() + "";// '"+  GetMaxANCDate()==0?"":GetMaxANCDate()) +"'";
+                //Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
+                Date date1 = sdf.parse(formattedDate);
+                Date date4 = sdf.parse(dtpVDate.getText().toString());
+                Date date5 = sdf.parse(dtpLMP.getText().toString());
+                Date date2 = sdf.parse(dtpVDate.getText().toString());
+
+                String DOB=GetDOB(g.getHealthID());
+                Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(DOB.toString()));
+                if(date4.after(date1))
+                {
+                    if (VariableID.equals("btnVDate"))
+                    {
+                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                }
+                else if(date4.before(date5))
+                {
+                    if (VariableID.equals("btnVDate"))
+                    {
+                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ এবং সিস্টেমের তারিখের মধ্যে হবে");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                }
+                else if(DiffLMP_VD>=300)
+                {
+                    if (VariableID.equals("btnVDate"))
+                    {
+                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ থেকে ৩০০ দিনের বেশি হতে পারে না।");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                }
+                if(PrevAncVisit.equalsIgnoreCase("0"))
+                {
+
+                }
+                else
+                {
+                    Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
+                    if (date4.before(MaxAncVisitDate)) {
+                        if (VariableID.equals("btnVDate")) {
+                            Connection.MessageBox(PregReg.this, "পূর্বের ভিজিটের তারিখ অপেক্ষা বর্তমান ভিজিট বড় হতে হবে।");
+                        }
+                        //dtpVDate.setText(null);
+                        dtpVDate.requestFocus();
+                    }
+                }
+
+                if(date5.after(date1))
+                {
+                    if (VariableID.equals("btnLMP"))
+                    {
+                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                    }
+                    //dtpLMP.setText(null);
+                    dtpLMP.requestFocus();
+
+                    //return;
+                }
+                else if(date5.equals(date1))
+                {
+                    if (VariableID.equals("btnLMP"))
+                    {
+                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
+                    }
+                    //dtpLMP.setText(null);
+                    dtpLMP.requestFocus();
+                }
+                else if(DiffDNow_VD<=29)
+                {
+                    if (VariableID.equals("btnLMP"))
+                    {
+                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
+                    }
+                    //dtpLMP.setText(null);
+                    dtpLMP.requestFocus();
+                }
+                else if(DobAge<12)
+                {
+                    if (VariableID.equals("btnLMP"))
+                    {
+                        Connection.MessageBox(PregReg.this,"মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                }
+
+
+            }
+            catch(ParseException ex)
+            {
+                ex.printStackTrace();
+            }
+
+
+
+}
     };
     private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
         public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {

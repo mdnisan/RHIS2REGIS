@@ -1,237 +1,1192 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
-        <LinearLayout android:id="@+id/seclblH1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
-            <TextView android:id="@+id/lblHlblH" android:text="HH No " android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
-            <TextView android:id="@+id/txtPHHNo" android:maxLength="5" android:background="#D7D7D7" android:layout_width="100sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />
-            <TextView android:id="@+id/lblHealthID" android:text="Health ID " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF" android:gravity="left" />
-            <TextView android:id="@+id/txtHealthID" android:maxLength="20" android:background="#D7D7D7" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/seclblH1"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHlblH"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="HH No "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtPHHNo"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="5"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/lblHealthID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Health ID "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtHealthID"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="20sp" />
         </LinearLayout>
-       <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secToggle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <ImageButton android:id="@+id/btnPlus" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/plus" android:layout_gravity="center" />
-            <ImageButton android:id="@+id/btnMinus" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/minus" android:layout_gravity="center" />
-        </LinearLayout>-->
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/seclblH" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblSNo" android:text="সিরিয়াল নম্বর " android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" />
-            <TextView android:id="@+id/txtSNo" android:maxLength="2"  android:background="#D7D7D7" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />
-            <TextView android:id="@+id/VlblDOB" android:text="জন্ম তারিখ " android:layout_width="110sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" />
-            <TextView android:id="@+id/DOB" android:maxLength="50"  android:background="#D7D7D7" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblName" android:text="স্ত্রীর নাম" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtName"  android:background="#D7D7D7" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
-            <TextView android:id="@+id/VlblAge" android:text="বয়স " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtAge" android:maxLength="2"  android:background="#D7D7D7" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />
-            <TextView android:id="@+id/Vlblbosor" android:text="(বছর)" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <ImageButton android:id="@+id/btnPlus" android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/plus" android:layout_gravity="center" />
-            <ImageButton android:id="@+id/btnMinus" android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/minus" android:layout_gravity="center" />
+        <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+         <LinearLayout android:id="@+id/secToggle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+             <ImageButton android:id="@+id/btnPlus" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/plus" android:layout_gravity="center" />
+             <ImageButton android:id="@+id/btnMinus" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/minus" android:layout_gravity="center" />
+         </LinearLayout>-->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/seclblH"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSNo"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="সিরিয়াল নম্বর "
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSNo"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblDOB"
+                android:layout_width="110sp"
+                android:layout_height="wrap_content"
+                android:text="জন্ম তারিখ "
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/DOB"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
         </LinearLayout>
 
-<LinearLayout android:id="@+id/secDetail" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMEdu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblMEdu" android:text="মায়ের শিক্ষাগত যোগ্যতা" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtMEdu" android:maxLength="100"  android:background="#D7D7D7" android:layout_width="260sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblName"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="স্ত্রীর নাম"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtName"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="বয়স "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtAge"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Vlblbosor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(বছর)"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnPlus"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/plus" />
+
+            <ImageButton
+                android:id="@+id/btnMinus"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/minus" />
         </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMNID" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblMNID" android:text="জাতীয় পরিচয়পত্র নম্বর" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtMNID" android:maxLength="50"  android:background="#D7D7D7" android:layout_width="260sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
+
+        <LinearLayout
+            android:id="@+id/secDetail"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMEdu"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3F3F3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/VlblMEdu"
+                    android:layout_width="220sp"
+                    android:layout_height="wrap_content"
+                    android:text="মায়ের শিক্ষাগত যোগ্যতা"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtMEdu"
+                    android:layout_width="260sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:background="#D7D7D7"
+                    android:gravity="left"
+                    android:inputType="text"
+                    android:maxLength="100"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMNID"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3F3F3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/VlblMNID"
+                    android:layout_width="220sp"
+                    android:layout_height="wrap_content"
+                    android:text="জাতীয় পরিচয়পত্র নম্বর"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtMNID"
+                    android:layout_width="260sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:background="#D7D7D7"
+                    android:gravity="left"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMBRID"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3F3F3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/VlblMBRID"
+                    android:layout_width="220sp"
+                    android:layout_height="wrap_content"
+                    android:text="জন্মনিবন্ধন নম্বর"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtMBRID"
+                    android:layout_width="260sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:background="#D7D7D7"
+                    android:gravity="left"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMMNo"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#F3F3F3"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/VlblMMNo"
+                    android:layout_width="220sp"
+                    android:layout_height="wrap_content"
+                    android:text="মোবাইল নম্বর"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtMMNo"
+                    android:layout_width="260sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:background="#D7D7D7"
+                    android:gravity="left"
+                    android:inputType="text"
+                    android:maxLength="50"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMBRID" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblMBRID" android:text="জন্মনিবন্ধন নম্বর" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtMBRID" android:maxLength="50" android:background="#D7D7D7" android:layout_width="260sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMMNo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblMMNo" android:text="মোবাইল নম্বর"  android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtMMNo" android:maxLength="50"  android:background="#D7D7D7" android:layout_width="260sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
-        </LinearLayout>
-</LinearLayout>
 
 
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
 
+        <LinearLayout
+            android:id="@+id/secHusName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
 
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secHusName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <TextView android:id="@+id/VlblHus" android:text="স্বামীর নাম" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtHusName"  android:background="#D7D7D7" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
-            <TextView android:id="@+id/VlblHusAge" android:text="বয়স " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/txtHusAge" android:maxLength="2"  android:background="#D7D7D7" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content"  android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />
-            <TextView android:id="@+id/Vlblbosor1" android:text="(বছর)" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView
+                android:id="@+id/VlblHus"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="স্বামীর নাম"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtHusName"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblHusAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="বয়স "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtHusAge"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/Vlblbosor1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="(বছর)"
+                android:textSize="20sp" />
         </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secELCONo" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="১." android:layout_width="20sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblELCONo" android:text="দম্পতি নং" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtELCONo" android:maxLength="4" android:layout_width="80sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblHHNo" android:text="খানা নং  " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtHHNo" android:maxLength="5" android:layout_width="100sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblHHNoNoDontKnow" android:text="জানি না" android:layout_width="80sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <CheckBox android:id="@+id/chkHHNoDontKnow" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secELCONo"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="১."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblELCONo"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="দম্পতি নং"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtELCONo"
+                style="@style/customEdit"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="4"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblHHNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="খানা নং  "
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtHHNo"
+                style="@style/customEdit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="5"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblHHNoNoDontKnow"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:text="জানি না"
+                android:textSize="20sp" />
+
+            <CheckBox
+                android:id="@+id/chkHHNoDontKnow"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="text"
+                android:textSize="20sp" />
         </LinearLayout>
 
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secDOMSource" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="২." android:layout_width="20sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblDOMSource" android:text="বিবাহের তারিখ   " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <RadioGroup android:id="@+id/rdogrpDOMSource" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoDOMSource1" android:text="প্রকৃত"/>
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoDOMSource2" android:text="আনুমানিক"/>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secDOMSource"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="২."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblDOMSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="বিবাহের তারিখ   "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpDOMSource"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoDOMSource1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="প্রকৃত"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoDOMSource2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="আনুমানিক"
+                    android:textSize="20sp" />
             </RadioGroup>
-            <EditText android:id="@+id/dtpDOM" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <ImageButton android:id="@+id/btnDOM" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
-            <EditText android:id="@+id/txtMAge" android:maxLength="3" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblMAge" android:text="(বছর)" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/dtpDOM"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnDOM"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:src="@drawable/calender" />
+
+            <EditText
+                android:id="@+id/txtMAge"
+                style="@style/customEdit"
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="3"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblMAge"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="(বছর)"
+                android:textSize="20sp" />
         </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secLiveSon" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="৩." android:layout_width="25sp" android:layout_height="wrap_content" android:textSize="20sp"/>
-            <TextView android:id="@+id/VlblLiveSon" android:text="জীবিত                     ছেলে" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtLiveSon" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblLiveDau" android:text="মেয়ে  " android:gravity="right" android:layout_width="73sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtLiveDau" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secLiveSon"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="25sp"
+                android:layout_height="wrap_content"
+                android:text="৩."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblLiveSon"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="জীবিত                     ছেলে"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtLiveSon"
+                style="@style/customEdit"
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblLiveDau"
+                android:layout_width="73sp"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:text="মেয়ে  "
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtLiveDau"
+                style="@style/customEdit"
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="2"
+                android:textSize="20sp" />
         </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
 
 
-        <LinearLayout android:id="@+id/secTTCardStatus" android:paddingTop="15sp" android:paddingBottom="5sp"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <ImageButton android:id="@+id/btnAddTT"  android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/plus" android:layout_gravity="center" />
-            <ImageButton android:id="@+id/btnTTClose" android:visibility="gone" android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/minus" android:layout_gravity="center" />
-            <TextView android:id="@+id/VlblTTCardStatus" android:layout_marginLeft="15sp" android:text="মহিলার টিটি" android:layout_width="wrap_content" android:textColor="#F78181" android:layout_height="wrap_content" android:textSize="20sp" />
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#F78181" />
-        <LinearLayout android:id="@+id/secTT1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
-            <CheckBox android:id="@+id/ChkTT1" android:layout_width="30sp" android:inputType="text" android:layout_height="wrap_content" android:layout_marginRight="10sp" android:textSize="20sp" android:checked="false" />
-            <TextView android:id="@+id/VlblTT1" android:text="টিটি" android:layout_width="80sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <LinearLayout
+            android:id="@+id/secTTCardStatus"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5sp"
+            android:paddingTop="15sp">
 
-            <TextView android:text="কার্ড আছে? " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" />
-            <RadioGroup android:id="@+id/rdogrpTTCard" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoCardYes" android:text="হাঁ"/>
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoCardNo" android:text="না"/>
+            <ImageButton
+                android:id="@+id/btnAddTT"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/plus" />
+
+            <ImageButton
+                android:id="@+id/btnTTClose"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/minus"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/VlblTTCardStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15sp"
+                android:text="মহিলার টিটি"
+                android:textColor="#F78181"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#F78181" />
+
+        <LinearLayout
+            android:id="@+id/secTT1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <CheckBox
+                android:id="@+id/ChkTT1"
+                android:layout_width="30sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:checked="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblTT1"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:text="টিটি"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="কার্ড আছে? "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpTTCard"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoCardYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হাঁ"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoCardNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না"
+                    android:textSize="20sp" />
             </RadioGroup>
-            <EditText android:id="@+id/dtpDOTT1" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <ImageButton android:id="@+id/btnDOTT1" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
-            <ImageButton android:id="@+id/btnSaveTT" android:layout_marginLeft="15sp" android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/save" android:layout_gravity="center" />
+
+            <EditText
+                android:id="@+id/dtpDOTT1"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnDOTT1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:src="@drawable/calender" />
+
+            <ImageButton
+                android:id="@+id/btnSaveTT"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15sp"
+                android:src="@drawable/save" />
         </LinearLayout>
 
-        <LinearLayout android:layout_width="fill_parent"  android:layout_height="wrap_content" android:orientation="horizontal" android:background="#F3F3F3">
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
+
             <GridView
                 android:id="@+id/gridTT"
-                android:layout_width="wrap_content" android:numColumns="auto_fit"
-                android:stretchMode="columnWidth"
-                android:layout_height="wrap_content" android:scrollbars="horizontal"
-                android:horizontalSpacing="5sp" />
-        </LinearLayout>
-
-
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#F78181" />
-
-
-
-        <LinearLayout  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="10sp" android:layout_marginTop="20sp" android:background="#FFFFFF"  style="@style/rowStyle0">
-            <ImageButton android:id="@+id/btnVisit"  android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/document" android:layout_gravity="center" />
-            <ImageButton android:id="@+id/btnVisitClose" android:visibility="gone" android:layout_width="30sp" android:layout_height="30sp" android:src="@drawable/minus" android:layout_gravity="center" />
-            <TextView  android:text="পরিদর্শন" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" android:paddingLeft="15sp" android:textColor="#00B7FB"/>
-            <TextView  android:id="@+id/txtVisitNo" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:paddingLeft="15sp" android:textColor="#00B7FB"/>
-        </LinearLayout>
-
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#00B7FB" />
-
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="0dp"
-            android:padding="0dp" android:scrollbarAlwaysDrawHorizontalTrack="true">
-
-        <LinearLayout android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:scrollbars="none"
-            android:orientation="horizontal"
-            android:layout_margin="0dp"
-            android:padding="0dp" android:background="#F3F3F3">
-            <GridView
-                android:id="@+id/gridElcoVisit"
-                android:layout_width="800dp"
-                android:numColumns="auto_fit"
-                android:stretchMode="columnWidth"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:horizontalSpacing="5sp"
+                android:numColumns="auto_fit"
                 android:scrollbars="horizontal"
-                android:horizontalSpacing="5sp" />
-        </LinearLayout>
-        </HorizontalScrollView>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#00B7FB" />
-        <LinearLayout  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingTop="10sp" android:layout_marginTop="20sp">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView  android:text="তারিখ  " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp"/>
-            <EditText android:id="@+id/dtpDOV" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <ImageButton android:id="@+id/btnDOV" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center_vertical" />
-            <RadioGroup android:id="@+id/rdogrpVS" android:orientation="horizontal" android:paddingLeft="30sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoVSPresent" android:text="উপস্থিত"/>
-                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoVSAbsent" android:text="অনুপস্থিত"/>
-            </RadioGroup>
+                android:stretchMode="columnWidth" />
         </LinearLayout>
 
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMethod" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblMethod" android:text="জন্মনিয়ন্ত্রণ ব্যবস্থা/গর্ভাবস্থা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <Spinner android:id="@+id/spnMethod" android:drawSelectorOnTop="true" android:layout_width="300sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secSS" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblSS" android:text="উৎস" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <RadioGroup android:id="@+id/rdogrpSS" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
-                <RadioButton android:paddingRight="10dp"  android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoSSFWA" android:text="পরিবার কল্যাণ সহকারী"
-                    android:checked="false" />
-                <RadioButton android:paddingRight="10dp"  android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoSSLMarket" android:text="ঞয় সূত্র"
-                    android:checked="false" />
-                <RadioButton android:paddingRight="10dp"  android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoSSOther" android:text="অন্য সূত্র (এন জি ও)"
-                    android:checked="false" />
-                <RadioButton android:paddingRight="10dp"  android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoSSOtherGovt" android:text="অন্যান্য সরকারী  সূত্র"
-                    android:checked="false" />
-            </RadioGroup>
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secBrand" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblBrand" android:text="ব্রান্ড" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <Spinner android:id="@+id/spnBrand" android:drawSelectorOnTop="true" android:layout_width="100sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#F78181" />
+
+
+        <LinearLayout
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20sp"
+            android:background="#FFFFFF"
+            android:orientation="horizontal"
+            android:paddingTop="10sp">
+
+            <ImageButton
+                android:id="@+id/btnVisit"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/document" />
+
+            <ImageButton
+                android:id="@+id/btnVisitClose"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/minus"
+                android:visibility="gone" />
+
+            <TextView
+                android:layout_width="170sp"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15sp"
+                android:text="পরিদর্শন"
+                android:textColor="#00B7FB"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtVisitNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="15sp"
+                android:textColor="#00B7FB"
+                android:textSize="20sp"
+                android:visibility="invisible" />
         </LinearLayout>
 
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secMethodUnit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblUnit" android:text="পরিমাণ" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtMethodQty" android:maxLength="3" android:layout_width="80sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <Spinner android:id="@+id/spnMethodUnit" android:drawSelectorOnTop="true" android:layout_width="100sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
-        </LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secWherePlace" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblWherePlace" android:text="কোথায় প্রেরণ" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <Spinner android:id="@+id/spnWherePlace" android:drawSelectorOnTop="true" android:layout_width="300sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#00B7FB" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:padding="0dp"
+                android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="0dp"
+                    android:background="#F3F3F3"
+                    android:orientation="horizontal"
+                    android:padding="0dp"
+                    android:scrollbars="none">
+
+                    <HorizontalScrollView
+                        android:id="@+id/title_horizontalScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="1dp"
+                        android:fillViewport="false"
+                        android:scrollbars="none">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <GridView
+                                android:id="@+id/gridElcoVisit"
+                                android:layout_width="800dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                    <!--<GridView
+                        android:id="@+id/gridElcoVisit"
+                        android:layout_width="800dp"
+                        android:numColumns="auto_fit"
+                        android:stretchMode="columnWidth"
+                        android:layout_height="wrap_content"
+                        android:scrollbars="horizontal"
+                        android:horizontalSpacing="5sp" />-->
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#00B7FB" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20sp"
+                android:orientation="horizontal"
+                android:paddingTop="10sp">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="তারিখ  "
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/dtpDOV"
+                    style="@style/customEdit"
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:focusable="false"
+                    android:inputType="text"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/btnDOV"
+                    android:layout_width="40sp"
+                    android:layout_height="40sp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/calender" />
+
+                <RadioGroup
+                    android:id="@+id/rdogrpVS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingLeft="30sp"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:id="@+id/rdoVSPresent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:text="উপস্থিত"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdoVSAbsent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingRight="10dp"
+                        android:text="অনুপস্থিত"
+                        android:textSize="20sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMethod"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblMethod"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text="জন্মনিয়ন্ত্রণ ব্যবস্থা/গর্ভাবস্থা"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spnMethod"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secSS"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblSS"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text="উৎস"
+                    android:textSize="20sp" />
+
+                <RadioGroup
+                    android:id="@+id/rdogrpSS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:textSize="20sp">
+
+                    <RadioButton
+                        android:id="@+id/rdoSSFWA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:paddingRight="10dp"
+                        android:text="পরিবার কল্যাণ সহকারী"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdoSSLMarket"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:paddingRight="10dp"
+                        android:text="ঞয় সূত্র"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdoSSOther"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:paddingRight="10dp"
+                        android:text="অন্য সূত্র (এন জি ও)"
+                        android:textSize="20sp" />
+
+                    <RadioButton
+                        android:id="@+id/rdoSSOtherGovt"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        android:paddingRight="10dp"
+                        android:text="অন্যান্য সরকারী  সূত্র"
+                        android:textSize="20sp" />
+                </RadioGroup>
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secBrand"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblBrand"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text="ব্রান্ড"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spnBrand"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secMethodUnit"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblUnit"
+                    android:layout_width="170sp"
+                    android:layout_height="wrap_content"
+                    android:text="পরিমাণ"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/txtMethodQty"
+                    style="@style/customEdit"
+                    android:layout_width="80sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spnMethodUnit"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secWherePlace"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblWherePlace"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text="কোথায় প্রেরণ"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spnWherePlace"
+                    android:layout_width="300sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secValidity"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="10sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblValidity"
+                    android:layout_width="170sp"
+                    android:layout_height="wrap_content"
+                    android:text="কার্যকারিতা"
+                    android:textSize="20sp" />
+
+                <EditText
+                    android:id="@+id/txtValidity"
+                    style="@style/customEdit"
+                    android:layout_width="80sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:inputType="number"
+                    android:maxLength="3"
+                    android:textSize="20sp" />
+
+                <Spinner
+                    android:id="@+id/spnValidityUnit"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
         </LinearLayout>
 
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
-        <LinearLayout android:id="@+id/secValidity" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <TextView android:id="@+id/VlblValidity" android:text="কার্যকারিতা" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
-            <EditText android:id="@+id/txtValidity" android:maxLength="3" android:layout_width="80sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
-            <Spinner android:id="@+id/spnValidityUnit" android:drawSelectorOnTop="true" android:layout_width="100sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
-        </LinearLayout>
-</LinearLayout>
-        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#00B7FB" />
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#00B7FB" />
 
-        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
-            <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content"
-                android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20sp">
+
+            <Button
+                android:id="@+id/cmdSave"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@drawable/button_style"
+                android:text=" Save  "
+                android:textSize="16sp" />
         </LinearLayout>
 
     </LinearLayout>

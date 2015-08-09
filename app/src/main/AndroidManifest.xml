@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.data.rhis2"
+    android:versionCode="1"
+    android:versionName="1.0"     
+    android:installLocation="auto">
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="17" />
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> 
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> 
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <!--<uses-permission android:name="android.permission.RECORD_AUDIO" />-->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <!--android:allowBackup="true"
+        android:icon="@drawable/govtlogo"    android:icon="@drawable/govtlogo"-->
+    <application
+        android:allowBackup="true"
+
+        android:label="@string/app_name"
+        android:clearTaskOnLaunch="true"
+        android:largeHeap="true"
+
+        android:theme="@style/CustomTheme" >
+        <activity
+            android:name="com.data.rhis2.LoginActivity"
+            android:label="@string/app_name" android:icon="@drawable/govtlogo">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".VillageList" android:label="গ্রামের তালিকা"></activity>
+        <activity android:name=".HouseholdIndex" android:label="খানার তালিকা"></activity>
+        <activity android:name=".MemberList" android:label="সদস্যের  তালিকা"></activity>
+        <activity android:name=".MemberForm" android:label="সদস্যের তথ্য"></activity>
+        <activity android:name=".Household" android:label="খানার তথ্য"></activity>
+        <activity android:name=".SettingForm" android:label="Setting"></activity>
+        <activity android:name=".ELCOForm" android:label="দম্পতি ছক"></activity>
+        <activity android:name=".DeathForm" android:label="মৃত্যু তালিকা ছক"></activity>
+        <activity android:name=".PregReg" android:label="গর্ভবতী মা"></activity>
+        <activity android:name=".Deliv" android:label="প্রসব সংক্রান্ত তথ্য "></activity>
+        <activity android:name=".Child" android:label="নবজাতক সংক্রান্ত তথ্য"></activity>
+        <activity android:name=".PNC_Mother" android:label="পি এন সি"></activity>
+        <activity android:name=".PNC_Child" android:label="পি এন সি"></activity>
+
+
+        <receiver android:name=".SyncBroadcastReceiver"/>
+        <service android:name=".DataSyncService"/>
+    </application>
+
+</manifest>

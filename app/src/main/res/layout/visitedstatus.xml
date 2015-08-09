@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="500sp"
+    android:layout_height="match_parent">
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowStyle1">
+        <TextView android:layout_width="160sp" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="ভিজিটের তারিখ"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+
+        <TextView android:id="@+id/txtVDate" android:layout_width="130px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="" style="@style/customEdit"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+        <ImageButton android:id="@+id/btnVDate" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="left" />
+
+        <Button android:layout_marginLeft="10sp"
+            android:id="@+id/cmdPrev" android:textSize="12sp"
+            android:layout_width="70sp"
+            android:layout_height="fill_parent"
+            android:text="Prev"/>
+
+        <Button
+            android:id="@+id/cmdNext"  android:textSize="12sp"
+            android:layout_width="70sp"
+            android:layout_height="fill_parent"
+            android:text="Next"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowStyle0">
+        <TextView android:layout_width="300px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="মোট খানা ভিজিট করা হয়েছে"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"/>
+        <TextView android:id="@+id/txtTotalHH" android:layout_width="130px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="" style="@style/customEdit"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowStyle0">
+        <TextView android:layout_width="300px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="উপস্থিত"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"/>
+        <TextView android:id="@+id/txtPresent" android:layout_width="130px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="" style="@style/customEdit"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowStyle0">
+        <TextView android:layout_width="300px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="অনুপস্থিত"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"/>
+        <TextView android:id="@+id/txtAbsent" android:layout_width="130px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="" style="@style/customEdit"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowStyle0">
+        <TextView android:layout_width="300px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="সদস্য রেজিস্ট্রেশন হয়েছে"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"/>
+        <TextView android:id="@+id/txtTotalMem" android:layout_width="130px" android:layout_height="fill_parent"
+            android:layout_marginBottom="1sp" android:text="" style="@style/customEdit"
+            android:layout_marginTop="1sp"
+            android:textSize="20sp" android:gravity="left"
+            android:textColor="#006699"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+</LinearLayout>

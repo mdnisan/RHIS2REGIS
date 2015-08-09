@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical" android:layout_width="fill_parent"
+ android:layout_height="fill_parent" 
+     android:paddingTop="5dp"
+    android:paddingBottom="5dp" android:background="#D7D7D7">
+    		<TableLayout
+				android:id="@+id/memtab"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_marginRight="10sp">
+
+				<TableRow>
+					<TextView  android:text="" android:textSize="18sp"
+				         android:layout_width="40sp"
+				         android:gravity="center"
+				         android:layout_column="0"
+				         android:layout_height="wrap_content"/>								    
+				    <TextView  android:text="সদস্য নং" android:textSize="18sp"
+				         android:layout_width="80sp"
+				         android:gravity="center"
+				         android:layout_column="0"
+				         android:layout_height="wrap_content"/>
+				     <TextView android:text=" নাম" android:textSize="18sp"
+				         android:layout_width="160sp"
+				         android:gravity="left"
+				         android:layout_column="1"
+				         android:layout_height="wrap_content"/>
+				     				     
+				    <TextView  android:text="সম্পর্ক" android:textSize="18sp"
+				         android:layout_width="90sp"
+				         android:gravity="center"
+				         android:layout_column="0"
+				         android:layout_height="wrap_content"/>
+				     				     
+				     <TextView android:text="জন্ম তারিখ" android:textSize="18sp"
+				         android:layout_width="120sp"
+				         android:gravity="center"
+				         android:layout_column="2"
+				         android:layout_height="wrap_content"/>	
+				     <TextView android:text="বয়স" android:textSize="18sp"
+				         android:layout_width="50sp"
+				         android:gravity="center"
+				         android:layout_column="3"
+				         android:layout_height="wrap_content"/>
+				     <TextView android:text="বয়স(উৎস)" android:textSize="18sp"
+				         android:layout_width="85sp"
+				         android:gravity="center"
+				         android:layout_column="4"
+				         android:layout_height="wrap_content"/>
+				     				     
+				    <TextView android:text="লিঙ্গ" android:textSize="18sp"
+				         android:layout_width="110sp"
+				         android:gravity="center"
+				         android:layout_column="5"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="বৈবাহিক অবস্থা" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="5"
+				         android:layout_height="wrap_content"/>
+                    <TextView android:text="স্বামী/স্ত্রী-১" android:textSize="18sp"
+                        android:layout_width="80sp"
+                        android:gravity="center"
+                        android:layout_column="6"
+                        android:layout_height="wrap_content"/>
+                    <TextView android:text="স্বামী/স্ত্রী-২" android:textSize="18sp"
+                    android:layout_width="80sp"
+                    android:gravity="center"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"/>
+                    <TextView android:text="স্বামী/স্ত্রী-৩" android:textSize="18sp"
+                    android:layout_width="80sp"
+                    android:gravity="center"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"/>
+                    <TextView android:text="স্বামী/স্ত্রী-৪" android:textSize="18sp"
+                    android:layout_width="80sp"
+                    android:gravity="center"
+                    android:layout_column="6"
+                    android:layout_height="wrap_content"/>
+
+                    <TextView android:text="শিক্ষা" android:textSize="18sp"
+				         android:layout_width="60sp"
+				         android:gravity="center"
+				         android:layout_column="6"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="ধর্ম" android:textSize="18sp"
+				         android:layout_width="65sp"
+				         android:gravity="center"
+				         android:layout_column="7"
+				         android:layout_height="wrap_content"/>		
+				    <TextView android:text="পেশা" android:textSize="18sp"
+				         android:layout_width="60sp"
+				         android:gravity="center"
+				         android:layout_column="8"
+				         android:layout_height="wrap_content"/>		
+				    				         
+				    <TextView android:text="পিতা" android:textSize="18sp"
+				         android:layout_width="50sp"
+				         android:gravity="center"
+				         android:layout_column="9"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="পিতার নাম" android:textSize="18sp"
+				         android:layout_width="200sp"
+				         android:gravity="left"
+				         android:layout_column="10"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="মাতা" android:textSize="18sp"
+				         android:layout_width="50sp"
+				         android:gravity="center"
+				         android:layout_column="11"
+				         android:layout_height="wrap_content"/>
+				    <TextView android:text="মাতার নাম" android:textSize="18sp"
+				         android:layout_width="200sp"
+				         android:gravity="left"
+				         android:layout_column="12"
+				         android:layout_height="wrap_content"/>
+				     <TextView android:text="Health ID"
+				         android:layout_width="150sp"
+				         android:gravity="left"
+				         android:layout_column="1"
+				         android:layout_height="wrap_content"/>
+				    
+				     <TextView android:text="NID" android:textSize="18sp"
+				         android:layout_width="50sp"
+				         android:gravity="center"
+				         android:layout_column="13"
+				         android:layout_height="wrap_content"/>
+				    <TextView android:text="NID No" android:textSize="18sp"
+				         android:layout_width="160sp"
+				         android:gravity="center"
+				         android:layout_column="14"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="NID Status" android:textSize="18sp"
+				         android:layout_width="100sp"
+				         android:gravity="center"
+				         android:layout_column="15"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="BR" android:textSize="18sp"
+				         android:layout_width="50sp"
+				         android:gravity="center"
+				         android:layout_column="16"
+				         android:layout_height="wrap_content"/>	
+				    				         
+				    <TextView android:text="BR ID" android:textSize="18sp"
+				         android:layout_width="170sp"
+				         android:gravity="center"
+				         android:layout_column="17"
+				         android:layout_height="wrap_content"/>
+				    <TextView android:text="BR Status" android:textSize="18sp"
+				         android:layout_width="120sp"
+				         android:gravity="center"
+				         android:layout_column="18"
+				         android:layout_height="wrap_content"/>
+				    <TextView android:text="মোবাইল নং১" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="19"
+				         android:layout_height="wrap_content"/>
+				    <TextView android:text="মোবাইল নং২" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="20"
+				         android:layout_height="wrap_content"/>
+					<TextView android:text="মোবাইল" android:textSize="18sp"
+						android:layout_width="130sp"
+						android:gravity="center"
+						android:layout_column="21"
+						android:layout_height="wrap_content"/>
+
+				    <TextView android:text="জাতীয়তা" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="22"
+				         android:layout_height="wrap_content"/>
+				    				    
+				    <TextView android:text="ELCO নং" android:textSize="18sp"
+				         android:layout_width="80sp"
+				         android:gravity="center"
+				         android:layout_column="23"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="ELCO Status" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="24"
+				         android:layout_height="wrap_content"/>	
+				    <TextView android:text="জন্মস্থান" android:textSize="18sp"
+				         android:layout_width="130sp"
+				         android:gravity="center"
+				         android:layout_column="25"
+				         android:layout_height="wrap_content"/>		
+				         				    					    					    					    					         				         				    				    				    				         			         			         		         			         			     				    				         				         				    					    					    					    					         				         				    				    				    				         			         			         		         			         			     
+				    				         			         				    					    					    					    					         				         				    				    				    				         			         			         		         			         			     				    				         				         				    					    					    					    					         				         				    				    				    				         			         			         		         			         			     
+				</TableRow>  				
+		</TableLayout>  
+ </RelativeLayout>
+ 

@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TableLayout
+        android:id="@+id/memtab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" android:layout_marginRight="10sp">
+
+
+        <TableRow android:layout_marginTop="5sp" android:layout_marginBottom="5sp">
+            <ImageButton android:id="@+id/memberImage" android:background="@drawable/deletesmall"
+                android:layout_width="30sp"  android:textSize="14sp" android:layout_marginTop="0sp"
+                android:layout_height="wrap_content"
+                android:text="" android:layout_marginLeft="10sp"/>
+
+            <TextView android:id="@+id/SNo"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="0" android:textSize="16sp"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Name"
+                android:layout_width="160sp"
+                android:gravity="left" android:textSize="16sp"
+                android:layout_column="1"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/Rth"  android:textSize="16sp"
+                android:layout_width="90sp"
+                android:gravity="center"
+                android:layout_column="1"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/DOB" android:textSize="16sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="2"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Age"  android:textSize="16sp"
+                android:layout_width="50sp"
+                android:gravity="center"
+                android:layout_column="3"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/DOBSource" android:textSize="16sp"
+                android:layout_width="85sp"
+                android:gravity="center"
+                android:layout_column="4"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/Sex"  android:textSize="16sp"
+                android:layout_width="110sp"
+                android:gravity="center"
+                android:layout_column="5"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/MS"  android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="6"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Sp1" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="6"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Sp2" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="6"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Sp3" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="6"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Sp4" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="6"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/EDU"  android:textSize="16sp"
+                android:layout_width="60sp"
+                android:gravity="center"
+                android:layout_column="7"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Rel"  android:textSize="16sp"
+                android:layout_width="60sp"
+                android:gravity="center"
+                android:layout_column="8"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/OCP"  android:textSize="16sp"
+                android:layout_width="65sp"
+                android:gravity="center"
+                android:layout_column="9"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/FNo"  android:textSize="16sp"
+                android:layout_width="50sp"
+                android:gravity="center"
+                android:layout_column="10"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Father"  android:textSize="16sp"
+                android:layout_width="200sp"
+                android:gravity="left"
+                android:layout_column="11"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/MNo"  android:textSize="16sp"
+                android:layout_width="50sp"
+                android:gravity="center"
+                android:layout_column="12"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/Mother"  android:textSize="16sp"
+                android:layout_width="200sp"
+                android:gravity="left"
+                android:layout_column="13"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/HealthID"  android:textSize="16sp"
+                android:layout_width="150sp"
+                android:gravity="left"
+                android:layout_column="1"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/HaveNID"  android:textSize="16sp"
+                android:layout_width="50sp"
+                android:gravity="center"
+                android:layout_column="14"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/NID"  android:textSize="16sp"
+                android:layout_width="160sp"
+                android:gravity="center"
+                android:layout_column="15"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/NIDStatus"  android:textSize="16sp"
+                android:layout_width="100sp"
+                android:gravity="center"
+                android:layout_column="16"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/HaveBR"  android:textSize="16sp"
+                android:layout_width="50sp"
+                android:gravity="center"
+                android:layout_column="17"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/BRID"  android:textSize="16sp"
+                android:layout_width="170sp"
+                android:gravity="center"
+                android:layout_column="18"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/BRIDStatus" android:textSize="16sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="19"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/MobileNo1"  android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="20"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/MobileNo2" android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="21"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/MobileYN" android:textSize="18sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="22"
+                android:layout_height="wrap_content"/>
+
+            <TextView android:id="@+id/Nationality"  android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="23"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/ELCONo"  android:textSize="16sp"
+                android:layout_width="80sp"
+                android:gravity="center"
+                android:layout_column="24"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/ELCODontKnow" android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="25"
+                android:layout_height="wrap_content"/>
+            <TextView android:id="@+id/BPlace"  android:textSize="16sp"
+                android:layout_width="130sp"
+                android:gravity="center"
+                android:layout_column="26"
+                android:layout_height="wrap_content"/>
+
+        </TableRow>
+       <LinearLayout android:id="@+id/SecFPMethod" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+           <!--<TextView android:id="@+id/VlblFP" android:text="" android:layout_width="65sp" android:layout_height="wrap_content" android:textSize="16sp" />
+           <TextView android:id="@+id/VlblFPMethod" android:text="FP Method:" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="16sp" />-->
+           <TextView android:id="@+id/FPMethod" android:text="" android:textColor="#006699" android:layout_width="160sp" android:layout_height="wrap_content" android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/SecPreg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<TextView android:id="@+id/VlblPreg" android:text="" android:layout_width="65sp" android:layout_height="wrap_content" android:textSize="16sp" />-->
+        <TextView android:id="@+id/VlblPregStatus" android:text="গর্ভবতী" android:textColor="#00CC33" android:layout_width="70sp" android:layout_height="wrap_content" android:textSize="18sp" />
+        <TextView android:id="@+id/VlblLMP" android:text="LMP:" android:layout_width="40sp" android:layout_height="wrap_content" android:textSize="16sp" />
+        <TextView android:id="@+id/LMP" android:text="03/03/2015" android:layout_width="105sp" android:layout_height="wrap_content" android:textSize="16sp" />
+        <TextView android:id="@+id/VlblEDD" android:text="EDD:" android:layout_width="40sp" android:layout_height="wrap_content" android:textSize="16sp" />
+        <TextView android:id="@+id/EDD" android:text="03/03/2015" android:layout_width="105sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <TextView android:id="@+id/VlblANC" android:text="ANC" android:layout_width="40sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <Button
+                android:id="@+id/cmdANC1"
+                android:layout_width="40sp"  android:textSize="14sp"
+                android:layout_height="40sp" android:layout_marginRight="5sp"
+                android:text="1"/>
+            <Button
+                android:id="@+id/cmdANC2"
+                android:layout_width="40sp"  android:textSize="14sp"
+                android:layout_height="40sp" android:layout_marginRight="5sp"
+                android:text="2"/>
+            <Button
+                android:id="@+id/cmdANC3"
+                android:layout_width="40sp"  android:textSize="14sp"
+                android:layout_height="40sp" android:layout_marginRight="5sp"
+                android:text="3"/>
+            <Button
+                android:id="@+id/cmdANC4"
+                android:layout_width="40sp"  android:textSize="14sp"
+                android:layout_height="40sp" android:layout_marginRight="5sp"
+                android:text="4"/>
+        </LinearLayout>
+
+        <LinearLayout android:id="@+id/SecDeliv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblDeliv" android:text="Deliv:" android:layout_width="40sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <TextView android:id="@+id/Deliv" android:text="" android:layout_width="120sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <TextView android:id="@+id/VlblOutCome" android:text="Outcome:" android:layout_width="70sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <TextView android:id="@+id/OutCome" android:text="" android:layout_width="100sp" android:layout_height="wrap_content" android:textSize="16sp" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/SecPNC" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblP" android:text="" android:layout_width="65sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <TextView android:id="@+id/VlblPNC" android:text="PNC" android:layout_width="50sp" android:layout_height="wrap_content" android:textSize="16sp" />
+            <Button
+                android:id="@+id/cmdPNC1"
+                android:layout_width="30sp"  android:textSize="16sp"
+                android:layout_height="wrap_content" android:layout_marginRight="3sp"
+                android:text="1"/>
+            <Button
+                android:id="@+id/cmdPNC2"
+                android:layout_width="30sp"  android:textSize="16sp"
+                android:layout_height="wrap_content" android:layout_marginRight="3sp"
+                android:text="2"/>
+            <Button
+                android:id="@+id/cmdPNC3"
+                android:layout_width="30sp"  android:textSize="16sp"
+                android:layout_height="wrap_content" android:layout_marginRight="3sp"
+                android:text="3"/>
+            <Button
+                android:id="@+id/cmdPNC4"
+                android:layout_width="30sp"  android:textSize="16sp"
+                android:layout_height="wrap_content" android:layout_marginRight="3sp"
+                android:text="4"/>
+        </LinearLayout>
+    </TableLayout>
+</RelativeLayout>
+ 

@@ -273,6 +273,7 @@ public class ELCOForm extends Activity {
         try
         {
             setContentView(R.layout.elco);
+
             C = new Connection(this);
             g = Global.getInstance();
             StartTime = g.CurrentTime24();
@@ -486,12 +487,16 @@ public class ELCOForm extends Activity {
                 public void onCheckedChanged(RadioGroup arg0, int id) {
                     if(id == R.id.rdoSSFWA)
                     {
+                       // secBrand.setVisibility(View.VISIBLE);
+                        secMethodUnit.setVisibility(View.VISIBLE);
                         txtMethodQty.setEnabled(true);
                     }
                     else if(id == R.id.rdoSSLMarket |id == R.id.rdoSSOther)
                     {
                         txtMethodQty.setText("");
                         txtMethodQty.setEnabled(false);
+                        //secBrand.setVisibility(View.GONE);
+                        secMethodUnit.setVisibility(View.GONE);
                     }
                 }});
 
@@ -907,6 +912,12 @@ public class ELCOForm extends Activity {
                                 dtpDOTT1.requestFocus();
                                 return;
                             }
+                            if(validateTTDateAgainstDOB())
+                            {
+                                Connection.MessageBox(ELCOForm.this,"টিটি এর তারিখ জন্ম তারিখ এর থেকে  কম হবে না ।");
+                                dtpDOTT1.requestFocus();
+                                return;
+                            }
                         }
                     }
 
@@ -937,6 +948,43 @@ public class ELCOForm extends Activity {
         }
     }
 
+    private boolean validateVisitDateAgainstSystemDate() {
+
+            if ((Global.DateDifferenceDays(dtpDOV.getText().toString(),Global.DateNowDMY()) >=1)) {
+                return true;
+            }
+
+        return false;
+    }
+    private boolean validateMarriageDateAgainstSystemDate() {
+
+        if ((Global.DateDifferenceDays(dtpDOM.getText().toString(),Global.DateNowDMY()) >=1)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean validateMethodDateAgainstMarriageDate() {
+
+        if ((Global.DateDifferenceDays(dtpDOV.getText().toString(), dtpDOM.getText().toString()) >=1)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private boolean validateTTDateAgainstDOB() {
+        String sq = String.format("Select DOB from Member where healthId = '%s' ", g.getHealthID());
+        if (C.Existence(sq)) {
+            String DOB = C.ReturnSingleValue(String.format("Select DOB from Member where healthId = '%s' ", g.getHealthID()));
+
+            if (Global.DateDifferenceDays(dtpDOTT1.getText().toString(), Global.DateConvertDMY(DOB)) < 1) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void MethodList(String Status)
     {
@@ -961,7 +1009,7 @@ public class ELCOForm extends Activity {
     {
         g1=(GridView) findViewById(R.id.gridElcoVisit);
         g1.setAdapter(new ElcoVisit(this));
-        g1.setNumColumns(5);
+        g1.setNumColumns(8);
     }
 
 
@@ -1084,6 +1132,57 @@ public class ELCOForm extends Activity {
                 Connection.MessageBox(ELCOForm.this, "জীবিত মেয়ের সংখ্যা লিখুন।");
                 txtLiveDau.requestFocus();
                 return;
+            }
+
+            if(validateVisitDateAgainstSystemDate())
+            {
+                Connection.MessageBox(ELCOForm.this," ভিসিট এর তারিখ আজকের তারিখ এর সমান অথবা কম হতে হবে।");
+                return;
+            }
+
+            if(validateMarriageDateAgainstSystemDate())
+            {
+                Connection.MessageBox(ELCOForm.this," বিবাহের এর তারিখ আজকের তারিখ এর সমান অথবা কম হতে হবে।");
+                return;
+            }
+            if(validateMethodDateAgainstMarriageDate())
+            {
+                Connection.MessageBox(ELCOForm.this," ভিসিট এর তারিখ বিবাহের তারিখ এর সমান অথবা কম হতে হবে।");
+                return;
+            }
+
+            if(secBrand.getVisibility()==View.VISIBLE)
+            {
+                if(spnBrand.getSelectedItemPosition()==0) {
+                    Connection.MessageBox(ELCOForm.this, " ব্র্যান্ড লিখুন");
+                    return;
+                }
+            }
+
+            if(secMethodUnit.getVisibility()==View.VISIBLE) {
+                if (txtMethodQty.getVisibility() == View.VISIBLE) {
+                    if (txtMethodQty.getText().toString().length() == 0) {
+                        Connection.MessageBox(ELCOForm.this, " পরিমান লিখুন");
+                        return;
+                    }
+
+                }
+            }
+
+            if(secWherePlace.getVisibility()==View.VISIBLE)
+            {
+                if(spnWherePlace.getSelectedItemPosition()==0) {
+                    Connection.MessageBox(ELCOForm.this, " কোথায় প্রেরন করা হয়েছে  লিখুন");
+                    return;
+                }
+            }
+            if(secValidity.getVisibility()==View.VISIBLE) {
+                if (txtValidity.getVisibility() == View.VISIBLE) {
+                    if (txtValidity.getText().toString().length() == 0) {
+                        Connection.MessageBox(ELCOForm.this, " কার্যকারিতা লিখুন");
+                        return;
+                    }
+                }
             }
 
 
@@ -1656,13 +1755,25 @@ public class ELCOForm extends Activity {
         try
         {
             String SQL = "";
-            SQL  = " Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng,";
+           /* SQL  = " Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng,";
             SQL += " ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1,";
             SQL += " ifnull(MobileNo2,'') as MobileNo2, ifnull(DOB,'') as DOB, Cast(((julianday(date('now'))-julianday(DOB))/365.25) as int) as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother,";
             SQL += " ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP";
             SQL += ",(select  NameEng  from member where Dist=(select  Dist  from member  Where  healthid='"+ healthId +"') and Upz=(select  Upz  from member  Where  healthid='"+ healthId +"') and UN=(select  UN  from member  Where  healthid='"+ healthId +"') and Mouza=(select  Mouza  from member  Where  healthid='"+ healthId +"') and Vill=(select  Vill  from member  Where  healthid='"+ healthId +"') and ProvCode=(select  ProvCode  from member  Where  healthid='"+ healthId +"') and HHNo=(select  HHNo  from member  Where  healthid='"+ healthId +"') and SNo=(select  SPNO1  from member  Where  healthid='"+ healthId +"'))as HusName";
             SQL += ",(select  Age  from member where Dist=(select  Dist  from member  Where  healthid='"+ healthId +"') and Upz=(select  Upz  from member  Where  healthid='"+ healthId +"') and UN=(select  UN  from member  Where  healthid='"+ healthId +"') and Mouza=(select  Mouza  from member  Where  healthid='"+ healthId +"') and Vill=(select  Vill  from member  Where  healthid='"+ healthId +"') and ProvCode=(select  ProvCode  from member  Where  healthid='"+ healthId +"') and HHNo=(select  HHNo  from member  Where  healthid='"+ healthId +"') and SNo=(select  SPNO1  from member  Where  healthid='"+ healthId +"'))as HusAge";
-            SQL += " from Member where healthid='"+ healthId +"'";
+            SQL += " from Member where healthid='"+ healthId +"'";*/
+
+            SQL  = " Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng,";
+            SQL += " ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1,";
+            SQL += " ifnull(MobileNo2,'') as MobileNo2, ifnull(DOB,'') as DOB, Cast(((julianday(date('now'))-julianday(DOB))/365.25) as int) as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother,";
+            SQL += " ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP,";
+
+            SQL += " (select  NameEng  from member where  ProvCode=(select  ProvCode  from member  Where  healthid ='" + healthId + "')";
+            SQL += "and HHNo=(select  HHNo  from member  Where  healthid='" + healthId + "')";
+            SQL += "and SNo=(select  SPNO1  from member  Where  healthid='" + healthId + "'))as HusName,";
+            SQL += "(select  Age  from member where ProvCode=(select  ProvCode  from member  Where  healthid='" + healthId + "')";
+            SQL += "and HHNo=(select  HHNo  from member  Where  healthid='" + healthId + "')";
+            SQL += "and SNo=(select  SPNO1  from member  Where  healthid='" + healthId + "'))as HusAge from Member where healthid='" + healthId + "'";
 
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
@@ -1988,6 +2099,7 @@ public class ELCOForm extends Activity {
     }
 
 
+
     public class ElcoVisit extends BaseAdapter {
         private Context mContext;
         String[][] vcode;
@@ -2027,6 +2139,7 @@ public class ELCOForm extends Activity {
                         String M = "";
                         while(!cur.isAfterLast())
                         {
+
                             vcode[0][i]= cur.getString(cur.getColumnIndex("currstatus"));
                             vcode[1][i]= cur.getString(cur.getColumnIndex("vdate"));
 

@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/seclblH1"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHlblH"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:text="নবজাতক  "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/lblHealthID"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Health ID  "
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtHealthID"
+                style="@style/customEdit"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="20"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/seclblH"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSNo"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="সিরিয়াল নম্বর"
+                android:textColor="#000000"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtSNo"
+                style="@style/customEdit"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textSize="20sp" />
+            <!-- <TextView android:text="দম্পতি নং  " android:layout_width="240sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" android:gravity="right"/>
+             <TextView android:id="@+id/txtElcoNo" android:maxLength="2" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblName"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="মায়ের নাম"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtName"
+                style="@style/customEdit"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblAge"
+                android:layout_width="90sp"
+                android:layout_height="wrap_content"
+                android:text="বয়স "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtAge"
+                style="@style/customEdit"
+                android:layout_width="50sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:gravity="center"
+                android:inputType="text"
+                android:maxLength="2"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblAgeYr"
+                android:layout_width="90sp"
+                android:layout_height="wrap_content"
+                android:text="(বছর) "
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBWeight"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="১."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBWeight"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="জন্মের সময় ওজন (কেজি)"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtBWeight"
+                style="@style/customEdit"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number|numberSigned|numberDecimal"
+                android:maxLength="5"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secImbirth"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="২."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblImbirth"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="অপরিনত জন্ম (৩৭ সপ্তাহের পূর্বে ) "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpImbirth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoImbirthYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoImbirthNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না "
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secDryWrap"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৩."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblVSDryWrap"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="জন্মের পর পরই শুষ্ক ও পরিস্কার কাপড় দিয়ে মুছানো ও মোড়ানো হয়েছে কি না"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpVSDryWrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoDryWrapYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoDryWrapNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না "
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secCHX"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৪."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblCHX"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="নাড়ি কাটার পর ৭.১% ক্লোরহেক্সিডিন ব্যবহার করা হয়েছে কি না "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpCHX"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoCHXYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoCHXNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না "
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBfeed1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৫."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBfeed1"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="জন্মের ১ ঘন্টার মধ্যে বুকের দুধ খাওয়ানো হয়েছে কি না "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpBfeed1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoBfeed1Yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoBfeed1No"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না "
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBath3"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৬."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBath3"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:text="জন্মের প্রথম ৩ দিন গোসল থেকে বিরত রাখা হয়েছে কি না"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpBath3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoBath3Yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/rdoBath3No"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না "
+                    android:textSize="20sp" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20sp">
+
+            <Button
+                android:id="@+id/cmdSave"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:text=" Save  "
+                android:background="@drawable/button_style"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secChildList"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingBottom="5sp"
+            android:paddingTop="15sp">
+
+            <TextView
+                android:id="@+id/VlblChildList"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15sp"
+                android:text="নবজাতকের সেবা"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#F78181" />
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="0dp"
+            android:padding="0dp"
+            android:scrollbarAlwaysDrawHorizontalTrack="true">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_margin="0dp"
+                android:background="#F3F3F3"
+                android:orientation="horizontal"
+                android:padding="0dp"
+                android:scrollbars="none">
+
+                <GridView
+                    android:id="@+id/gridPNC"
+                    android:layout_width="800dp"
+                    android:layout_height="wrap_content"
+                    android:horizontalSpacing="5sp"
+                    android:numColumns="auto_fit"
+                    android:scrollbars="horizontal"
+                    android:stretchMode="columnWidth" />
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <LinearLayout
+            android:id="@+id/secPNCCh12"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblPNCCh1"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="পরিদর্শন"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/dtpDOPNCCh1"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnDOPNCCh1"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:src="@drawable/calender" />
+
+            <ImageButton
+                android:id="@+id/cmdSavePNC"
+                android:layout_width="40dp"
+                android:layout_height="40sp"
+                android:src="@drawable/save"
+                android:text=" Save  " />
+        </LinearLayout>
+
+
+        <!--<LinearLayout android:id="@+id/secPNCprovider" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:text="" android:layout_width="20sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblPNCCh2" android:text="সেবা প্রদানকারি"
+                android:layout_width="200sp" android:layout_height="wrap_content"
+                android:textSize="20sp" />
+            <Spinner android:id="@+id/spnIronUnit" android:drawSelectorOnTop="true" android:layout_width="100sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>-->
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#F78181" />
+        <!--
+                    <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+                        <Button android:id="@+id/cmdSavePNC" android:layout_width="200sp" android:layout_height="wrap_content"
+                            android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp"/>
+                    </LinearLayout>-->
+
+    </LinearLayout>
+</ScrollView>
