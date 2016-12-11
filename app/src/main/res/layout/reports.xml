@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="20sp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/linearLayout332"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="10sp"
+        android:gravity="center"
+        android:orientation="vertical">
+        <WebView
+            android:id="@+id/webview"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            />
+    </LinearLayout>
+    <!-- <LinearLayout android:id="@+id/linearLayout1" android:layout_height="wrap_content"
+         android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp" >
+         <Button android:text="দম্পতি" android:id="@+id/cmdelco"
+             android:layout_width="450sp"
+             android:layout_height="wrap_content"
+             android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout11" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent"  android:layout_marginBottom="10sp">
+         <Button android:text="গর্ভবতী মা ও নবজাতক" android:id="@+id/cmdPreg" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout12" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent"  android:layout_marginBottom="10sp">
+         <Button android:text="ইনজেকটেবল গ্রহণকারী মহিলাদের  তালিকা " android:id="@+id/cmdWInjectable" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent"  android:layout_marginBottom="10sp">
+         <Button android:text="মৃত্যু" android:id="@+id/cmddeath" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+     <LinearLayout android:id="@+id/linearLayout4" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text=" শিশুর টিকাদান" android:id="@+id/cmdepi" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout6" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="   কিশোরী/মহিলাদের টিকাদান" android:id="@+id/cmdepiwomen" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+     <LinearLayout android:id="@+id/linearLayout7" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="শিশু (০-৫ বৎসরের নিচে) সেবাদান " android:id="@+id/cmdu5Child" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+
+     <LinearLayout android:id="@+id/linearLayout8" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="কিশোর-কিশোরীদের স্বাস্থ্য সেবাদান " android:id="@+id/cmdadolescent" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+
+     <LinearLayout android:id="@+id/linearLayout5" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="বহিরাগত" android:id="@+id/cmdnrc" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout3" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent"  android:layout_marginBottom="10sp">
+         <Button android:text="মজুদ" android:id="@+id/cmdstock" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+     <LinearLayout android:id="@+id/linearLayout9" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="মজুদ সমন্বয়" android:id="@+id/cmdStockAdjustment" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+     <LinearLayout android:id="@+id/linearLayout10" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="চাহিদা" android:id="@+id/cmdnrecqu" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+
+     <LinearLayout android:id="@+id/linearLayout10a" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent" android:layout_marginBottom="10sp">
+         <Button android:text="চাহিদা অনুমোদন" android:id="@+id/cmdAccepted" android:layout_width="450sp" android:layout_height="wrap_content" android:background="@drawable/button_style"></Button>
+     </LinearLayout>
+ -->
+</LinearLayout>

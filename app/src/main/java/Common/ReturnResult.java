@@ -13,9 +13,9 @@ public class ReturnResult extends AsyncTask<String, Void, String> {
 		public String SQLStr;
 		
 		
-		public String WSDL_TARGET_NAMESPACE = Global.Namespace;
+		/*public String WSDL_TARGET_NAMESPACE = Global.Namespace;
 		public String SOAP_ACTION = Global.Namespace+Method_Name;
-		public String SOAP_ADDRESS =Global.Soap_Address;
+		public String SOAP_ADDRESS =Global.Soap_Address;*/
 		ProgressDialog dialog;
 		String Data=null;
 		
@@ -28,7 +28,7 @@ public class ReturnResult extends AsyncTask<String, Void, String> {
 	    protected String doInBackground(String... urls) {
 	    	
 	        try {
-	                SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,Method_Name);
+	                /*SoapObject request = new SoapObject(WSDL_TARGET_NAMESPACE,Method_Name);
 	                HttpTransportSE androidHttpTransport = new HttpTransportSE(SOAP_ADDRESS);
 
 	                request.addProperty("SQL",SQLStr);
@@ -42,7 +42,7 @@ public class ReturnResult extends AsyncTask<String, Void, String> {
 
 	                
 	                Data=result.getProperty(0).toString();
-
+*/
 	                return Data;
 	            }
 	             catch (Exception e) {

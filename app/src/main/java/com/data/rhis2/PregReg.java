@@ -11,8 +11,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.location.Location;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -20,18 +20,18 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
@@ -60,6 +60,15 @@ public class PregReg extends Activity {
     Location currentLocationNet;
     double currentLatitudeNet, currentLongitudeNet;
 
+    private boolean IsUserHA() {
+        if (g.getProvType().equalsIgnoreCase("2"))
+            return true;
+        else
+            return false;
+
+
+    }
+
     //Disabled Back/Home key
     //--------------------------------------------------------------------------------------------------
     @Override
@@ -85,9 +94,9 @@ public class PregReg extends Activity {
         switch (item.getItemId()) {
             case R.id.menuClose:
                 adb.setTitle("Close");
-                adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান[Yes/No]?");
-                adb.setNegativeButton("No", null);
-                adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
+                adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান?");
+                adb.setNegativeButton("না", null);
+                adb.setPositiveButton("হ্যাঁ", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
                         Intent f2 = new Intent(getApplicationContext(), ELCOForm.class);
@@ -115,11 +124,15 @@ public class PregReg extends Activity {
     Calendar c = Calendar.getInstance();
     ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
     private String TableName;
+    private String TablePregRefer;
     private String TableANC;
 
     private String TableNameElcoVisit;
 
     TextView txtHealthID;
+
+    LinearLayout secdelete1;
+    //LinearLayout secDelete;
 
     LinearLayout secDiv;
     TextView VlblDiv;
@@ -151,6 +164,8 @@ public class PregReg extends Activity {
     EditText txtHHNo;
 
     LinearLayout secSNo;
+    TextView VlblSLNo;
+    TextView txtSLNo;
     TextView VlblSNo;
     TextView txtSNo;
     EditText txtELCONo;
@@ -186,7 +201,7 @@ public class PregReg extends Activity {
     EditText txtAgeM;
     EditText txtAgeY;
 
-    LinearLayout secVDate;
+    /*LinearLayout secVDate;
     TextView VlblVDate;
     EditText dtpVDate;
     ImageButton btnVDate;
@@ -197,32 +212,63 @@ public class PregReg extends Activity {
     RadioButton rdoIron1;
     RadioButton rdoIron2;
 
-   /* LinearLayout secIronUnit;
-    TextView VlblIronQty;
-    EditText txtIronQty;
-    TextView VlblIronUnit;
-    Spinner spnIronUnit;
-    Spinner spnANCSource;*/
-
     LinearLayout secMiso;
     TextView VlblMiso;
     RadioGroup rdogrpMiso;
     RadioButton rdoMiso1;
-    RadioButton rdoMiso2;
+    RadioButton rdoMiso2;*/
+    LinearLayout secDengersine;
+    TextView VlblDanger;
+    CheckBox chkDengersine;
 
-    /*LinearLayout secMisoUnit;
-    TextView VlblMisoQty;
-    EditText txtMisoQty;
-    TextView VlblMisoUnit;
-    Spinner spnMisoUnit;*/
+    LinearLayout secDengersine1;
+    TextView VlblDanger1;
+    CheckBox chkDengersine1;
 
-    LinearLayout secANCVisit;
+    LinearLayout secDengersine2;
+    TextView VlblDanger2;
+    CheckBox chkDengersine2;
+    LinearLayout secDengersine3;
+    TextView VlblDanger3;
+    CheckBox chkDengersine3;
+    LinearLayout secDengersine4;
+    TextView VlblDanger4;
+    CheckBox chkDengersine4;
+    LinearLayout secDengersine5;
+    TextView VlblDanger5;
+    CheckBox chkDengersine5;
+    LinearLayout secDengersine6;
+    TextView VlblDanger6;
+    CheckBox chkDengersine6;
+    LinearLayout secDengersine7;
+    TextView VlblDanger7;
+    CheckBox chkDengersine7;
+
+    LinearLayout secReferWomen;
+    TextView VlblReferWomen;
+    RadioGroup rdogrpReferWomen;
+    RadioButton rdoReferWomen1;
+    RadioButton rdoReferWomen2;
+    LinearLayout secReferFaci;
+    TextView VlblFaci;
+    Spinner spnFaci;
+    TextView VlblServiceId;
+
+    //LinearLayout secANCVisit;
 
 
     String StartTime;
     Button cmdSave;
+    Button btnSaveRef;
     LinearLayout secPregVisit;
+    String sqlnew = "";
+    String sqlupdate = "";
+    // String Sex ="";
+    String Age = "";
 
+    String pregnancyNo = "";
+    String pregnancyNoDelivary = "";
+    String LastDelivaryDate = "";
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -233,10 +279,21 @@ public class PregReg extends Activity {
             StartTime = g.CurrentTime24();
 
             TableName = "PregWomen";
+            TablePregRefer = "PregRefer";
             TableANC = "ancService";
-             TableNameElcoVisit = "ELCOVisit";
+            TableNameElcoVisit = "ELCOVisit";
 
-            secANCVisit = (LinearLayout) findViewById(R.id.secANCVisit);
+
+            seclblH1 = (LinearLayout) findViewById(R.id.seclblH1);
+            secdelete1 = (LinearLayout) findViewById(R.id.secdelete1);
+            secdelete1.setVisibility(View.GONE);
+            //secDelete= (LinearLayout) findViewById(R.id.secDelete);
+            //secDelete.setVisibility(View.GONE);
+            //Sex Return
+            //Sex=C.ReturnSingleValue("Select Sex from Member where healthId ='"+g.getHealthID()+"'");
+            // Age=C.ReturnSingleValue("Select Age from Member where healthId ='"+g.getHealthID()+"'");
+
+            //secANCVisit = (LinearLayout) findViewById(R.id.secANCVisit);
             secPregVisit = (LinearLayout) findViewById(R.id.secPregVisit);
 
             txtHealthID = (TextView) findViewById(R.id.txtHealthID);
@@ -244,9 +301,15 @@ public class PregReg extends Activity {
 
             VlblSNo = (TextView) findViewById(R.id.VlblSNo);
             txtSNo = (TextView) findViewById(R.id.txtSNo);
+            VlblSLNo = (TextView) findViewById(R.id.VlblSNo);
+            txtSLNo = (TextView) findViewById(R.id.txtSLNo);
+            txtSLNo.setText(GetCountSLNoNumber());
+            VlblSNo.setVisibility(View.GONE);
+            txtSNo.setVisibility(View.GONE);
+
             txtELCONo = (EditText) findViewById(R.id.txtELCONo);
             txtELCONo.setEnabled(false);
-
+            //  txtELCONo.setText(g.getAMElco());
             secName = (LinearLayout) findViewById(R.id.secName);
             VlblName = (TextView) findViewById(R.id.VlblName);
             txtName = (TextView) findViewById(R.id.txtName);
@@ -260,13 +323,40 @@ public class PregReg extends Activity {
             dtpLMP = (EditText) findViewById(R.id.dtpLMP);
             btnLMP = (ImageButton) findViewById(R.id.btnLMP);
 
-            secLive= (LinearLayout) findViewById(R.id.secLive);
-            VlblLiveSonDau= (TextView) findViewById(R.id.VlblLiveSonDau);
+            secLive = (LinearLayout) findViewById(R.id.secLive);
+            VlblLiveSonDau = (TextView) findViewById(R.id.VlblLiveSonDau);
             txtLiveSonDau = (EditText) findViewById(R.id.txtLiveSonDau);
 
             secPgn = (LinearLayout) findViewById(R.id.secPgn);
             VlblPgn = (TextView) findViewById(R.id.VlblPgn);
             spnPgn = (Spinner) findViewById(R.id.spnPgn);
+            spnPgn.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                    if (spnPgn.getSelectedItemPosition() == 0) {
+
+                    } else {
+                        String PrevPGN = "'" + GetMaxPGN() == "0" ? "" : GetMaxPGN() + "";
+                        if (PrevPGN.equalsIgnoreCase("")) {
+                        } else {
+                            Integer PrevPGNPlus1 = Integer.parseInt(PrevPGN) + 1;
+                            Integer ActualPrevPGN = Integer.parseInt(PrevPGN);
+                            Integer pgnpositionselected = Integer.parseInt(String.valueOf(spnPgn.getSelectedItemPosition()));
+
+                            if (!pgnpositionselected.equals(ActualPrevPGN)) {
+                                if (!PrevPGNPlus1.equals(pgnpositionselected)) {
+                                    Connection.MessageBox(PregReg.this, "বর্তমানে কত তম গর্ভ তথ্য  সঠিক নয়।");
+                                    spnPgn.requestFocus();
+                                    return;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    return;
+                }
+            });
 
             secEDD = (LinearLayout) findViewById(R.id.secEDD);
             VlblEDD = (TextView) findViewById(R.id.VlblEDD);
@@ -277,66 +367,277 @@ public class PregReg extends Activity {
             txtAgeM = (EditText) findViewById(R.id.txtAgeMo);
             txtAgeY = (EditText) findViewById(R.id.txtAgeY);
 
-            if(GetTotalSonGaughter(g.getHealthID()).equalsIgnoreCase("0"))
-            {
-                secAgeL.setVisibility(View.GONE);
-            }
-            else
-            {
-                secAgeL.setVisibility(View.VISIBLE);
-            }
+            secDengersine = (LinearLayout) findViewById(R.id.secDengersine);
+            VlblDanger = (TextView) findViewById(R.id.VlblDanger);
+            chkDengersine = (CheckBox) findViewById(R.id.chkDengersine);
 
-            ////////Visit
-            secIron = (LinearLayout) findViewById(R.id.secIron);
-            VlblIron = (TextView) findViewById(R.id.VlblIron);
-            rdogrpIron = (RadioGroup) findViewById(R.id.rdogrpIron);
-            rdoIron1 = (RadioButton) findViewById(R.id.rdoIron1);
-            rdoIron2 = (RadioButton) findViewById(R.id.rdoIron2);
-
-
-            /*secIronUnit = (LinearLayout) findViewById(R.id.secIronUnit);
-            secIronUnit.setVisibility(View.GONE);
-            VlblIronQty = (TextView) findViewById(R.id.VlblIronQty);
-            txtIronQty = (EditText) findViewById(R.id.txtIronQty);
-            VlblIronUnit = (TextView) findViewById(R.id.VlblIronUnit);
-            spnIronUnit = (Spinner) findViewById(R.id.spnIronUnit);
-            spnANCSource= (Spinner) findViewById(R.id.spnANCSource);*/
-
-           /* rdogrpIron.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                public void onCheckedChanged(RadioGroup arg0, int id) {
-                    if (id == R.id.rdoIron1) {
-                        secIronUnit.setVisibility(View.VISIBLE);
+            chkDengersine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (isChecked) {
+                        // g.setRisk("r");
+                        secDengersine1.setVisibility(View.VISIBLE);
+                        secDengersine2.setVisibility(View.VISIBLE);
+                        secDengersine3.setVisibility(View.VISIBLE);
+                        secDengersine4.setVisibility(View.VISIBLE);
+                        secDengersine5.setVisibility(View.VISIBLE);
+                        secDengersine6.setVisibility(View.VISIBLE);
+                        secDengersine7.setVisibility(View.VISIBLE);
                     } else {
-                        secIronUnit.setVisibility(View.GONE);
-                        spnIronUnit.setSelection(0);
-                        txtIronQty.setText("");
+
+                        secDengersine1.setVisibility(View.GONE);
+                        secDengersine2.setVisibility(View.GONE);
+                        secDengersine3.setVisibility(View.GONE);
+                        secDengersine4.setVisibility(View.GONE);
+                        secDengersine5.setVisibility(View.GONE);
+                        secDengersine6.setVisibility(View.GONE);
+                        secDengersine7.setVisibility(View.GONE);
+                    }
+
+                }
+            });
+            secDengersine1 = (LinearLayout) findViewById(R.id.secDengersine1);
+            VlblDanger1 = (TextView) findViewById(R.id.VlblDanger1);
+            chkDengersine1 = (CheckBox) findViewById(R.id.chkDengersine1);
+            chkDengersine1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+
+
+            secDengersine2 = (LinearLayout) findViewById(R.id.secDengersine2);
+            VlblDanger2 = (TextView) findViewById(R.id.VlblDanger2);
+            chkDengersine2 = (CheckBox) findViewById(R.id.chkDengersine2);
+            chkDengersine2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+            secDengersine3 = (LinearLayout) findViewById(R.id.secDengersine3);
+            VlblDanger3 = (TextView) findViewById(R.id.VlblDanger3);
+            chkDengersine3 = (CheckBox) findViewById(R.id.chkDengersine3);
+            chkDengersine3.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+            secDengersine4 = (LinearLayout) findViewById(R.id.secDengersine4);
+            VlblDanger4 = (TextView) findViewById(R.id.VlblDanger4);
+            chkDengersine4 = (CheckBox) findViewById(R.id.chkDengersine4);
+            chkDengersine4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+            secDengersine5 = (LinearLayout) findViewById(R.id.secDengersine5);
+            VlblDanger5 = (TextView) findViewById(R.id.VlblDanger5);
+            chkDengersine5 = (CheckBox) findViewById(R.id.chkDengersine5);
+            chkDengersine5.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+            secDengersine6 = (LinearLayout) findViewById(R.id.secDengersine6);
+            VlblDanger6 = (TextView) findViewById(R.id.VlblDanger6);
+            chkDengersine6 = (CheckBox) findViewById(R.id.chkDengersine6);
+            chkDengersine6.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+            secDengersine7 = (LinearLayout) findViewById(R.id.secDengersine7);
+            VlblDanger7 = (TextView) findViewById(R.id.VlblDanger7);
+            chkDengersine7 = (CheckBox) findViewById(R.id.chkDengersine7);
+            chkDengersine7.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                            chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                            chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                            ) {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
+                    } else if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                            chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                            chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                            ) {
+
+                        secReferWomen.setVisibility(View.GONE);
+
+                    }
+
+                }
+            });
+
+
+          /*  secDengersine = (LinearLayout) findViewById(R.id.secDengersine);
+            VlblDanger = (TextView) findViewById(R.id.VlblDanger);
+            rdogrpDanger = (RadioGroup) findViewById(R.id.rdogrpDanger);
+            rdoDanger1 = (RadioButton) findViewById(R.id.rdoDanger1);
+            rdoDanger2 = (RadioButton) findViewById(R.id.rdoDanger2);
+
+            rdogrpDanger.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup,int radioButtonID) {
+                    RadioButton rb = (RadioButton)findViewById(rdogrpDanger.getCheckedRadioButtonId());
+                    if (rb == null) return;
+
+                    if(rdoDanger2.isChecked()==true)
+                    {
+
+                        secReferWomen.setVisibility(View.GONE);
+                        rdogrpReferWomen.clearCheck();
+                        secReferFaci.setVisibility(View.GONE);
+                        spnFaci.setSelection(0);
+                    }
+                    else
+                    {
+
+                        secReferWomen.setVisibility(View.VISIBLE);
+
                     }
                 }
-            });*/
-
-            secMiso = (LinearLayout) findViewById(R.id.secMiso);
-            VlblMiso = (TextView) findViewById(R.id.VlblMiso);
-            rdogrpMiso = (RadioGroup) findViewById(R.id.rdogrpMiso);
-            rdoMiso1 = (RadioButton) findViewById(R.id.rdoMiso1);
-            rdoMiso2 = (RadioButton) findViewById(R.id.rdoMiso2);
-
-           /* secMisoUnit = (LinearLayout) findViewById(R.id.secMisoUnit);
-            secMisoUnit.setVisibility(View.GONE);
-            VlblMisoQty = (TextView) findViewById(R.id.VlblMisoQty);
-            txtMisoQty = (EditText) findViewById(R.id.txtMisoQty);
-            VlblMisoUnit = (TextView) findViewById(R.id.VlblMisoUnit);
-            spnMisoUnit = (Spinner) findViewById(R.id.spnMisoUnit);
-            rdogrpMiso.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-                public void onCheckedChanged(RadioGroup arg0, int id) {
-                    if (id == R.id.rdoMiso1) {
-                        secMisoUnit.setVisibility(View.VISIBLE);
-                    } else {
-                        secMisoUnit.setVisibility(View.GONE);
-                        spnMisoUnit.setSelection(0);
-                        txtMisoQty.setText("");
-                    }
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    return;
                 }
             });*/
+            secReferWomen = (LinearLayout) findViewById(R.id.secReferWomen);
+            VlblReferWomen = (TextView) findViewById(R.id.VlblReferWomen);
+            rdogrpReferWomen = (RadioGroup) findViewById(R.id.rdogrpReferWomen);
+            rdoReferWomen1 = (RadioButton) findViewById(R.id.rdoReferWomen1);
+            rdoReferWomen2 = (RadioButton) findViewById(R.id.rdoReferWomen2);
+            rdogrpReferWomen.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(RadioGroup radioGroup, int radioButtonID) {
+                    RadioButton rb = (RadioButton) findViewById(rdogrpReferWomen.getCheckedRadioButtonId());
+                    if (rb == null) return;
+
+                    if (rdoReferWomen2.isChecked() == true) {
+
+                        secReferFaci.setVisibility(View.GONE);
+                        spnFaci.setSelection(0);
+                    } else {
+                        ReferStatus();
+                        secReferFaci.setVisibility(View.VISIBLE);
+
+                    }
+                }
+
+                public void onNothingSelected(AdapterView<?> adapterView) {
+                    return;
+                }
+            });
+            secReferFaci = (LinearLayout) findViewById(R.id.secReferFaci);
+            VlblFaci = (TextView) findViewById(R.id.VlblFaci);
+            spnFaci = (Spinner) findViewById(R.id.spnFaci);
+            btnSaveRef = (Button) findViewById(R.id.btnSaveRef);
+            VlblServiceId = (TextView) findViewById(R.id.VlblServiceId);
+            VlblServiceId.setVisibility(View.GONE);
+            List<String> listFacility = new ArrayList<String>();
+            listFacility.add("");
+            listFacility.add("01-উপজেলা স্বাস্থ্য কমপ্লেক্স");
+            listFacility.add("02-ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র");
+            listFacility.add("03-মা ও শিশু কল্যাণ কেন্দ্র");
+            listFacility.add("04-জেলা সদর  বা অন্যান্য সরকারী হাসপাতাল");
+            listFacility.add("05-এনজিও ক্লিনিক বা হাসপাতাল");
+            listFacility.add("06-প্রাইভেট ক্লিনিক বা হাসপাতাল");
+            listFacility.add("77-অন্যান্য");
+
+            ArrayAdapter<String> adptrspnFaci = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listFacility);
+            spnFaci.setAdapter(adptrspnFaci);
+/*
+          */
+
 
             List<String> listPgn = new ArrayList<String>();
             listPgn.add("");
@@ -345,7 +646,7 @@ public class PregReg extends Activity {
             listPgn.add("৩য়");
             listPgn.add("৪র্থ");
             listPgn.add("৫ম");
-            listPgn.add("৬স্ট");
+            listPgn.add("৬ষ্ঠ");
             listPgn.add("৭ম");
             listPgn.add("৮ম");
             listPgn.add("৯ম");
@@ -353,30 +654,7 @@ public class PregReg extends Activity {
             ArrayAdapter<String> adptrspnPgn = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listPgn);
             spnPgn.setAdapter(adptrspnPgn);
 
-            /*List<String> listPillUnit = new ArrayList<String>();
-            listPillUnit.add("");
-            listPillUnit.add("চক্র");
-            listPillUnit.add("পিছ");
-            listPillUnit.add("ডোজ");
-            ArrayAdapter<String> adptrMethodUnit = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listPillUnit);
-            spnIronUnit.setAdapter(adptrMethodUnit);
-            spnMisoUnit.setAdapter(adptrMethodUnit);*/
 
-            /*List<String> listAncSource = new ArrayList<String>();
-            listAncSource.add("");
-            listAncSource.add("সরকারি");
-            listAncSource.add("বেসরকারি");
-            ArrayAdapter<String> adptrAncService = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listAncSource);
-            spnANCSource.setAdapter(adptrAncService);*/
-
-
-
-
-            secVDate = (LinearLayout) findViewById(R.id.secVDate);
-            VlblVDate = (TextView) findViewById(R.id.VlblVDate);
-            dtpVDate = (EditText) findViewById(R.id.dtpVDate);
-            dtpVDate.setText(Global.DateNowDMY());
-            btnVDate = (ImageButton) findViewById(R.id.btnVDate);
             btnLMP.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     VariableID = "btnLMP";
@@ -384,421 +662,567 @@ public class PregReg extends Activity {
                 }
             });
 
-            btnVDate.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    VariableID = "btnVDate";
-                    showDialog(DATE_DIALOG);
+
+            Bundle IDbundle = new Bundle();
+            IDbundle = getIntent().getExtras();
+
+            if (IDbundle != null) {
+                // fornewpregnancy = IDbundle.getString("exists");
+                sqlnew = IDbundle.getString("sqlnew");
+                sqlupdate = IDbundle.getString("sqlupdate");
+                // PGNNo = IDbundle.getString("PGNNo");
+            }
+
+           /* if(fornewpregnancy.equalsIgnoreCase(""))
+            {
+                PregWomenSearch("");
+            }
+            else if(fornewpregnancy.equalsIgnoreCase("exists"))
+            {
+                PregWomenSearch("exists");
+            }*/
+            // add fazlur bhi
+            ELCOProfile e = new ELCOProfile();
+            e.ELCOProfile(this, g.getHealthID());
+
+            //call from elco
+            if (g.getCallFrom().equals("elco")) {
+                pregnancyNo = e.CurrentPregNumber(this, g.getGeneratedId());
+            }
+            //call from register
+            else if (g.getCallFrom().equals("regis")) {
+                pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+            } else if (g.getCallFrom().equals("1")) {
+                pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+            } else if (g.getCallFrom().equals("HAregis")) {
+                pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+                pregnancyNoDelivary = e.LastPregNumberFromDelivary(this, g.getGeneratedId());
+
+                //pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+                //pregnancyNoDelivary = e.LastPregNumberFromDelivary(this, g.getGeneratedId());
+
+                if (pregnancyNo.equalsIgnoreCase("0")) {
+                    pregnancyNo = "1";
+                } else if (pregnancyNo.equalsIgnoreCase(pregnancyNoDelivary)) {
+                    LastDelivaryDate = e.LastDelivaryDateFromDelivary(this, g.getGeneratedId());
+                    Integer DaysFromDelivaryDays = Global.DateDifferenceDays(Global.DateNowDMY(), Global.DateConvertDMY(LastDelivaryDate));
+                    if (DaysFromDelivaryDays > 60) {
+                        pregnancyNo = e.CurrentPregNumber(this, g.getGeneratedId());
+                    } else {
+                        pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+                    }
+                } else if (!pregnancyNo.equalsIgnoreCase(pregnancyNoDelivary)) {
+                    pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+                }
+
+            }
+
+            //Comments for HA module but open for FWA Module
+            //e.PregnancyInfo(this, g.getGeneratedId(), pregnancyNo);
+            e.PregnancyInfo(this, g.getGeneratedId(), pregnancyNo);
+
+
+            // add fazlu bhi
+            // Age = String.valueOf(e.getAge());
+            // Age = String.valueOf(g.getAAge());
+            // Sex = e.getSex();
+
+            dtpLMP.setText(e.getLMP());
+            dtpEDD.setText(e.getEDD());
+            spnPgn.setSelection(Integer.parseInt(e.getGravida() == null ? "0" : e.getGravida()));
+
+            String totalChild = e.getTotalLiveChild();
+            txtLiveSonDau.setText(totalChild);
+            if (totalChild != null) {
+                if (GetTotalSonGaughter(g.getGeneratedId()).equals("0")) {
+                    secAgeL.setVisibility(View.GONE);
+                } else {
+                    secAgeL.setVisibility(View.VISIBLE);
+                }
+            }
+
+
+/*            if (totalChild.equalsIgnoreCase("0")) {
+                secAgeL.setVisibility(View.GONE);
+            } else {
+                secAgeL.setVisibility(View.VISIBLE);
+            }*/
+
+            //PregWomenSearch();
+            //DataSearch(g.getHealthID());
+            //ELCONoSearch(g.getSerialNo());
+
+            //nisan Dengersine
+            secDengersine1.setVisibility(View.GONE);
+            secDengersine2.setVisibility(View.GONE);
+            secDengersine3.setVisibility(View.GONE);
+            secDengersine4.setVisibility(View.GONE);
+            secDengersine5.setVisibility(View.GONE);
+            secDengersine6.setVisibility(View.GONE);
+            secDengersine7.setVisibility(View.GONE);
+            secReferWomen.setVisibility(View.GONE);
+            secReferFaci.setVisibility(View.GONE);
+
+            //chkDengersine.setEnabled(false);
+            chkDengersine1.setEnabled(false);
+            // chkDengersine2.setEnabled(false);
+            chkDengersine3.setEnabled(false);
+            //chkDengersine4.setEnabled(false);
+            //chkDengersine5.setEnabled(false);
+            // chkDengersine6.setEnabled(false);
+            // chkDengersine7.setEnabled(false);
+
+
+//1
+
+            //  if((Integer.valueOf(Age)>35||Integer.valueOf(Age)<18) )
+            if ((Integer.valueOf(g.getAAge()) > 35 || Integer.valueOf(g.getAAge()) < 18)) {
+                //chkDengersine.setChecked(true);
+                chkDengersine1.setChecked(true);
+                VlblDanger1.setText("");
+                VlblDanger1.setText(Html.fromHtml(VlblDanger1.getText() + "<font color=red>গর্ভবতী মায়ের বয়স ১৮ বছরের কম বা ৩৫ বছরের বেশি হলে</font>"));
+            } else {
+                // chkDengersine.setChecked(false);
+                chkDengersine1.setChecked(false);
+
+            }
+//2
+
+            chkDengersine2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine2.isChecked() == true) {
+
+                        chkDengersine2.setChecked(true);
+                        VlblDanger2.setText("");
+                        VlblDanger2.setText(Html.fromHtml(VlblDanger2.getText() + "<font color=red>প্রথম গর্ভাবস্থা বা ৩ এর অধিক সন্তান জন্ম দিয়েছেন এমন মা</font>"));
+
+
+                    } else if (chkDengersine2.isChecked() == false) {
+
+                        chkDengersine2.setChecked(false);
+                        VlblDanger2.setText("");
+                        VlblDanger2.setText(Html.fromHtml(VlblDanger2.getText() + "প্রথম গর্ভাবস্থা বা ৩ এর অধিক সন্তান জন্ম দিয়েছেন এমন মা"));
+
+                    }
+
                 }
             });
 
+            if (Integer.valueOf(PGNNo1()).equals(0) || Integer.valueOf(PGNNo1()).equals(1) || Integer.valueOf(PGNNo1()) >= 3) {
+                chkDengersine2.setChecked(true);
+                chkDengersine2.setEnabled(false);
+                VlblDanger2.setText("");
+                VlblDanger2.setText(Html.fromHtml(VlblDanger2.getText() + "<font color=red>প্রথম গর্ভাবস্থা বা ৩ এর অধিক সন্তান জন্ম দিয়েছেন এমন মা</font>"));
+            } else {
 
-            secANCVisit.setVisibility(View.GONE);
-            String PGN = "";
-            /*String SQL = "";
-            SQL = "select  DOLMP,DOEDD,PrePregTimes,LCAge from PregWomen";
-            SQL += " Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+  g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ g.getSerialNo() +"' and ";
-            SQL += "PGN=(select '0'||cast(max(PGN) as string) from PregWomen Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+  g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ g.getSerialNo() +"' and PGN=(select  max(PGN) from PregWomen Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ SNo +"'))";
-            */
-            PregWomenSearch();
-            //DataSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo());
-            DataSearch(g.getHealthID());
-            ELCONoSearch(g.getSerialNo());
+                chkDengersine2.setChecked(false);
+            }
 
-            cmdSave = (Button) findViewById(R.id.cmdSaveANC);
-            cmdSave.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    DataSaveANC();
-                   // DisplayANCVisit();
+            //3
+            String AValue = String.format("Select healthId, pregNo  from %s where healthId = '%s' and pregNo = '%s'", TableName, g.getGeneratedId(), pregnancyNo);
+
+            if (!C.Existence(AValue)) {
+
+            } else if (C.Existence(AValue)) {
+                //
+                String height = C.ReturnSingleValue("Select ifnull(height,'') as height from pregWomen WHERE healthId ='" + g.getGeneratedId() + "' AND pregNo ='" + pregnancyNo + "'");
+                if (height.equals("") | height.equals(null) || height.equals("null")) {
+
+                } else if (height != null || height.equals("null")) {
+                    if (Integer.valueOf(height) >= 1 & Integer.valueOf(height) <= 58) {
+                        chkDengersine3.setEnabled(false);
+                        chkDengersine3.setChecked(true);
+                        VlblDanger3.setText("");
+                        VlblDanger3.setText(Html.fromHtml(VlblDanger3.getText() + "<font color=red>মায়ের উচ্চতা ১৪৫ সে মি (৪ ফুট ১০ ইঞ্চি) এর কম হলে</font>"));
+
+                    } else {
+
+                    }
+                }
+            } else {
+
+            }
+
+
+            //4
+            if (dtpLMP.getText().length() != 0) {
+
+                Integer DiffDNow_OC = Global.DateDifferenceDays(e.getLMP(), GetMaxOutComeDate());
+
+                if (DiffDNow_OC > 0 & DiffDNow_OC <= 730 & Integer.valueOf(pregnancyNo) > 1) {
+                    chkDengersine4.setEnabled(false);
+                    chkDengersine4.setChecked(true);
+                    VlblDanger4.setText("");
+                    VlblDanger4.setText(Html.fromHtml(VlblDanger4.getText() + "<font color=red>জন্ম বিরতি- ২ বছরের কম হলে</font>"));
+
+                } else {
+
+                }
+
+            }
+            chkDengersine4.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    if (chkDengersine4.isChecked() == true) {
+
+                        chkDengersine4.setChecked(true);
+                        VlblDanger4.setText("");
+                        VlblDanger4.setText(Html.fromHtml(VlblDanger4.getText() + "<font color=red>জন্ম বিরতি- ২ বছরের কম হলে</font>"));
+
+
+                    } else if (chkDengersine4.isChecked() == false) {
+
+                        chkDengersine4.setChecked(false);
+                        VlblDanger4.setText("");
+                        VlblDanger4.setText(Html.fromHtml(VlblDanger4.getText() + "জন্ম বিরতি- ২ বছরের কম হলে"));
+
+                    }
+
                 }
             });
 
+            //ifnull(riskHistoryNote,'') as riskHistoryNote
+
+            if (!C.Existence(AValue)) {
+
+            } else if (C.Existence(AValue)) {
+                //
+                String riskHistory = "Select ifnull(riskHistoryNote,'') as riskHistoryNote from pregWomen WHERE healthId ='" + g.getGeneratedId() + "' AND pregNo ='" + pregnancyNo + "'";
+                String riskStatus = C.ReturnSingleValue(riskHistory);
+                String[] risk = Connection.split(riskStatus, ',');
+                if (riskHistory.equals("") | riskHistory.equals(null)) {
+
+                } else if (riskHistory != null)
+
+
+                    if (riskStatus.length() == 1) {
+                        String risk1 = risk[0].toString();
+
+                        if (risk1.equals("1") | risk1.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+
+                        if (risk1.equals("5") | risk1.equals("6")) {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 3) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk1.equals("4") | risk2.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk1.equals("6") | risk2.equals("6")) {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 5) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6")) {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 7) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6")) {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 9) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+                        String risk5 = risk[4].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk5.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4") | risk5.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk5.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6") | risk5.equals("6")) {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9") | risk5.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 11) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+                        String risk5 = risk[4].toString();
+                        String risk6 = risk[5].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk5.equals("1") | risk6.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4") | risk5.equals("4") | risk6.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk5.equals("5") | risk6.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6") | risk5.equals("6") | risk6.equals("6"))
+
+                        {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9") | risk5.equals("9") | risk6.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 13) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+                        String risk5 = risk[4].toString();
+                        String risk6 = risk[5].toString();
+                        String risk7 = risk[6].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk5.equals("1") | risk6.equals("1") | risk7.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4") | risk5.equals("4") | risk6.equals("4") | risk7.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk5.equals("5") | risk6.equals("5") | risk7.equals("6") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6") | risk5.equals("6") | risk6.equals("6") | risk7.equals("6"))
+
+                        {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9") | risk5.equals("9") | risk6.equals("9") | risk7.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 15) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+                        String risk5 = risk[4].toString();
+                        String risk6 = risk[5].toString();
+                        String risk7 = risk[6].toString();
+                        String risk8 = risk[7].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk5.equals("1") | risk6.equals("1") | risk7.equals("1") | risk8.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4") | risk5.equals("4") | risk6.equals("4") | risk7.equals("4") | risk8.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk5.equals("5") | risk6.equals("5") | risk7.equals("5") | risk8.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6") | risk5.equals("6") | risk6.equals("6") | risk7.equals("6") | risk8.equals("6"))
+
+                        {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9") | risk5.equals("9") | risk6.equals("9") | risk7.equals("9") | risk8.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else if (riskStatus.length() == 17) {
+                        String risk1 = risk[0].toString();
+                        String risk2 = risk[1].toString();
+                        String risk3 = risk[2].toString();
+                        String risk4 = risk[3].toString();
+                        String risk5 = risk[4].toString();
+                        String risk6 = risk[5].toString();
+                        String risk7 = risk[6].toString();
+                        String risk8 = risk[7].toString();
+                        String risk9 = risk[8].toString();
+
+                        if (risk1.equals("1") | risk2.equals("1") | risk3.equals("1") | risk4.equals("1") | risk5.equals("1") | risk6.equals("1") | risk7.equals("1") | risk8.equals("1") | risk9.equals("1") | risk1.equals("4") | risk2.equals("4") | risk3.equals("4") | risk4.equals("4") | risk5.equals("4") | risk6.equals("4") | risk7.equals("4") | risk8.equals("4") | risk9.equals("4")) {
+                            chkDengersine5.setChecked(true);
+                            VlblDanger5.setText("");
+                            VlblDanger5.setText(Html.fromHtml(VlblDanger5.getText() + "<font color=red>পূর্ববর্তী প্রসবে প্রসবপূব রক্তক্ষরণ, প্রসবোত্তর রক্তক্ষরণ অথবা জরায়ুতে গর্ভফু্ল আঁটকে থাকার ইতিহাস থাকলে</font>"));
+                            chkDengersine5.setEnabled(false);
+                        }
+
+                        if (risk1.equals("5") | risk2.equals("5") | risk3.equals("5") | risk4.equals("5") | risk5.equals("5") | risk6.equals("5") | risk7.equals("5") | risk8.equals("5") | risk9.equals("5") | risk1.equals("6") | risk2.equals("6") | risk3.equals("6") | risk4.equals("6") | risk5.equals("6") | risk6.equals("6") | risk7.equals("6") | risk8.equals("6") | risk9.equals("6"))
+
+                        {
+                            chkDengersine6.setChecked(true);
+                            VlblDanger6.setText("");
+                            VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে</font>"));
+                            chkDengersine6.setEnabled(false);
+                        }
+
+                        if (risk1.equals("9") | risk2.equals("9") | risk3.equals("9") | risk4.equals("9") | risk5.equals("9") | risk6.equals("9") | risk7.equals("9") | risk8.equals("9") | risk9.equals("9")) {
+                            chkDengersine7.setChecked(true);
+                            VlblDanger7.setText("");
+                            VlblDanger7.setText(Html.fromHtml(VlblDanger7.getText() + "<font color=red>সিজারিয়ান অপারেশন বা যন্ত্রের মাধ্যমে (ফরসেফ/ ভেকুয়াম) প্রসবের ইতিহাস থাকলে</font>"));
+                            chkDengersine7.setEnabled(false);
+                        }
+                    } else {
+
+                    }
+
+
+            } else {
+
+            }
+
+
+            //6
+            if (!GetStillbirthBirth().equalsIgnoreCase("null") && !GetStillbirthBirth().equalsIgnoreCase("")) {
+                if (Integer.valueOf(GetStillbirthBirth()) < 1) {
+
+                }
+                if (Integer.valueOf(GetStillbirthBirth()) >= 1) {
+                    chkDengersine6.setChecked(true);
+                    VlblDanger6.setText("");
+                    VlblDanger6.setText(Html.fromHtml(VlblDanger6.getText() + "<font color=red>মৃত জন্মের বা নবজাতকের মৃতের ইতিহাস থাকলে </font>"));
+                }
+            }
+
+            if (chkDengersine1.isChecked() == true || chkDengersine2.isChecked() == true ||
+                    chkDengersine3.isChecked() == true || chkDengersine4.isChecked() == true ||
+                    chkDengersine5.isChecked() == true || chkDengersine6.isChecked() == true || chkDengersine7.isChecked() == true
+                    ) {
+
+                // seclblH1.(Color.RED);
+                chkDengersine.setChecked(true);
+                secReferWomen.setVisibility(View.VISIBLE);
+                //  secReferFaci.setVisibility(View.VISIBLE);
+            }
+
+            if (chkDengersine1.isChecked() == false && chkDengersine2.isChecked() == false &&
+                    chkDengersine3.isChecked() == false && chkDengersine4.isChecked() == false &&
+                    chkDengersine5.isChecked() == false && chkDengersine6.isChecked() == false && chkDengersine7.isChecked() == false
+                    ) {
+                secDengersine.setVisibility(View.GONE);
+                secReferWomen.setVisibility(View.GONE);
+                secReferFaci.setVisibility(View.GONE);
+                chkDengersine.setChecked(false);
+            }
+
+            DataSerchPregRefer();
+
+
+            btnSaveRef.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View v) {
+                    if (spnFaci.getSelectedItemPosition() == 0) {
+                        Connection.MessageBox(PregReg.this, "কোথায় রেফার করা হয়েছে  সিলেক্ট করুন।");
+                        spnFaci.requestFocus();
+                        return;
+                    } else {
+                        DataPregRefer();
+                        Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
+                        //ReferStatus();
+                    }
+
+                }
+            });
 
             Button cmdSavePreg = (Button) findViewById(R.id.cmdSavePreg);
             cmdSavePreg.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
-                    DataSavePreg();
+                    DataSavePregnant();
+
+
                 }
             });
-
-            DisplayTempANCVisit(Global.DateConvertDMY(dtpLMP.getText().toString()));
-            secMiso.setVisibility(View.GONE);
-            DisplayANCVisit();
             getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+            PregWomenSearch();
+            PregWomenLastChildSearch();
         } catch (Exception e) {
             Connection.MessageBox(PregReg.this, e.getMessage());
             return;
         }
     }
 
-
-    private void DataSaveANC() {
-        try
-        {
-        Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
-        String formattedDate = sdf.format(c.getTime());
-        String PrevAncVisit="'" + GetMaxANCDate()=="0"?"":GetMaxANCDate() + "";// '"+  GetMaxANCDate()==0?"":GetMaxANCDate()) +"'";
-        Date date1 = sdf.parse(formattedDate);
-        Date date4 = sdf.parse(dtpVDate.getText().toString());
-        Date date5 = sdf.parse(dtpLMP.getText().toString());
-
-        String DOB=GetDOB(g.getHealthID());
-        Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(DOB.toString()));
-        if (dtpVDate.getText().toString().length() == 0) {
-            Connection.MessageBox(PregReg.this, "পরিদর্শনের তারিখ কত লিখুন।");
-            dtpVDate.requestFocus();
-            return;
-        }
-        else if (!rdoIron1.isChecked() & !rdoIron2.isChecked() & secIron.isShown()) {
-            Connection.MessageBox(PregReg.this, "আয়রন ও ফলিক এসিড পেয়েছেন কিনা  সিলেক্ট করুন।");
-            rdoIron1.requestFocus();
-            return;
-        }
-        else if(DiffLMP_VD>=224) {
-            if (!rdoMiso1.isChecked() & !rdoMiso2.isChecked() & secMiso.isShown()) {
-                Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ি পেয়েছেন কিনা  সিলেক্ট করুন।");
-                rdoMiso1.requestFocus();
-                return;
-            }
-        }
-
-        else if(date4.after(date1))
-        {
-            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
-            dtpVDate.requestFocus();
-            return;
-        }
-        else if(date4.before(date5))
-        {
-            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ এবং সিস্টেমের তারিখের মধ্যে হবে");
-            dtpVDate.requestFocus();
-            return;
-        }
-        else if(DiffLMP_VD>=300)
-        {
-            Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ থেকে ৩০০ দিনের বেশি হতে পারে না।");
-            dtpVDate.requestFocus();
-            return;
-        }
-        if(PrevAncVisit.equalsIgnoreCase("0"))
-        {
-
-        }
-        else
-        {
-            Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
-            if (date4.before(MaxAncVisitDate)) {
-                Connection.MessageBox(PregReg.this, "পূর্বের ভিজিটের তারিখ অপেক্ষা বর্তমান ভিজিট বড় হতে হবে।");
-                dtpVDate.requestFocus();
-                return;
-            }
-        }
-
-
-
-
-        /*if (rdoMiso1.isChecked() & secMiso.isShown()) {
-            if (txtMisoQty.getText().toString().length() == 0) {
-                Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ির পরিমাণ কত লিখুন।");
-                txtMisoQty.requestFocus();
-                return;
-            } else if (spnMisoUnit.getSelectedItemPosition() == 0) {
-                Connection.MessageBox(PregReg.this, "মিসোপ্রস্টল বড়ির ইউনিট  তালিকা থেকে  সিলেক্ট করুন।।");
-                spnMisoUnit.requestFocus();
-                return;
-            }
-        }*/
-
-        /*if (spnANCSource.getSelectedItemPosition() == 0) {
-            Connection.MessageBox(PregReg.this, "গর্ভকালীন সেবার স্থান করুন।।");
-            spnANCSource.requestFocus();
-            return;
-        }*/
-
-            /*PGNNo();
-            String SQ1 = "";
-            SQ1 = "select pregNo from PregWomen where";
-            SQ1 += " healthId='"+ g.getHouseholdNo() +"' and SNo='"+ g.getSerialNo() +"'";
-            SQ1 += " order by RegDT desc limit 1";
-            String RecentPregPGN = C.ReturnSingleValue(SQ1);
-            String PregPGNStatus = RecentPregPGN;
-
-            String SQ2 = "";
-            SQ2 = "select PGN||'^'||Outcome from Deliv where";
-            SQ2 += " Dist='"+ g.getDistrict() +"' and";
-            SQ2 += " Upz='"+ g.getUpazila() +"' and";
-            SQ2 += " UN='"+ g.getUnion() +"' and";
-            SQ2 += " Vill='"+ g.getVillage() +"' and";
-            SQ2 += " ProvType='"+ g.getProvType() +"' and";
-            SQ2 += " ProvCode='"+ g.getProvCode() +"' and";
-            SQ2 += " HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ g.getSerialNo() +"'";
-            SQ2 += " order by EnDt desc limit 1";*/
-        // String RecentDelivPGN = C.ReturnSingleValue(SQ2);
-        //  String[] CurrStatusDelivPGN = Connection.split(RecentDelivPGN, '^');
-        //  String DelivPGNStatus = CurrStatusDelivPGN[0].toString();
-        //String DelivOutcomesatus = CurrStatusDelivPGN[1].toString();
-
-        //Ewmt
-        String SQL = "";
-        String PGNNoNull = PGNNoNull();
-        String PGNNo = PGNNo();
-        String PregMaxPGNNo = PregMaxPGNNo();
-        //  if(DelivPGNStatus.equalsIgnoreCase(""))
-        //  {
-
-        // String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableName, g.getHealthID(), PGNNo);
-
-        //pgn will be increase 1
-       /* String pregNo = (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2));
-
-        if (!C.Existence(sq)) {
-            SQL = "INSERT INTO " + TableName +" (healthId , pregNo, providerId, LMP,tempLMP, EDD, gravida, lastChildAge, StartTime, EndTime, systemEntryDate) " +
-                    "VALUES (" + "'"+ g.getHealthID()+"'," + "'"+ PGNNo+"'," + "'"+ g.getProvCode()+"'," + "'"+ Global.DateConvertYMD(dtpLMP.getText().toString())+"'," +
-                    "'"+ Global.DateConvertYMD(dtpEDD.getText().toString())+"',"+
-                    "'"+ Global.DateConvertYMD(dtpEDD.getText().toString())+"','"+
-                    PregMaxPGNNo+"'," + "'"+ txtAgeL.getText().toString()+ "'," + "'"+StartTime+"'," + "'"+
-                    g.CurrentTime24()+"'," + "'"+ g.DateNowYMD() +"')";
-
-            C.Save(SQL);
-        }*/
-                /*SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2)) +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNoNull +"'";
-                C.Save(SQL);*/
-        // }
-           /* else if(PregPGNStatus.equals(DelivPGNStatus))
-            {
-                //pgn will be increase 1 with max
-                if (!C.Existence("Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + TableName + "  Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "'  and ProvType='" + g.getProvType() + "' and ProvCode='" + g.getProvCode() + "' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText().toString() + "' and PGN = '" + PGNNo + "'")) {
-                    SQL = "Insert into " + TableName + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,RegDT,EnDt,Upload,UploadDT)Values('" + g.getDistrict() + "','" + g.getUpazila() + "','" + g.getUnion() + "','" + g.getMouza() + "','" + g.getVillage() + "','" + g.getProvType() + "','" + g.getProvCode() + "','" + g.getHouseholdNo() + "','" + txtSNo.getText() + "','" + PGNNo + "','"+ g.DateNowYMD() +"','" + Global.DateTimeNowYMDHMS() + "','2','')";
-                    C.Save(SQL);
-                }
-                SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2)) +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNo +"'";
-                C.Save(SQL);
-            }
-            else if(!PregPGNStatus.equals(DelivPGNStatus))
-            {
-                //MAX pgn will be retrieved from db
-                if (!C.Existence("Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + TableName + "  Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "'  and ProvType='" + g.getProvType() + "' and ProvCode='" + g.getProvCode() + "' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText().toString() + "' and PGN = '" + PregMaxPGNNo + "'")) {
-                    SQL = "Insert into " + TableName + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,RegDT,EnDt,Upload,UploadDT)Values('" + g.getDistrict() + "','" + g.getUpazila() + "','" + g.getUnion() + "','" + g.getMouza() + "','" + g.getVillage() + "','" + g.getProvType() + "','" + g.getProvCode() + "','" + g.getHouseholdNo() + "','" + txtSNo.getText() + "','" + PregMaxPGNNo + "','"+ g.DateNowYMD() +"','" + Global.DateTimeNowYMDHMS() + "','2','')";
-                    C.Save(SQL);
-                }
-                SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ spnPgn.getSelectedItemPosition() +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNoNull +"'";
-                C.Save(SQL);
-            }
-            String MaxPGNNo=PregMaxPGNNo();
-            SQL = "Insert into " + TableANC + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,Visit,VDate,IronFolStatus,IronFolQty,IronFolUnit,MisoStatus,MisoQty,MisoUnit,EnDt,Upload,UploadDT)Values('"+ g.getDistrict() +"','"+ g.getUpazila() +"','"+ g.getUnion() +"','"+ g.getMouza() +"','"+ g.getVillage() +"','"+ g.getProvType() +"','"+ g.getProvCode() +"','"+ g.getHouseholdNo() +"','"+ txtSNo.getText() +"','" + MaxPGNNo + "','"+ VisitNumber() +"','"+ Global.DateConvertYMD(dtpVDate.getText().toString()) +"','"+ ((rdoIron1.isChecked()?"1":"2")) +"','"+ txtIronQty.getText().toString() +"','"+ spnIronUnit.getSelectedItemPosition() +"','"+ ((rdoMiso1.isChecked()?"1":"2")) +"','"+ txtMisoQty.getText().toString() +"','"+ spnMisoUnit.getSelectedItemPosition() +"','"+ Global.DateTimeNowYMDHMS() +"','2','')";
-            C.Save(SQL);
-
-            SQL = "Update " + TableNameElcoVisit + " Set ";
-            SQL+="CurrStatus = '12'";
-            SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and Visit='" + ELCOLastVisitNum() +"'";
-            C.Save(SQL);*/
-        //ClearAll();
-
-        String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-
-        String MaxPGNNo = PregMaxPGNNo();
-        String ServiceId = serviceID(MaxPGNNo);
-
-        SQL = "Insert into " + TableANC + "(healthId,pregNo,serviceId,providerId,visitDate,serviceSource,ironFolStatus," +
-                "ironFolQty,ironFolUnit,misoStatus,misoQty,MisoUnit, sateliteCenterName,systemEntryDate,Upload) VALUES ('" + g.getHealthID() + "','" + MaxPGNNo + "','" + ServiceId + "','" + g.getProvCode() + "'" +
-                ",'" + Global.DateConvertYMD(dtpVDate.getText().toString()) + "','','" +//" + spnANCSource.getSelectedItemPosition() + "
-                ((rdoIron1.isChecked() ? "1" : "2")) + "','','','"//" + txtIronQty.getText().toString() + " " + spnIronUnit.getSelectedItemPosition() + "
-                + ((rdoMiso1.isChecked() ? "1" : "2")) + "','','','" + "', " + "'" +//" + txtMisoQty.getText().toString() + " " + spnMisoUnit.getSelectedItemPosition() + "
-                Global.DateTimeNowYMDHMS() + "'," + "'" + "2" + "')";
-        C.Save(SQL);
-        secPregVisit.setVisibility(View.GONE);
-        DisplayANCVisit();
-
-       /* SQL = "Update " + TableNameElcoVisit + " Set ";
-        SQL+="CurrStatus = '12'";
-        SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and Visit='" + ELCOLastVisitNum() +"'";
-        C.Save(SQL);*/
-
-        rdogrpIron.clearCheck();
-        /*txtIronQty.setText("");
-        spnIronUnit.getSelectedItemPosition();*/
-        rdogrpMiso.clearCheck();
-        /*txtMisoQty.setText("");
-        spnMisoUnit.setSelection(0);
-        spnANCSource.setSelection(0);*/
-    } catch (Exception e) {
-        Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
-        return;
-    }
-
-
-    }
-
-    public class ANC extends BaseAdapter {
-        private Context mContext;
-        String[][] vcode;
-        Integer totalRec;
-
-        public ANC(Context c) {
-            mContext = c;
-        }
-
-        public int getCount() {
-
-            //String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-            // String ServiceId = serviceID(pgnpositionselected);
-
-            return Integer.parseInt(C.ReturnSingleValue("Select count(*)total from ancService where healthid='" + g.getHealthID() + "' AND pregNo = '" + PregMaxPGNNo() + "'"));
-        }
-
-        public Object getItem(int position) {
-            return null;
-        }
-
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            View MyView = convertView;
-            if (convertView == null) {
-                LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                MyView = li.inflate(R.layout.anc_item_actual, null);
-                String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-                String ServiceId = g.getHealthID() + pgnpositionselected;
-
-                String SQL = "Select serviceId, visitDate,ironFolStatus,ironFolQty,ironFolUnit,misoStatus,misoQty,misoUnit,serviceSource from ancService where healthid='" + g.getHealthID() + "' AND pregNo = '" + PregMaxPGNNo() + "'" + " order by cast(visitDate as DATE) asc";
-
-                try {
-                    Cursor cur = C.ReadData(SQL);
-                    cur.moveToFirst();
-
-                    totalRec = cur.getCount();
-                    vcode = new String[4][totalRec];
-                    int i = 0;
-                    while (!cur.isAfterLast()) {
-                        vcode[0][i] = "পরিদর্শন " + String.valueOf(i + 1) + " " + Global.DateConvertDMY(String.valueOf(cur.getString(cur.getColumnIndex("visitDate"))));
-                        vcode[1][i] = String.valueOf(cur.getString(cur.getColumnIndex("serviceId")));
-                        /*vcode[1][i]= String.valueOf(cur.getString(cur.getColumnIndex("serviceId")));
-                        vcode[2][i]= cur.getString(cur.getColumnIndex("imucard"));
-                        vcode[3][i]= String.valueOf(cur.getString(cur.getColumnIndex("imucode")));*/
-
-                        i += 1;
-                        cur.moveToNext();
-                    }
-                    cur.close();
-
-                    Button tv = (Button) MyView.findViewById(R.id.image_name);
-                    tv.setTextSize(14);
-                    tv.setText(vcode[0][position]);// + "\n" + vcode[1][position]);
-                    final Integer p = position;
-                    tv.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            // ChkTT1.setChecked(true);
-                            // if(vcode[2][position].equals("1"))
-                            // {
-                            //rdoCardYes.setChecked(true);
-                            // }
-                            // else if(vcode[2][position].equals("2"))
-                            // {
-                            // rdoCardNo.setChecked(true);
-                            // }
-                            //String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-                            String ServiceId = String.valueOf(vcode[1][position]);
-
-
-                             /*   if(vcode[1][position].length()!=0)
-                            {
-                                dtpDOTT1.setText(vcode[1][position]);
-                            }
-                            else
-                            {
-                                dtpDOTT1.setText("");
-                            }*/
-
-                            // secTT1.setVisibility(View.VISIBLE);
-                            //   btnTTClose.setVisibility(View.VISIBLE);
-                            //  btnAddTT.setVisibility(View.GONE);
-                            // g.setImuCode(vcode[3][position]);
-                            DisplaySelectedANCInfo(ServiceId);
-                        }
-                    });
-                } catch (Exception ex) {
-                    Connection.MessageBox(PregReg.this, ex.getMessage());
-                }
-
-            }
-            return MyView;
-        }
-
-    }
-
-    private void DisplaySelectedANCInfo(String ServiceId) {
-
-        String SQL = "Select visitDate,ironFolStatus,ironFolQty,ironFolUnit,misoStatus,misoQty,misoUnit,serviceSource from ancService where serviceId = '" + ServiceId + "'";
-
-        final Dialog popupView = new Dialog(PregReg.this);
-        popupView.setTitle("Events");
-        popupView.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        popupView.setContentView(R.layout.ancinfo);
-        popupView.setCancelable(true);
-        popupView.setCanceledOnTouchOutside(true);
-
-        try {
-            Cursor cur = C.ReadData(SQL);
-            cur.moveToFirst();
-
-            while (!cur.isAfterLast()) {
-                // dtpVDate.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("visitDate"))));
-                if (cur.getString(cur.getColumnIndex("ironFolStatus")).equalsIgnoreCase("1")) {
-                    ((TextView) popupView.findViewById(R.id.VlblIronYN)).setText("হ্যাঁ");
-                }
-                else if (cur.getString(cur.getColumnIndex("ironFolStatus")).equalsIgnoreCase("2")) {
-                    ((TextView) popupView.findViewById(R.id.VlblIronYN)).setText("না");
-                }
-
-
-                if (cur.getString(cur.getColumnIndex("misoStatus")).equalsIgnoreCase("1")) {
-                    ((TextView) popupView.findViewById(R.id.VlblMisoYN)).setText("হ্যাঁ");
-                }
-               else if (cur.getString(cur.getColumnIndex("misoStatus")).equalsIgnoreCase("2")) {
-                    ((TextView) popupView.findViewById(R.id.VlblMisoYN)).setText("না");
-                }
-
-
-
-                cur.moveToNext();
-            }
-            cur.close();
-
-
-            //  popupView.showAtLocation(popupView, Gravity.CENTER, 0, 0);
-            Button btnDismiss = (Button) popupView.findViewById(R.id.dismiss);
-            btnDismiss.setOnClickListener(new Button.OnClickListener() {
-
-                @Override
-                public void onClick(View v) {
-                    // TODO Auto-generated method stub
-                    popupView.dismiss();
-                }
-            });
-
-            popupView.show();
-        } catch (Exception ex) {
-            Connection.MessageBox(PregReg.this, ex.getMessage());
-        }
-
-    }
 
     //Add days with system Date
     public static String getCalculatedDate(String dateFormat, int days) {
@@ -833,11 +1257,21 @@ public class PregReg extends Activity {
         return VisitNo;
     }
 
+    private String GetCountSLNoNumber() {
+
+        String SQL = "select ((cast(Count(*) as int))) as Totalno  from PregWomen";
+        String Val = String.valueOf(C.ReturnSingleValue(SQL));
+        if (Val.equalsIgnoreCase("0")) {
+            return "1";
+        } else
+            return Val;
+    }
+
     private String PGNNoNull() {
         String SQL = "";
         String PGNNo = "";
 
-        SQL = "select '0'||(ifnull(max(cast(PregNo as int)),1))MaxPGNNo from PregWomen WHERE healthId = " + g.getHealthID();
+        SQL = "select '0'||(ifnull(max(cast(PregNo as int)),1))MaxPGNNo from PregWomen WHERE healthId = " + g.getGeneratedId();
             /*SQL += " where";
             SQL += " dist='" + g.getDistrict() + "' and upz='" + g.getUpazila() + "' and un='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and vill='" + g.getVillage() + "'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText() + "'";*/
         PGNNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
@@ -850,25 +1284,38 @@ public class PregReg extends Activity {
         String PGNNo = "";
 
         //String MaxPGNNo=PregMaxPGNNo();
-        SQL = "select '0'||(ifnull(max(cast(serviceId as int)),0))MaxserviceId from ancService WHERE healthId = " + g.getHealthID() + " AND pregNo = " + pregNo;
+        SQL = "select '0'||(ifnull(max(cast(serviceId as int)),0))MaxserviceId from PregRefer WHERE healthId = " + g.getGeneratedId() + " AND pregNo = " + pregNo;
 
         String tempserviceID = C.ReturnSingleValue(SQL);
 
 
-        String serviceID = String.valueOf((Integer.parseInt(tempserviceID) + 1));
+        return String.valueOf((Long.parseLong(tempserviceID) + 1));
 
-        if (serviceID.equalsIgnoreCase("1")) {
-            return String.valueOf(g.getHealthID() + pregNo + serviceID);
+        /*if (serviceID.equalsIgnoreCase("1")) {
+            return String.valueOf(g.getGeneratedId() + pregNo + serviceID);
         } else {
             return String.valueOf(serviceID);
-        }
+        }*/
+    }
+
+    private String GetCurrentPregnancyNumber() {
+
+        String SQL = "select ifnull((select '0'||cast(max(pregNo) as string)),0) AS PregNo from PregWomen";
+        SQL += " Where HealthId='" + g.getGeneratedId() + "'";
+        String Val = String.valueOf(C.ReturnSingleValue(SQL));
+        if (Val.equalsIgnoreCase("")) {
+            return "0";
+        } else
+            return Val;
     }
 
     private String PregMaxPGNNo() {
+
+
         String SQL = "";
         String PGNNo = "";
 
-        SQL = "select (ifnull(max(cast(PregNo as int)),0)) AS PregNo from PregWomen WHERE healthId=" + g.getHealthID();
+        SQL = "select ifnull((select '0'||cast(max(pregNo) as string)),0) AS PregNo from PregWomen WHERE healthId=" + g.getGeneratedId();
         /*SQL += " where";
         SQL += " dist='" + g.getDistrict() + "' and upz='" + g.getUpazila() + "' and un='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and vill='" + g.getVillage() + "'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText() + "'";*/
         // PGNNo = Global.Right(("00"+ C.ReturnSingleValue(SQL)),2);
@@ -880,12 +1327,35 @@ public class PregReg extends Activity {
         String SQL = "";
         String PGNNo = "";
 
-        SQL = "Select (ifnull(max(cast(PregNo as int)),0)+1)MaxPGNNo from PregWomen WHERE healthId = " + g.getHealthID();
+        SQL = "Select (ifnull(max(cast(PregNo as int)),0)+1)MaxPGNNo from PregWomen WHERE healthId = " + g.getGeneratedId();
         /*SQL += " where";
         SQL += " dist='" + g.getDistrict() + "' and upz='" + g.getUpazila() + "' and un='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and vill='" + g.getVillage() + "'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText() + "'";*/
         PGNNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
         return PGNNo;
     }
+
+
+    private String PGNNo1() {
+        String SQL = "";
+        String PGNNo = "";
+
+        SQL = "Select (ifnull(max(cast(pregNo as int)),0))pregNo from delivery WHERE healthId = " + g.getGeneratedId();
+        /*SQL += " where";
+        SQL += " dist='" + g.getDistrict() + "' and upz='" + g.getUpazila() + "' and un='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and vill='" + g.getVillage() + "'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText() + "'";*/
+        PGNNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
+        return PGNNo;
+    }
+
+    private String GetStillbirthBirth() {
+        String SQL = "";
+        String SBirth = "";
+        SQL = String.format("Select stillbirth from delivery where healthId = '%s'", g.getGeneratedId());
+        SBirth = C.ReturnSingleValue(SQL);
+        return SBirth;
+
+
+    }
+
 
     private String ELCOLastVisitNum() {
         String SQL = "";
@@ -904,34 +1374,29 @@ public class PregReg extends Activity {
         spnPgn.setSelection(0);
         txtAgeM.setText("");
         txtAgeY.setText("");
-        dtpVDate.setText("");
-        rdogrpIron.clearCheck();
-        /*txtIronQty.setText("");
-        spnIronUnit.getSelectedItemPosition();*/
-        rdogrpMiso.clearCheck();
-        /*txtMisoQty.setText("");
-        spnMisoUnit.setSelection(0);*/
     }
 
     private void DataSavePreg() {
         AlertDialog.Builder adb = new AlertDialog.Builder(PregReg.this);
         adb.setTitle("Close");
-        adb.setMessage("তথ্য সফলভাবে সংরক্ষণ হয়েছে। আপনি কি ANC ভিজিটের তথ্য সংগ্রহ করতে চান[Yes/No]?");
+
+        adb.setMessage("তথ্য সফলভাবে সংরক্ষণ হয়েছে। আপনি কি গর্ভকালীন সেবার তথ্য সংগ্রহ করতে চান?");
         //adb.setNegativeButton("No", null);
-        adb.setNegativeButton("No", new AlertDialog.OnClickListener() {
+        adb.setNegativeButton("না", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                DataSavePregnant();
                 finish();
                 Intent f2 = new Intent(getApplicationContext(), MemberList.class);
                 startActivity(f2);
+
             }
         });
 
-        adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
+        adb.setPositiveButton("হ্যাঁ", new AlertDialog.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
-                DataSavePregnant();
-
-
+                //setContentView(R.layout.fwareg_main);
+                //TabHost tabHost = getTabHost();
+                //((TabHost)findViewById(R.id..tabhost))
+                //secPregVisit.setVisibility(View.VISIBLE);
 
             }
         });
@@ -940,7 +1405,8 @@ public class PregReg extends Activity {
 
     private String GetTotalSonGaughter(String HealthId) {
 
-        String sq = String.format("Select SUM((ifnull((cast(son as int)),0)) + (ifnull((cast(dau as int)),0))) Total from elco WHERE healthId = '%s'", g.getHealthID());
+        //String sq = String.format("Select SUM((ifnull((cast(son as int)),0)) + (ifnull((cast(dau as int)),0))) Total from elco WHERE healthId = '%s'", g.getGeneratedId());
+        String sq = String.format("Select (ifnull(SUM((ifnull((cast(son as int)),0)) + (ifnull((cast(dau as int)),0))),0)) Total from elco WHERE healthId = '%s'", g.getGeneratedId());
         return C.ReturnSingleValue(sq);
     }
 
@@ -949,41 +1415,119 @@ public class PregReg extends Activity {
         return C.ReturnSingleValue(sq);
     }
 
-    private String GetMaxANCDate()
-    {
+    private String GetMaxOutComeDate() {
+        String SQL = "";
+        String MaxOutcomeDate = "";
+        SQL = "Select ifnull(Max(outcomedate),0) from delivery WHERE healthId ='" + g.getGeneratedId() + "' and pregNo=(select Max(pregNo) from ancService WHERE healthId='" + g.getGeneratedId() + "')";
+        MaxOutcomeDate = C.ReturnSingleValue(SQL);
+        return MaxOutcomeDate;
+    }
+
+    private String GetMaxANCDate() {
         String SQL = "";
         String MaxANCDate = "";
-        SQL="Select ifnull(Max(visitDate),0) from ancService WHERE healthId ='" + g.getHealthID() + "' and pregNo=(select Max(pregNo) from ancService WHERE healthId='" + g.getHealthID() + "')";
+        SQL = "Select ifnull(Max(visitDate),0) from ancService WHERE healthId ='" + g.getGeneratedId() + "' and pregNo=(select Max(pregNo) from ancService WHERE healthId='" + g.getGeneratedId() + "')";
         MaxANCDate = C.ReturnSingleValue(SQL);
         return MaxANCDate;
     }
 
     /*private String GetMaxANCDate(String HealthId) {
         //Select Max(visitDate) from ancService WHERE healthId='261174' and pregNo=(select Max(pregNo) from ancService WHERE healthId='261174')
-        String sq = String.format("Select Max(visitDate) from ancService WHERE healthId = '%s' and pregNo=(select Max(pregNo) from ancService WHERE healthId='%s')", g.getHealthID());
+        String sq = String.format("Select Max(visitDate) from ancService WHERE healthId = '%s' and pregNo=(select Max(pregNo) from ancService WHERE healthId='%s')", g.getGeneratedId());
         return C.ReturnSingleValue(sq);
     }*/
 
+    private String GetMaxPGN() {
+        String SQL = "";
+        String MaxPGN = "";
+        SQL = "Select  '0'||ifnull(gravida,0)gravida from PregWomen WHERE healthId ='" + g.getGeneratedId() + "' and pregNo=(select Max(pregNo) from PregWomen WHERE healthId='" + g.getGeneratedId() + "')";
+        MaxPGN = C.ReturnSingleValue(SQL);
+        return MaxPGN;
+    }
+
+    private void DataSerchPregRefer() {
+        //Ewmt
+
+        String PGNAnc = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TablePregRefer, g.getGeneratedId(), pregnancyNo);
+        if (C.Existence(PGNAnc)) {
+            rdoReferWomen1.setChecked(true);
+        } else {
+            rdoReferWomen1.setChecked(false);
+        }
+    }
+
+    private void DataPregRefer() {
+        //Ewmt
+        String SQL = "";
+
+        String PGNAnc = "select referCenter FROM PregRefer ";
+        PGNAnc += " WHERE healthId = '" + g.getGeneratedId() + "' AND pregNo ='" + pregnancyNo + "' and serviceId='" + VlblServiceId.getText() + "'";//visitDate='"+ Global.DateConvertYMD(dtpVDate.getText().toString()) +"'
+
+        //String PGNAnc = String.format("Select healthId, pregNo,serviceId  from %s where healthId = '%s' and pregNo = '%s'",TablePregRefer,g.getGeneratedId(), pregnancyNo,VlblServiceId.getText());
+        try {
+            if (!C.Existence(PGNAnc)) {
+                if (rdoReferWomen1.isChecked() & secReferWomen.isShown()) {
+                    if (spnFaci.getSelectedItemPosition() == 0) {
+                        Connection.MessageBox(PregReg.this, "কোথায় রেফার করা হয়েছে  সিলেক্ট করুন।");
+                        spnFaci.requestFocus();
+                        return;
+                    }
+                }
+                String ServiceId = serviceID(pregnancyNo);
+                SQL = "INSERT INTO " + TablePregRefer + " (healthId,pregNo,serviceId,providerId,referCenter,systemEntryDate,upload) " +
+                        "VALUES (" + "'" + g.getGeneratedId() + "'," + "'" + pregnancyNo + "','" + ServiceId + "'," + "'" + g.getProvCode() + "'," + "'" + Global.Left(spnFaci.getSelectedItem().toString(), 2) + "','" + Global.DateTimeNowYMDHMS() + "','2')";
+                C.Save(SQL);
+                //ReferStatus();
+                DisplayReferStatus();
+                VlblServiceId.setText("");
+                btnSaveRef.setText("Add");
+
+            } else {
+                if (rdoReferWomen1.isChecked() & secReferWomen.isShown()) {
+                    if (spnFaci.getSelectedItemPosition() == 0) {
+                        Connection.MessageBox(PregReg.this, "কোথায় রেফার করা হয়েছে  সিলেক্ট করুন।");
+                        spnFaci.requestFocus();
+                        return;
+                    }
+                }
+                SQL = "Update " + TablePregRefer + " Set ";
+                SQL += "referCenter = '" + Global.Left(spnFaci.getSelectedItem().toString(), 2) + "',";
+                SQL += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "'";
+                SQL += "Where healthId='" + g.getGeneratedId() + "' and pregNo='" + pregnancyNo + "' and serviceId='" + VlblServiceId.getText() + "'";
+                C.Save(SQL);
+                DisplayReferStatus();
+                //ReferStatus();
+                VlblServiceId.setText("");
+                btnSaveRef.setText("Add");
+            }
+        } catch (Exception e) {
+            Connection.MessageBox(PregReg.this, e.getMessage());
+            return;
+        }
+
+
+    }
 
 
     private void DataSavePregnant() {
         try {
-            String dob=GetDOB(g.getHealthID());
-            Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(dob.toString()));
-            Integer DiffDNow_VD =  Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
+            String dob = GetDOB(g.getHealthID());
+            Integer DobAge = Global.DateDifferenceYears(dtpLMP.getText().toString(), Global.DateConvertDMY(dob.toString()));
+            Integer DiffDNow_VD = Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
             String formattedDate = sdf.format(c.getTime());
             Date date1 = sdf.parse(formattedDate);
             Date date5 = sdf.parse(dtpLMP.getText().toString());
+            String PrevPGN = "'" + GetMaxPGN() == "0" ? "" : GetMaxPGN() + "";
             if (dtpLMP.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "সর্বশেষ মাসিকের  তারিখ কত লিখুন।");
                 dtpLMP.requestFocus();
                 return;
-            } else if (DobAge<12) {
+            }/* else if (DobAge < 12) {
                 Connection.MessageBox(PregReg.this, "মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
                 dtpLMP.requestFocus();
                 return;
-            }else if (dtpEDD.getText().toString().length() == 0) {
+            } */ else if (dtpEDD.getText().toString().length() == 0) {
                 Connection.MessageBox(PregReg.this, "সম্ভাব্য প্রসবের তারিখ কত লিখুন।");
                 dtpEDD.requestFocus();
                 return;
@@ -991,34 +1535,71 @@ public class PregReg extends Activity {
                 Connection.MessageBox(PregReg.this, "বর্তমানে কত তম গর্ভ তালিকা থেকে  সিলেক্ট করুন।।");
                 spnPgn.requestFocus();
                 return;
-            }
-            else if(date5.after(date1))
-            {
-                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+            } else if (date5.after(date1)) {
+                Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                dtpLMP.requestFocus();
+                return;
+            } else if (date5.equals(date1)) {
+                Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
+                dtpLMP.requestFocus();
+                return;
+            } else if (DiffDNow_VD <= 29) {
+                Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
                 dtpLMP.requestFocus();
                 return;
             }
-            else if(date5.equals(date1))
-            {
-                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
-                dtpLMP.requestFocus();
+            /*else if (GetCurrentPregNoFromAncService(pregnancyNo).equals(pregnancyNo)) {
+                Connection.MessageBox(PregReg.this, "এ এন সি ভিজিট থাকলে গর্ভবতী মহিলার সাধারন তথ্য সম্পাদন হবে না");
+                //dtpLMP.requestFocus();
                 return;
+            }*/
+            else if (PrevPGN.equalsIgnoreCase("")) {
+
+            } else {
+                /*Integer PrevPGNPlus1 = Integer.parseInt(PrevPGN) + 1;
+                Integer ActualPrevPGN = Integer.parseInt(PrevPGN);
+                Integer pgnpositionselected1 = Integer.parseInt(String.valueOf(spnPgn.getSelectedItemPosition()));
+                if (pgnpositionselected1.equals(ActualPrevPGN)) {
+                    Connection.MessageBox(PregReg.this, "বর্তমানে কত তম গর্ভ তথ্য  সঠিক নয়।");
+                    spnPgn.requestFocus();
+                    return;
+                } else if (!PrevPGNPlus1.equals(pgnpositionselected1)) {
+                    Connection.MessageBox(PregReg.this, "বর্তমানে কত তম গর্ভ তথ্য  সঠিক নয়।");
+                    spnPgn.requestFocus();
+                    return;
+                }*/
             }
-            else if(DiffDNow_VD<=29)
+
+        /*    if(!rdoDanger1.isChecked() & !rdoDanger2.isChecked() & secDengersine.isShown())
             {
-                Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
-                dtpLMP.requestFocus();
+                Connection.MessageBox(PregReg.this, "ঝুঁকিপূর্ণা  সিলেক্ট করুন।");
+                rdoDanger1.requestFocus();
                 return;
             }
 
+            if(!rdoReferWomen1.isChecked() & !rdoReferWomen2.isChecked() & secReferWomen.isShown())
+            {
+                Connection.MessageBox(PregReg.this, "জটিল গর্ভবতীর মাকে রেফার করা হয়েছে  সিলেক্ট করুন।");
+                rdoReferWomen1.requestFocus();
+                return;
+            }*/
             if (txtLiveSonDau.getText().toString().equalsIgnoreCase("0")) {
 
             } else {
-                if (txtAgeM.getText().toString().length() == 0 && txtAgeY.getText().toString().length() == 0) {
-                    Connection.MessageBox(PregReg.this, "শেষ সন্তানের বয়স কত লিখুন।");
+                if (txtAgeY.getText().toString().length() == 0) {
+                    Connection.MessageBox(PregReg.this, "শেষ সন্তানের বয়স কত বছর লিখুন");
+                    txtAgeY.requestFocus();
+                    return;
+                } else if (txtAgeM.getText().toString().length() == 0) {
+                    Connection.MessageBox(PregReg.this, "শেষ সন্তানের বয়স কত মাস লিখুন।");
                     txtAgeM.requestFocus();
                     return;
                 }
+                /*if (txtAgeM.getText().toString().length() == 0 && txtAgeY.getText().toString().length() == 0) {
+                    Connection.MessageBox(PregReg.this, "শেষ সন্তানের বয়স কত লিখুন।");
+                    txtAgeM.requestFocus();
+                    return;
+                }*/
             }
 
 
@@ -1114,84 +1695,324 @@ public class PregReg extends Activity {
             //pgn will be increase 1
             String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
             // String pregNo = (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2));
-
-            String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableName, g.getHealthID(), PGNNo);
-
+            String refCenter = String.valueOf(spnFaci.getSelectedItemPosition());
+            String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableName, g.getGeneratedId(), pregnancyNo);
             if (!C.Existence(sq)) {
-                SQL = "INSERT INTO " + TableName + " (healthId , pregNo, providerId, LMP,tempLMP, EDD, gravida, lastChildAge, StartTime, EndTime, systemEntryDate) " +
-                        "VALUES (" + "'" + g.getHealthID() + "'," + "'" + PGNNo + "'," + "'" + g.getProvCode() + "'," + "'" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "'," +
-                        "'" + Global.DateConvertYMD(dtpEDD.getText().toString()) + "'," +
+                /*SQL = "INSERT INTO " + TableName + " (healthId , pregNo, providerId, LMP,tempLMP, EDD, gravida, lastChildAge,StartTime, EndTime, systemEntryDate,Upload) " +
+                        "VALUES (" + "'" + g.getGeneratedId() + "'," + "'" + pregnancyNo + "'," + "'" + g.getProvCode() + "'," + "'" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "'," +
+                        "'" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "'," +
                         "'" + Global.DateConvertYMD(dtpEDD.getText().toString()) + "','" +
                         pgnpositionselected + "'," + "'" + ComputeAge(txtAgeM.getText().toString(), txtAgeY.getText().toString()) + "'," + "'" + StartTime + "'," + "'" +
-                        g.CurrentTime24() + "'," + "'" + g.DateNowYMD() + "')";
+                        g.CurrentTime24() + "'," + "'" + g.DateNowYMD() + "','2')";
 
-                C.Save(SQL);
-                secANCVisit.setVisibility(View.VISIBLE);
-                secPregVisit.setVisibility(View.VISIBLE);
-                DisplayTempANCVisit(Global.DateConvertYMD(dtpLMP.getText().toString()));
-            }
-                /*SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2)) +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNoNull +"'";
                 C.Save(SQL);*/
-            // }
-           /* else if(PregPGNStatus.equals(DelivPGNStatus))
-            {
-                //pgn will be increase 1 with max
-                if (!C.Existence("Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + TableName + "  Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "'  and ProvType='" + g.getProvType() + "' and ProvCode='" + g.getProvCode() + "' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText().toString() + "' and PGN = '" + PGNNo + "'")) {
-                    SQL = "Insert into " + TableName + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,RegDT,EnDt,Upload,UploadDT)Values('" + g.getDistrict() + "','" + g.getUpazila() + "','" + g.getUnion() + "','" + g.getMouza() + "','" + g.getVillage() + "','" + g.getProvType() + "','" + g.getProvCode() + "','" + g.getHouseholdNo() + "','" + txtSNo.getText() + "','" + PGNNo + "','"+ g.DateNowYMD() +"','" + Global.DateTimeNowYMDHMS() + "','2','')";
-                    C.Save(SQL);
-                }
-                SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ (spnPgn.getSelectedItemPosition()==0?"":Global.Left(spnPgn.getSelectedItem().toString(),2)) +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNo +"'";
+
+                SQL = "INSERT INTO " + TableName + " (healthId , pregNo, providerId, LMP,tempLMP, EDD, gravida, lastChildAge,systemEntryDate,upload) " +
+                        "VALUES (" + "'" + g.getGeneratedId() + "'," + "'" + pregnancyNo + "'," + "'" + g.getProvCode() + "'," + "'" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "'," +
+                        "'" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "'," +
+                        "'" + Global.DateConvertYMD(dtpEDD.getText().toString()) + "','" +
+                        pgnpositionselected + "'," + "'" + ComputeAge(txtAgeM.getText().toString(), txtAgeY.getText().toString()) + "','" + Global.DateTimeNowYMDHMS() + "','2')";
+
                 C.Save(SQL);
-            }
-            else if(!PregPGNStatus.equals(DelivPGNStatus))
-            {
-                //MAX pgn will be retrieved from db
-                if (!C.Existence("Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + TableName + "  Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "'  and ProvType='" + g.getProvType() + "' and ProvCode='" + g.getProvCode() + "' and  HHNo='" + g.getHouseholdNo() + "' and SNo='" + txtSNo.getText().toString() + "' and PGN = '" + PregMaxPGNNo + "'")) {
-                    SQL = "Insert into " + TableName + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,RegDT,EnDt,Upload,UploadDT)Values('" + g.getDistrict() + "','" + g.getUpazila() + "','" + g.getUnion() + "','" + g.getMouza() + "','" + g.getVillage() + "','" + g.getProvType() + "','" + g.getProvCode() + "','" + g.getHouseholdNo() + "','" + txtSNo.getText() + "','" + PregMaxPGNNo + "','"+ g.DateNowYMD() +"','" + Global.DateTimeNowYMDHMS() + "','2','')";
-                    C.Save(SQL);
+                if (sqlnew != null & !sqlnew.equalsIgnoreCase("")) {
+                    if (sqlnew.length() > 0) {
+                        C.Save(sqlnew);
+                    }
+                } else if (sqlnew.equalsIgnoreCase("")) {
+
+                    if (!C.Existence("Select healthid from ELCO  Where healthid='" + g.getGeneratedId() + "'"))// and  currStatus = '"+ Global.Left(spnMethod.getSelectedItem().toString(), 2) +"'
+                    {
+                        String ELCOsql = "";
+                        ELCOsql = "Insert into ELCO(healthId,providerId,regDT,systemEntryDate,upload)Values(";
+                        ELCOsql += "'" + g.getGeneratedId() + "',";
+                        ELCOsql += "'" + g.getProvCode() + "',";
+                        ELCOsql += "'',";
+                        ELCOsql += "'" + Global.DateTimeNowYMDHMS() + "',";
+                        ELCOsql += "'2')";
+                        C.Save(ELCOsql);
+                    }
+                    String ELCOupdate = "";
+                    ELCOupdate = "Update ELCO Set hhStatus = '1',";
+                    ELCOupdate += "haHHNo = '',";//Global.DateTimeNowYMDHMS() " + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "
+                    ELCOupdate += "elcoNo = '',";
+                    ELCOupdate += "husbandName = '',";
+                    ELCOupdate += "husbandAge = '',";
+                    ELCOupdate += "DOMSource = '',";
+                    ELCOupdate += "MarrDate = '',";
+                    ELCOupdate += "MarrAge = '',";
+                    ELCOupdate += "Son = '',";
+                    ELCOupdate += "Dau = '',";
+                    ELCOupdate += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "'";
+                    ELCOupdate += " Where HealthID='" + g.getGeneratedId() + "'";
+                    C.Save(ELCOupdate);
                 }
-                SQL = "Update " + TableName + " Set ";
-                SQL+="DOLMP = '"+ Global.DateConvertYMD(dtpLMP.getText().toString()) +"',";
-                SQL+="DOEDD = '"+ Global.DateConvertYMD(dtpEDD.getText().toString()) +"',";
-                SQL+="PrePregTimes = '"+ spnPgn.getSelectedItemPosition() +"',";
-                SQL+="LCAge = '"+ txtAgeL.getText().toString() +"'";
-                SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN ='"+ PGNNoNull +"'";
-                C.Save(SQL);
             }
-            String MaxPGNNo=PregMaxPGNNo();
-            SQL = "Insert into " + TableANC + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,PGN,Visit,VDate,IronFolStatus,IronFolQty,IronFolUnit,MisoStatus,MisoQty,MisoUnit,EnDt,Upload,UploadDT)Values('"+ g.getDistrict() +"','"+ g.getUpazila() +"','"+ g.getUnion() +"','"+ g.getMouza() +"','"+ g.getVillage() +"','"+ g.getProvType() +"','"+ g.getProvCode() +"','"+ g.getHouseholdNo() +"','"+ txtSNo.getText() +"','" + MaxPGNNo + "','"+ VisitNumber() +"','"+ Global.DateConvertYMD(dtpVDate.getText().toString()) +"','"+ ((rdoIron1.isChecked()?"1":"2")) +"','"+ txtIronQty.getText().toString() +"','"+ spnIronUnit.getSelectedItemPosition() +"','"+ ((rdoMiso1.isChecked()?"1":"2")) +"','"+ txtMisoQty.getText().toString() +"','"+ spnMisoUnit.getSelectedItemPosition() +"','"+ Global.DateTimeNowYMDHMS() +"','2','')";
+            SQL = "Update " + TableName + " Set ";
+            SQL += "LMP = '" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "',";
+            SQL += "tempLMP = '" + Global.DateConvertYMD(dtpLMP.getText().toString()) + "',";
+            SQL += "EDD = '" + Global.DateConvertYMD(dtpEDD.getText().toString()) + "',";
+            SQL += "gravida = '" + pgnpositionselected + "',";
+            SQL += "lastChildAge = '" + ComputeAge(txtAgeM.getText().toString(), txtAgeY.getText().toString()) + "',";
+            SQL += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "'";
+            SQL += "Where healthId='" + g.getGeneratedId() + "' and pregNo='" + pregnancyNo + "'";
             C.Save(SQL);
+            if (sqlupdate != null & !sqlupdate.equalsIgnoreCase("")) {
+                if (sqlupdate.length() > 0) {
+                    C.Save(sqlupdate);
+                }
+            } else if (sqlupdate.equalsIgnoreCase("")) {
+                String VisitNo = VisitNumber(g.getGeneratedId());
 
-            SQL = "Update " + TableNameElcoVisit + " Set ";
-            SQL+="CurrStatus = '12'";
-            SQL+="Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and Visit='" + ELCOLastVisitNum() +"'";
-            C.Save(SQL);*/
-            //ClearAll();
+                if (!C.Existence("Select healthid from elcoVisit  Where healthid='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'"))// and  currStatus = '"+ Global.Left(spnMethod.getSelectedItem().toString(), 2) +"'
+                {
+                    String elcoVisitsql = "";
+                    elcoVisitsql = "Insert into elcoVisit(healthId,providerId,visit,systemEntryDate,modifyDate, pregNo)Values(";
+                    elcoVisitsql += "'" + g.getGeneratedId() + "',";
+                    elcoVisitsql += "'" + g.getProvCode() + "',";
+                    elcoVisitsql += "'" + VisitNo + "',";
+                    elcoVisitsql += "'" + Global.DateTimeNowYMDHMS() + "',";
+                    elcoVisitsql += "'" + Global.DateTimeNowYMDHMS() + "',";
+                    elcoVisitsql += "'" + pregnancyNo + "')";
+                    C.Save(elcoVisitsql);
+                }
+                String elcoVisitupdate = "";
+                elcoVisitupdate = "Update elcoVisit Set pregNo = '" + pregnancyNo + "',";
+                elcoVisitupdate += "vDate = '',";//Global.DateTimeNowYMDHMS() " + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "
+                elcoVisitupdate += "visitStatus = '1',";
+                elcoVisitupdate += "currStatus = '12',";
+                elcoVisitupdate += "newOld = 'M',";
+                elcoVisitupdate += "mDate = '',";
+                elcoVisitupdate += "sSource = '',";
+                elcoVisitupdate += "qty = '',";
+                elcoVisitupdate += "unit = '',";
+                elcoVisitupdate += "brand = '',";
+                elcoVisitupdate += "referPlace = '',";
+                elcoVisitupdate += "validity = '',";
+                elcoVisitupdate += "dayMonYear = '',";
+                elcoVisitupdate += "mrSource = '1',";
+                elcoVisitupdate += "MRDate = '',";
+                elcoVisitupdate += "MRAge = '0',";
+                elcoVisitupdate += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "',";
+                elcoVisitupdate += "syrinsQty = '',";
+                elcoVisitupdate += "upload = '2'";
+                elcoVisitupdate += " Where HealthID='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'";
+                C.Save(elcoVisitupdate);
+            }
+            String PGNAnc = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TablePregRefer, g.getGeneratedId(), pregnancyNo);
 
-            rdogrpIron.clearCheck();
-            /*txtIronQty.setText("");
-            spnIronUnit.getSelectedItemPosition();*/
-            rdogrpMiso.clearCheck();
-            /*txtMisoQty.setText("");
-            spnMisoUnit.setSelection(0);*/
 
-            //Connection.MessageBox(PregReg.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
+            /// Remove nisan
+
+           /* if(rdoReferWomen1.isChecked() & secReferWomen.isShown())
+            {
+                if(!C.Existence(PGNAnc)) {
+                    if(rdoReferWomen1.isChecked() & secReferWomen.isShown())
+                    {
+                        if(spnFaci.getSelectedItemPosition()==0)
+                        {
+                            Connection.MessageBox(PregReg.this, "কোথায় রেফার করা হয়েছে  সিলেক্ট করুন।");
+                            spnFaci.requestFocus();
+                            return;
+                        }
+                    }
+                    SQL = "INSERT INTO " + TablePregRefer + " (healthId,pregNo,providerId,referCenter,systemEntryDate,upload) " +
+                            "VALUES (" + "'" + g.getGeneratedId() + "'," + "'" + pregnancyNo + "'," + "'" + g.getProvCode() + "'," + "'" + Global.Left(spnFaci.getSelectedItem().toString(), 2) + "','"+ Global.DateTimeNowYMDHMS() + "','2')";
+                    C.Save(SQL);
+
+                }
+                if(rdoReferWomen1.isChecked() & secReferWomen.isShown())
+                {
+                    if(spnFaci.getSelectedItemPosition()==0)
+                    {
+                        Connection.MessageBox(PregReg.this, "কোথায় রেফার করা হয়েছে  সিলেক্ট করুন।");
+                        spnFaci.requestFocus();
+                        return;
+                    }
+                }
+                    SQL = "Update " + TablePregRefer + " Set ";
+                    SQL += "referCenter = '" + Global.Left(spnFaci.getSelectedItem().toString(), 2) + "',";
+                    SQL += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "'";
+                    SQL += "Where healthId='" + g.getGeneratedId() + "' and pregNo='" + pregnancyNo + "' and providerId='" + g.getProvCode() + "'";
+                    C.Save(SQL);
+
+            }*/
+
+
+            if (IsUserHA()) {
+                g.setCallFrom("HAregis");
+                DataSavePreg();
+            } else {
+                g.setCallFrom("regis");
+                DataSavePreg();
+            }
 
 
         } catch (Exception e) {
             Connection.MessageBox(PregReg.this, e.getMessage());
             return;
         }
+
+
+    }
+
+    private String VisitNumber(String HealthID) {
+        String SQL = "";
+        SQL = "Select (ifnull(max(cast(Visit as int)),0)+1)MaxVisit from ELCOVisit";
+        SQL += " where healthid='" + HealthID + "'";
+
+        String VisitNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
+
+        return VisitNo;
+    }
+
+    private void DisplayReferStatus() {
+        GridView gcount = (GridView) findViewById(R.id.gridRF);
+        g.setImuCode(String.valueOf(gcount.getCount() + 1));
+        ReferStatus();
+    }
+
+    public void ReferStatus() {
+        GridView g1 = (GridView) findViewById(R.id.gridRF);
+        g1.setAdapter(new Refer(this));
+        g1.setNumColumns(6);
+    }
+
+    public class Refer extends BaseAdapter {
+        private Context mContext;
+        String[][] vcode;
+        Integer totalRec;
+
+        public Refer(Context c) {
+            mContext = c;
+        }
+
+        public int getCount() {
+            return Integer.parseInt(C.ReturnSingleValue("Select count(*)total from PregRefer where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + pregnancyNo + "'"));
+        }
+
+        public Object getItem(int position) {
+            return null;
+        }
+
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        public View getView(final int position, View convertView, ViewGroup parent) {
+            View MyView = convertView;
+            if (convertView == null) {
+                LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                MyView = li.inflate(R.layout.tt_item, null);
+
+                //String ServiceId = String.valueOf(vcode[1][position]);
+                String SQL = "Select (case when referCenter='01' then 'UHC' \n" +
+                        "when referCenter='02' then 'UHFWC' \n" +
+                        "when referCenter='03' then 'MCWC' \n" +
+                        "when referCenter='04' then 'DH/GOB Hosp.' \n" +
+                        "when referCenter='05' then 'NGO Clinic/Hosp.' \n" +
+                        "when referCenter='06' then 'Private Clinic/Hosp.' \n" +
+                        "when referCenter='77' then 'Others' \n" +
+                        "else '' end) referCenter,serviceId from PregRefer where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + pregnancyNo + "'";//order by systemEntryDate  asc date(imudate) asc
+
+                try {
+                    Cursor cur = C.ReadData(SQL);
+                    cur.moveToFirst();
+
+                    totalRec = cur.getCount();
+                    vcode = new String[3][totalRec];
+                    int i = 0;
+                    while (!cur.isAfterLast()) {
+                        vcode[0][i] = "রেফার " + String.valueOf(i + 1);//String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
+                        vcode[1][i] = cur.getString(cur.getColumnIndex("referCenter"));
+                        vcode[2][i] = cur.getString(cur.getColumnIndex("serviceId"));
+                        // vcode[3][i]= String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
+
+                        i += 1;
+                        cur.moveToNext();
+                    }
+                    cur.close();
+
+                    Button tv = (Button) MyView.findViewById(R.id.image_name);
+                    tv.setTextSize(14);
+                    if (vcode[0][position] != "") {
+                        tv.setText(vcode[0][position] + "\n" + vcode[1][position]);
+                    }
+
+                    final Integer p = position;
+                    tv.setOnClickListener(new View.OnClickListener() {
+                        public void onClick(View v) {
+                            String ServiceId = String.valueOf(vcode[2][position]);
+                            Cursor cur = C.ReadData("Select (case when referCenter='01' then 'UHC' \n" +
+                                    "when referCenter='02' then 'UHFWC' \n" +
+                                    "when referCenter='03' then 'MCWC' \n" +
+                                    "when referCenter='04' then 'DH/GOB Hosp.' \n" +
+                                    "when referCenter='05' then 'NGO Clinic/Hosp.' \n" +
+                                    "when referCenter='06' then 'Private Clinic/Hosp.' \n" +
+                                    "when referCenter='77' then 'Others' \n" +
+                                    "else '' end) referCenter,serviceId from PregRefer where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + pregnancyNo + "' AND serviceId = '" + ServiceId + "'");//order by systemEntryDate  asc date(imudate) asc
+
+                            cur.moveToFirst();
+
+                            while (!cur.isAfterLast()) {
+                                VlblServiceId.setText(ServiceId);
+
+                                if (vcode[1][position].equals("UHC")) {
+                                    spnFaci.setSelection(1);
+                                    rdoReferWomen1.setChecked(true);
+                                    //rdogrpTTCard.setVisibility(View.VISIBLE);
+                                } else if (vcode[1][position].equals("UHFWC")) {
+                                    spnFaci.setSelection(2);
+                                    rdoReferWomen1.setChecked(true);
+                                } else if (vcode[1][position].equals("MCWC")) {
+                                    spnFaci.setSelection(3);
+                                    rdoReferWomen1.setChecked(true);
+                                } else if (vcode[1][position].equals("DH/GOB Hosp.")) {
+                                    spnFaci.setSelection(4);
+                                    rdoReferWomen1.setChecked(true);
+                                } else if (vcode[1][position].equals("NGO Clinic/Hosp.")) {
+                                    spnFaci.setSelection(5);
+                                    rdoReferWomen1.setChecked(true);
+                                } else if (vcode[1][position].equals("Private Clinic/Hosp.")) {
+                                    spnFaci.setSelection(6);
+                                    rdoReferWomen1.setChecked(true);
+                                } else if (vcode[1][position].equals("Others")) {
+                                    spnFaci.setSelection(7);
+                                    rdoReferWomen1.setChecked(true);
+                                }
+                                //  if(vcode[1][position].length()!=0)
+                                // {
+                                //dtpDOTT1.setText(vcode[1][position]);
+                                // dtpDOTT1.setVisibility(View.VISIBLE);
+                                // btnDOTT1.setVisibility(View.VISIBLE);
+                                // }
+                                //  else
+                                // {
+                                //dtpDOTT1.setText("");
+                                //dtpDOTT1.setVisibility(View.GONE);
+                                //btnDOTT1.setVisibility(View.GONE);
+                                //  }
+
+                                //secTT1.setVisibility(View.VISIBLE);
+                                // btnTTClose.setVisibility(View.VISIBLE);
+                                // btnAddTT.setVisibility(View.GONE);
+                                // btnSaveTT.setVisibility(View.VISIBLE);
+                                //g.setImuCode(vcode[1][position]);
+                                btnSaveRef.setText("Edit");
+                                cur.moveToNext();
+                            }
+                            cur.close();
+
+
+                        }
+                    });
+                } catch (Exception ex) {
+                    Connection.MessageBox(PregReg.this, ex.getMessage());
+                }
+
+            }
+            return MyView;
+        }
+
     }
 
     private Integer ComputeAge(String mon, String yr) {
@@ -1219,38 +2040,11 @@ public class PregReg extends Activity {
                     txtAgeM.setText(String.valueOf(Integer.parseInt(mon) - (yearinmonth * 12)));
 
                 }
-                /*if (Float.parseFloat(mon) > 0) {
-                    totalmonth = totalmonth + Integer.parseInt(mon) / 12;
-                }*/
+
             }
         }
 
 
-    }
-
-    private void DisplayANCVisit() {
-        GridView gcount = (GridView) findViewById(R.id.gridANC);
-        g.setImuCode(String.valueOf(gcount.getCount() + 1));
-        ANCVisits();
-    }
-
-    public void ANCVisits() {
-        GridView g1 = (GridView) findViewById(R.id.gridANC);
-        g1.setAdapter(new ANC(this));
-        g1.setNumColumns(6);
-    }
-
-
-    private void DisplayTempANCVisit(String ExpLMPDate) {
-        GridView gcount = (GridView) findViewById(R.id.gridANCExp);
-        g.setImuCode(String.valueOf(gcount.getCount() + 1));
-        ExpectedANC(ExpLMPDate);
-    }
-
-    public void ExpectedANC(String ExpANCDate) {
-        GridView g1 = (GridView) findViewById(R.id.gridANCExp);
-        g1.setAdapter(new ExpectedANC(this, ExpANCDate));
-        g1.setNumColumns(6);
     }
 
     private void DataSearch(String healthID) {
@@ -1276,10 +2070,11 @@ public class PregReg extends Activity {
         }
     }
 
+
     private void ELCONoSearch(String SNo) {
         try {
             String SQL = "";
-            SQL = "select E.ELCONo as ELCONo from ELCO E Where E.healthId='" + g.getHealthID() + "'";
+            SQL = "select E.ELCONo as ELCONo from ELCO E Where E.healthId='" + g.getGeneratedId() + "'";
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
             while (!cur.isAfterLast()) {
@@ -1293,51 +2088,84 @@ public class PregReg extends Activity {
         }
     }
 
+    private String GetCurrentPregNoFromAncService(String pregNo) {
+        String SQL = "select (ifnull(max(pregNo),0))pregno from ancService";
+        SQL += " Where HealthId='" + g.getGeneratedId() + "' AND pregNo = '" + pregNo + "'";
+        String Val = String.valueOf(C.ReturnSingleValue(SQL));
+        return Val;
+        /*String Val = String.valueOf(C.ReturnSingleValue(SQL));
+        if (Val.equalsIgnoreCase("")) {
+            return "0";
+        } else
+            return Val;*/
+
+    }
+
     private void PregWomenSearch() {
         try {
             String SQL = "";
-            /*SQL = "select LMP,EDD,gravida,lastChildAge from PregWomen";
-            SQL += " Where HealthId='"+ g.getHealthID() +"' and pregNo= '"+ SNo +"' and pregNo=(select '0'||cast(max(pregNo) as string) from PregWomen";
-            SQL += " Where HealthId='"+ g.getHealthID() +"' and pregNo= '"+ SNo +"'))";*/
+            txtLiveSonDau.setText(GetTotalSonGaughter(g.getGeneratedId()));
 
-            SQL = "select LMP,EDD,gravida,lastChildAge, pregNo AS pregNo from PregWomen";
-            SQL += " Where HealthId='" + g.getHealthID() + "' and pregNo = (select '0'||cast(max(pregNo) as string) FROM PregWomen  WHERE HealthId= + '" + g.getHealthID() + "')";
 
+            SQL = "select referCenter from PregRefer";
+            SQL += " Where HealthId='" + g.getGeneratedId() + "' and pregNo = '" + pregnancyNo + "'";
 
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
-            secANCVisit.setVisibility(View.GONE);
             while (!cur.isAfterLast()) {
 
-                dtpLMP.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("LMP"))));
-                dtpEDD.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("EDD"))));
-                spnPgn.setSelection(Integer.parseInt(cur.getString(cur.getColumnIndex("gravida"))));
+                spnFaci.setSelection(Global.SpinnerItemPosition(spnFaci, 2, cur.getString(cur.getColumnIndex("referCenter"))));
+                btnSaveRef.setText("Add");
+                // DisplayAge(cur.getString(cur.getColumnIndex("lastChildAge")));
 
-                DisplayAge(cur.getString(cur.getColumnIndex("lastChildAge")));
-
-                String PGNNo = PregMaxPGNNo();
-                secANCVisit.setVisibility(View.VISIBLE);
-                String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableANC, g.getHealthID(), PGNNo);
-                if (!C.Existence(sq))
-                {
+                String sq = String.format("Select healthId, pregNo from %s where healthId = '%s' and pregNo = '%s'", TableANC, g.getGeneratedId(), g.getPregNo());
+                if (!C.Existence(sq)) {
                     secPregVisit.setVisibility(View.VISIBLE);
 
-                }
-                else
-                {
+                } else {
                     secPregVisit.setVisibility(View.GONE);
                 }
 
                 cur.moveToNext();
             }
-            txtLiveSonDau.setText(GetTotalSonGaughter(g.getHealthID()));
+
             cur.close();
+
         } catch (Exception e) {
             Log.e("Error from pregwoman", e.getMessage());
             Connection.MessageBox(PregReg.this, e.getMessage());
             return;
         }
     }
+
+    private void PregWomenLastChildSearch() {
+        try {
+            String SQL = "";
+
+
+            SQL = "select lastChildAge from pregWomen";
+            SQL += " Where HealthId='" + g.getGeneratedId() + "' and pregNo = '" + pregnancyNo + "'";
+
+            Cursor cur = C.ReadData(SQL);
+            cur.moveToFirst();
+            while (!cur.isAfterLast()) {
+
+
+                DisplayAge(cur.getString(cur.getColumnIndex("lastChildAge")));
+
+
+                cur.moveToNext();
+            }
+
+            cur.close();
+
+        } catch (Exception e) {
+            Log.e("Error from pregwoman", e.getMessage());
+            Connection.MessageBox(PregReg.this, e.getMessage());
+            return;
+        }
+    }
+
 
     protected Dialog onCreateDialog(int id) {
         final Calendar c = Calendar.getInstance();
@@ -1370,15 +2198,6 @@ public class PregReg extends Activity {
 
             } else if (VariableID.equals("btnVDate")) {
                 dtpDate = (EditText) findViewById(R.id.dtpVDate);
-                /*Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
-                dtpDate = (EditText) findViewById(R.id.dtpVDate);
-                if(DiffLMP_VD>=224) {
-                    secMiso.setVisibility(View.VISIBLE);
-                    }
-                else
-                {
-                    secMiso.setVisibility(View.GONE);
-                }*/
             }
 
 
@@ -1388,63 +2207,52 @@ public class PregReg extends Activity {
                     .append(mYear));
 
             dtpEDD.setText(Global.addDays(dtpLMP.getText().toString(), 280));
-            Integer DiffLMP_VD =  Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
-            Integer DiffDNow_VD =  Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
-            if(DiffLMP_VD>=224)
-            {
-                secMiso.setVisibility(View.VISIBLE);
-            }
-            else
-            {
-                secMiso.setVisibility(View.GONE);
-            }
+            //comments Integer DiffLMP_VD = Global.DateDifferenceDays(dtpVDate.getText().toString(), dtpLMP.getText().toString());
+            Integer DiffDNow_VD = Global.DateDifferenceDays(Global.DateNowDMY(), dtpLMP.getText().toString());
+            Integer DiffDNow_OC = Global.DateDifferenceDays(dtpLMP.getText().toString(), GetMaxOutComeDate());
 
-            try
-            {
+//comments
+            /*if (DiffLMP_VD >= 224) {
+                secMiso.setVisibility(View.VISIBLE);
+            } else {
+                secMiso.setVisibility(View.GONE);
+            }*/
+
+            try {
                 SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
                 String formattedDate = sdf.format(c.getTime());
-                String PrevAncVisit="'" + GetMaxANCDate()=="0"?"":GetMaxANCDate() + "";// '"+  GetMaxANCDate()==0?"":GetMaxANCDate()) +"'";
+                String PrevAncVisit = "'" + GetMaxANCDate() == "0" ? "" : GetMaxANCDate() + "";// '"+  GetMaxANCDate()==0?"":GetMaxANCDate()) +"'";
                 //Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
                 Date date1 = sdf.parse(formattedDate);
-                Date date4 = sdf.parse(dtpVDate.getText().toString());
+                //comments Date date4 = sdf.parse(dtpVDate.getText().toString());
                 Date date5 = sdf.parse(dtpLMP.getText().toString());
-                Date date2 = sdf.parse(dtpVDate.getText().toString());
+                //comments Date date2 = sdf.parse(dtpVDate.getText().toString());
 
-                String DOB=GetDOB(g.getHealthID());
-                Integer DobAge =  Global.DateDifferenceYears(dtpLMP.getText().toString(),Global.DateConvertDMY(DOB.toString()));
-                if(date4.after(date1))
-                {
-                    if (VariableID.equals("btnVDate"))
-                    {
-                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                String DOB = GetDOB(g.getGeneratedId());
+                Integer DobAge = Global.DateDifferenceYears(dtpLMP.getText().toString(), Global.DateConvertDMY(DOB.toString()));
+                //comments
+               /* if (date4.after(date1)) {
+                    if (VariableID.equals("btnVDate")) {
+                        Connection.MessageBox(PregReg.this, "ভিজিটের  তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                } else if (date4.before(date5)) {
+                    if (VariableID.equals("btnVDate")) {
+                        Connection.MessageBox(PregReg.this, "ভিজিটের  তারিখ শেষ মাসিকের তারিখ এবং সিস্টেমের তারিখের মধ্যে হবে");
+                    }
+                    //dtpVDate.setText(null);
+                    dtpVDate.requestFocus();
+                } else if (DiffLMP_VD >= 300) {
+                    if (VariableID.equals("btnVDate")) {
+                        Connection.MessageBox(PregReg.this, "ভিজিটের  তারিখ শেষ মাসিকের তারিখ থেকে ৩০০ দিনের বেশি হতে পারে না।");
                     }
                     //dtpVDate.setText(null);
                     dtpVDate.requestFocus();
                 }
-                else if(date4.before(date5))
-                {
-                    if (VariableID.equals("btnVDate"))
-                    {
-                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ এবং সিস্টেমের তারিখের মধ্যে হবে");
-                    }
-                    //dtpVDate.setText(null);
-                    dtpVDate.requestFocus();
-                }
-                else if(DiffLMP_VD>=300)
-                {
-                    if (VariableID.equals("btnVDate"))
-                    {
-                        Connection.MessageBox(PregReg.this,"ভিজিটের  তারিখ শেষ মাসিকের তারিখ থেকে ৩০০ দিনের বেশি হতে পারে না।");
-                    }
-                    //dtpVDate.setText(null);
-                    dtpVDate.requestFocus();
-                }
-                if(PrevAncVisit.equalsIgnoreCase("0"))
-                {
+                if (PrevAncVisit.equalsIgnoreCase("0")) {
 
-                }
-                else
-                {
+                } else {
                     Date MaxAncVisitDate = sdf.parse(Global.DateConvertDMY(PrevAncVisit));
                     if (date4.before(MaxAncVisitDate)) {
                         if (VariableID.equals("btnVDate")) {
@@ -1453,57 +2261,52 @@ public class PregReg extends Activity {
                         //dtpVDate.setText(null);
                         dtpVDate.requestFocus();
                     }
-                }
+                }*/
 
-                if(date5.after(date1))
-                {
-                    if (VariableID.equals("btnLMP"))
-                    {
-                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
+                if (date5.after(date1)) {
+                    if (VariableID.equals("btnLMP")) {
+                        Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ আজকের তারিখ অপেক্ষা বড় হবে না");
                     }
                     //dtpLMP.setText(null);
                     dtpLMP.requestFocus();
 
                     //return;
-                }
-                else if(date5.equals(date1))
-                {
-                    if (VariableID.equals("btnLMP"))
-                    {
-                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
+                } else if (date5.equals(date1)) {
+                    if (VariableID.equals("btnLMP")) {
+                        Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ আজকের তারিখ সমান হবে না");
                     }
                     //dtpLMP.setText(null);
                     dtpLMP.requestFocus();
-                }
-                else if(DiffDNow_VD<=29)
-                {
-                    if (VariableID.equals("btnLMP"))
-                    {
-                        Connection.MessageBox(PregReg.this,"শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
+                } else if (DiffDNow_VD <= 29) {
+                    if (VariableID.equals("btnLMP")) {
+                        Connection.MessageBox(PregReg.this, "শেষ মাসিকের তারিখ ৩০ দিনের কম হবে না");
                     }
                     //dtpLMP.setText(null);
                     dtpLMP.requestFocus();
-                }
-                else if(DobAge<12)
-                {
-                    if (VariableID.equals("btnLMP"))
-                    {
-                        Connection.MessageBox(PregReg.this,"মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
+                } else if (DobAge < 12) {
+                    if (VariableID.equals("btnLMP")) {
+                        Connection.MessageBox(PregReg.this, "মহিলার বয়স ১২ বছরের বেশি হতে হবে ");
                     }
-                    //dtpVDate.setText(null);
-                    dtpVDate.requestFocus();
+
+                    //comments dtpVDate.requestFocus();
                 }
 
 
-            }
-            catch(ParseException ex)
-            {
+              /* if (DiffDNow_OC<730)
+               {
+                   chkDengersine4.setChecked(true);
+               }
+                else
+               {
+
+               }*/
+
+            } catch (ParseException ex) {
                 ex.printStackTrace();
             }
 
 
-
-}
+        }
     };
     private TimePickerDialog.OnTimeSetListener timePickerListener = new TimePickerDialog.OnTimeSetListener() {
         public void onTimeSet(TimePicker view, int selectedHour, int selectedMinute) {
@@ -1529,7 +2332,7 @@ public class PregReg extends Activity {
         public int getCount() {
 
 
-            return Integer.parseInt("4");//C.ReturnSingleValue("Select count(*)total from Immunization where healthid='"+ g.getHealthID() +"'"));
+            return Integer.parseInt("4");//C.ReturnSingleValue("Select count(*)total from Immunization where healthid='"+ g.getGeneratedId() +"'"));
         }
 
         public Object getItem(int position) {
@@ -1541,7 +2344,6 @@ public class PregReg extends Activity {
         }
 
 
-
         @Override
         public View getView(final int position, View convertView, ViewGroup parent) {
             View MyView = convertView;
@@ -1549,7 +2351,7 @@ public class PregReg extends Activity {
                 LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 MyView = li.inflate(R.layout.anc_item, null);
 
-                // String SQL  = "Select imucode as imucode,imudate as imudate,imuCard as imucard from Immunization where healthid='"+ g.getHealthID() +"' order by cast(imudate as date) desc";
+                // String SQL  = "Select imucode as imucode,imudate as imudate,imuCard as imucard from Immunization where healthid='"+ g.getGeneratedId() +"' order by cast(imudate as date) desc";
 
                 try {
                     //Cursor cur = C.ReadData(SQL);
@@ -1562,10 +2364,15 @@ public class PregReg extends Activity {
                     //{
                     //dtpEDD.setText(Global.addDays(dtpLMP.getText().toString(), 280));
 
-                    vcode[0][0] = "পরিদর্শন 1 " + Global.addDays(dtpLMP.getText().toString(), 120);
+                    /*vcode[0][0] = "পরিদর্শন 1 " + Global.addDays(dtpLMP.getText().toString(), 120);
                     vcode[0][1] = "পরিদর্শন 2 " + Global.addDays(dtpLMP.getText().toString(), 180);
                     vcode[0][2] = "পরিদর্শন 3 " + Global.addDays(dtpLMP.getText().toString(), 240);
                     vcode[0][3] = "পরিদর্শন 4 " + Global.addDays(dtpLMP.getText().toString(), 270);
+                    */
+                    vcode[0][0] = "পরিদর্শন 1 " + Global.addDays(dtpLMP.getText().toString(), 106) + "                           হতে                         " + Global.addDays(dtpLMP.getText().toString(), 112);
+                    vcode[0][1] = "পরিদর্শন 2 " + Global.addDays(dtpLMP.getText().toString(), 162) + "                                   হতে                         " + Global.addDays(dtpLMP.getText().toString(), 196);
+                    vcode[0][2] = "পরিদর্শন 3 " + Global.addDays(dtpLMP.getText().toString(), 218) + "                                            হতে                         " + Global.addDays(dtpLMP.getText().toString(), 224);
+                    vcode[0][3] = "পরিদর্শন 4 " + Global.addDays(dtpLMP.getText().toString(), 246) + "                                                     হতে                         " + Global.addDays(dtpLMP.getText().toString(), 252);
                     //+ String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
                     // vcode[1][i]= "ANC 2 - "+ Global.DateConvertYMD(dtpLMP.getText().toString());//cur.getString(cur.getColumnIndex("imudate"));
                     //vcode[2][i]= "ANC 3 - "+ Global.DateConvertYMD(dtpLMP.getText().toString());//cur.getString(cur.getColumnIndex("imucard"));

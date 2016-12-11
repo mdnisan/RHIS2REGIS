@@ -8,8 +8,8 @@
 	<LinearLayout android:layout_marginTop="5sp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
 			<Button  android:background="@drawable/button_style"
 		        android:id="@+id/image_name"
-		        android:layout_width="150sp"
+		        android:layout_width="144sp"
 		        android:layout_height="80sp"
-		        android:layout_gravity="left"/>
+		        android:layout_gravity="left" android:paddingRight="2sp" android:layout_marginRight="2sp"/>
     </LinearLayout>
 </LinearLayout>

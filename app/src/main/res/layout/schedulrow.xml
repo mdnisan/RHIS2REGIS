@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollbars="vertical">
+    <LinearLayout android:id="@+id/secListRow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+       <!-- <Button android:id="@+id/cmdB1" android:layout_width="120dp" android:background="#ffd866"
+            android:layout_height="30sp" android:textSize="14px" android:text="সিলেক্ট করুন"/>-->
+        <Button  android:id="@+id/cmdB1"
+            android:text="সিলেক্ট করুন"
+            android:layout_width="130sp"
+            android:background="@drawable/button_style"
+            android:textSize="20sp"
+            android:gravity="center"
+            android:layout_column="12"
+            android:layout_height="50sp"
+            android:layout_marginTop="10sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="0sp"
+            />
+
+        <!--<TextView android:text=" " android:layout_width="20dp" android:gravity="center" android:layout_height="wrap_content"/>-->
+
+        <!--  <TextView android:id="@+id/IdNo" android:layout_width="60dp" android:gravity="center" android:layout_height="wrap_content"/> -->
+      <!--  <TextView android:id="@+id/SlNo" android:layout_width="50dp" android:gravity="center" android:layout_height="wrap_content"/>-->
+<!--        <TextView android:id="@+id/subblock" android:layout_width="200sp" android:gravity="center" android:layout_height="wrap_content"/>-->
+        <TextView android:id="@+id/epidate" android:layout_width="240sp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/epicenter" android:layout_width="250sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</LinearLayout>

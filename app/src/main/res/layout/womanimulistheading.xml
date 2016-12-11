@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical" android:layout_width="fill_parent"
+ android:layout_height="fill_parent" 
+     android:paddingTop="5dp"
+    android:paddingBottom="5dp" android:background="#D7D7D7">
+    		<TableLayout
+				android:id="@+id/memtab"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent" android:layout_marginRight="10sp">
+
+				<TableRow>
+					<TextView
+						android:layout_width="10sp"
+						android:layout_height="wrap_content"
+						android:text=""
+						android:textSize="20sp" />
+
+					<TextView
+						android:layout_width="120sp"
+						android:layout_height="wrap_content"
+						android:text="টিকার নাম "
+						android:textSize="20sp" />
+
+					<TextView
+						android:layout_width="60sp"
+						android:layout_height="wrap_content"
+						android:text="ডোজ "
+						android:textSize="20sp" />
+
+					<TextView
+						android:layout_width="180sp"
+						android:layout_height="wrap_content"
+						android:text="যে তারিখে দিতে হবে"
+						android:textSize="20sp" />
+					<TextView
+						android:layout_width="200sp"
+						android:layout_height="wrap_content"
+						android:text="যে তারিখে দেয়া হয়েছে"
+						android:textSize="20sp" />
+					<TextView
+						android:layout_width="30sp"
+						android:layout_height="wrap_content"
+						android:text=""
+						android:textSize="20sp" />
+
+				</TableRow>  				
+		</TableLayout>  
+ </RelativeLayout>
+ 

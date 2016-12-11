@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TableLayout
+        android:id="@+id/memtab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <TableRow   android:id="@+id/memtabrow">
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_width="20sp"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/HealthID"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="1" android:textSize="16sp"
+                android:layout_height="40sp"/>
+
+
+
+            <TextView  android:id="@+id/name" android:text="কিশোরী/ মহিলার নাম" android:textSize="18sp"
+                android:layout_width="160sp"
+                android:gravity="left"
+                android:layout_column="4"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/elcono" android:text="দম্পতি নং (বিবাহিত মহিলাদের জন্য প্রযোজ্য)"
+                android:textSize="18sp"
+                android:layout_width="140sp"
+                android:gravity="center"
+                android:layout_column="13"
+                android:layout_height="40sp"/>
+
+
+            <TextView android:id="@+id/dob" android:text="জন্ম তারিখ" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="6"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/mname" android:text="মাতার নাম" android:textSize="18sp"
+                android:layout_width="160sp"
+                android:gravity="left"
+                android:layout_column="7"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/fname" android:text="পিতার নাম" android:textSize="18sp"
+                android:layout_width="170sp"
+                android:gravity="left"
+                android:layout_column="8"
+                android:layout_height="40sp"/>
+
+            <TextView  android:id="@+id/regno"  android:text="রেজিঃ নং" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="left"
+                android:layout_column="2"
+                android:layout_height="40sp"/>
+
+            <TextView  android:id="@+id/regdate"  android:text="রেজিঃ তারিখ" android:textSize="18sp"
+                android:layout_width="140sp"
+                android:gravity="left"
+                android:layout_column="3"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/oname" android:text="অভিভাবকের নাম" android:textSize="18sp"
+                android:layout_width="150sp"
+                android:gravity="left"
+                android:layout_column="9"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/vill" android:text="গ্রাম/ পাড়া/ মহল্লা" android:textSize="18sp"
+                android:layout_width="140sp"
+                android:gravity="center"
+                android:layout_column="10"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/mobile" android:text="মোবাইল নম্বর" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="11"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/bari" android:text="বাড়ি/জি আর/ হোল্ডিং নম্বর" android:textSize="18sp"
+                android:layout_width="160sp"
+                android:gravity="center"
+                android:layout_column="12"
+                android:layout_height="40sp"/>
+
+
+            <TextView android:id="@+id/tt1" android:text="টিটি ১" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="18"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/tt2" android:text="টিটি ২" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="19"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/tt3" android:text="টিটি ৩" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="20"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/tt4" android:text="টিটি ৪" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="21"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/tt5" android:text="টিটি ৫" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="22"
+                android:layout_height="40sp" />
+
+            <TextView  android:id="@+id/remarks" android:text="মন্তব্য" android:textSize="18sp"
+                android:layout_width="300sp"
+                android:gravity="center"
+                android:layout_column="36"
+                android:layout_height="40sp" />
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
+ 

@@ -1,0 +1,649 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:isScrollContainer="true"
+        android:overScrollMode="always"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="0sp"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:id="@+id/seclblH1"
+                style="@style/rowHeading"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblHlblH"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/lblHealthID"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Health ID  "
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtHealthID"
+                    style="@style/customEdit"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+
+
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="#81F7BE">
+
+       <!-- <LinearLayout
+            android:id="@+id/secPNCChH2"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"  android:background="#FF3300">
+
+
+            <TextView
+                android:id="@+id/lblPNCCh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FF3300"
+                android:textColor="#FFFFCC"
+                android:textSize="16sp"
+                android:text="শিশুকে সবগুলো টিকা দেয়ার জন্য কমপক্ষে ৬ বার টিকা কেন্দ্রে নিয়ে আসতে হবে"
+                 />
+        </LinearLayout>-->
+
+        <ScrollView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:isScrollContainer="true"
+            android:overScrollMode="always"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical"
+            android:fillViewport="false">
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:isScrollContainer="true"
+            android:overScrollMode="always"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="0sp"
+                android:orientation="vertical"
+                android:scrollbars="vertical">
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+            <LinearLayout
+                style="@style/rowStyleEpi"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:background="#81F7BE"
+                android:gravity="center_vertical">
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:text="টিকার ডোজ "
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:background="@drawable/bangladesh_govt_logo"
+                    />
+                <TextView
+                    android:layout_width="250sp"
+                    android:layout_height="50sp"
+                    android:text="ইপিআই টিকা দান কার্ড (কিশোরি/ মহিলা)"
+                    android:textSize="20sp"
+                    android:gravity="center" android:layout_marginLeft="70sp"
+                    android:layout_marginRight="30sp"
+                    />
+                <ImageView
+                    android:layout_width="100sp"
+                    android:layout_height="100sp"
+                    android:text="টিকার ডোজ "
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:background="@drawable/epi_child_image"
+
+                    />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+                <LinearLayout
+
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:id="@+id/rowparent"
+                    android:background="@drawable/borderlayout" >
+
+
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="40sp"
+                        android:text="টিকার ডোজ "
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView
+                        android:layout_width="251sp"
+                        android:layout_height="wrap_content"
+                        android:text="টিকা শুরু করার সঠিক বয়স"
+                        android:textSize="16sp"  android:gravity="center"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+                    <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="টিকা পাওয়ার তারিখ"
+                        android:textSize="16sp"
+                        android:gravity="center"
+                        android:layout_marginRight="5sp" />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="wrap_content"
+                        android:text="টিকা প্রদানের তারিখ"
+                        android:gravity="center"
+                        android:textSize="16sp"
+
+                        android:layout_marginLeft="0sp"
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+
+
+                <LinearLayout
+                    android:id="@+id/row1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/borderlayout_withoutbottom" >
+
+                    <TextView android:id="@+id/row1imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row1imuName"
+                        android:layout_width="119sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:text="টিটি - ১"
+                        android:layout_height="20sp" android:paddingLeft="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+                    <TextView android:textSize="16sp"
+                        android:layout_width="240sp"
+                        android:gravity="left"
+                        android:layout_column="2"
+
+                        android:layout_height="20sp"
+                        android:text="১৫ বছর বয়স হলেই" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row1expdt"  android:textSize="16sp"
+                        android:layout_width="95sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+
+                        android:layout_height="50sp"
+                        android:text="" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <Button android:id="@+id/row1firsttime"
+                        android:textSize="16sp"
+                        android:layout_width="110sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:background="@drawable/button_style"
+                        android:layout_height="50sp"
+                        android:text="..."
+                        android:layout_marginLeft="5sp"
+                        android:paddingRight="2sp"
+
+                        />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+                <LinearLayout
+                    android:id="@+id/row2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/borderlayout_withoutbottom">
+
+
+                    <TextView android:id="@+id/row2imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row2imuName"
+                        android:layout_width="119sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content"   android:paddingLeft="5sp" android:text="টিটি - ২"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:textSize="16sp"
+                        android:layout_width="240sp"
+                        android:gravity="left"
+                        android:layout_column="2"
+                        android:layout_height="20sp"
+                        android:text="টিটি -১ পাওয়ার কমপক্ষে ২৮ দিন পর"
+                        android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row2expdt"  android:textSize="16sp"
+                        android:layout_width="95sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+
+                        android:layout_height="30sp"
+                        android:text="" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                   <Button android:id="@+id/row2secondtime"
+                       android:textSize="16sp"
+                        android:layout_width="110sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"
+                       android:text="..."
+                       android:background="@drawable/button_style"
+                       android:layout_marginLeft="5sp"
+                       android:paddingRight="2sp"
+                       />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+                <LinearLayout
+                    android:id="@+id/row3" android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/borderlayout_withoutbottom">
+
+                    <TextView android:id="@+id/row3imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row3imuName"
+                        android:layout_width="119sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:paddingLeft="5sp" android:text="টিটি - ৩" />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:textSize="16sp"
+                        android:layout_width="240sp"
+                        android:gravity="left"
+                        android:layout_column="2"
+                        android:layout_height="30sp"
+                        android:text="টিটি -২ পাওয়ার কমপক্ষে ৬ মাস পর"
+                        android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row3expdt"  android:textSize="16sp"
+                        android:layout_width="95sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+
+                        android:layout_height="50sp"
+                        android:text="" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <Button android:id="@+id/row3thirdtime"  android:textSize="16sp"
+                        android:layout_width="110sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..."
+                        android:background="@drawable/button_style"
+                        android:layout_marginLeft="5sp"
+                        android:paddingRight="2sp"
+                        />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+                <LinearLayout
+                    android:id="@+id/row4"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/borderlayout_withoutbottom">
+
+                    <TextView android:id="@+id/row4imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row4imuName"
+                        android:layout_width="119sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content"
+                        android:text="টিটি - ৪" android:paddingLeft="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:textSize="16sp"
+                        android:layout_width="240sp"
+                        android:gravity="left"
+                        android:layout_column="2"
+                        android:layout_height="30sp"
+                        android:text="টিটি -৩ পাওয়ার কমপক্ষে ১ বছর পর"
+                        android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp" />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row4expdt"  android:textSize="16sp"
+                        android:layout_width="95sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+
+                        android:layout_height="30sp"
+                        android:text="" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <Button android:id="@+id/row4fourthtime"  android:textSize="16sp"
+                        android:layout_width="110sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"
+                        android:background="@drawable/button_style"
+                        android:text="..."
+                        android:layout_marginLeft="5sp"
+                        android:paddingRight="2sp"
+                        />
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                </LinearLayout>
+
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+                <LinearLayout
+                    android:id="@+id/row5"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="@drawable/borderlayout_withoutbottom">
+
+                    <TextView android:id="@+id/row5imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content"
+                        android:visibility="invisible"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row5imuName"
+                        android:layout_width="119sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="টিটি - ৫" android:paddingLeft="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row1text"  android:textSize="16sp"
+                        android:layout_width="240sp"
+                        android:gravity="left"
+                        android:layout_column="2"
+                        android:layout_height="30sp"
+                        android:text="টিটি -৪ পাওয়ার কমপক্ষে ১ বছর পর"
+                        android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <TextView android:id="@+id/row5expdt"  android:textSize="16sp"
+                        android:layout_width="95sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+
+                        android:layout_height="30sp"
+                        android:text="" android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"/>
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+                    <Button android:id="@+id/row5fifthtime"  android:textSize="16sp"
+                        android:layout_width="110sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..."
+                        android:background="@drawable/button_style"
+                        android:layout_marginLeft="5sp"
+                        android:paddingRight="2sp"
+                        />
+
+                    <View
+                        android:layout_width="1dip"
+                        android:layout_height="50dip"
+                        android:background="@drawable/border_right" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+            <LinearLayout
+                android:id="@+id/row8"
+                style="@style/rowStyleEpi"
+                android:layout_width="fill_parent"
+                android:layout_height="50sp"
+                android:orientation="horizontal"  android:gravity="center"
+                android:background="#81F7BE">
+
+                <TextView
+                    android:id="@+id/lblfooter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FF3300"
+                    android:textColor="#FFFFCC"
+                    android:textSize="16sp"
+                    android:layout_gravity="center"
+
+                    android:text="সম্প্রসারিত টিকাদান কর্মসূচি (ইপিআই), স্বাস্থ্য অধিদপ্তর স্বাস্থ্য ও পরিবার কল্যান মন্ত্রনালয়"
+                    />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#424242" />
+
+                <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="horizontal">
+
+
+
+                    <LinearLayout android:id="@+id/linearLayout3"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" android:layout_width="wrap_content">
+
+                        <Button android:text="Close" android:gravity="center"
+                            android:textSize="20sp" android:id="@+id/Cancel"
+                            android:layout_width="150sp"
+                            android:layout_height="50sp"
+                            android:background="@drawable/button_style"></Button>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </HorizontalScrollView>
+</ScrollView>
+    </LinearLayout>
+</LinearLayout>

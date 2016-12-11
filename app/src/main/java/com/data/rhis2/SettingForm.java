@@ -1,6 +1,7 @@
 package com.data.rhis2;
 
-import android.app.*;
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -10,96 +11,227 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import org.ksoap2.SoapEnvelope;
-import org.ksoap2.serialization.SoapObject;
-import org.ksoap2.serialization.SoapSerializationEnvelope;
-import org.ksoap2.transport.HttpTransportSE;
-
-import java.util.Arrays;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
 
-import Common.*;
-import DataService.SyncRebuildDatabase;
-import DataService.SyncReceiver;
+import Common.Connection;
+import Common.Global;
 
 public class SettingForm extends Activity {
-   Connection C;
+    Connection C;
+    Global g;
     //private ProgressDialog dialog;
-   
-public void onCreate(Bundle savedInstanceState) {
+
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-  try
-    {
-        setContentView(R.layout.devicesetting);
-        C = new Connection(this);
+        try {
+            setContentView(R.layout.devicesetting);
+            C = new Connection(this);
+            g = Global.getInstance();
 
-        final Spinner spnDist     = (Spinner)findViewById(R.id.spnDist);
-        SpinnerItem(spnDist, "Select ZILLAID+'-'+ZILLANAME from Zilla");
+            final Spinner spnDist = (Spinner) findViewById(R.id.spnDist);
+            SpinnerItem(spnDist, "SELECT (\"ZILLAID\" ||'-'||  \"ZILLANAMEENG\") AS Zilla FROM \"Zilla\"");
 
-        final Spinner spnUpz      = (Spinner)findViewById(R.id.spnUpz);
-        final Spinner spnUN       = (Spinner)findViewById(R.id.spnUN);
-        final Spinner spnProvider      = (Spinner)findViewById(R.id.spnProvider);
-        SpinnerItem(spnProvider, "select ProvType+'-'+TypeName from ProviderType");
-
-        /*List<String> listProv = new ArrayList<String>();
-        listProv.add("01-FWA");
-        listProv.add("02-HA");
-        ArrayAdapter<String> adptrProv= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listProv);
-        spnProvider.setAdapter(adptrProv);
-        */
-
-        final TextView txtProviderCode = (TextView)findViewById(R.id.txtProviderCode);
-
-        spnDist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                SpinnerItem(spnUpz, "select UPAZILAID+'-'+UPAZILANAME from upazila where zillaid='" + Global.Left(spnDist.getSelectedItem().toString(), 2) + "'");
-            }
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
-
-        spnUpz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                SpinnerItem(spnUN,"select UNIONID +'-'+UNIONNAME from unions where zillaid='"+ Global.Left(spnDist.getSelectedItem().toString(),2) +"' and UPAZILAID='"+ Global.Left(spnUpz.getSelectedItem().toString(),2) +"'");
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
-        });
+            final Spinner spnUpz = (Spinner) findViewById(R.id.spnUpz);
+            final Spinner spnUN = (Spinner) findViewById(R.id.spnUN);
+            final Spinner spnProvider = (Spinner) findViewById(R.id.spnProvider);
+            final Spinner spnProviderCode = (Spinner) findViewById(R.id.spnProviderCode);
 
 
-        Button cmdSave = (Button)findViewById(R.id.cmdSave);
-       	cmdSave.setOnClickListener(new View.OnClickListener() {
-       	    public void onClick(View arg0) {
-                try {
+            spnDist.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    String[] zid = spnDist.getSelectedItem().toString().split("-");
+                    SpinnerItem(spnUpz, "select \"UPAZILAID\"||'-'||\"UPAZILANAME\" from \"Upazila\" where \"ZILLAID\"='" + zid[0] + "'");
+                }
 
-                    String SQLStr = "";
-                    SQLStr = "Select zillaid from ProviderDB where";
-                    SQLStr += " zillaid='" + Global.Left(spnDist.getSelectedItem().toString(), 2) + "' and";
-                    SQLStr += " upazilaid='" + Global.Left(spnUpz.getSelectedItem().toString(), 2) + "' and";
-                    SQLStr += " unionid='" + Global.Left(spnUN.getSelectedItem().toString(), 2) + "' and";
-                    SQLStr += " provtype='" + Global.Left(spnProvider.getSelectedItem().toString(),2) + "' and";
-                    SQLStr += " provcode='" + txtProviderCode.getText().toString() + "' and";
-                    SQLStr += " active='1' and DeviceSetting='1'";
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+            });
 
-                    String AreaCode = C.ReturnResult("Existence", SQLStr);
-                    if (AreaCode.equals("2")) {
-                        Connection.MessageBox(SettingForm.this, "This is not a valid information for device setting or information not available for this provider.");
-                        return;
+            spnUpz.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    String[] zid = spnDist.getSelectedItem().toString().split("-");
+                    String[] upid = spnUpz.getSelectedItem().toString().split("-");
+                    SpinnerItem(spnUN, "select \"UNIONID\" ||'-'||\"UNIONNAME\" from \"Unions\" where \"ZILLAID\"='" + zid[0] + "' and \"UPAZILAID\"='" + upid[0] + "'");
+                }
+
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+            });
+
+            SpinnerItem(spnProvider, "select \"ProvType\" ||'-'||\"TypeName\" from \"ProviderType\"");
+
+            spnProvider.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+                @Override
+                public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                    if (spnProvider.getSelectedItemPosition() > 0) {
+                        String[] zid = spnDist.getSelectedItem().toString().split("-");
+                        String[] upid = spnUpz.getSelectedItem().toString().split("-");
+                        String[] uid = spnUN.getSelectedItem().toString().split("-");
+                        String[] ptype = spnProvider.getSelectedItem().toString().split("-");
+
+                     /*   String SQLStr = "Select cast(ProvCode as varchar(6))||'-'||ProvName from ProviderDB Where ";
+                        SQLStr += " ZillaId='" + zid[0] + "' and";
+                        SQLStr += " Upazilaid='" + upid[0] + "' and";
+                        SQLStr += " Unionid='" + uid[0] + "' and";
+                        SQLStr += " ProvType='" + ptype[0] + "' and";
+                        SQLStr += " Active='1'";*/
+                        //  String SQLStr = "Select DISTINCT \"supervisorCode\"||'-'||\"supervisorName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"supervisorType\"='" + ptype[0] + "' and \"Active\"='1'";
+
+                        String SQLStr = "Select DISTINCT \"ProvCode\"||'-'||\"ProvName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"ProvType\"='" + ptype[0] + "' and \"Active\"='1'";
+                        SpinnerItem(spnProviderCode, SQLStr);
                     }
+                }
 
+                @Override
+                public void onNothingSelected(AdapterView<?> parentView) {
+                    // your code here
+                }
+
+            });
+/*
+        final ProgressDialog progDailog = ProgressDialog.show(SettingForm.this, "", "অপেক্ষা করুন. . .", true);
+        new Thread() {
+            public void run() {
+                try {
+                    C.RebuildDatabase(Global.Left(spnDist.getSelectedItem().toString(), 2), Global.Left(spnUpz.getSelectedItem().toString(), 2), Global.Left(spnUN.getSelectedItem().toString(), 2), Global.Left(spnProvider.getSelectedItem().toString(),2), PCode[0]);
+                } catch (Exception e) {
+
+                }
+                progDailog.dismiss();
+            }
+        }.start();
+*/
+
+            Button cmdSave = (Button) findViewById(R.id.cmdSave);
+            cmdSave.setOnClickListener(new View.OnClickListener() {
+                public void onClick(View arg0) {
+                    try {
+
+                        String SQLStr = "";
+
+                        String prType = "";
+                        final String[] PCode = Connection.split(spnProviderCode.getSelectedItem().toString(), '-');
+
+                        final String[] zid = spnDist.getSelectedItem().toString().split("-");
+                        final String[] upid = spnUpz.getSelectedItem().toString().split("-");
+                        final String[] uid = spnUN.getSelectedItem().toString().split("-");
+                        final String[] ptype = spnProvider.getSelectedItem().toString().split("-");
+
+                        //String SQLStr = "Select DISTINCT \"ProvCode\"||'-'||\"ProvName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"ProvType\"='" + ptype[0] + "' and \"Active\"='1'";
+
+                        /*SQLStr = "Select zillaid from ProviderDB where";
+                        SQLStr += " zillaid='" + zid[0] + "' and";
+                        SQLStr += " upazilaid='" + upid[0] + "' and";
+                        SQLStr += " unionid='" + uid[0] + "' and";
+                        SQLStr += " provtype='" + ptype[0] + "' and";
+                        SQLStr += " provcode='" + PCode[0] + "' and";
+                        SQLStr += " active='1' and DeviceSetting='1'";
+*/
+                        if (ptype[0].equals("10")) {
+                            prType = "3";
+
+                        } else if (ptype[0].equals("11")) {
+                            prType = "2";
+
+                        } else if (ptype[0].equals("12")) {
+                            prType = "11";
+
+
+                        }
+                        if (ptype[0].equals("12")) {
+                            SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                    "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+                        } else if (ptype[0].equals("10")) {
+                            SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                    "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+                        }
+
+                        else if (ptype[0].equals("11")) {
+                            SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                    "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+                        }
+                        else {
+                            SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                    "' and unionid='" + uid[0] + "' and \"ProvType\"='" + prType + "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+                        }
+                        /*SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                "' and unionid='" + uid[0] + "' and \"ProvType\"='" + prType+ "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+*/
+                       /*
+                          SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                "' and unionid='" + uid[0] + "' and \"ProvType\"='" + 3 + "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+
+
+                       Select * from "ProviderDB" where zillaid='93' and upazilaid='9' and unionid='11'
+                        and "ProvType"='3' and "supervisorCode"='93041' and "Active"='1' and "DeviceSetting"='1'
+                                */
+                        String AreaCode = C.DataStringJSON(SQLStr);
+                        if (AreaCode.equals("2")) {
+                            Connection.MessageBox(SettingForm.this, "This is not a valid information for device setting or information not available for this provider.");
+                            return;
+                        }
+
+                        /*String AreaCode = C.ReturnResult("Existence", SQLStr);
+                        if (AreaCode.equals("2")) {
+                            Connection.MessageBox(SettingForm.this, "This is not a valid information for device setting or information not available for this provider.");
+                            return;
+                        }*/
+
+                        String ResponseString = "Status:";
+
+                        final ProgressDialog progDailog = ProgressDialog.show(
+                                SettingForm.this, "", "অপেক্ষা করুন. . .", true);
+
+                        new Thread() {
+                            public void run() {
+                                try {
+                                    String prType = "";
+                                    if (ptype[0].equals("10")) {
+                                        prType = "3";
+
+                                    } else if (ptype[0].equals("11")) {
+                                        prType = "2";
+
+                                    } else if (ptype[0].equals("12")) {
+                                        prType = "11";
+
+                                    }
+
+                                    if (ptype[0].equals("12")) {
+                                        C.RebuildDatabaseHI(zid[0], upid[0], uid[0], prType, PCode[0], ptype[0]);
+
+                                    } else {
+                                        C.RebuildDatabase(zid[0], upid[0], uid[0], prType, PCode[0], ptype[0]);
+                                    }
+                                } catch (Exception e) {
+
+                                }
+                                progDailog.dismiss();
+
+                                //Call Login Form
+                                finish();
+                                Intent f1 = new Intent(getApplicationContext(), LoginActivity.class);
+                                startActivity(f1);
+
+
+                            }
+                        }.start();
+
+
+                    /*
                     //Rebuild database
                     C.RebuildDatabase(Global.Left(spnDist.getSelectedItem().toString(), 2), Global.Left(spnUpz.getSelectedItem().toString(), 2), Global.Left(spnUN.getSelectedItem().toString(), 2), Global.Left(spnProvider.getSelectedItem().toString(),2), txtProviderCode.getText().toString());
 
@@ -110,33 +242,29 @@ public void onCreate(Bundle savedInstanceState) {
                     finish();
                     Intent f1 = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(f1);
+                    */
+                    } catch (Exception ex) {
+                        Connection.MessageBox(SettingForm.this, ex.getMessage());
+                        return;
+                    }
                 }
-                catch(Exception ex)
-                {
-                    Connection.MessageBox(SettingForm.this,ex.getMessage());
-                    return;
-                }
-       	    }
-       	});   
-    }
-    catch(Exception ex)
-    {
-    	Connection.MessageBox(SettingForm.this, ex.getMessage());
-    	return;
+            });
+        } catch (Exception ex) {
+            Connection.MessageBox(SettingForm.this, ex.getMessage());
+            return;
+        }
+
+
     }
 
-
- }
-
-    private void SpinnerItem(Spinner SpinnerName,String SQL)
-    {
+    private void SpinnerItem(Spinner SpinnerName, String SQL) {
         List<String> listItem = new ArrayList<String>();
-        listItem = AreaList(SQL);
-        ArrayAdapter<String> adptrList= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listItem);
+        listItem = C.DataListJSON(SQL);
+        ArrayAdapter<String> adptrList = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listItem);
         SpinnerName.setAdapter(adptrList);
     }
 
-    private List<String> AreaList(String SQL)
+/*    private List<String> AreaList(String SQL)
     {
         String DataArray[] = null;
         DownloaAreadData d = new DownloaAreadData();
@@ -155,9 +283,9 @@ public void onCreate(Bundle savedInstanceState) {
         List<String> stringList = new ArrayList<String>(Arrays.asList(DataArray));
 
         return stringList;
-    }
+    }*/
 
-    public class DownloaAreadData extends AsyncTask<String, Void, String[]> {
+/*    public class DownloaAreadData extends AsyncTask<String, Void, String[]> {
         String Response = "";
         private Context context;
         private ProgressDialog dialog;
@@ -170,9 +298,9 @@ public void onCreate(Bundle savedInstanceState) {
         public String Method_Name;
         public String SQLStr;
 
-        public String WSDL_TARGET_NAMESPACE = Global.Namespace;
+        *//*public String WSDL_TARGET_NAMESPACE = Global.Namespace;
         public String SOAP_ACTION = Global.Namespace+Method_Name;
-        public String SOAP_ADDRESS =Global.Soap_Address;
+        public String SOAP_ADDRESS =Global.Soap_Address;*//*
 
         String[] Data=null;
 
@@ -222,7 +350,7 @@ public void onCreate(Bundle savedInstanceState) {
             dialog.dismiss();
         }
 
-    }
+    }*/
 
 
     private class DataSyncTask extends AsyncTask<String, String, Void> {
@@ -230,7 +358,7 @@ public void onCreate(Bundle savedInstanceState) {
         private Context context;
         private ProgressDialog dialog;
 
-        public void setContext(Context contextf){
+        public void setContext(Context contextf) {
             context = contextf;
         }
 
@@ -247,9 +375,10 @@ public void onCreate(Bundle savedInstanceState) {
 
         protected void onProgressUpdate(String... progress) {
             dialog.setProgress(Integer.parseInt(progress[0]));
-            publishProgress(progress);
+            //publishProgress(progress);
 
         }
+
         /**
          * This is where YOU do YOUR work. There's nothing for me to write here
          * you have to fill this in. Make your HTTP request(s) or whatever it is
@@ -275,7 +404,7 @@ public void onCreate(Bundle savedInstanceState) {
             }*/
 
             //Rebuild database
-            C.RebuildDatabase(P[0], P[1], P[2], P[3], P[4]);
+            C.RebuildDatabase(P[0], P[1], P[2], P[3], P[4], P[5]);
 
             //Response = "done";
 
@@ -291,8 +420,7 @@ public void onCreate(Bundle savedInstanceState) {
     }
 
     @Override
-    public void onDestroy()
-    {
+    public void onDestroy() {
         // TODO Auto-generated method stub
         super.onDestroy();
         //dialog.dismiss();

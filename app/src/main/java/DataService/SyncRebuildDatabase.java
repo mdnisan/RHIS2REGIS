@@ -76,7 +76,7 @@ public class SyncRebuildDatabase extends Service
 
             //Rebuild database
             if(Response.length()==0)
-                C.RebuildDatabase(P[0], P[1], P[2], P[3], P[4]);
+                C.RebuildDatabase(P[0], P[1], P[2], P[3], P[4], P[5]);
 
             Response = "done";
 

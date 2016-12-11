@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!--<item android:id="@+id/menuReport" android:title=" Report"  android:showAsAction="ifRoom|withText"/>
-        <item android:id="@+id/menuSearch" android:title=" Search"  android:showAsAction="ifRoom|withText"/>-->
-    <item android:id="@+id/menuSearch" android:icon="@drawable/search" android:title=" অনুসন্ধান" android:showAsAction="ifRoom|withText"/>
+<!--<item android:id="@+id/menuarea" android:title=" Download Area"   android:showAsAction="ifRoom|withText"/>-->
+    <!--<item android:id="@+id/menuSearch" android:title=" Search"  android:showAsAction="ifRoom|withText"/>-->
+<!--    <item android:id="@+id/menuarea" android:icon="@drawable/addpeople" android:title=" Download Area" android:showAsAction="ifRoom|withText"/>-->
+    <item android:id="@+id/menuaddpeople" android:icon="@drawable/addpeople" android:title=" Download Provider Data" android:showAsAction="ifRoom|withText"/>
+   <!-- <item android:id="@+id/menuSearch" android:icon="@drawable/search" android:title=" অনুসন্ধান" android:showAsAction="ifRoom|withText"/>-->
     <item android:id="@+id/menuSync" android:title=" Data Sync" android:showAsAction="ifRoom|withText"/>
+
+  <!--  <item android:id="@+id/menuNrcEntry" android:title=" NRC Entry" android:icon="@drawable/add" android:showAsAction="withText"/>-->
+<!--
+<item android:id="@+id/menuReport" android:title="তালিকা" android:icon="@drawable/document" android:showAsAction="ifRoom|withText"/>
+-->
     <item android:id="@+id/menuExit" android:title=" Exit" android:icon="@drawable/exit1" android:showAsAction="ifRoom|withText"/>
 </menu>

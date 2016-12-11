@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical"><LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+
+
+
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secS10" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+                <TextView android:id="@+id/lblHS10" android:text="চাহিদা" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp"/>
+            </LinearLayout>
+           <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+-->
+            <LinearLayout android:id="@+id/secSlNo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView android:id="@+id/lblSlNo" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <TextView android:id="@+id/VlblSlNo" android:text="Request Id" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <EditText android:id="@+id/txtSlNo" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+            </LinearLayout>
+
+         <!--   <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+-->
+            <LinearLayout android:id="@+id/secReq" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView android:id="@+id/lblReq" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                 <TextView android:id="@+id/VlblReqName" android:text="Request by Name" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <TextView android:id="@+id/txtReqName" android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" android:background="#D7D7D7" />
+            </LinearLayout>
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secReqToCode" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView android:id="@+id/lblReqToCode" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <TextView android:id="@+id/VlblReqToCode" android:text="অনুরোধ কারির কোড " android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+              <EditText android:id="@+id/txtReqToCode" android:maxLength="5" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+                <!-- <Spinner android:id="@+id/spnOrg" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secItem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView android:id="@+id/lblItem" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <TextView android:id="@+id/VlblItem" android:text="আইটেমের নাম" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <Spinner android:id="@+id/spnItem" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+            </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+    <LinearLayout android:id="@+id/secItemUnit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblItemUnit" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblItemUnit" android:text="ইউনিট" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/txtItemUnit" android:maxLength="50" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" android:background="#D7D7D7" />
+       <!-- <Spinner android:id="@+id/spnItemUnit" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+    </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secRequestQty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView android:id="@+id/lblRequestQty" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <TextView android:id="@+id/VlblRequestQty" android:text=" পরিমান" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <EditText android:id="@+id/txtRequestQty" android:maxLength="4" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+                 </LinearLayout>
+
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+    <LinearLayout android:id="@+id/secRemarks" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblRemarks" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblRemarks" android:text="মন্তব্য" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtRemarks" android:maxLength="100" android:layout_width="300sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+    </LinearLayout>
+
+
+
+
+    <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+        <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content"
+            android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+
+
+  </LinearLayout>
+    <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:id="@+id/secListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstData"
+                android:layout_width="match_parent"
+                android:layout_height="600sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+    </HorizontalScrollView>
+</LinearLayout>
+</ScrollView>

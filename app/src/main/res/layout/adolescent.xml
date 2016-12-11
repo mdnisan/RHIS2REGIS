@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+        <LinearLayout android:id="@+id/seclblH1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+          <!--  <TextView android:id="@+id/lblHlblH" android:text="কিশোর-কিশোরীর স্বাস্থ্য সেবাদান ছক " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+       -->  <TextView android:id="@+id/lblHealthID" android:text="Health ID  " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp"  android:gravity="left" />
+            <TextView android:id="@+id/txtHealthID" android:maxLength="20" android:background="#D7D7D7" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp"  android:textSize="20sp" android:gravity="center" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secSl" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+            <TextView android:id="@+id/VlblSNo" android:text="ক্রমিক নং" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" />
+            <TextView android:id="@+id/txtSNo" android:maxLength="2" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" android:background="#D7D7D7" />
+            <TextView android:text="খানা নং" android:layout_width="150sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" android:gravity="right"/>
+            <TextView android:id="@+id/txtHHNo" android:maxLength="10" android:layout_width="100sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" android:background="#D7D7D7" />
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+
+        <LinearLayout android:id="@+id/secElcoNo" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+             <TextView android:id="@+id/VlblElcoNo" android:text="দম্পতি নং" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" />
+            <TextView android:id="@+id/txtElcoNo" android:maxLength="5" android:layout_width="100sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" android:background="#D7D7D7" />
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+            <TextView android:id="@+id/VlblName" android:text="নাম" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/txtName" android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" android:background="#D7D7D7" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secAge" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+            <TextView android:id="@+id/VlblAge" android:text="বয়স " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/txtAge" android:maxLength="2" android:layout_width="50sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" android:background="#D7D7D7" />
+             <TextView android:id="@+id/VlblAge1" android:text="" android:layout_width="80sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblSex" android:text="পুরুষ/মহিলা" android:layout_width="120sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#000000" />
+            <TextView android:id="@+id/txtSex" android:maxLength="5" android:layout_width="100sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" android:background="#D7D7D7" />
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secVisitCom" style="@style/rowStyle0" android:layout_width="fill_parent"  android:layout_height="wrap_content" android:layout_marginTop="20sp" android:background="#FFFFFF"  android:orientation="horizontal" android:paddingTop="10sp">
+            <TextView android:id="@+id/VlblVisitCom" android:text="পূর্বের ভিজিট " android:layout_width="170sp"  android:textColor="#00B7FB" android:layout_height="wrap_content" android:textSize="20sp" />
+
+        </LinearLayout>
+  <!--      <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />-->
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal" android:layout_marginBottom="10sp">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <GridView
+                android:id="@+id/gridPVisit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="5sp"
+                android:numColumns="auto_fit"
+                android:scrollbars="horizontal"
+                android:stretchMode="columnWidth" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secVDate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+            <TextView android:id="@+id/lblVDate" android:text="পরিদর্শনের তারিখ" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/dtpVDate" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+            <ImageButton android:id="@+id/btnVDate" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
+            <Button android:id="@+id/cmdTVisit" android:layout_width="200sp" android:layout_height="wrap_content"
+                android:textSize="16sp" android:text="সর্ব মোট  সম্পন্ন ভিজিট:  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+
+        </LinearLayout>
+      <LinearLayout android:id="@+id/secSy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowHeading" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkSy"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="অসুবিধা  " android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        //General Assessment
+ <LinearLayout  android:id="@+id/secAGO2MGA"   android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="10sp"    android:layout_height="wrap_content" android:scrollbars="vertical">-->
+
+            <LinearLayout android:id="@+id/secGeA1" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode1" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA1"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA1" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode2" android:visibility="invisible"  android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA2"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA2" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA2" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode3" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA3"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA3" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode4" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA4"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA4" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+
+            <LinearLayout android:id="@+id/secGeA3" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode5" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA5"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA5" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode6" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA6"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA6" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA4" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode7" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA7"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA7" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode8" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA8"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA8" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA5" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode9" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA9"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA9" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode10" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA10"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA10" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA6" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode11" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA11"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA11" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode12" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA12"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA12" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA7" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode13" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA13"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA13" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VGeACode14" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA14"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA14" android:text="" android:layout_width="200sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            </LinearLayout>
+
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secGeA77" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                <TextView android:id="@+id/VGeACode77" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+                <CheckBox android:id="@+id/chkGeA77"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView  android:id="@+id/VGeA77" android:text="" android:layout_width="100sp" android:gravity="left" android:layout_height="wrap_content"/>
+                <TextView android:id="@+id/VlblOther" android:text="অসুবিধা লিখুন"  android:layout_width="150sp" android:layout_height="wrap_content" android:textSize="20sp" />
+                <EditText android:id="@+id/txtOther" android:maxLength="50" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
+
+            </LinearLayout>
+
+
+     <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+     <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+     <LinearLayout android:id="@+id/secRefer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+         <TextView android:id="@+id/VlblRefer" android:text="কোথায় রেফার হয়েছে" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+         <Spinner android:id="@+id/spnRefer" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+     </LinearLayout>
+     <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+     <LinearLayout android:id="@+id/secRefer1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+           <TextView android:id="@+id/VlblOther1" android:text="কোথায় রেফার হয়েছে লিখুন"  android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+         <EditText android:id="@+id/txtOther1" android:maxLength="50" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
+
+     </LinearLayout>
+      </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secSy1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowHeading" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkSy1"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+            <TextView android:text="কাউন্সেলিং সমূহ " android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout  android:id="@+id/secCoun"   android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="10sp"    android:layout_height="wrap_content" android:scrollbars="vertical">-->
+
+        <LinearLayout android:id="@+id/secGeA15" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:id="@+id/VGeACode15" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkGeA15"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView  android:id="@+id/VGeA15" android:text=" " android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secGeA16" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+                 <TextView android:id="@+id/VGeACode16" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkGeA16"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView  android:id="@+id/VGeA16" android:text="" android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secGeA17" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:id="@+id/VGeACode17" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkGeA17"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView  android:id="@+id/VGeA17" android:text=" " android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secGeA18" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+
+    <TextView android:id="@+id/VGeACode18" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+        <CheckBox android:id="@+id/chkGeA18"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+        <TextView  android:id="@+id/VGeA18" android:text="" android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+    </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secGeA19" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:id="@+id/VGeACode19" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkGeA19"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView  android:id="@+id/VGeA19" android:text="" android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secGeA20" android:layout_width="fill_parent" android:layout_height="60sp" android:orientation="horizontal"  android:paddingTop="5px" android:paddingBottom="5px">
+           <TextView android:id="@+id/VGeACode20" android:visibility="invisible" android:text="" android:layout_width="30dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkGeA20"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView  android:id="@+id/VGeA20" android:text="  " android:layout_width="450sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+    </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secRemarks" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+            <TextView android:id="@+id/VlblRemarks" android:text="মন্তব্য"  android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtRemarks" android:maxLength="50" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="left" />
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content"
+                android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
+

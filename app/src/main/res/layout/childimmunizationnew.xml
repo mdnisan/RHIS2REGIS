@@ -1,0 +1,857 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:isScrollContainer="true"
+        android:overScrollMode="always"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbarStyle="outsideInset"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10sp"
+            android:layout_marginRight="0sp"
+            android:orientation="vertical"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:id="@+id/seclblH1"
+                style="@style/rowHeading"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblHlblH"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/lblHealthID"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="Health ID  "
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/txtHealthID"
+                    style="@style/customEdit"
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:gravity="center"
+                    android:inputType="text"
+                    android:maxLength="20"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        style="@style/rowStyleEpi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="#FFFF99"
+        android:gravity="center_vertical">
+        <ImageView
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:text="টিকার ডোজ "
+            android:textSize="16sp"
+            android:gravity="center"
+            android:background="@drawable/bangladesh_govt_logo"
+            />
+        <TextView
+            android:layout_width="250sp"
+            android:layout_height="50sp"
+            android:text="ইপিআই টিকা দান কার্ড (শিশু)"
+            android:textSize="20sp"
+            android:gravity="center" android:layout_marginLeft="70sp"
+            android:layout_marginRight="30sp"
+            />
+        <ImageView
+            android:layout_width="100sp"
+            android:layout_height="100sp"
+            android:text="টিকার ডোজ "
+            android:textSize="16sp"
+            android:gravity="center"
+            android:background="@drawable/epi_child_image"
+
+            />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" android:background="#FFFF99">
+
+
+        <LinearLayout
+            android:id="@+id/secPNCChH2"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"  android:background="#FF3300">
+
+
+            <TextView
+                android:id="@+id/lblPNCCh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FF3300"
+                android:textColor="#FFFFCC"
+                android:textSize="16sp"
+                android:text="শিশুকে সবগুলো টিকা দেয়ার জন্য কমপক্ষে ৬ বার টিকা কেন্দ্রে নিয়ে আসতে হবে"
+                 />
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:isScrollContainer="true"
+            android:overScrollMode="always"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="vertical">
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:isScrollContainer="true"
+            android:overScrollMode="always"
+            android:scrollbarAlwaysDrawVerticalTrack="true"
+            android:scrollbarStyle="outsideInset"
+            android:scrollbars="horizontal">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="0sp"
+                android:orientation="vertical"
+                android:scrollbars="vertical">
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+            <LinearLayout
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" android:background="#FFFF99">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="টিকা প্রদানের তারিখ"
+                    android:textSize="16sp"
+                    android:gravity="center"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+                <LinearLayout
+                    style="@style/rowStyle0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/rowparent"  android:background="#FFFF99">
+
+
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="wrap_content"
+                        android:text="টিকার নাম "
+                        android:textSize="16sp" android:gravity="left" />
+
+                    <TextView
+                        android:layout_width="95sp"
+                        android:layout_height="wrap_content"
+                        android:text="১ম বার"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text="২য় বার"
+                        android:textSize="16sp"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text="৩য় বার"
+                        android:textSize="16sp" android:layout_marginLeft="5sp" android:layout_marginRight="5sp"  />
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text="৪র্থ বার"
+                        android:textSize="16sp"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text="৫ম বার"
+                        android:textSize="16sp"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="wrap_content"
+                        android:text="৬ষ্ঠ বার"
+                        android:textSize="16sp"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="30sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp" />
+
+
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dip"
+                        android:background="#00B7FB" />
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+                <LinearLayout
+                    style="@style/rowStyle0"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:id="@+id/rowdate"  android:background="#FFFF99">
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp" android:gravity="left" />
+
+                    <TextView
+                        android:layout_width="95sp"
+                        android:layout_height="wrap_content"
+                        android:text="১ম বার"
+                        android:textSize="16sp" android:id="@+id/col1date" />
+
+                    <TextView
+                        android:layout_width="100sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:layout_marginLeft="5sp"
+                        android:layout_marginRight="5sp"
+                        android:id="@+id/col2date"/>
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp" android:id="@+id/col3date"
+                        android:layout_marginLeft="5sp" android:layout_marginRight="5sp"  />
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp"
+                        android:id="@+id/col4date"
+                        android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="90sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp"  android:id="@+id/col5date" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="120sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp" android:id="@+id/col6date"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <TextView
+                        android:layout_width="30sp"
+                        android:layout_height="wrap_content"
+                        android:text=""
+                        android:textSize="16sp" />
+
+
+
+                    <View
+                        android:layout_width="fill_parent"
+                        android:layout_height="1dip"
+                        android:background="#00B7FB" />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row1"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:paddingRight="5sp"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row1imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row1imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:text="বিসিজি"
+                        android:layout_height="wrap_content"/>
+
+                    <Button android:id="@+id/row1firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:background="@drawable/button_style"
+                        android:layout_height="50sp"
+                        android:text="..." android:layout_marginLeft="5sp" android:layout_marginRight="5sp"/>
+
+                    <Button android:id="@+id/row1secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row1thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp" android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row1fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp" android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row1fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"  android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row1sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp" android:background="#707070"
+                        android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row2"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+
+                    <TextView android:id="@+id/row2imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row2imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content"   android:text="পেন্টাভ্যালেন্ট"/>
+
+                    <Button android:id="@+id/row2firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"  android:text="..."  android:background="@drawable/button_style"
+                        android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row2secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"   android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row2thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"   android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row2fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row2fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row2sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row3"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row3imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row3imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="ওপিভি" />
+
+                    <Button android:id="@+id/row3firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"   android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row3secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row3thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row3fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row3fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row3sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row4"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row4imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row4imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="পিসিভি"/>
+
+                    <Button android:id="@+id/row4firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row4secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row4thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="" android:background="#707070"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row4fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="@drawable/button_style" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row4fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row4sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row5"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row5imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row5imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="আইপিভি"/>
+
+                    <Button android:id="@+id/row5firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row5secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row5thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row5fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row5fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row5sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row6"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row6imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row6imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="এমআর (হাম ও রুবেলা)"/>
+
+                    <Button android:id="@+id/row6firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row6secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row6thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row6fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row6fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="@drawable/button_style" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row6sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="" android:background="#707070"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout
+                    android:id="@+id/row7"
+                    style="@style/rowStyleEpi"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"  android:background="#FFFF99">
+
+                    <TextView android:id="@+id/row7imuCode"
+                        android:layout_width="1sp"
+                        android:gravity="center"
+                        android:layout_column="0" android:textSize="16sp"
+                        android:layout_height="wrap_content" android:visibility="invisible"/>
+
+                    <TextView android:id="@+id/row7imuName"
+                        android:layout_width="120sp"
+                        android:gravity="left" android:textSize="16sp"
+                        android:layout_column="1"
+                        android:layout_height="wrap_content" android:text="হাম/এমআর (২য় ডোজ)"/>
+
+                    <Button android:id="@+id/row7firsttime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row7secondtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+                    <Button android:id="@+id/row7thirdtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row7fourthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="2"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row7fifthtime" android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="3"
+                        android:layout_height="50sp"   android:background="#707070" android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+                    <Button android:id="@+id/row7sixthtime"  android:textSize="16sp"
+                        android:layout_width="90sp"
+                        android:gravity="center"
+                        android:layout_column="4"
+                        android:layout_height="50sp"  android:text="..." android:background="@drawable/button_style"  android:layout_marginLeft="5sp" android:layout_marginRight="5sp" />
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/row8"
+                style="@style/rowStyleEpi"
+                android:layout_width="fill_parent"
+                android:layout_height="90sp"
+                android:orientation="horizontal"  android:background="#FFFF99">
+
+                <TextView
+                    android:id="@+id/lblfooter"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#FF3300"
+                    android:textColor="#FFFFCC"
+                    android:textSize="16sp"
+                    android:text="টিকা দেয়ার পর যে কোন সমস্যা/অসুবিধা হলে সাথে সাথে স্বাস্থ্যকর্মী কে খবর দিন । প্রয়োজনে শিশুকে নিকটস্থ স্বাস্থ্য কেন্দ্রে নিয়ে আসুন।"
+                    />
+                </LinearLayout>
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dip"
+                    android:background="#CCCCCC" />
+
+                <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal">
+<!--
+                    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:gravity="center" android:layout_width="match_parent">
+
+                        <TextView
+                            android:id="@+id/lblfooter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#FF3300"
+                            android:textColor="#FFFFCC"
+                            android:text="টিকা দেয়ার পর যে কোন সমস্যা/অসুবিধা হলে সাথে সাথে স্বাস্থ্যকর্মী কে খবর দিন । প্রয়োজনে শিশুকে নিকটস্থ স্বাস্থ্য কেন্দ্রে নিয়ে আসুন।"
+
+                            android:textSize="23sp" />
+                    </LinearLayout>-->
+
+
+                    <LinearLayout android:id="@+id/linearLayout3"
+                        android:layout_height="wrap_content"
+                        android:gravity="center" android:layout_width="wrap_content">
+
+                        <Button android:text="Close" android:gravity="center" android:textSize="20sp" android:id="@+id/Cancel"
+                            android:layout_width="150sp"
+                            android:layout_height="50sp"
+                            android:background="@drawable/button_style"></Button>
+                    </LinearLayout>
+                </LinearLayout>
+
+
+
+
+
+
+            </LinearLayout>
+        </HorizontalScrollView>
+</ScrollView>
+
+        <!--
+        <TextView
+                        android:id="@+id/lblfooter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#FF3300"
+                        android:textColor="#FFFFCC"
+                        android:text="টিকা দেয়ার পর যে কোন সমস্যা/অসুবিধা হলে সাথে সাথে স্বাস্থ্যকর্মী কে খবর দিন । প্রয়োজনে শিশুকে নিকটস্থ স্বাস্থ্য কেন্দ্রে নিয়ে আসুন।"
+
+                        android:textSize="23sp" />
+
+
+                        <LinearLayout
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal"
+             android:paddingTop="20sp">
+
+             <Button
+                 android:id="@+id/cmdSave"
+                 android:layout_width="200sp"
+                 android:layout_height="wrap_content"
+                 android:layout_marginBottom="10sp"
+                 android:background="@drawable/button_style"
+                 android:text=" Save  "
+                 android:textSize="16sp" />
+         </LinearLayout>
+ -->
+    </LinearLayout>
+</LinearLayout>

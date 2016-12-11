@@ -15,21 +15,15 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import Common.Connection;
 import Common.Global;
@@ -38,20 +32,23 @@ import Common.Global;
  * Created by ccah on 14/05/2015.
  */
 public class ELCOPreVisits extends Activity {
-    boolean netwoekAvailable=false;
+    boolean netwoekAvailable = false;
     Location currentLocation;
-    double currentLatitude,currentLongitude;
+    double currentLatitude, currentLongitude;
     Location currentLocationNet;
-    double currentLatitudeNet,currentLongitudeNet;
+    double currentLatitudeNet, currentLongitudeNet;
+
     //Disabled Back/Home key
     //--------------------------------------------------------------------------------------------------
     @Override
-    public boolean onKeyDown(int iKeyCode, KeyEvent event)
-    {
-        if(iKeyCode == KeyEvent.KEYCODE_BACK || iKeyCode == KeyEvent.KEYCODE_HOME)
-        { return false; }
-        else { return true;  }
+    public boolean onKeyDown(int iKeyCode, KeyEvent event) {
+        if (iKeyCode == KeyEvent.KEYCODE_BACK || iKeyCode == KeyEvent.KEYCODE_HOME) {
+            return false;
+        } else {
+            return true;
+        }
     }
+
     //Top menu
     //--------------------------------------------------------------------------------------------------
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -59,24 +56,27 @@ public class ELCOPreVisits extends Activity {
         inflater.inflate(R.menu.mnuclose, menu);
         return true;
     }
+
     public boolean onOptionsItemSelected(MenuItem item) {
         AlertDialog.Builder adb = new AlertDialog.Builder(ELCOPreVisits.this);
         switch (item.getItemId()) {
             case R.id.menuClose:
                 adb.setTitle("Close");
                 adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান[Yes/No]?");
-                adb.setNegativeButton("No", null);
-                adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
+                adb.setNegativeButton("না", null);
+                adb.setPositiveButton("হাঁ", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
-                        Intent f2 = new Intent(getApplicationContext(),ELCOForm.class);
+                        Intent f2 = new Intent(getApplicationContext(), ELCOForm.class);
                         startActivity(f2);
-                    }});
+                    }
+                });
                 adb.show();
                 return true;
         }
         return false;
     }
+
     String VariableID;
     private int hour;
     private int minute;
@@ -100,8 +100,7 @@ public class ELCOPreVisits extends Activity {
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        try
-        {
+        try {
             setContentView(R.layout.elcoprevisit);
             C = new Connection(this);
             g = Global.getInstance();
@@ -111,156 +110,123 @@ public class ELCOPreVisits extends Activity {
             list.addHeaderView(header);
 
             TableNameELCOVisit = "ELCOVisit";
-            DataSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo() );
+            DataSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo());
 
-        }
-        catch(Exception  e)
-        {
+        } catch (Exception e) {
             Connection.MessageBox(ELCOPreVisits.this, e.getMessage());
             return;
         }
     }
 
-    private void DataSearch(String Dist, String Upz, String UN, String Mouza, String Vill, String HHNo, String SNo)
-    {
-        try
-        {
+    private void DataSearch(String Dist, String Upz, String UN, String Mouza, String Vill, String HHNo, String SNo) {
+        try {
 
-            Cursor cur = C.ReadData("Select * from "+ TableNameELCOVisit +"  Where Dist='"+ Dist +"' and Upz='"+ Upz +"' and UN='"+ UN +"' and Mouza='"+ Mouza +"' and Vill='"+ Vill +"' and HHNo='"+ HHNo +"' and SNo='"+ SNo +"'");
+            Cursor cur = C.ReadData("Select * from " + TableNameELCOVisit + "  Where Dist='" + Dist + "' and Upz='" + Upz + "' and UN='" + UN + "' and Mouza='" + Mouza + "' and Vill='" + Vill + "' and HHNo='" + HHNo + "' and SNo='" + SNo + "'");
             cur.moveToFirst();
             dataList.clear();
-            while(!cur.isAfterLast())
-            {
+            while (!cur.isAfterLast()) {
                 HashMap<String, String> map = new HashMap<String, String>();
-                ListView list = (ListView)findViewById(R.id.lstData);
+                ListView list = (ListView) findViewById(R.id.lstData);
 
 
                 map.put("Visit", cur.getString(cur.getColumnIndex("Visit")));
                 map.put("VDate", cur.getString(cur.getColumnIndex("VDate")));
                 //map.put("VisitStatus", cur.getString(cur.getColumnIndex("VisitStatus")));
-                if(cur.getString(cur.getColumnIndex("VisitStatus")).equals("1"))
-                {
-                    map.put("VisitStatus","উপস্থিত");
-                }
-                else if(cur.getString(cur.getColumnIndex("VisitStatus")).equals("2"))
-                {
-                    map.put("VisitStatus","অনুপস্থিত");
+                if (cur.getString(cur.getColumnIndex("VisitStatus")).equals("1")) {
+                    map.put("VisitStatus", "উপস্থিত");
+                } else if (cur.getString(cur.getColumnIndex("VisitStatus")).equals("2")) {
+                    map.put("VisitStatus", "অনুপস্থিত");
                 }
                 //map.put("CurrStatus", cur.getString(cur.getColumnIndex("CurrStatus")));
-                if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("01"))
-                {
-                    map.put("CurrStatus","খাবার বড়ি");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("02"))
-                {
-                    map.put("CurrStatus","কনডম");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("03"))
-                {
-                    map.put("CurrStatus","ইনজেকটেবল");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("04"))
-                {
-                    map.put("CurrStatus","আই ইউ ডি");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("05"))
-                {
-                    map.put("CurrStatus","ইমপ্যান্ট");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("06"))
-                {
-                    map.put("CurrStatus","স্থায়ী পদ্ধতি(পুরুষ)");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("07"))
-                {
-                    map.put("CurrStatus","স্থায়ী পদ্ধতি(মহিলা)");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("08"))
-                {
-                    map.put("CurrStatus","ইসিপি");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("09"))
-                {
-                    map.put("CurrStatus","মিসোপ্রোস্টোল");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("10"))
-                {
-                    map.put("CurrStatus","পার্শ্ব-প্রতিক্রিয়ার জন্য প্রেরন ");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("11"))
-                {
-                    map.put("CurrStatus","পদ্ধতির জন্য প্রেরন");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("12"))
-                {
-                    map.put("CurrStatus","গর্ভবতী");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("13"))
-                {
-                    map.put("CurrStatus","জীবিত জন্ম");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("14"))
-                {
-                    map.put("CurrStatus","গর্ভ খালাস (জীবিত জন্ম ছাড়া)");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("15"))
-                {
-                    map.put("CurrStatus","জরায়ু অপারেশন করে অপসারন");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("16"))
-                {
-                    map.put("CurrStatus","স্বামী বিদেশ থাকলে ");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("17"))
-                {
-                    map.put("CurrStatus","বন্ধ্যাত্ব বিষয়ক তথ্য ");
-                }
-                else if(cur.getString(cur.getColumnIndex("CurrStatus")).equals("18"))
-                {
-                    map.put("CurrStatus","অন্য যে কোন অবস্থা ");
+                if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("01")) {
+                    map.put("CurrStatus", "খাবার বড়ি");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("02")) {
+                    map.put("CurrStatus", "কনডম");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("03")) {
+                    map.put("CurrStatus", "ইনজেকটেবল");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("04")) {
+                    map.put("CurrStatus", "আই ইউ ডি");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("05")) {
+                    map.put("CurrStatus", "ইমপ্যান্ট");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("06")) {
+                    map.put("CurrStatus", "স্থায়ী পদ্ধতি(পুরুষ)");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("07")) {
+                    map.put("CurrStatus", "স্থায়ী পদ্ধতি(মহিলা)");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("08")) {
+                    map.put("CurrStatus", "ইসিপি");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("09")) {
+                    map.put("CurrStatus", "মিসোপ্রোস্টোল");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("10")) {
+                    map.put("CurrStatus", "পার্শ্ব-প্রতিক্রিয়ার জন্য প্রেরন ");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("11")) {
+                    map.put("CurrStatus", "পদ্ধতির জন্য প্রেরন");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("12")) {
+                    map.put("CurrStatus", "গর্ভবতী");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("13")) {
+                    map.put("CurrStatus", "জীবিত জন্ম");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("14")) {
+                    map.put("CurrStatus", "গর্ভ খালাস (জীবিত জন্ম ছাড়া)");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("15")) {
+                    map.put("CurrStatus", "জরায়ু অপারেশন করে অপসারন");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("16")) {
+                    map.put("CurrStatus", "স্বামী বিদেশ থাকলে ");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("17")) {
+                    map.put("CurrStatus", "বন্ধ্যাত্ব বিষয়ক তথ্য ");
+                } else if (cur.getString(cur.getColumnIndex("CurrStatus")).equals("18")) {
+                    map.put("CurrStatus", "অন্য যে কোন অবস্থা ");
                 }
 
                 map.put("MSDate", cur.getString(cur.getColumnIndex("MSDate")));
 
                 dataList.add(map);
 
-                dataAdapter = new SimpleAdapter(ELCOPreVisits.this, dataList, R.layout.elcoprevisitrow,new String[] {"edit","del"},
-                        new int[] {R.id.cmdB1,R.id.cmdB2});
+                dataAdapter = new SimpleAdapter(ELCOPreVisits.this, dataList, R.layout.elcoprevisitrow, new String[]{"edit", "del"},
+                        new int[]{R.id.cmdB1, R.id.cmdB2});
 
                 list.setAdapter(new DataListAdapter(this));
 
                 cur.moveToNext();
             }
             cur.close();
-        }
-        catch(Exception  e)
-        {
+        } catch (Exception e) {
             Connection.MessageBox(ELCOPreVisits.this, e.getMessage());
             return;
         }
     }
 
 
-    public class DataListAdapter extends BaseAdapter
-    {
+    public class DataListAdapter extends BaseAdapter {
         private Context context;
-        public DataListAdapter(Context c){ context = c;  }
-        public int getCount() {  return dataAdapter.getCount();  }
-        public Object getItem(int position) {  return position;  }
-        public long getItemId(int position) {  return position;  }
+
+        public DataListAdapter(Context c) {
+            context = c;
+        }
+
+        public int getCount() {
+            return dataAdapter.getCount();
+        }
+
+        public Object getItem(int position) {
+            return position;
+        }
+
+        public long getItemId(int position) {
+            return position;
+        }
+
         public View getView(final int position, View convertView, ViewGroup parent) {
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.elcoprevisitrow, null);
             }
-            Button   cmdB1 = (Button)convertView.findViewById(R.id.cmdB1);
-            Button   cmdB2 = (Button)convertView.findViewById(R.id.cmdB2);
+            Button cmdB1 = (Button) convertView.findViewById(R.id.cmdB1);
+            Button cmdB2 = (Button) convertView.findViewById(R.id.cmdB2);
 
-            final TextView Visit = (TextView)convertView.findViewById(R.id.Visit);
-            final TextView VDate = (TextView)convertView.findViewById(R.id.Vdate);
-            final TextView VisitStatus = (TextView)convertView.findViewById(R.id.VisitStatus);
-            final TextView CurrStatus = (TextView)convertView.findViewById(R.id.CurrStatus);
-            final TextView MSDate = (TextView)convertView.findViewById(R.id.MSDate);
+            final TextView Visit = (TextView) convertView.findViewById(R.id.Visit);
+            final TextView VDate = (TextView) convertView.findViewById(R.id.Vdate);
+            final TextView VisitStatus = (TextView) convertView.findViewById(R.id.VisitStatus);
+            final TextView CurrStatus = (TextView) convertView.findViewById(R.id.CurrStatus);
+            final TextView MSDate = (TextView) convertView.findViewById(R.id.MSDate);
 
             final HashMap<String, String> o = (HashMap<String, String>) dataAdapter.getItem(position);
             Visit.setText(o.get("Visit"));
@@ -310,7 +276,9 @@ public class ELCOPreVisits extends Activity {
                             }
                             cur.close();
                             DataSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo() );
-                        */}});
+                        */
+                        }
+                    });
                     adb.show();
                 }
             });
@@ -331,7 +299,9 @@ public class ELCOPreVisits extends Activity {
 
                             cur.close();
                             DataSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo() );
-                        */}});
+                        */
+                        }
+                    });
                     adb.show();
                 }
             });

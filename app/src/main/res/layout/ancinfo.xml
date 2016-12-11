@@ -39,6 +39,13 @@
 
         </LinearLayout>
 
+        <LinearLayout android:id="@+id/secVDate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:text="১." android:layout_width="20sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblVDate" android:text="পরিদর্শনের তারিখ" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/dtpEditVDate" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+            <ImageButton android:id="@+id/btnVDate" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
+        </LinearLayout>
+
         <View
             android:layout_width="fill_parent"
             android:layout_height="1dip"
@@ -55,7 +62,7 @@
             <TextView
                 android:layout_width="20sp"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="২."
                 android:textSize="20sp" />
 
             <TextView
@@ -65,12 +72,17 @@
                 android:text="আয়রন ও ফলিক এসিড পেয়েছেন কিনা?:"
                 android:textSize="20sp" />
 
-            <TextView
+         <!--   <TextView
                 android:id="@+id/VlblIronYN"
                 android:layout_width="100sp"
                 android:layout_height="wrap_content"
                 android:text=""
-                android:textSize="20sp" />
+                android:textSize="20sp" />-->
+
+            <RadioGroup android:id="@+id/rdogrpIron" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoIron1" android:text="হাঁ"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoIron2" android:text="না"/>
+            </RadioGroup>
 
 
         </LinearLayout>
@@ -97,7 +109,7 @@
             <TextView
                 android:layout_width="20sp"
                 android:layout_height="wrap_content"
-                android:text=""
+                android:text="৩."
                 android:textSize="20sp" />
 
             <TextView
@@ -107,17 +119,17 @@
                 android:text="মিসোপ্রস্টল বড়ি পেয়েছেন কিনা?"
                 android:textSize="20sp" />
 
-            <TextView
+          <!--  <TextView
                 android:id="@+id/VlblMisoYN"
                 android:layout_width="220sp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="20dp"
                 android:text=""
-                android:textSize="20sp" />
-            <!--   <RadioGroup android:id="@+id/rdogrpMiso" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                android:textSize="20sp" />-->
+              <RadioGroup android:id="@+id/rdogrpMiso" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoMiso1" android:text="হাঁ"/>
                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoMiso2" android:text="না"/>
-               </RadioGroup>-->
+               </RadioGroup>
 
         </LinearLayout>
 
@@ -137,7 +149,7 @@
                 android:id="@+id/dismiss"
                 android:layout_width="150dip"
                 android:layout_height="wrap_content"
-                android:text="Close" />
+                android:text="Edit" />
         </LinearLayout>
 
         <View

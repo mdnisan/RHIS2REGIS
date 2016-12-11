@@ -73,6 +73,14 @@
 	    <item name="android:paddingRight">10sp</item>
 	    <item name="android:paddingLeft">10sp</item>
 	</style>
+
+    <style name="rowStyleEpi">
+        <item name="android:paddingTop">5sp</item>
+        <item name="android:paddingBottom">5sp</item>
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:paddingRight">15sp</item>
+        <item name="android:paddingLeft">5sp</item>
+    </style>
 	<style name="rowHeading">
 	    <item name="android:paddingTop">5sp</item>
 	    <item name="android:paddingBottom">5sp</item>

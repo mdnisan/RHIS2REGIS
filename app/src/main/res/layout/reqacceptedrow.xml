@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollbars="vertical">
+    <LinearLayout android:id="@+id/secListRow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<!--        <Button android:id="@+id/cmdB1" android:layout_width="50sp" android:background="#ffd866" android:layout_height="30sp" android:textSize="14px" android:text=""/>-->
+        <TextView android:text=" " android:layout_width="20dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <Button android:id="@+id/cmdB2" android:layout_width="130sp" android:background="#00B7FB" android:layout_height="30sp" android:textSize="14px" android:textColor="#FFFFFF" android:text="Approved"/>
+        <TextView android:text=" " android:layout_width="20dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/RequestId" android:visibility="gone" android:layout_width="100dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/RequestBy" android:layout_width="250dp" android:gravity="center" android:layout_height="wrap_content"/> -->
+        <TextView android:id="@+id/RequestTo" android:layout_width="250dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/ItemCode" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/RequestQty" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:id="@+id/RequestStatus" android:layout_width="200dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <!--  <TextView android:id="@+id/TransactionId" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+   -->       <TextView android:id="@+id/RequestRemarks" android:layout_width="200dp" android:gravity="center" android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</LinearLayout>
+

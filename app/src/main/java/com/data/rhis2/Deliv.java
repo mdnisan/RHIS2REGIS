@@ -79,12 +79,12 @@ public class Deliv extends Activity {
         switch (item.getItemId()) {
             case R.id.menuClose:
                 adb.setTitle("Close");
-                adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান[Yes/No]?");
-                adb.setNegativeButton("No", null);
-                adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
+                adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান?");
+                adb.setNegativeButton("না", null);
+                adb.setPositiveButton("হ্যাঁ", new AlertDialog.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         finish();
-                        Intent f2 = new Intent(getApplicationContext(), MemberList.class);
+                        Intent f2 = new Intent(getApplicationContext(), MemberListFPI.class);
                         startActivity(f2);
                     }
                 });
@@ -111,7 +111,9 @@ public class Deliv extends Activity {
     private String TableName;
     private String TableNamePNC;
     private String ChildTableName;
+    private String MemberTable;
 
+    LinearLayout seclbldelete;
     LinearLayout secDiv;
     TextView VlblDiv;
     EditText txtDiv;
@@ -142,6 +144,9 @@ public class Deliv extends Activity {
     TextView txtHealthID;
 
     LinearLayout secSl;
+    TextView txtSLNo;
+    TextView VlblSLNo;
+
     TextView VlblSNo;
     TextView txtSNo;
     TextView txtElCONo;
@@ -206,7 +211,12 @@ public class Deliv extends Activity {
     CheckBox chklivebirth;
     CheckBox chkdeathbirth;
     CheckBox chkabortion;
-EditText dtpDOPNCCh1;
+    EditText dtpDOPNCCh1;
+    String sqlnew = "";
+    String sqlupdate = "";
+
+    String pregnancyNo;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         try {
@@ -218,7 +228,23 @@ EditText dtpDOPNCCh1;
             TableName = "delivery";
             TableNamePNC = "pncServiceMother";
             ChildTableName = "newBorn";
+            MemberTable = "Member";
 
+            ELCOProfile e = new ELCOProfile();
+            e.ELCOProfile(this, g.getGeneratedId());
+
+            //call from elco
+            if (g.getCallFrom().equals("elco")) {
+                pregnancyNo = e.CurrentPregNumber(this, g.getGeneratedId());
+            }
+            //call from register
+            else if (g.getCallFrom().equals("regis")) {
+                pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+            } else if (g.getCallFrom().equals("1")) {
+                pregnancyNo = e.LastPregNumber(this, g.getGeneratedId());
+            }
+
+            /*
             seclblH = (LinearLayout) findViewById(R.id.seclblH);
             lblHlblH = (TextView) findViewById(R.id.lblHlblH);
             lblHealthID = (TextView) findViewById(R.id.lblHealthID);
@@ -227,7 +253,12 @@ EditText dtpDOPNCCh1;
             secSl = (LinearLayout) findViewById(R.id.secSl);
             VlblSNo = (TextView) findViewById(R.id.VlblSNo);
             txtSNo = (TextView) findViewById(R.id.txtSNo);
-            txtElCONo = (TextView) findViewById(R.id.txtElCONo);
+            VlblSLNo = (TextView) findViewById(R.id.VlblSNo);
+            txtSLNo = (TextView) findViewById(R.id.txtSLNo);
+            txtSLNo.setText(GetCountSLNoNumber());
+            VlblSNo.setVisibility(View.GONE);
+            txtSNo.setVisibility(View.GONE);
+
             txtAge = (TextView) findViewById(R.id.txtAge);
 
             secName = (LinearLayout) findViewById(R.id.secName);
@@ -238,16 +269,10 @@ EditText dtpDOPNCCh1;
             VlblHusName = (TextView) findViewById(R.id.VlblHusName);
             txtHusName = (TextView) findViewById(R.id.txtHusName);
             txtAgeYrHus = (TextView) findViewById(R.id.txtAgeYrHus);
-            secOutcome = (LinearLayout) findViewById(R.id.secOutcome);
-            VlblOutcome = (TextView) findViewById(R.id.VlblOutcome);
-            // rdogrpOutcome = (RadioGroup) findViewById(R.id.rdogrpOutcome);
-            //  rdoOutcomeLB = (RadioButton) findViewById(R.id.rdoOutcomeLB);
-            //  rdoOutcomeSB = (RadioButton) findViewById(R.id.rdoOutcomeSB);
-            //  rdoOutcomeAbo = (RadioButton) findViewById(R.id.rdoOutcomeAbo);
 
-            // secLivebirth=(LinearLayout)findViewById(R.id.secLivebirth);
-            // secLivebirth.setVisibility( View.GONE );
-            // VlblLivebirth=(TextView) findViewById(R.id.VlblLivebirth);
+            */
+            secOutcome = (LinearLayout) findViewById(R.id.secOutcome);
+
             txtLivebirthNum1 = (EditText) findViewById(R.id.txtLivebirthNum1);
 
             txtLivebirthNum1.setEnabled(false);
@@ -259,15 +284,16 @@ EditText dtpDOPNCCh1;
             chklivebirth = (CheckBox) findViewById(R.id.chklivebirth);
             chkdeathbirth = (CheckBox) findViewById(R.id.chkdeathbirth);
             chkabortion = (CheckBox) findViewById(R.id.chkabortion);
-            dtpDOPNCCh1 = (EditText) findViewById(R.id.dtpDOPNCCh1);
-            ((LinearLayout)findViewById(R.id.secPNCCh12)).setVisibility(View.GONE);
+            //dtpDOPNCCh1 = (EditText) findViewById(R.id.dtpDOPNCCh1);
+            //((LinearLayout)findViewById(R.id.secPNCCh12)).setVisibility(View.GONE);
             chklivebirth.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (b) {
                         txtLivebirthNum1.setEnabled(true);
 
-                        txtLivebirthNum1.setText("1");
+                        //txtLivebirthNum1.setText("1");
+                        VlblOutcomeDT.setText("প্রসবের তারিখ");
                         chkabortion.setChecked(!b);
                     } else {
                         txtLivebirthNum1.setText("");
@@ -281,7 +307,8 @@ EditText dtpDOPNCCh1;
                 public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                     if (b) {
                         txtLivebirthNum2.setEnabled(true);
-                        txtLivebirthNum2.setText("1");
+                        //txtLivebirthNum2.setText("1");
+                        VlblOutcomeDT.setText("প্রসবের তারিখ");
                         chkabortion.setChecked(!b);
                     } else {
                         txtLivebirthNum2.setEnabled(false);
@@ -298,17 +325,24 @@ EditText dtpDOPNCCh1;
 
                         txtLivebirthNum1.setEnabled(false);
                         txtLivebirthNum2.setEnabled(false);
+                        VlblOutcomeDT.setText("গর্ভপাতের তারিখ");
                         chklivebirth.setChecked(!b);
                         chkdeathbirth.setChecked(!b);
-                    } else {
+                        VlblBAtten.setText("কে গর্ভপাত করিয়েছেন");
+                        VlblBPlace.setText("কোথায় গর্ভপাত হয়েছে");
+                        secBType.setVisibility(View.GONE);
+                        rdogrpBType.clearCheck();
+                        secMiso.setVisibility(View.GONE);
+                        rdogrpMiso.clearCheck();
 
+                    } else {
+                        secBType.setVisibility(View.VISIBLE);
+                        secMiso.setVisibility(View.VISIBLE);
+                        VlblBAtten.setText("কে প্রসব করিয়েছেন");
+                        VlblBPlace.setText("কোথায় প্রসব হয়েছে");
                     }
                 }
             });
-
-
-
-
 
             secOutcomeDT = (LinearLayout) findViewById(R.id.secOutcomeDT);
             VlblOutcomeDT = (TextView) findViewById(R.id.VlblOutcomeDT);
@@ -332,35 +366,40 @@ EditText dtpDOPNCCh1;
             List<String> listBPlace = new ArrayList<String>();
 
             listBPlace.add("");
-            listBPlace.add("1-বাড়িতে");
-            listBPlace.add("2-উপজেলা স্বাস্থ্য কমপ্লেক্স");
-            listBPlace.add("3-ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্র");
-            listBPlace.add("4-মা ও শিশু কল্যাণ কেন্দ্র");
-            listBPlace.add("5-জেলা সদর ও অন্যান্য সরকারী হাসপাতাল");
-            listBPlace.add("6-এনজিও ক্লিনিক বা হাসপাতাল");
-            listBPlace.add("7-প্রাইভেট ক্লিনিক বা হাসপাতাল");
+            listBPlace.add("01-বাড়িতে");
+            listBPlace.add("02-উপজেলা স্বাস্থ্য কমপ্লেক্স");
+            listBPlace.add("03-ইউনিয়ন স্বাস্থ্য  ও পরিবার কল্যাণ কেন্দ্র");
+            listBPlace.add("04-মা ও শিশু কল্যাণ কেন্দ্র");
+            listBPlace.add("05-জেলা সদর ও অন্যান্য \n সরকারী হাসপাতাল");
+            listBPlace.add("06-এনজিও ক্লিনিক বা হাসপাতাল");
+            listBPlace.add("07-প্রাইভেট ক্লিনিক বা হাসপাতাল");
             listBPlace.add("77-অন্যান্য");
 
             ArrayAdapter<String> BPlace = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listBPlace);
             spnBPlace.setAdapter(BPlace);
 
+
             spnBPlace.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-                    String val =  (spnBPlace.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBPlace.getSelectedItem().toString(), 1));
-                    if(val.length()>0)
-                    {
-                        if(val.equalsIgnoreCase("1"))
-                        {
+                    String val = (spnBPlace.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBPlace.getSelectedItem().toString(), 2));
+                    if (val.length() > 0) {
+                        if (val.equalsIgnoreCase("01")) {
                             rdoBTypeNor.setChecked(true);
-                        }
-                        else
-                        {
+                            rdoBTypeSeg.setEnabled(false);
+                            spnBAtten.setAdapter(null);
+                            FillSpinner(true);
+
+                        } else {
                             rdogrpBType.clearCheck();
+                            rdoBTypeNor.setEnabled(true);
+                            rdoBTypeSeg.setEnabled(true);
+                            spnBAtten.setAdapter(null);
+                            FillSpinner(false);
+
+                            //Select '  'as attendantCode union
                         }
-
-
                     }
                 }
 
@@ -369,58 +408,43 @@ EditText dtpDOPNCCh1;
 
                 }
             });
+
+
             secBAtten = (LinearLayout) findViewById(R.id.secBAtten);
             VlblBAtten = (TextView) findViewById(R.id.VlblBAtten);
             spnBAtten = (Spinner) findViewById(R.id.spnBAtten);
-            List<String> listBAtten = new ArrayList<String>();
+            /*List<String> listBAtten = new ArrayList<String>();
 
             listBAtten.add("");
-            listBAtten.add("1-ডাক্তার");
-            listBAtten.add("2-নার্স");
-            listBAtten.add("3-স্যাকমো");
-            listBAtten.add("4-এফ ডব্লিউ ভি");
-            listBAtten.add("5-প্যারামেডিক্স");
-            listBAtten.add("6-সি এস বি এ");
+            listBAtten.add("01-ডাক্তার");
+            listBAtten.add("02-নার্স");
+            listBAtten.add("03-স্যাকমো");
+            listBAtten.add("04-এফ ডব্লিউ ভি");
+            listBAtten.add("05-প্যারামেডিক্স");
+            listBAtten.add("06-সি এস বি এ");
             listBAtten.add("77-অন্যান্য");
 
             ArrayAdapter<String> BAtten = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listBAtten);
-            spnBAtten.setAdapter(BAtten);
+            spnBAtten.setAdapter(BAtten);*/
 
 
-           // VlblChildList.setVisibility(View.GONE);
             cmdSave = (Button) findViewById(R.id.cmdSave);
-            cmdSavePNC = (ImageButton) findViewById(R.id.cmdSavePNC);
-            ((LinearLayout)findViewById(R.id.List)).setVisibility(View.GONE);
-            btnDOPNCCh1.setOnClickListener(new View.OnClickListener() {
+            //cmdSavePNC = (ImageButton) findViewById(R.id.cmdSavePNC);
+            //((LinearLayout)findViewById(R.id.List)).setVisibility(View.GONE);
+            /*btnDOPNCCh1.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     VariableID = "btnDOPNCCh1";
                     showDialog(DATE_DIALOG);
                 }
             });
+            */
 
-            Bundle IDbundle = new Bundle();
-            IDbundle = getIntent().getExtras();
-            String currentstatus = IDbundle.getString("currentstatus");
+            DeliverySearch(g.getGeneratedId(), pregnancyNo);
 
-
-
-            DataSearch(g.getHealthID());
-            DeliverySearch(g.getHealthID());
-
-            if (currentstatus.equalsIgnoreCase("13")) {
-                chkabortion.setEnabled(false);
-                chkdeathbirth.setEnabled(true);
-                chklivebirth.setEnabled(true);
-            } else if (currentstatus.equalsIgnoreCase("14")) {
-                chkabortion.setEnabled(true);
-                chkdeathbirth.setEnabled(false);
-                chklivebirth.setEnabled(false);
-            }
-            ELCONoSearch(g.getDistrict(), g.getUpazila(), g.getUnion(), g.getMouza(), g.getVillage(), g.getHouseholdNo(), g.getSerialNo());
-            DisplayChildlist();
+            //DisplayChildlist();
 
 
-           btnOutcomeDT.setOnClickListener(new View.OnClickListener() {
+            btnOutcomeDT.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
                     VariableID = "btnOutcomeDT";
                     showDialog(DATE_DIALOG);
@@ -431,36 +455,37 @@ EditText dtpDOPNCCh1;
             cmdSave.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View v) {
 
-                    if (txtLivebirthNum1.getText().length() == 0 & txtLivebirthNum2.getText().length() == 0 & chkabortion.isChecked() == false) {
+                    /*if (txtLivebirthNum1.getText().length() == 0 & txtLivebirthNum2.getText().length() == 0 & chkabortion.isChecked() == false) {
                         Connection.MessageBox(Deliv.this, "প্রসবের ফলাফল  সিলেক্ট করুন।");
-                        //rdoOutcomeLB.requestFocus();
+                        return;
+                    }*/
+
+                    if (txtLivebirthNum1.getText().length() == 0 & txtLivebirthNum2.getText().length() == 0 & chkabortion.isChecked() == false) {
+                        Connection.MessageBox(Deliv.this, "প্রসবের ফলাফল  কি ।");
                         return;
                     }
 
-                    if(chklivebirth.isChecked() || chkdeathbirth.isChecked() || chkabortion.isChecked())
-                    {
+                    if (chklivebirth.isChecked() || chkdeathbirth.isChecked() || chkabortion.isChecked()) {
                         String NumberofBirth1 = "";
                         String NumberofBirth2 = "";
 
                         NumberofBirth1 = txtLivebirthNum1.getText().toString();
                         NumberofBirth2 = txtLivebirthNum2.getText().toString();
 
-                        if(NumberofBirth1.length()==0)
-                        {
+                        if (NumberofBirth1.length() == 0) {
                             NumberofBirth1 = "0";
                         }
 
-                        if(NumberofBirth2.length()==0)
-                        {
+                        if (NumberofBirth2.length() == 0) {
                             NumberofBirth2 = "0";
                         }
 
-                        if(Integer.parseInt(NumberofBirth1)>2 || Integer.parseInt(NumberofBirth2)>2)
-                        {
+                        if (Integer.parseInt(NumberofBirth1) > 2 || Integer.parseInt(NumberofBirth2) > 2) {
                             AlertDialog.Builder adb = new AlertDialog.Builder(Deliv.this);
 
                             adb.setTitle("নিশ্চিত করুন");
-                            adb.setMessage("আপনি কি শিশুর সংখ্যা নিশ্চিত[Yes/No]?");
+
+                            adb.setMessage("আপনি কি শিশুর সংখ্যা নিশ্চিত[হাঁ/না]?");
                             adb.setNegativeButton("No", new AlertDialog.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int which) {
                                     dialog.cancel();
@@ -472,15 +497,13 @@ EditText dtpDOPNCCh1;
                                 }
                             });
                             adb.show();
-                        }
-                        else
-                        {
+                        } else {
                             DataSave();
                         }
                     }
                 }
             });
-
+            /*
             DisplayPNCVisits();
             cmdSavePNC.setOnClickListener(new View.OnClickListener(){
                 public void onClick(View v)
@@ -490,6 +513,7 @@ EditText dtpDOPNCCh1;
                 }
 //test
             });
+            */
 
         } catch (Exception e) {
             Connection.MessageBox(Deliv.this, e.getMessage());
@@ -498,36 +522,35 @@ EditText dtpDOPNCCh1;
     }
 
 
+    private void FillSpinner(boolean isathome) {
+        spnBAtten.setAdapter(null);
+        if (isathome) {
+            spnBAtten.setAdapter(C.getArrayAdapter("Select '  'as attendantCode union Select substr('0' ||attendantCode, -2, 2)||'-'||attendantDesig as attendantCode from AttendantDesignation  order by attendantCode asc"));
+
+        } else {
+            spnBAtten.setAdapter(C.getArrayAdapter("Select '  'as attendantCode union Select substr('0' ||attendantCode, -2, 2)||'-'||attendantDesig as attendantCode from AttendantDesignation where substr('0' ||attendantCode, -2, 2)  in('01','02','03','04','05','06','77') order by attendantCode asc"));
+        }
+    }
 
     private void setDelivery(String DeliveryType) {
 
     }
 
-    private void DeliverySearch(String HealthId) {
+    private void DeliverySearch(String HealthId, String PregNo) {
         try {
             String SQL = "";
 
             SQL = "Select healthId, pregNo, providerId, outcomePlace, outcomeDate, outcomeType, liveBirth, stillBirth," +
-                    "stillBirthFresh, stillBirthMacerated, misoprostol, abortion , systemEntryDate, modifyDate, attendantDesignation " +
-                    "FROM delivery where HealthId='" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'";
-
+                    " stillBirthFresh, stillBirthMacerated, misoprostol, abortion , systemEntryDate, modifyDate, attendantDesignation " +
+                    " FROM delivery where HealthId='" + g.getGeneratedId() + "' AND pregNo = '" + PregNo + "'";
 
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
-
             while (!cur.isAfterLast()) {
-                ((LinearLayout)findViewById(R.id.secPNCCh12)).setVisibility(View.VISIBLE);
-                ((LinearLayout)findViewById(R.id.List)).setVisibility(View.VISIBLE);
-                String outcomeType = cur.getString(cur.getColumnIndex("outcomeType"));
-                if (outcomeType.equalsIgnoreCase("1")) {
-                    rdoBTypeNor.setChecked(true);
-
-                } else if (outcomeType.equalsIgnoreCase("2")) {
-                    rdoBTypeSeg.setChecked(true);
-                }
 
                 txtLivebirthNum1.setText(cur.getString(cur.getColumnIndex("liveBirth")));
                 txtLivebirthNum2.setText(cur.getString(cur.getColumnIndex("stillBirth")));
+
 
                 if (!txtLivebirthNum1.getText().toString().equalsIgnoreCase("")) {
                     chklivebirth.setChecked(true);
@@ -536,27 +559,70 @@ EditText dtpDOPNCCh1;
                 if (!txtLivebirthNum2.getText().toString().equalsIgnoreCase("")) {
                     chkdeathbirth.setChecked(true);
                 }
-                /*if(!txtLivebirthNum3.getText().toString().equalsIgnoreCase(""))
-                {
-                    chkdeathbirth.setChecked(true);
-                }*/
+
 
                 dtpOutcomeDT.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("outcomeDate"))));
-                Global.SetSpinnerItem(spnBPlace, cur.getString(cur.getColumnIndex("outcomePlace")));
-                Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
-                //spnBPlace.setSelection(Integer.parseInt(cur.getString(cur.getColumnIndex("outcomePlace"))));
-               // spnBAtten.setSelection(Integer.parseInt(cur.getString(cur.getColumnIndex("attendantDesignation"))));
-                String misoprostol = cur.getString(cur.getColumnIndex("misoprostol"));
+                if (cur.getString(cur.getColumnIndex("outcomePlace")).length() >= 1) {
+                    if (cur.getString(cur.getColumnIndex("outcomePlace")).equalsIgnoreCase("01")) {
 
-                if (misoprostol.equalsIgnoreCase("1")) {
-                    rdoMisoYes.setChecked(true);
+                        FillSpinner(true);
+                        if (cur.getString(cur.getColumnIndex("attendantDesignation")).length() >= 2) {
 
-                } else if (outcomeType.equalsIgnoreCase("2")) {
-                    rdoMisoYes.setChecked(true);
+                            Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                        } else {
+                            Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                        }
+                    } else {
+
+                        FillSpinner(false);
+                    }
+
+                    Global.SetSpinnerItem(spnBPlace, "0" + cur.getString(cur.getColumnIndex("outcomePlace")));
+                    if (cur.getString(cur.getColumnIndex("attendantDesignation")).length() >= 2) {
+
+                        Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                    } else {
+                        Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                    }
+                } else {
+                    Global.SetSpinnerItem(spnBPlace, "0" + cur.getString(cur.getColumnIndex("outcomePlace")));
+                }
+                /*if(cur.getString(cur.getColumnIndex("attendantDesignation")).length()>=2)
+                {
+
+                    Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                }
+                else
+                {
+                    Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+                }*/
+                //Global.SetSpinnerItem(spnBAtten, cur.getString(cur.getColumnIndex("attendantDesignation")));
+
+                if (cur.getString(cur.getColumnIndex("outcomeType")).equals("1")) {
+                    rdoBTypeNor.setChecked(true);
+                    secBType.setVisibility(View.VISIBLE);
+                } else if (cur.getString(cur.getColumnIndex("outcomeType")).equals("2")) {
+                    rdoBTypeSeg.setChecked(true);
+                    secBType.setVisibility(View.VISIBLE);
                 }
 
+
+                if (cur.getString(cur.getColumnIndex("misoprostol")).equals("1")) {
+                    rdoMisoYes.setChecked(true);
+                    secMiso.setVisibility(View.VISIBLE);
+                } else if (cur.getString(cur.getColumnIndex("misoprostol")).equals("2")) {
+                    rdoMisoNo.setChecked(true);
+                    secMiso.setVisibility(View.VISIBLE);
+                }
+
+                if (cur.getString(cur.getColumnIndex("abortion")).equals("1")) {
+                    chkabortion.setChecked(true);
+                    secBType.setVisibility(View.GONE);
+                    rdogrpBType.clearCheck();
+                    secMiso.setVisibility(View.GONE);
+                    rdogrpMiso.clearCheck();
+                }
                 cur.moveToNext();
-                cmdSave.setVisibility(View.GONE);
             }
             cur.close();
 
@@ -566,31 +632,19 @@ EditText dtpDOPNCCh1;
         }
     }
 
-    private String PGNNo() {
-        String SQL = "";
-        SQL = "Select pregNo  from PregWomen";
-        SQL += " where HealthId='" + g.getHealthID() + "'";
-
-        String PGNNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
-
-        return PGNNo;
-    }
-
-
-
-
 
     private boolean validateDeliveryDate() {
-        String sq = String.format("Select LMP from PregWomen where healthId = '%s' and pregNo = '%s'", g.getHealthID(), PGNNo());
+        String sq = String.format("Select LMP from PregWomen where healthId = '%s' and pregNo = '%s'", g.getGeneratedId(), pregnancyNo);
         if (C.Existence(sq)) {
-            String LmpDate = C.ReturnSingleValue("Select LMP from PregWomen where healthId = '" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'");
+            String LmpDate = C.ReturnSingleValue("Select LMP from PregWomen where healthId = '" + g.getGeneratedId() + "' AND pregNo = '" + pregnancyNo + "'");
 
-            if (Global.DateDifferenceDays(dtpOutcomeDT.getText().toString(),Global.DateConvertDMY(LmpDate)) < 1 ) {
+            if (Global.DateDifferenceDays(dtpOutcomeDT.getText().toString(), Global.DateConvertDMY(LmpDate)) < 1) {
                 return true;
             }
         }
         return false;
     }
+
     private boolean validateDeliveryDateAgainstSystemDate() {
 
 
@@ -604,9 +658,9 @@ EditText dtpDOPNCCh1;
     }
 
     private boolean validateLMPDateIsMoreThan24Weeks() {
-        String sq = String.format("Select LMP from PregWomen where healthId = '%s' and pregNo = '%s'", g.getHealthID(), PGNNo());
+        String sq = String.format("Select LMP from PregWomen where healthId = '%s' and pregNo = '%s'", g.getGeneratedId(), pregnancyNo);
         if (C.Existence(sq)) {
-            String LmpDate = C.ReturnSingleValue("Select LMP from PregWomen where healthId = '" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'");
+            String LmpDate = C.ReturnSingleValue("Select LMP from PregWomen where healthId = '" + g.getGeneratedId() + "' AND pregNo = '" + pregnancyNo + "'");
 
             if (Global.DateDifferenceDays(dtpOutcomeDT.getText().toString(), Global.DateConvertDMY(LmpDate)) < 168) {
                 return true;
@@ -619,25 +673,11 @@ EditText dtpDOPNCCh1;
     private void DataSave() {
         try {
             if (txtLivebirthNum1.getText().length() == 0 & txtLivebirthNum2.getText().length() == 0 & chkabortion.isChecked() == false) {
-                Connection.MessageBox(Deliv.this, "প্রসবের ফলাফল  সিলেক্ট করুন।");
-               // rdoOutcomeLB.requestFocus();
+                Connection.MessageBox(Deliv.this, "প্রসবের ফলাফল কি ।");
                 return;
             }
-           // if(!ConfirmIfChildCountIsMoreThanTwo())
-           // {
-           //     Connection.MessageBox(Deliv.this, "শিশুর সঠিক সংখ্যার চয়ন করুন");
-           //     return;
-           // }
+            //txtLivebirthNum1
 
-
-            /*if(rdoOutcomeLB.isChecked())
-            {
-                if(txtLivebirthNum.getText().length()==0) {
-                    Connection.MessageBox(Deliv.this, "এই গর্ভে কয়টি বাচ্চা ছিল লিখুন।");
-                    txtLivebirthNum.requestFocus();
-                    return;
-                }
-            }*/
             if (dtpOutcomeDT.getText().length() == 0) {
                 Connection.MessageBox(Deliv.this, "ফলাফলের তারিখ কত লিখুন।");
                 dtpOutcomeDT.requestFocus();
@@ -650,144 +690,215 @@ EditText dtpDOPNCCh1;
                 Connection.MessageBox(Deliv.this, "কে প্রসব করিয়েছে লিখুন।");
                 secBAtten.requestFocus();
                 return;
-            } else if (!rdoBTypeSeg.isChecked() & !rdoBTypeNor.isChecked()) {
+            } else if (!rdoBTypeSeg.isChecked() & !rdoBTypeNor.isChecked() & secBType.isShown()) {
                 Connection.MessageBox(Deliv.this, "প্রসবের ধরণ কি ছিল লিখুন।");
                 rdoBTypeSeg.requestFocus();
                 return;
-            } else if (!rdoMisoYes.isChecked() & !rdoMisoNo.isChecked()) {
+            } else if (!rdoMisoYes.isChecked() & !rdoMisoNo.isChecked() & secMiso.isShown()) {
                 Connection.MessageBox(Deliv.this, "মিসোপ্রোস্টল বড়ি খেয়েছে কি না  লিখুন");
                 rdoMisoYes.requestFocus();
                 return;
             }
 
-            if(chklivebirth.isChecked()) {
+            if (chklivebirth.isChecked()) {
                 if (validateLMPDateIsMoreThan24Weeks()) {
                     Connection.MessageBox(Deliv.this, "প্রসব/গর্ভপাত, শেষ মাসিকের তারিখ হতে ২৪ সপ্তাহ এর বেশি  হবে");
                     return;
                 }
             }
 
-            if(validateDeliveryDate())
-            {
+            if (validateDeliveryDate()) {
                 Connection.MessageBox(Deliv.this, "প্রসব/গর্ভপাত, শেষ মাসিকের তারিখ হতে বেশি  হবে");
                 return;
             }
 
-            if(validateDeliveryDateAgainstSystemDate())
-            {
+            if (validateDeliveryDateAgainstSystemDate()) {
                 Connection.MessageBox(Deliv.this, "প্রসব/গর্ভপাত, আজকের তারিখ হতে বেশি  হবে");
                 return;
             }
             String SQL = "";
-            String sq = String.format("Select healthId, pregNo from PregWomen where healthId = '%s' and pregNo = '%s'", g.getHealthID(), PGNNo());
-            String sqdel = String.format("Select healthId, pregNo from delivery where healthId = '%s' and pregNo = '%s'", g.getHealthID(), PGNNo());
-            if (C.Existence(sq) && !C.Existence(sqdel))//"Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + TableName + "  Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"'  and ProvType='"+ g.getProvType() +"' and ProvCode='"+ g.getProvCode() +"' and  HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN = '"+ PGNNo() +"'"))
-            {
-                String NumberofBirth1 = "";
-                String NumberofBirth2 = "";
-                String NumberofBirth3 = "";
-                NumberofBirth1 = txtLivebirthNum1.getText().toString();
-                NumberofBirth2 = txtLivebirthNum2.getText().toString();
-                if (chkabortion.isChecked()) {
-                    NumberofBirth3 = "1";
-                } else {
-                    NumberofBirth3 = "0";
+            //String sq = String.format("Select healthId, pregNo from PregWomen where healthId = '%s' and pregNo = '%s'", g.getGeneratedId(),pregnancyNo);
+            String sqdel = String.format("Select healthId, pregNo from delivery where healthId = '%s' and pregNo = '%s'", g.getGeneratedId(), pregnancyNo);
+            String VisitNo = VisitNumber(g.getGeneratedId());
+            String NumberofBirth1 = "";
+            String NumberofBirth2 = "";
+            String NumberofBirth3 = "";
+            NumberofBirth1 = txtLivebirthNum1.getText().toString();
+            NumberofBirth2 = txtLivebirthNum2.getText().toString();
+            if (chkabortion.isChecked()) {
+                NumberofBirth3 = "1";
+                if (!C.Existence("Select healthid from elcoVisit  Where healthid='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'"))// and  currStatus = '"+ Global.Left(spnMethod.getSelectedItem().toString(), 2) +"'
+                {
+                    String sqlnew1 = "";
+                    sqlnew1 = "Insert into elcoVisit(healthId,providerId,visit,systemEntryDate,modifyDate,pregNo)Values(";
+                    sqlnew1 += "'" + g.getGeneratedId() + "',";
+                    sqlnew1 += "'" + g.getProvCode() + "',";
+                    sqlnew1 += "'" + VisitNo + "',";
+                    sqlnew1 += "'" + Global.DateTimeNowYMDHMS() + "',";
+                    sqlnew1 += "'" + Global.DateTimeNowYMDHMS() + "',";
+                    sqlnew1 += "'" + pregnancyNo + "')";
+                    C.Save(sqlnew1);
                 }
+                String sqlupdate1 = "";
+                sqlupdate1 = "Update elcoVisit Set pregNo = '" + pregnancyNo + "' , ";
+                sqlupdate1 += "vDate = '" + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "',";//Global.DateTimeNowYMDHMS()
+                sqlupdate1 += "visitStatus = '1',";
+                sqlupdate1 += "currStatus = '14',";
+                sqlupdate1 += "newOld = '',";
+                sqlupdate1 += "mDate = '',";
+                sqlupdate1 += "sSource = '',";
+                sqlupdate1 += "qty = '',";
+                sqlupdate1 += "unit = '',";
+                sqlupdate1 += "brand = '',";
+                sqlupdate1 += "referPlace = '',";
+                sqlupdate1 += "validity = '',";
+                sqlupdate1 += "dayMonYear = '',";
+                sqlupdate1 += "MRDate = '',";
+                sqlupdate1 += "syrinsQty = ''";
+                sqlupdate1 += " Where HealthID='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'";
+                C.Save(sqlupdate1);
+            } else {
+                NumberofBirth3 = "0";
+            }
 
+            if (!C.Existence(sqdel)) {
+                //Delivery Information
                 SQL = "Insert into " + TableName + "(healthId,pregNo,providerId,outcomePlace,outcomeDate,outcomeType,attendantDesignation,liveBirth,stillBirth," +
-                        "abortion, systemEntryDate, Upload, misoprostol )Values" +
-                        "('" + g.getHealthID() + "','" + PGNNo() + "','" + g.getProvCode() + "'" +
-                        ",'" + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBPlace.getSelectedItem().toString(), 1)) + "'" +
+                        "abortion, systemEntryDate, upload, misoprostol )Values" +
+                        "('" + g.getGeneratedId() + "','" + pregnancyNo + "','" + g.getProvCode() + "'" +
+                        ",'" + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Integer.parseInt(Global.Left(spnBPlace.getSelectedItem().toString(), 2))) + "'" +
                         ",'" + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "'" +
                         ",'" + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'" +
-                        ",'" + (spnBAtten.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBAtten.getSelectedItem().toString(), 1)) + "'" +
+                        ",'" + (spnBAtten.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBAtten.getSelectedItem().toString(), 2)) + "'" +
                         ",'" + NumberofBirth1 + "'," +
                         "'" + NumberofBirth2 + "'," +
                         "'" + NumberofBirth3 + "'," +
                         "'" + Global.DateTimeNowYMDHMS() + "','2'," +
                         "'" + ((rdoMisoYes.isChecked() ? "1" : "2")) + "')";
                 C.Save(SQL);
-                ((LinearLayout)findViewById(R.id.List)).setVisibility(View.VISIBLE);
-                ((LinearLayout)findViewById(R.id.secPNCCh12)).setVisibility(View.VISIBLE);
 
-                cmdSave.setVisibility(View.GONE);
+                //Child Information
+                //((LinearLayout)findViewById(R.id.secChildList)).setVisibility(View.VISIBLE);
 
-                ((LinearLayout)findViewById(R.id.secChildList)).setVisibility(View.VISIBLE);
+                int ChildNo = 0;
+                //String ChildHealthId=HealthIdNO();
+                //childHealthId
+                //,'" + ChildHealthId + "'
+                //Live Birth
                 if (!NumberofBirth1.equalsIgnoreCase("")) {
                     if (Integer.parseInt(NumberofBirth1) > 0) {
                         for (int i = 0; i < Integer.parseInt(NumberofBirth1); i++) {
-
-                            SQL = "Insert into " + ChildTableName + "(healthId,pregNo,childNo,systemEntryDate, Upload, outcomePlace," +
+                            AddChildToPRS();
+                            ChildNo += 1;
+                            SQL = "Insert into " + ChildTableName + "(healthId,pregNo,childNo,providerId,systemEntryDate,upload, outcomePlace," +
                                     "outcomeDate," +
                                     "outcomeTime," +
                                     "outcomeType)Values" +
-                                    "('" + g.getHealthID() + "','" + PGNNo() + "','" + String.valueOf(i + 1) + "'" +
+                                    "('" + g.getGeneratedId() + "','" + pregnancyNo + "','" + String.valueOf(ChildNo) + "','" + g.getProvCode() + "'" +
                                     ",'" + Global.DateTimeNowYMDHMS() + "','2','"
-                                    + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBPlace.getSelectedItem().toString(), 1)) + "','"
-                                    + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "','" + Global.DateTimeNowYMDHMS() + "','"  + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'" +")";
+                                    + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Integer.parseInt(Global.Left(spnBPlace.getSelectedItem().toString(), 2))) + "','"
+                                    + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "','" + Global.DateTimeNowYMDHMS() + "','" + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'" + ")";
                             C.Save(SQL);
                         }
+                        if (!C.Existence("Select healthid from elcoVisit  Where healthid='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'"))// and  currStatus = '"+ Global.Left(spnMethod.getSelectedItem().toString(), 2) +"'
+                        {
+                            String sqlnew1 = "";
+                            sqlnew1 = "Insert into elcoVisit(healthId,providerId,visit,systemEntryDate,modifyDate, pregNo)Values(";
+                            sqlnew1 += "'" + g.getGeneratedId() + "',";
+                            sqlnew1 += "'" + g.getProvCode() + "',";
+                            sqlnew1 += "'" + VisitNo + "',";
+                            sqlnew1 += "'" + Global.DateTimeNowYMDHMS() + "',";
+                            sqlnew1 += "'" + Global.DateTimeNowYMDHMS() + "',";
+                            sqlnew1 += "'" + pregnancyNo + "')";
+                            C.Save(sqlnew1);
+                        }
+                        String sqlupdate1 = "";
+                        sqlupdate1 = "Update elcoVisit Set pregNo = '" + pregnancyNo + "',";
+                        sqlupdate1 += "vDate = '" + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "',";//Global.DateTimeNowYMDHMS()
+                        sqlupdate1 += "visitStatus = '1',";
+                        sqlupdate1 += "currStatus = '13',";
+                        sqlupdate1 += "newOld = '',";
+                        sqlupdate1 += "mDate = '',";
+                        sqlupdate1 += "sSource = '',";
+                        sqlupdate1 += "qty = '',";
+                        sqlupdate1 += "unit = '',";
+                        sqlupdate1 += "brand = '',";
+                        sqlupdate1 += "referPlace = '',";
+                        sqlupdate1 += "validity = '',";
+                        sqlupdate1 += "dayMonYear = '',";
+                        sqlupdate1 += "MRDate = '',";
+                        sqlupdate1 += "syrinsQty = ''";
+                        sqlupdate1 += " Where HealthID='" + g.getGeneratedId() + "' and Visit='" + VisitNo + "'";
+                        C.Save(sqlupdate1);
+
                     }
                 }
+
+
+                //Still Birth
+
                 if (!NumberofBirth2.equalsIgnoreCase("")) {
                     if (Integer.parseInt(NumberofBirth2) > 0) {
                         for (int i = 0; i < Integer.parseInt(NumberofBirth2); i++) {
+                            //AddChildToPRS();
 
-                          /*  SQL = "Insert into " + ChildTableName + "(healthId,pregNo,childNo,systemEntryDate, Upload)Values" +
-                                    "('" + g.getHealthID() + "','" + PGNNo() + "','" + String.valueOf(i + 1) + "'" +
-                                    ",'" + Global.DateTimeNowYMDHMS() + "','2')";*/
-                            SQL = "Insert into " + ChildTableName + "(healthId,pregNo,childNo,systemEntryDate, Upload, outcomePlace," +
+                            //String ChildNo=NewbornChildNo(txtHealthID.getText().toString());
+                            SQL = "Insert into " + ChildTableName + "(healthId,pregNo,childNo,providerId,systemEntryDate,upload, outcomePlace," +
                                     "outcomeDate," +
                                     "outcomeTime," +
-                                    "outcomeType,)Values" +
-                                    "('" + g.getHealthID() + "','" + PGNNo() + "','" + String.valueOf(i + 1) + "'" +
+                                    "outcomeType)Values" +
+                                    "('" + g.getGeneratedId() + "','" + pregnancyNo + "','" + String.valueOf(ChildNo + 1) + "','" + g.getProvCode() + "'" + //String.valueOf(i + 1)
                                     ",'" + Global.DateTimeNowYMDHMS() + "','2','"
-                                    + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBPlace.getSelectedItem().toString(), 1)) + "','"
-                                    + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "','" + Global.DateTimeNowYMDHMS() + "','"  + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'" +")";
+                                    + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Integer.parseInt(Global.Left(spnBPlace.getSelectedItem().toString(), 2))) + "','"
+                                    + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "','" + Global.DateTimeNowYMDHMS() + "','" + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'" + ")";
                             C.Save(SQL);
+
+
                         }
                     }
+
                 }
-                Connection.MessageBox(Deliv.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
-                DisplayChildlist();
             } else {
-                Connection.MessageBox(Deliv.this, "মহিলা টি গর্ভবতী নন অথবা তথ্য সঠিক নয়");
+
+                SQL = "Update " + TableName + " set upload='2'," +
+                        "outcomePlace = '" + (spnBPlace.getSelectedItemPosition() == 0 ? "" : Integer.parseInt(Global.Left(spnBPlace.getSelectedItem().toString(), 2))) + "'," +
+                        "outcomeDate = '" + Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) + "'," +
+                        "outcomeType = '" + ((rdoBTypeNor.isChecked() ? "1" : "2")) + "'," +
+                        "attendantDesignation = '" + (spnBAtten.getSelectedItemPosition() == 0 ? "" : Global.Left(spnBAtten.getSelectedItem().toString(), 2)) + "'," +
+                        "liveBirth = '" + NumberofBirth1 + "'," +
+                        "stillBirth = '" + NumberofBirth2 + "'," +
+                        "abortion = '" + NumberofBirth3 + "'," +
+                        "misoprostol = '" + ((rdoMisoYes.isChecked() ? "1" : "2")) + "'," +
+                        "modifyDate = '" + Global.DateTimeNowYMDHMS() + "'" +
+                        " where healthId='" + g.getGeneratedId() + "' and PregNo='" + pregnancyNo + "'";
+                C.Save(SQL);
+
+                //need to update child information
+
             }
 
 
+            Connection.MessageBox(Deliv.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
 
 
-           /* SQL = "Update " + TableName + " Set ";
-            SQL+="Outcome = '"+ (rdoOutcomeLB.isChecked()?"1":(rdoOutcomeSB.isChecked()?"2":"3")) +"',";
-            SQL+="LBNum = '"+ txtLivebirthNum.getText().toString() +"',";
-            SQL+="OutcomeDT = '"+ Global.DateConvertYMD(dtpOutcomeDT.getText().toString()) +"',";
-            SQL+="BPlace = '"+ (spnBPlace.getSelectedItemPosition()==0?"":Global.Left(spnBPlace.getSelectedItem().toString(),2)) +"',";
-            SQL+="BAtten = '"+ (spnBAtten.getSelectedItemPosition()==0?"":Global.Left(spnBAtten.getSelectedItem().toString(),2)) +"',";
-            SQL+="BType = '"+ ((rdoBTypeNor.isChecked()?"1":"2")) +"',";
-            SQL+="Miso = '"+ ((rdoMisoYes.isChecked()?"1":"2")) +"',";
-            SQL+="RegDT = '"+ g.DateNowYMD() +"'";
-            SQL+="  Where Dist='"+ g.getDistrict() +"' and Upz='"+ g.getUpazila() +"' and UN='"+ g.getUnion() +"' and Mouza='"+ g.getMouza() +"' and Vill='"+ g.getVillage() +"' and HHNo='"+ g.getHouseholdNo() +"' and SNo='"+ txtSNo.getText().toString() +"' and PGN = '"+ PGNNo() +"'";*/
-            //  C.Save(SQL);
-
-
-            /*finish();
-            if(rdoOutcomeLB.isChecked())
-            {
-                Intent f2 = new Intent(getApplicationContext(),Child.class);
-                startActivity(f2);
-            }
-            else
-            {
-                Intent f2 = new Intent(getApplicationContext(), MemberList.class);
-                startActivity(f2);
-            }*/
         } catch (Exception e) {
             Connection.MessageBox(Deliv.this, e.getMessage());
             return;
         }
     }
 
-    private void DataSearch(String healthId) {
+    private String VisitNumber(String HealthID) {
+        String SQL = "";
+        SQL = "Select (ifnull(max(cast(Visit as int)),0)+1)MaxVisit from ELCOVisit";
+        SQL += " where healthid='" + HealthID + "'";
+
+        String VisitNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
+
+        return VisitNo;
+    }
+
+
+ /*   private void DataSearch(String healthId) {
         try {
             String SQL = "";
 
@@ -801,49 +912,7 @@ EditText dtpDOPNCCh1;
                     "and SNo=(select  SPNO1  from member  Where  healthid='"+healthId +"'))as HusAge from " +
                     "Member where healthid='" + healthId +"'";
 
-
-         /*   SQL = "Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng," +
-                    "ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1," +
-                    "ifnull(MobileNo2,'') as MobileNo2, ifnull(DOB,'') as DOB, ifnull(Age,'') as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother," +
-                    "ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') " +
-                    "as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, " +
-                    "ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP," +
-                    "(select  NameEng  from member where Dist=(select  Dist  from member Where  healthid='"+ healthId +"') " +
-                    "and Upz=(select  Upz  from member  Where  healthid='"+ healthId +"') and UN=(select  UN  from member  " +
-                    "Where  healthid='"+ healthId +"') and Mouza=(select  Mouza  from member  Where  healthid='"+ healthId +"') " +
-                    "and Vill=(select  Vill  from member  Where  healthid='"+ healthId +"') " +
-                    "and ProvCode=(select  ProvCode  from member  Where  healthid='"+ healthId +"') " +
-                    "and HHNo=(select  HHNo  from member  Where  healthid='"+ healthId +"') " +
-                    "and SNo=(select  SPNO1  from member  Where  healthid='"+ healthId +"'))as HusName";
-            SQL += ",(select  Age  from member where Dist=(select  Dist  from member  Where  healthid='"+ healthId +"') " +
-                    "and Upz=(select  Upz  from member  Where  healthid='"+ healthId +"') " +
-                    "and UN=(select  UN  from member  Where  healthid='"+ healthId +"') " +
-                    "and Mouza=(select  Mouza  from member  Where  healthid='"+ healthId +"') " +
-                    "and Vill=(select  Vill  from member  Where  healthid='"+ healthId +"') " +
-                    "and ProvCode=(select  ProvCode  from member  Where  healthid='"+ healthId +"') " +
-                    "and HHNo=(select  HHNo  from member  Where  healthid='"+ healthId +"') " +
-                    "and SNo=(select  SPNO1  from member  Where  healthid='"+ healthId +"'))as HusAge";
-            SQL += " from Member where healthid='"+ healthId +"'";*/
-
-
-
-           /* SQL = "Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng," +
-                    "ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1," +
-                    "ifnull(MobileNo2,'') as MobileNo2, ifnull(DOB,'') as DOB, ifnull(Age,'') as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother," +
-                    "ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') " +
-                    "as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, " +
-                    "ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP," +
-                    "(select NameEng  from member where  HealthId='" + g.getHealthID() + "' and SNo=(select  SPNO1  from member  Where   HealthId='" + g.getHealthID() + "' and SNo='" + SNo + "'" + " ))as HusName " +
-                    " from Member Where  HealthId='" + g.getHealthID() + "' and SNo='" + SNo + "'";*/
-
-
-            /*SQL = "Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as SNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng,";
-            SQL += " ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1,";
-            SQL += " ifnull(MobileNo2,'') as MobileNo2, ifnull(DOB,'') as DOB, ifnull(Age,'') as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother,";
-            SQL += " ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP";
-            SQL += ",(select NameEng  from member where Dist='"+ Dist +"' and Upz='"+ Upz +"' and UN='"+ UN +"' and Mouza='"+ Mouza +"' and Vill='"+ Vill +"' and HHNo='"+ HHNo +"' and SNo=(select  SPNO1  from member  Where Dist='"+ Dist +"' and Upz='"+ Upz +"' and UN='"+ UN +"' and Mouza='"+ Mouza +"' and Vill='"+ Vill +"' and HHNo='"+ HHNo +"' and SNo='"+ SNo +"'))as HusName";
-            SQL += " from Member Where Dist='"+ Dist +"' and Upz='"+ Upz +"' and UN='"+ UN +"' and Mouza='"+ Mouza +"' and Vill='"+ Vill +"' and HHNo='"+ HHNo +"' and SNo='"+ SNo +"'";*/
-            Cursor cur = C.ReadData(SQL);
+           Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
             while (!cur.isAfterLast()) {
                 txtHealthID.setText(cur.getString(cur.getColumnIndex("HealthID")));
@@ -861,15 +930,12 @@ EditText dtpDOPNCCh1;
             // Connection.MessageBox(Deliv.this, e.getMessage());
             return;
         }
-    }
+    }*/
 
-    private void ELCONoSearch(String Dist, String Upz, String UN, String Mouza, String Vill, String HHNo, String SNo) {
+  /*  private void ELCONoSearch(String Dist, String Upz, String UN, String Mouza, String Vill, String HHNo, String SNo) {
         try {
             String SQL = "";
-            SQL = "select E.ELCONo as ELCONo from ELCO E Where E.healthId='" + g.getHealthID() + "'";
-            /*SQL = "select E.ELCONo as ELCONo from ELCO E, member M Where E.Dist=M.Dist and E.Upz=M.Upz and E.UN=M.UN and E.Mouza=M.Mouza and E.Vill=M.Vill and ";
-            SQL += "E.HHNo=M.HHNo and E.SNo=M.SNo and ";
-            SQL += "E.Dist='"+ Dist +"' and E.Upz='"+ Upz +"' and E.UN='"+ UN +"' and E.Mouza='"+ Mouza +"' and E.Vill='"+ Vill +"' and E.HHNo='"+ HHNo +"' and E.SNo='"+ SNo +"'";*/
+            SQL = "select E.ELCONo as ELCONo from ELCO E Where E.healthId='" + g.getGeneratedId() + "'";
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
             while (!cur.isAfterLast()) {
@@ -883,6 +949,17 @@ EditText dtpDOPNCCh1;
         }
     }
 
+    private String PregMaxPGNNo() {
+
+
+        String SQL = "";
+        String pregNo = "";
+
+        SQL = "select ifnull((select '0'||cast(max(pregNo) as string)),0) AS PregNo from PregWomen WHERE healthId=" + g.getGeneratedId();
+        pregNo = C.ReturnSingleValue(SQL);
+        return pregNo;
+    }*/
+
     protected Dialog onCreateDialog(int id) {
         final Calendar c = Calendar.getInstance();
         hour = c.get(Calendar.HOUR_OF_DAY);
@@ -890,12 +967,7 @@ EditText dtpDOPNCCh1;
         Integer Y = g.mYear;
         Integer M = g.mMonth;
         Integer D = g.mDay;
-       /* if(dtpDOM.getText().length()>0)
-        {
-            Y = Integer.valueOf(Global.Right(dtpDOM.getText().toString(), 4));
-            M = Integer.valueOf(dtpDOM.getText().toString().substring(4,5));
-            D = Integer.valueOf(Global.Left(dtpDOM.getText().toString(), 2));
-        }*/
+
         switch (id) {
             case DATE_DIALOG:
                 return new DatePickerDialog(this, mDateSetListener, Y, M - 1, D);
@@ -917,10 +989,10 @@ EditText dtpDOPNCCh1;
             if (VariableID.equals("btnOutcomeDT")) {
                 dtpDate = (EditText) findViewById(R.id.dtpOutcomeDT);
             }
-            if(VariableID.equals("btnDOPNCCh1"))
+            /*if(VariableID.equals("btnDOPNCCh1"))
             {
                 dtpDate = (EditText)findViewById(R.id.dtpDOPNCCh1);
-            }
+            }*/
             dtpDate.setText(new StringBuilder()
                     .append(Global.Right("00" + mDay, 2)).append("/")
                     .append(Global.Right("00" + mMonth, 2)).append("/")
@@ -936,136 +1008,174 @@ EditText dtpDOPNCCh1;
         }
     };
 
-    private void DisplayChildlist() {
-        GridView gcount = (GridView) findViewById(R.id.gridChildlist);
-        g.setImuCode(String.valueOf(gcount.getCount() + 1));
-        Childlist();
+
+    private String NewbornPGNNo(String HealthId) {
+        String SQL = "";
+        SQL = "select (ifnull(cast(PregNo as int),0)) as pregNo from newborn ";
+        SQL += " where HealthId='" + g.getGeneratedId() + "'order by systementrydate asc limit 1";
+
+        String PGNNo = Global.Right(("0" + C.ReturnSingleValue(SQL)), 1);
+
+        return PGNNo;
     }
 
-    public void Childlist() {
-        GridView g1 = (GridView) findViewById(R.id.gridChildlist);
-        g1.setAdapter(new Childlists(this));
-        g1.setNumColumns(6);
+    private String NewbornChildNo(String HealthId) {
+        String SQL = "";
+        SQL = "select  (ifnull(cast(childNo as int),0))+1 as childNo from newborn ";
+        SQL += " where HealthId='" + g.getGeneratedId() + "' and PregNo=(Select (ifnull(max(cast(PregNo as int)),0)) as pregNo  from newborn where HealthId='" + g.getGeneratedId() + "')order by systementrydate asc limit 1";
+
+        String ChildNo = Global.Right(("0" + C.ReturnSingleValue(SQL)), 1);
+
+        return ChildNo;
     }
 
-    public class Childlists extends BaseAdapter {
-        private Context mContext;
-        String[][] vcode;
-        Integer totalRec;
+    private String MaxSNo() {
+        String SQL = "";
+        String MaxSNo = "";
+        SQL += "Select (ifnull(max(cast(SNo as int)),0)+1)MaxSNo from Member ";
+        SQL += "where dist='" + g.getDistrict() + "' and upz='" + g.getUpazila() + "' and un='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and vill='" + g.getVillage() + "'  and  HHNo='" + g.getHouseholdNo() + "'";
+        MaxSNo = Global.Right(("00" + C.ReturnSingleValue(SQL)), 2);
+        return MaxSNo;
+    }
 
-        public Childlists(Context c) {
-            mContext = c;
+    private String GetCountSLNoNumber() {
+
+        String SQL = "select ((cast(Count(*) as int))) as Totalno  from delivery";
+        String Val = String.valueOf(C.ReturnSingleValue(SQL));
+        if (Val.equalsIgnoreCase("0")) {
+            return "1";
+        } else
+            return Val;
+    }
+
+    private String HealthIdNO() {
+        String HID = "";
+        String HealthID = "";
+        if (C.Existence("select HealthID from HealthidRepository where ifnull(status,'1')='1' order by healthid limit 1")) {
+            HID = C.ReturnSingleValue("select HealthID from HealthidRepository where ifnull(status,'1')='1' order by healthid limit 1");
+        } else {
+            Connection.MessageBox(Deliv.this, "Health ID এর তালিকা থেকে সকল আইডি ব্যবহার করা হয়ে গেছে, নতুন আইডির জন্য আপনার সুপারভাইজারের সাথে যোগাযোগ করুন।");
+            return HID;
         }
 
-        public int getCount() {
+        return HID;
+    }
 
-            //String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-            // String ServiceId = serviceID(pgnpositionselected);
+    private String GetOutComeDate(String HealthId) {
+        String SQL = "";
+        String DOB = "";
+        SQL += "Select outcomeDate from delivery WHERE healthId = '" + g.getGeneratedId() + "'";// and PregNo=";
+        DOB = Global.Right(("00" + C.ReturnSingleValue(SQL)), 10);
+        return DOB;
+    }
 
-            return Integer.parseInt(C.ReturnSingleValue("Select count(*)total from newBorn where healthid='" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'"));
-        }
-
-        public Object getItem(int position) {
-            return null;
-        }
-
-        public long getItemId(int position) {
-            return 0;
-        }
-
-        public View getView(final int position, View convertView, ViewGroup parent) {
-            View MyView = convertView;
-            if (convertView == null) {
-                LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                MyView = li.inflate(R.layout.anc_item, null);
-
-
-                String SQL = "Select healthId,pregNo,childNo,ifnull(birthWeight,'') as birthWeight,ifnull(gender,'') as gender, ifnull(outcomeType,'') as outcomeType  from newBorn where healthid='" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'" + " order by childNo asc";
-
-                try {
-                    Cursor cur = C.ReadData(SQL);
-                    cur.moveToFirst();
-
-                    totalRec = cur.getCount();
-                    vcode = new String[4][totalRec];
-                    int i = 0;
-                    while (!cur.isAfterLast()) {
-                        ((LinearLayout)findViewById(R.id.secChildList)).setVisibility(View.VISIBLE);
-                        vcode[0][i] = "শিশু " + " " + String.valueOf(cur.getString(cur.getColumnIndex("childNo")))
-                                + " ওজন " + String.valueOf(cur.getString(cur.getColumnIndex("birthWeight")))
-                                + " \n প্রসব ফলাফল " + String.valueOf(cur.getString(cur.getColumnIndex("outcomeType")));
-                        vcode[1][i] = String.valueOf(cur.getString(cur.getColumnIndex("healthId")));
-                        vcode[2][i] = String.valueOf(cur.getString(cur.getColumnIndex("pregNo")));
-                        vcode[3][i] = String.valueOf(cur.getString(cur.getColumnIndex("childNo")));
-                        /*vcode[1][i]= String.valueOf(cur.getString(cur.getColumnIndex("serviceId")));
-                        vcode[2][i]= cur.getString(cur.getColumnIndex("imucard"));
-                        vcode[3][i]= String.valueOf(cur.getString(cur.getColumnIndex("imucode")));*/
-
-                        i += 1;
-                        cur.moveToNext();
-                      //  VlblChildList.setVisibility(View.VISIBLE);
-                    }
-                    cur.close();
-
-                    Button tv = (Button) MyView.findViewById(R.id.image_name);
-                    tv.setTextSize(14);
-                    tv.setText(vcode[0][position]);// + "\n" + vcode[1][position]);
-                    final Integer p = position;
-                    tv.setOnClickListener(new View.OnClickListener() {
-                        public void onClick(View v) {
-                            // ChkTT1.setChecked(true);
-                            // if(vcode[2][position].equals("1"))
-                            // {
-                            //rdoCardYes.setChecked(true);
-                            // }
-                            // else if(vcode[2][position].equals("2"))
-                            // {
-                            // rdoCardNo.setChecked(true);
-                            // }
-                            //String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-                            //    String ServiceId = String.valueOf(vcode[1][position]);
-
-
-                             /*   if(vcode[1][position].length()!=0)
-                            {
-                                dtpDOTT1.setText(vcode[1][position]);
-                            }
-                            else
-                            {
-                                dtpDOTT1.setText("");
-                            }*/
-
-                            // secTT1.setVisibility(View.VISIBLE);
-                            //   btnTTClose.setVisibility(View.VISIBLE);
-                            //  btnAddTT.setVisibility(View.GONE);
-                            // g.setImuCode(vcode[3][position]);
-                            //String ServiceId = String.valueOf(vcode[1][position]);
-                            // DisplaySelectedANCInfo(ServiceId);
-                            String pregNo = String.valueOf(vcode[2][position]);
-                            String childNo = String.valueOf(vcode[3][position]);
-                            g.setPregNo(pregNo);
-                            g.setChildNo(childNo);
-                             finish();
-
-                            Intent f2 = new Intent(getApplicationContext(), Child.class);
-                            startActivity(f2);
-                        }
-                    });
-                } catch (Exception ex) {
-                    // Connection.MessageBox(Deliv.this, ex.getMessage());
-                }
-
+    public void AddChildToPRS() {
+        try {
+            String SQL = "";
+            String AG = "";
+            String MaxSNo = MaxSNo();
+            String DOB = GetOutComeDate(g.getGeneratedId());
+            String HealthId = HealthIdNO();
+            //Issue SNo and HealthID
+            if (!C.Existence("Select Dist,Upz,UN,Mouza,Vill,HHNo,SNo from " + MemberTable + "  Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "' and HHNo='" + g.getHouseholdNo() + "' and SNo='" + MaxSNo + "'")) {
+                SQL = "Insert into " + MemberTable + "(Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,SNo,HealthID,Lat,Lon,StartTime,EnType,EnDate,EndTime,ExType,ExDate,UserId,EnDt,upload)Values('" + g.getDistrict() + "','" + g.getUpazila() + "','" + g.getUnion() + "','" + g.getMouza() + "','" + g.getVillage() + "','" + g.getProvType() + "','" + g.getProvCode() + "','" + g.getHouseholdNo() + "','" + MaxSNo + "','" + HealthId + "','" + Double.toString(currentLatitude) + "','" + Double.toString(currentLongitude) + "','" + StartTime + "','','" + g.DateNowYMD() + "','" + g.CurrentTime24() + "','','','" + g.getUserID() + "','" + Global.DateTimeNowYMDHMS() + "','2')";
+                C.Save(SQL);
+                C.Save("Update HealthIDRepository Set Status='2' where HealthID='" + HealthId + "'");
             }
-            return MyView;
-        }
 
+            String SQL1 = "";
+            SQL1 = "Select Dist, Upz, UN, Mouza, Vill, HHNo, SNo as MotherNo, ifnull(HealthID,'') as HealthID, ifnull(NameEng,'') as NameEng,";
+            SQL1 += " ifnull(NameBang,'') as NameBang, ifnull(Rth,'') as Rth, ifnull(HaveNID,'') as HaveNID, ifnull(NID,'') as NID, ifnull(NIDStatus,'') as NIDStatus, ifnull(HaveBR,'') as HaveBR, ifnull(BRID,'') as BRID, ifnull(BRIDStatus,'') as BRIDStatus, ifnull(MobileNo1,'') as MobileNo1,";
+            SQL1 += " ifnull(MobileNo2,'') as MobileNo2, ifnull(MobileYN,'')as MobileYN, ifnull(DOB,'') as DOB, ifnull(cast(((julianday(date('now'))-julianday(DOB))/365.25)as int),'') as Age, ifnull(DOBSource,'') as DOBSource, ifnull(BPlace,'') as BPlace, ifnull(FNo,'') as FNo, ifnull(Father,'') as Father, ifnull(FDontKnow,'')as FDontKnow, ifnull(MNo,'') as MNo, ifnull(Mother,'') as Mother,ifnull(MDontKnow,'')as MDontKnow,";
+            SQL1 += " ifnull(Sex,'') as Sex, ifnull(MS,'') as MS, ifnull(SPNO1,'') as SPNO1,ifnull(SPNO2,'') as SPNO2,ifnull(SPNO3,'') as SPNO3,ifnull(SPNO4,'') as SPNO4, ifnull(ELCONo,'') as ELCONo, ifnull(ELCODontKnow,'') as ELCODontKnow, ifnull(EDU,'') as EDU, ifnull(Rel,'') as Rel, ifnull(Nationality,'') as Nationality, ifnull(OCP,'') as OCP,";
+            SQL1 += " (select  NameEng  from member where  ProvCode=(select  ProvCode  from member  Where  healthid ='" + g.getHealthID() + "')";
+            SQL1 += "and HHNo=(select  HHNo  from member  Where  healthid='" + g.getHealthID() + "')";
+            SQL1 += "and SNo=(select  SPNO1  from member  Where  healthid='" + g.getHealthID() + "'))as HusName,";
+            SQL1 += "(select  SNo  from member where ProvCode=(select  ProvCode  from member  Where  healthid='" + g.getHealthID() + "')";
+            SQL1 += "and HHNo=(select  HHNo  from member  Where  healthid='" + g.getHealthID() + "')";
+            SQL1 += "and SNo=(select  SPNO1  from member  Where  healthid='" + g.getHealthID() + "'))as FatherNo from Member where healthid='" + g.getHealthID() + "'";
+
+            Cursor cur = C.ReadData(SQL1);
+            cur.moveToFirst();
+            while (!cur.isAfterLast()) {
+                SQL = "Update " + MemberTable + " Set ";
+                String MotherName = cur.getString(cur.getColumnIndex("NameEng"));
+                String ChildOf = "Child of ";
+                SQL += "NameEng = '" + ChildOf + " " + MotherName + "',";
+                SQL += "NameBang = '',"; //convert english name to bangla
+                String RelationWithHead = cur.getString(cur.getColumnIndex("Rth"));
+                if (RelationWithHead.equalsIgnoreCase("02"))
+                    SQL += "RTH = '03',";
+                else if (RelationWithHead.equalsIgnoreCase("15") | RelationWithHead.equalsIgnoreCase("12") | RelationWithHead.equalsIgnoreCase("03") | RelationWithHead.equalsIgnoreCase("13") | RelationWithHead.equalsIgnoreCase("16"))
+                    SQL += "RTH = '08',";
+                else if (RelationWithHead.equalsIgnoreCase("05") | RelationWithHead.equalsIgnoreCase("14"))
+                    SQL += "RTH = '16',";
+                else if (RelationWithHead.equalsIgnoreCase("04") | RelationWithHead.equalsIgnoreCase("11"))
+                    SQL += "RTH = '05',";
+                else if (RelationWithHead.equalsIgnoreCase("06"))
+                    SQL += "RTH = '05',";
+                else if (RelationWithHead.equalsIgnoreCase("10"))
+                    SQL += "RTH = '09',";
+                else if (RelationWithHead.equalsIgnoreCase("17"))
+                    SQL += "RTH = '16',";
+                else if (RelationWithHead.equalsIgnoreCase("18"))
+                    SQL += "RTH = '77',";
+                else
+                    SQL += "RTH = '77',";
+                SQL += "HaveNID = '2',";
+                SQL += "NID = '',";
+                SQL += "NIDStatus = '7',";
+                SQL += "HaveBR = '2',";
+                SQL += "BRID = '',";
+                SQL += "BRIDStatus = '7',";
+                SQL += "MobileNo1 = '',";
+                SQL += "MobileNo2 = '',";
+                SQL += "MobileYN = '',";
+                SQL += "DOB = '" + DOB + "',"; //Global.DateConvertYMD(dtpDOB.getText().toString())
+                SQL += "Age = '" + Global.DateDifferenceYears(Global.DateNowDMY(), Global.DateConvertDMY(DOB.toString())) + "',";
+                SQL += "DOBSource = '1',";
+                SQL += "BPlace = '" + g.getDistrict() + "',";
+                String FatherSNo = cur.getString(cur.getColumnIndex("FatherNo"));
+                SQL += "FNo = '" + FatherSNo + "',";
+                SQL += "Father = '',";
+                SQL += "FDontKnow = '2',";
+                String MatherSNo = cur.getString(cur.getColumnIndex("MotherNo"));
+                SQL += "MNo = '" + MatherSNo + "',";
+                SQL += "Mother = '',";
+                SQL += "MDontKnow = '2',";
+                SQL += "Sex = '',";
+                SQL += "MS = '1',";
+                SQL += "SPNo1 = '',";
+                SQL += "SPNo2 = '',";
+                SQL += "SPNo3 = '',";
+                SQL += "SPNo4 = '',";
+                SQL += "ELCONo = '',";
+                SQL += "ELCODontKnow = '1',";
+                SQL += "EDU = '99',";
+                String Religious = cur.getString(cur.getColumnIndex("Rel"));
+                SQL += "Rel = '" + Religious + "',";
+                String Nationality = cur.getString(cur.getColumnIndex("Nationality"));
+                SQL += "Nationality = '" + Nationality + "',";
+                SQL += "OCP = '88'";
+                SQL += " Where Dist='" + g.getDistrict() + "' and Upz='" + g.getUpazila() + "' and UN='" + g.getUnion() + "' and Mouza='" + g.getMouza() + "' and Vill='" + g.getVillage() + "' and ProvType='" + g.getProvType() + "' and ProvCode='" + g.getProvCode() + "' and HHNo='" + g.getHouseholdNo() + "' and SNo='" + MaxSNo + "'";
+                C.Save(SQL);
+                cur.moveToNext();
+                cur.close();
+            }
+
+        } catch (Exception e) {
+            Connection.MessageBox(Deliv.this, e.getMessage());
+            return;
+        }
     }
+
 
     private void DisplayPNCVisits() {
         GridView gcount = (GridView) findViewById(R.id.gridPNC);
         g.setImuCode(String.valueOf(gcount.getCount() + 1));
         PNCVisits();
     }
+
     public void PNCVisits() {
         GridView g1 = (GridView) findViewById(R.id.gridPNC);
         g1.setAdapter(new PNC(this));
@@ -1082,11 +1192,7 @@ EditText dtpDOPNCCh1;
         }
 
         public int getCount() {
-
-            //String pgnpositionselected = String.valueOf(spnPgn.getSelectedItemPosition());
-            // String ServiceId = serviceID(pgnpositionselected);
-
-            return Integer.parseInt(C.ReturnSingleValue("Select count(*)total from pncServiceMother where healthid='" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'"));
+            return Integer.parseInt(C.ReturnSingleValue("Select count(*)total from pncServiceMother where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + g.getPregNo() + "'"));
         }
 
         public Object getItem(int position) {
@@ -1103,7 +1209,8 @@ EditText dtpDOPNCCh1;
             if (convertView == null) {
                 LayoutInflater li = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 MyView = li.inflate(R.layout.anc_item_actual, null);
-                String SQL = "Select healthId, pregNo,serviceId, visitDate from pncServiceMother where healthid='" + g.getHealthID() + "' AND pregNo = '" + PGNNo() + "'" + " order by cast(visitDate as DATE) asc";
+                /*String SQL = "Select healthId, pregNo,serviceId, visitDate from pncServiceMother where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + PGNNo() + "'" + " order by cast(visitDate as DATE) asc";*/
+                String SQL = "Select healthId, pregNo,serviceId, visitDate from pncServiceMother where healthid='" + g.getGeneratedId() + "' AND pregNo = '" + g.getPregNo() + "'" + " order by cast(visitDate as DATE) asc";
 
                 try {
                     Cursor cur = C.ReadData(SQL);
@@ -1149,7 +1256,6 @@ EditText dtpDOPNCCh1;
         String SQL = "Select visitDate from pncServiceMother where serviceId = '" + ServiceId + "'";
 
 
-
         try {
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
@@ -1163,67 +1269,58 @@ EditText dtpDOPNCCh1;
             }
 
             cur.close();
-        }
-        catch (Exception ex) {
+        } catch (Exception ex) {
             Connection.MessageBox(Deliv.this, ex.getMessage());
         }
     }
 
-    private void DataSavePNC()
-    {
+    private void DataSavePNC() {
 
-        try
-        {
-            if(dtpDOPNCCh1.getText().toString().length()==0 & dtpDOPNCCh1.isShown())
-            {
+        try {
+            if (dtpDOPNCCh1.getText().toString().length() == 0 & dtpDOPNCCh1.isShown()) {
                 Connection.MessageBox(Deliv.this, "পি এন সি  এর তারিখ কত লিখুন।");
                 dtpDOPNCCh1.requestFocus();
                 return;
             }
 
-            if(validateDeliveryDate())
-            {
+            if (validateDeliveryDate()) {
                 Connection.MessageBox(Deliv.this, "পি এন সি  এর সঠিক তারিখ কত লিখুন।");
                 return;
             }
 
             String SQL = "";
-            SQL = "select healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, Upload, UploadDT, modifyDate FROM pncServiceMother ";
-            SQL += " WHERE healthId = '"+ g.getHealthID() +"' AND pregNo ='"+ PGNNo() +"' and serviceId='"+ GetServiceId() +"'  ORDER BY visitDate";
+
+            SQL = "select healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, upload,modifyDate FROM pncServiceMother ";
+            SQL += " WHERE healthId = '" + g.getGeneratedId() + "' AND pregNo ='" + g.getPregNo() + "' and serviceId='" + GetServiceId() + "'  ORDER BY visitDate";
 
             String SQ = "select visitDate FROM pncServiceMother ";
-            SQ += " WHERE healthId = '"+ g.getHealthID() +"' AND pregNo ='"+ PGNNo() +"' and visitDate='"+ Global.DateConvertYMD(dtpDOPNCCh1.getText().toString()) +"'";
+            SQ += " WHERE healthId = '" + g.getGeneratedId() + "' AND pregNo ='" + g.getPregNo() + "' and visitDate='" + Global.DateConvertYMD(dtpDOPNCCh1.getText().toString()) + "'";
 
 
+            if (!C.Existence(SQL) && !C.Existence(SQ)) {
 
-            if(!C.Existence(SQL) && !C.Existence(SQ))
-            {
-
-                SQL = "Insert into " + TableNamePNC + "(healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, Upload)Values('"+
-                        g.getHealthID() +"','"+ PGNNo() +"','"+  GetServiceId() +"','"+ g.getProvCode() +"','"+ Global.DateConvertYMD(dtpDOPNCCh1.getText().toString()) +"','"+  "G','"+  Global.DateTimeNowYMDHMS() +"','"+ "2')";
+                SQL = "Insert into " + TableNamePNC + "(healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, upload)Values('" +
+                        g.getGeneratedId() + "','" + g.getPregNo() + "','" + GetServiceId() + "','" + g.getProvCode() + "','" + Global.DateConvertYMD(dtpDOPNCCh1.getText().toString()) + "','" + "G','" + Global.DateTimeNowYMDHMS() + "','" + "2')";
                 C.Save(SQL);
-                ((LinearLayout)findViewById(R.id.secChildList)).setVisibility(View.VISIBLE);
+                ((LinearLayout) findViewById(R.id.secChildList)).setVisibility(View.VISIBLE);
                 Connection.MessageBox(Deliv.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
-            }
-            else
-            {
+            } else {
                 Connection.MessageBox(Deliv.this, "পি এন সি  এর ভিসিট দেয়া আছে");
                 return;
             }
 
-        }
-        catch(Exception  e)
-        {
+        } catch (Exception e) {
             Connection.MessageBox(Deliv.this, e.getMessage());
             return;
         }
     }
-    private String GetServiceId()
-    {
+
+
+    private String GetServiceId() {
         String SQL = "";
 
         SQL = "select '0'||(ifnull(max(cast(serviceId as int)),0))MaxserviceId from pncServiceMother";
-        SQL += " WHERE healthId = '"+ g.getHealthID() +"' AND pregNo ='"+ PGNNo() +"'";
+        SQL += " WHERE healthId = '" + g.getGeneratedId() + "' AND pregNo ='" + g.getPregNo() + "'";
 
         String tempserviceID = C.ReturnSingleValue(SQL);
 
@@ -1231,33 +1328,28 @@ EditText dtpDOPNCCh1;
         String serviceID = String.valueOf((Integer.parseInt(tempserviceID) + 1));
 
         if (serviceID.equalsIgnoreCase("1")) {
-            return String.valueOf(g.getHealthID() + PGNNo() + serviceID);
+            return String.valueOf(g.getGeneratedId() + g.getPregNo() + serviceID);
         } else {
             return String.valueOf(serviceID);
         }
     }
-    private void PNCVisitSearch(String serviceId)
-    {
-        try
-        {
+
+    private void PNCVisitSearch(String serviceId) {
+        try {
             String SQL = "";
-            SQL = "select healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, Upload, UploadDT, modifyDate FROM pncServiceMother ORDER BY visitDate";
-            SQL += " WHERE healthId = '"+ g.getHealthID() +"' AND pregNo ='"+ g.getPregNo() +"'  and serviceId='"+ serviceId +"'";
+            SQL = "select healthId, pregNo, serviceId, providerId, visitDate, serviceSource, systemEntryDate, upload,modifyDate FROM pncServiceMother ORDER BY visitDate";
+            SQL += " WHERE healthId = '" + g.getGeneratedId() + "' AND pregNo ='" + g.getPregNo() + "'  and serviceId='" + serviceId + "'";
             Cursor cur = C.ReadData(SQL);
             cur.moveToFirst();
-            while(!cur.isAfterLast())
-            {
-                if(!cur.getString(cur.getColumnIndex("visitDate")).equals("null"))
-                {
+            while (!cur.isAfterLast()) {
+                if (!cur.getString(cur.getColumnIndex("visitDate")).equals("null")) {
                     dtpDOPNCCh1.setText(Global.DateConvertDMY(cur.getString(cur.getColumnIndex("visitDate"))));
                 }
 
                 cur.moveToNext();
             }
             cur.close();
-        }
-        catch(Exception  e)
-        {
+        } catch (Exception e) {
             Connection.MessageBox(Deliv.this, e.getMessage());
             return;
         }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scrollbars="vertical">
+    <LinearLayout android:id="@+id/secListRow" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+        <TextView android:text="Command" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+
+        <TextView android:text="Request Id" android:visibility="gone" android:layout_width="100dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="Request By Name" android:visibility="gone" android:layout_width="250dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="অনুরোধ কারির কোড" android:layout_width="250dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="আইটেমের নাম" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="পরিমান" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+        <TextView android:text="চাহিদার অবস্থা" android:layout_width="200dp" android:gravity="center" android:layout_height="wrap_content"/>
+       <!--    <TextView android:text="TransactionId" android:layout_width="150dp" android:gravity="center" android:layout_height="wrap_content"/>
+-->        <TextView android:text="মন্তব্য" android:layout_width="200dp" android:gravity="center" android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+</LinearLayout>

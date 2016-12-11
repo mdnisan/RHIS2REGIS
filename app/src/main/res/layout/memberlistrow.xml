@@ -8,8 +8,8 @@
         android:layout_height="fill_parent" android:layout_marginRight="10sp">
 
 
-        <TableRow android:layout_marginTop="5sp" android:layout_marginBottom="5sp">
-            <ImageButton android:id="@+id/memberImage" android:background="@drawable/deletesmall"
+        <TableRow android:layout_marginTop="5sp" android:layout_marginBottom="5sp"  android:id="@+id/memtabrow">
+            <ImageButton android:id="@+id/memberImage" android:background="@drawable/newborn"
                 android:layout_width="30sp"  android:textSize="14sp" android:layout_marginTop="0sp"
                 android:layout_height="wrap_content"
                 android:text="" android:layout_marginLeft="10sp"/>

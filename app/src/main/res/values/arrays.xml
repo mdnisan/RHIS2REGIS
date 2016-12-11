@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="actions">
+        <item>ছক</item>
+        <item>মজুদের ছক</item>
+        <item>মৃত্যু তালিকা ছক</item>
+        <item>ELCo তালিকা ছক</item>
+       <!-- <item>NRC</item>-->
+    </string-array>
+</resources>

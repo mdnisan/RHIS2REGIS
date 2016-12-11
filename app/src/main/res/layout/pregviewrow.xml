@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/rowlay" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+    <TableLayout
+        android:id="@+id/memtab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow android:gravity="center_vertical">
+            <TextView android:id="@+id/Slno" android:layout_width="80dp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/HHNo" android:layout_width="100sp" android:gravity="left"  android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Elcono" android:layout_width="100dp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Healthid" android:layout_width="200sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/VName" android:layout_width="140sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Name" android:layout_width="200sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/HName" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Age" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/MDate" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Mobno" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+
+            <TextView android:id="@+id/Son" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/Dau" android:layout_width="150sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+
+            <TextView android:id="@+id/Edu" android:layout_width="280sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+            <TextView android:id="@+id/CDeath" android:layout_width="200sp" android:gravity="left" android:paddingLeft="10sp" android:layout_marginTop="5dp"
+                android:layout_height="60sp" android:textSize="18sp"/>
+
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
+
