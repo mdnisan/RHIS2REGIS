@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/rowlay" xmlns:android="http://schemas.android.com/apk/res/android"
+ android:orientation="vertical" android:layout_width="fill_parent"
+ android:layout_height="fill_parent" 
+     android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"  android:paddingTop="1sp" android:paddingBottom="1sp">
+    		<LinearLayout
+				android:id="@+id/secHHIndex"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent"
+                android:orientation="vertical">
+
+				<LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent" android:orientation="horizontal">
+					<TextView android:id="@+id/HHNo" android:paddingLeft="10sp"
+					         android:layout_width="180sp" android:layout_marginTop="5dp"
+					         android:layout_height="fill_parent" android:textSize="18sp" android:layout_marginRight="10sp"
+                             android:layout_gravity="left"/>
+
+
+                     <TextView android:id="@+id/HHHead" android:paddingLeft="10sp"
+                         android:layout_width="fill_parent" android:layout_marginTop="5dp"
+                         android:layout_height="fill_parent" android:textSize="18sp"
+                         android:layout_gravity="left"/>
+
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent"  android:orientation="horizontal">
+
+                    <TextView android:id="@+id/TotalMem" android:paddingLeft="10sp"
+                        android:layout_width="220sp" android:layout_marginTop="5dp"
+                        android:layout_height="fill_parent" android:textSize="18sp"
+                        android:layout_gravity="left"/>
+                </LinearLayout>
+                <LinearLayout android:layout_width="wrap_content" android:layout_height="fill_parent"  android:orientation="horizontal">
+
+
+                    <TextView android:id="@+id/elconame" android:paddingLeft="10sp"
+                        android:layout_width="wrap_content" android:layout_marginTop="5dp"
+                        android:layout_height="fill_parent" android:textSize="18sp"
+                        android:layout_gravity="left"/>
+                </LinearLayout>
+
+
+			</LinearLayout>
+</RelativeLayout>

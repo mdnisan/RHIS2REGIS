@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@+id/rowlay" xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp">
+    <TableLayout
+        android:id="@+id/memtab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <TableRow android:gravity="center_vertical">
+            <LinearLayout
+                android:id="@+id/secListRow"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/cmdB1"
+                    android:layout_width="50sp"
+                    android:layout_height="60sp"
+                    android:background="#ffd866"
+                    android:text="Edit"
+                    android:textSize="14px" android:visibility="gone"/>
+
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text=" "/>
+
+                <Button
+                    android:id="@+id/cmdB22"
+                    android:layout_width="80sp"
+                    android:layout_height="60sp"
+                    android:background="#00B7FB"
+                    android:text="View"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14px" android:visibility="gone"/>
+
+
+
+                <TextView
+                    android:id="@+id/workPlanDate"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:visibility="visible"/>
+
+
+                <TextView
+                    android:id="@+id/itemdes"
+                    android:layout_width="420dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"/>
+
+             <!--   <CheckBox
+                    android:id="@+id/NotApproved"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>-->
+
+                <TextView
+                    android:id="@+id/status"
+                    android:layout_width="180dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"/>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

@@ -1,0 +1,392 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secS10"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHS10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="পরিবার কল্যাণ সহকারীর মাসিক অগ্রিম কর্মসূচী"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    -->
+        <LinearLayout
+            android:id="@+id/secFpiName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSlNo"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:text="পরিবার কল্যাণ  সহকারীর নাম"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtReqName"
+                style="@style/customEdit"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+            <!--        <EditText android:id="@+id/txtSlNo" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />-->
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:id="@+id/secFpiWarea"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblFpiWarea"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:text="কর্ম এলাকা"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtFpiWarea"
+                style="@style/customEdit"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+            <!--        <EditText android:id="@+id/txtSlNo" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />-->
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secFPIPMonth"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/VlblFPIPMonth"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:text=" কর্মসূচীর মাস"
+                android:textSize="20sp" />
+
+
+            <Spinner
+                android:id="@+id/spnFPIPMonth"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secListRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#C2E0EC"
+            android:paddingTop="5px"
+            android:paddingBottom="5px">
+
+            <TextView android:text=""
+                android:layout_width="20dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+            <TextView android:text="তারিখ                       বার "
+                android:layout_width="270dp"
+                android:gravity="left"
+                android:layout_height="wrap_content"/>
+            <TextView android:text="        কর্মসূচী"
+                android:layout_width="300dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+       <!-- <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout android:visibility="gone"
+            android:id="@+id/secReqToCode"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/VlblReqToCode"
+                android:layout_width="280sp"
+                android:layout_height="wrap_content"
+                android:text="অগ্রিম কর্মসূচীর মাস"
+                android:textSize="20sp" />
+
+
+            <EditText
+                android:id="@+id/dtpAgDT"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnAgDT"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="top"
+                android:src="@drawable/calender" />
+
+
+            &lt;!&ndash;<EditText android:id="@+id/txtReqToCode" android:maxLength="5" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />&ndash;&gt;
+            &lt;!&ndash; <Spinner android:id="@+id/spnOrg" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />&ndash;&gt;
+        </LinearLayout>-->
+
+
+
+   <!--     <LinearLayout
+            android:id="@+id/secItem" android:visibility="gone"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblItem"
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:text="তারিখ"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/dtpItemDT"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnItemDT"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="top"
+                android:src="@drawable/calender" />
+
+            <TextView
+                android:id="@+id/VlblItem"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:text="কর্মসূচীর নাম"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spnItem"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+        </LinearLayout>-->
+
+     <!--   <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secItemUnit"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/VlblStatus"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:text="অনুমোদনের অবস্থা"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/status"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:background="#D7D7D7"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+
+        </LinearLayout>-->
+
+
+
+      <!--  <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20sp">
+
+            <Button
+                android:id="@+id/cmdSave"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@drawable/button_style"
+                android:text=" Save  "
+                android:textSize="16sp" />
+
+
+        </LinearLayout>-->
+
+   <!--     <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/seclblSearch"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblsearch"
+                android:layout_width="480sp"
+                android:layout_height="wrap_content"
+                android:text="পরিবার কল্যাণ সহকারী’র মাসিক অগ্রিম কর্মসূচী সম্পূর্ণ"
+
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnPlus"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="center"
+                android:src="@drawable/plus" />
+
+            <ImageButton
+                android:id="@+id/btnMinus"
+                android:layout_width="30sp"
+                android:layout_height="30sp"
+                android:layout_gravity="right"
+                android:src="@drawable/minus" />
+
+
+
+
+        </LinearLayout>
+-->
+ <!--       <LinearLayout
+            android:id="@+id/seclblSearchGroup"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">-->
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <HorizontalScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+
+                <ListView
+                    android:id="@+id/lstData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="600sp"
+                    android:divider="#000000"
+                    android:dividerHeight="1px"
+
+                    android:clickable="true">
+                </ListView>
+              <!--  <ListView
+                        android:id="@+id/lstData"
+                        android:layout_width="match_parent"
+                        android:layout_height="680sp"
+                        android:clickable="true"
+                        android:divider="#000000"
+                        android:dividerHeight="1px"
+                        android:scrollbars="vertical"></ListView>-->
+               <!-- </LinearLayout>-->
+            </HorizontalScrollView>
+
+        </LinearLayout>
+   <!-- </LinearLayout>-->
+</ScrollView>

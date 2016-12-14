@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+   
+    <LinearLayout android:id="@+id/seclblHH" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+		<TextView android:id="@+id/lblVillageName" android:text="lblVillage" android:layout_width="300sp" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#FFFFFF"/>				
+    	<TextView android:id="@+id/VlblHHNo" android:text="খানা নাম্বার" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#FFFFFF"/>
+        <TextView android:id="@+id/txtHHNo" android:maxLength="5" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:gravity="center" />            
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0" android:background="#F3F3F3">
+        <TextView android:text="" android:layout_width="270sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:text="নতুন" android:layout_width="190sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#006699"/>
+        <TextView android:text="পুরাতন" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#006699"/>
+    </LinearLayout>
+    
+    <LinearLayout android:id="@+id/secwardNew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblwardNew" android:text="১. ওয়ার্ড" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnwardNew" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        <TextView android:text="" android:layout_width="40sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnwardOld" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secFWAUnit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblFWAUnit" android:text="২. ইউনিট (FWA)" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnFWAUnit" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secEPIBlock" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblEPIBlock" android:text="৩. ই পি আই ব্লক(এইচ এ)" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnEPIBlock" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secPAddr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblPAddr" android:text="৪. এটা কি আপনার স্থায়ী ঠিকানা" android:layout_width="270sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpPAddr" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+         
+           <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoPAddr1" android:text="1-হাঁ"/>
+           <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoPAddr2" android:text="2-না"/>
+        </RadioGroup>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secPermaAddress" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblPermaAddress" android:text="   ঠিকানা" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtPermaAddress" android:maxLength="100" android:layout_width="350sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secReligion" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblReligion" android:text="৫. ধর্ম" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnReligion" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secVGFCard" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblVGFCard" android:text="৬. ভি জি এফ কার্ড আছে কি?" android:layout_width="270sp" android:layout_height="wrap_content" android:textSize="20sp" />
+
+        <RadioGroup android:id="@+id/rdogrpVGFCard" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+         
+           <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoVGFCard1" android:text="1-হাঁ"/>
+           <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoVGFCard2" android:text="2-না"/>
+        </RadioGroup>        
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+       <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+       	<Button android:id="@+id/cmdSave" android:layout_width="300sp" android:layout_height="wrap_content"
+       			android:textSize="16sp" android:text="  তথ্য সংরক্ষণ  -> সদস্যের তালিকা  "  android:layout_marginBottom="10sp"/>
+       </LinearLayout>
+</LinearLayout>
+</ScrollView>

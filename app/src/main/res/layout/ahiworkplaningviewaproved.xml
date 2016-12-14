@@ -1,0 +1,390 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secS10"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHS10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    -->
+        <LinearLayout
+            android:id="@+id/secFpiName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSlNo"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="সহকারী স্বাস্থ্য পরিদর্শকের  নাম"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/spnfpaCode"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:id="@+id/secFpiWarea"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblFpiWarea"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="কর্ম এলাকা (ইউনিয়ন)"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtFpiWarea"
+                style="@style/customEdit"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+            <!--        <EditText android:id="@+id/txtSlNo" android:maxLength="2" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />-->
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+
+
+        <LinearLayout
+            android:id="@+id/secFPIPMonth"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/VlblFPIPMonth"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text=" কর্মসূচীর মাস"
+                android:textSize="20sp" />
+
+
+            <Spinner
+                android:id="@+id/spnFPIPMonth"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:id="@+id/secRemarks"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal" android:visibility="gone">
+
+            <TextView
+                android:id="@+id/VlblRemarks"
+                android:layout_width="130sp"
+                android:layout_height="wrap_content"
+                android:text="মন্তব্য"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtRemarks"
+                style="@style/customEdit"
+                android:layout_width="400sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="200"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secFPIDataSyne1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!--Sync-->
+            <Button
+                android:id="@+id/cmdSync"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Upload" android:visibility="gone" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" android:visibility="gone" />
+
+            <Button
+                android:id="@+id/cmdDownload"
+                android:layout_width="350sp"
+                android:layout_height="80dip"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="সহকারী স্বাস্থ্য পরিদর্শকের  কর্মসূচীটি Download  করতে  এখানে Click করুন ।"/>
+
+           <!-- <TextView android:text=""
+                android:layout_width="20dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+            <Button
+                android:id="@+id/cmdRefresh"
+                android:layout_width="180sp"
+                android:layout_height="55dp"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Refresh" />-->
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secFPIDataSyne"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+            <Button
+                android:id="@+id/cmdApproved"
+                android:layout_width="200dip"
+                android:layout_height="80dip"
+                android:layout_marginBottom="1sp"
+                android:layout_marginTop="1dip"
+                android:background="@drawable/button_style"
+                android:text="অনুমোদিত" android:visibility="gone" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+            <Button
+                android:id="@+id/cmdNotApproved"
+                android:layout_width="200dip"
+                android:layout_height="80dip"
+                android:layout_marginBottom="1sp"
+                android:layout_marginTop="1dip"
+                android:background="@drawable/button_style"
+                android:text="অননুমোদিত" android:visibility="gone" />
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+            <Button
+                android:id="@+id/cmdRequest"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="1sp"
+                android:layout_marginTop="1dip"
+                android:background="@drawable/button_style"
+                android:text="অপেক্ষাধিন" android:visibility="gone" />
+
+        </LinearLayout>
+
+
+
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout style="@style/rowHeading"
+            android:id="@+id/secListRow1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal"
+            android:paddingBottom="5px"
+            android:paddingTop="5px">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:layout_width="520dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="কর্মসূচীর অবস্থা কাজের স্বার্থে অগ্রিম কর্মসূচী পরিবর্তন /পরিবর্ধন হতে পারে  । " />
+
+
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+
+        <LinearLayout
+            android:id="@+id/secListRow"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#C2E0EC"
+            android:orientation="horizontal"
+            android:paddingBottom="5px"
+            android:paddingTop="5px">
+
+            <TextView
+                android:layout_width="20dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+            <TextView
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="তারিখ" />
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="কর্মসূচী" />
+
+            <TextView
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="" />
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <HorizontalScrollView
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ListView
+                android:id="@+id/lstData"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:clickable="true"
+                android:divider="#000000"
+
+                android:dividerHeight="1px"></ListView>
+
+        </HorizontalScrollView>
+
+        <LinearLayout android:id="@+id/secListRow2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#C2E0EC"
+            android:paddingTop="5px"
+            android:paddingBottom="5px">
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <!-- </LinearLayout>-->
+</ScrollView>
+

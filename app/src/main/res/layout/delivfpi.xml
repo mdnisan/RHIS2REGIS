@@ -1,0 +1,452 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="0sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/secOutcome"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout  android:paddingTop="10sp" android:paddingBottom="5sp"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+                <TextView  android:layout_marginLeft="15sp" android:text=" প্রসব ফলাফল" android:layout_width="wrap_content" android:textColor="#006699" android:layout_height="wrap_content" android:textSize="20sp" />
+            </LinearLayout>
+            <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+
+            <LinearLayout
+                android:id="@+id/seclivebirth"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="25sp"
+                    android:layout_height="wrap_content"
+                    android:text="১."
+                    android:textSize="20sp" />
+                <CheckBox
+                    android:id="@+id/chklivebirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="জীবিত জন্ম " android:enabled="false"/>
+
+                <EditText
+                    android:id="@+id/txtLivebirthNum1"
+                    style="@style/customEdit"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="20sp"/>
+                <TextView
+                    android:layout_width="5sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+
+                <CheckBox
+                    android:id="@+id/chkdeathbirth"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="মৃত জন্ম " android:enabled="false"/>
+                <TextView
+                    android:layout_width="30sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+
+                <EditText
+                    android:id="@+id/txtLivebirthNum2"
+                    style="@style/customEdit"
+                    android:layout_width="60sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:inputType="number"
+                    android:maxLength="1"
+                    android:textSize="20sp" android:enabled="false"/>
+
+               <!-- <TextView android:text="" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+                <RadioGroup android:id="@+id/rdogrplivebirth" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdolivebirth1" android:textColor="#006699" android:text="সঠিক"/>
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdolivebirth2" android:textColor="#006699" android:text="সঠিক না"/>
+                </RadioGroup>-->
+
+            </LinearLayout>
+
+         <!--   <LinearLayout
+                android:id="@+id/seclivebirth1"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+               &lt;!&ndash; <TextView android:text="" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+                <RadioGroup android:id="@+id/rdogrpdeathbirth1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdodeathbirth1" android:textColor="#006699" android:text="সঠিক"/>
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdodeathbirth2" android:textColor="#006699" android:text="সঠিক না"/>
+                </RadioGroup>&ndash;&gt;
+                &lt;!&ndash;<TextView android:paddingRight="10dp"  android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="20sp" android:id="@+id/rdoOutcomeLB1" android:text=""/>&ndash;&gt;
+
+
+
+            </LinearLayout>-->
+
+            <LinearLayout
+                android:id="@+id/seclivebirth1"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="25sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" />
+
+                <CheckBox
+                    android:id="@+id/chkabortion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="গর্ভপাত " android:enabled="false"/>
+
+                <TextView android:text="" android:layout_width="230sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+                <RadioGroup android:id="@+id/rdogrpbirthdeathabortion1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdobirthdeathabortion1" android:textColor="#006699" android:text="সঠিক"/>
+                    <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdobirthdeathabortion2" android:textColor="#006699" android:text="সঠিক না"/>
+                </RadioGroup>
+            </LinearLayout>
+            </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <!--<LinearLayout android:id="@+id/secLivebirth" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:text="" android:layout_width="25sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblLivebirth" android:text="এই গর্ভে কয়টি বাচ্চা ছিল" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtLivebirthNum" android:maxLength="1" android:layout_width="60sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>-->
+        <LinearLayout
+        android:id="@+id/secOutcomeDT"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="25sp"
+            android:layout_height="wrap_content"
+            android:text="২."
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/VlblOutcomeDT"
+            android:layout_width="230sp"
+            android:layout_height="wrap_content"
+            android:text="প্রসব/গর্ভপাতের তারিখ"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secOutcomeDT1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:text="" android:layout_width="50sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <EditText
+                android:id="@+id/dtpOutcomeDT"
+                style="@style/customEdit"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:focusable="false"
+                android:inputType="text"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/btnOutcomeDT"
+                android:layout_width="40sp"
+                android:layout_height="40sp"
+                android:layout_gravity="center"
+                android:src="@drawable/calender" android:enabled="false"/>
+
+            <TextView android:text="" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <RadioGroup android:id="@+id/rdogrpOutcomeDT" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoOutcomeDT1" android:textColor="#006699" android:text="সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoOutcomeDT2" android:textColor="#006699" android:text="সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBPlace"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="25sp"
+                android:layout_height="wrap_content"
+                android:text="৩."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBPlace"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="কোথায় প্রসব হয়েছে"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secBPlace1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:text="" android:layout_width="50sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spnBPlace"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" android:enabled="false"/>
+            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <RadioGroup android:id="@+id/rdogrpBPlace" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBPlace1" android:textColor="#006699" android:text="সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBPlace2" android:textColor="#006699" android:text="সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBAtten"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="25sp"
+                android:layout_height="wrap_content"
+                android:text="৪."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBAtten"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="কে প্রসব করিয়েছেন"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secBAtten1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView android:text="" android:layout_width="50sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <Spinner
+                android:id="@+id/spnBAtten"
+                android:layout_width="300sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+
+            <TextView android:text="" android:layout_width="10sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <RadioGroup android:id="@+id/rdogrpBAtten" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBAtten1" android:textColor="#006699" android:text="সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBAtten2" android:textColor="#006699" android:text="সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secBType"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৫."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblBType"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:text="প্রসবের ধরণ "
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpBType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoBTypeNor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="স্বাভাবিক "
+                    android:textSize="20sp" android:enabled="false"/>
+
+                <RadioButton
+                    android:id="@+id/rdoBTypeSeg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="সিজারিয়ান "
+                    android:textSize="20sp" android:enabled="false"/>
+            </RadioGroup>
+
+            <TextView android:text="" android:layout_width="75sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <RadioGroup android:id="@+id/rdogrpBType1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBType11" android:textColor="#006699" android:text="সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoBType12" android:textColor="#006699" android:text="সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secMiso"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="20sp"
+                android:layout_height="wrap_content"
+                android:text="৬."
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/VlblMiso"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="মিসোপ্রোস্টোল বড়ি খেয়েছে কি না?"
+                android:textSize="20sp" />
+
+            <RadioGroup
+                android:id="@+id/rdogrpMiso"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:textSize="20sp">
+
+                <RadioButton
+                    android:id="@+id/rdoMisoYes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="হ্যাঁ "
+                    android:textSize="20sp" android:enabled="false"/>
+
+                <RadioButton
+                    android:id="@+id/rdoMisoNo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingRight="10dp"
+                    android:text="না " android:enabled="false"
+                    android:textSize="20sp" />
+            </RadioGroup>
+
+            <TextView android:text="" android:layout_width="5sp" android:layout_height="wrap_content" android:textSize="16sp" />
+
+            <RadioGroup android:id="@+id/rdogrpMiso1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoMiso11" android:textColor="#006699" android:text="সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoMiso12" android:textColor="#006699" android:text="সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20sp">
+
+            <Button
+                android:id="@+id/cmdSave"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:background="@drawable/button_style"
+                android:text="Save"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\joda-time-1.6.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="5a18504e34c5cbe9259d6fd0123ccf6f16115a41">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\joda-time-1.6_bf63fcc165f47af48afcf0467b4d26b740c20ab2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="dc1e51d99ee05679419caac078f48af4ab1545f6">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_a6865a7ef5cfd843f3a292092d86412f773977b1\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="355da0163da4876cb895fc57d9b8f20417bc3199">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_4bdacd1bf15592c41d1dfa2c12daa383a3695f71\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\ksoap2-android-assembly-2.4-jar-with-dependencies.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="e8796346a9191a019e936210a2dc50662c57594b">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\ksoap2-android-assembly-2.4-jar-with-dependencies_cd89578b3938e146e673068d2653c66d8fd654a3\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\sqlcipher.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="5f81ea2fe26cedec962e6a943b5dd52428726d2e">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\sqlcipher_b6ed29eba710bca9ca0df12f34a4ddf65910ef77\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\gson-2.5.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="686c608d1805b6d4d425ec4459e88164ffc85870">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\gson-2.5_0b24e1440c73bf7065aabbb85e87b8882f5a3017\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\org.apache.http.legacy.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="fa331331b626ee78c52bea16ce1e34b39e666ce5">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\org.apache.http.legacy_260132626597c41d82de95fdf5a8b70fd40e9173\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\libs\google-collect-snapshot-20080530.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="21.1.2"
+        sha1="a22f9b3a80ba9696ed120735f8b6c3c99d942bcc">
+        <dex dex="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\2\google-collect-snapshot-20080530_5aa6a0b9f2d9d1508fcd4e5c825793f338f88358\classes.dex" />
+    </item>
+
+</items>

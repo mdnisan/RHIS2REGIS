@@ -1,0 +1,21 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+        <LinearLayout android:id="@+id/seclblepireg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblepireg" android:text="ই পি আই সাব ব্লক" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:id="@+id/secListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+                <ListView android:scrollbars="vertical"
+                    android:id="@+id/lstData"
+                    android:layout_width="fill_parent"
+                    android:layout_height="650sp"
+                    android:divider="#000000"
+                    android:dividerHeight="1px"
+                    android:clickable="true">
+                </ListView>
+            </LinearLayout>
+
+        </HorizontalScrollView>
+    </LinearLayout>
+</ScrollView>

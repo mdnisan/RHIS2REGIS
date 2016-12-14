@@ -1,0 +1,413 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <!--  <LinearLayout
+              android:id="@+id/seclblepireg"
+              style="@style/rowHeading"
+              android:layout_width="fill_parent"
+              android:layout_height="wrap_content"
+              android:orientation="horizontal">
+
+              <TextView
+                  android:id="@+id/lblHlblepireg"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:text="Add Provider area"
+                  android:textColor="#FFFFFF"
+                  android:textSize="20sp" />
+          </LinearLayout>-->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/popup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <!-- <LinearLayout
+                 style="@style/rowStyle0"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:background="#F3F3F3"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:layout_width="90sp"
+                     android:layout_height="wrap_content"
+                     android:gravity="left"
+                     android:text="উপজেলা"
+                     android:textColor="#000000"
+                     android:textSize="20sp" />
+
+                 <TextView
+                     android:id="@+id/txtUpazila"
+                     android:layout_width="200dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10sp"
+                     android:textSize="20sp" />
+
+                 <TextView
+                     android:layout_width="90sp"
+                     android:layout_height="30sp"
+                     android:layout_marginLeft="20sp"
+                     android:gravity="left"
+                     android:text="ইউনিয়ন"
+                     android:textColor="#000000"
+                     android:textSize="20sp" />
+
+                 <TextView
+                     android:id="@+id/txtUnion"
+                     android:layout_width="200dp"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10sp"
+                     android:textSize="20sp" />
+
+             </LinearLayout>
+
+             <View
+                 android:layout_width="fill_parent"
+                 android:layout_height="1dip"
+                 android:background="#CCCCCC" />
+
+             <LinearLayout
+                 style="@style/rowStyle0"
+                 android:layout_width="fill_parent"
+                 android:layout_height="wrap_content"
+                 android:background="#F3F3F3"
+                 android:orientation="horizontal">
+
+                 <TextView
+                     android:id="@+id/lblAreaText"
+                     android:layout_width="90sp"
+                     android:layout_height="30sp"
+                     android:gravity="left"
+                     android:text="উপজেলাঃ"
+                     android:textColor="#000000"
+                     android:textSize="20sp" />
+
+                 <TextView
+                     android:id="@+id/lblAreaName"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginRight="10sp"
+                     android:textSize="20sp" />
+             </LinearLayout>
+ -->
+            <!--  <LinearLayout
+                  style="@style/rowStyle0"
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:background="#C2E0EC"
+                  android:orientation="horizontal"
+                  android:visibility="gone">
+
+                  <TextView
+                      android:layout_width="120sp"
+                      android:layout_height="wrap_content"
+                      android:layout_marginBottom="5sp"
+                      android:gravity="left"
+                      android:text="মৌজা"
+                      android:textColor="#000000"
+                      android:textSize="18sp" />
+
+                  <Spinner
+                      android:id="@+id/spnMouza"
+                      style="@style/customEdit"
+                      android:layout_width="380dp"
+                      android:layout_height="wrap_content"
+                      android:drawSelectorOnTop="true"
+                      android:prompt="@string/planet_prompt"
+                      android:textSize="16sp" />
+              </LinearLayout>-->
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="left"
+                    android:text="সেবা প্রদানকারীর নাম"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnProvider"
+                    style="@style/customEdit"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+
+            <LinearLayout android:id="@+id/secUnit"
+                style="@style/rowStyle1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal" android:visibility="gone">
+
+                <TextView
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="left"
+                    android:text="ইউনিট"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnUnit"
+                    style="@style/customEdit"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout android:id="@+id/secWord"
+                style="@style/rowStyle1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal" android:visibility="gone">
+
+                <TextView
+                    android:layout_width="200sp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="left"
+                    android:text="ওয়ার্ড"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnWord"
+                    style="@style/customEdit"
+                    android:layout_width="380dp"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="16sp" />
+
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/seclblH1"
+                android:layout_width="fill_parent"
+                android:layout_height="30sp"
+                android:background="#00B7FB"
+                android:orientation="horizontal">
+
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="  কর্ম এলাকা (গ্রামের তালিকা)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="120sp"
+                    android:layout_height="30sp"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="left"
+                    android:text="ওয়ার্ড(নতুন)"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnWardNew"
+                    style="@style/customEdit"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="130sp"
+                    android:layout_height="30sp"
+                    android:layout_marginBottom="5sp"
+                    android:gravity="left"
+                    android:text="  ওয়ার্ড(পুরাতন)"
+                    android:textColor="#000000"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnWardOld"
+                    style="@style/customEdit"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10sp"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+            <LinearLayout
+                android:id="@+id/secFWAUnit"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#C2E0EC"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/VlblFWAUnit"
+                    android:layout_width="120sp"
+                    android:layout_height="wrap_content"
+                    android:text="ইউনিট"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnFWAUnit"
+                    style="@style/customEdit"
+                    android:layout_width="150sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/VlblEPIBlock"
+                    android:layout_width="130sp"
+                    android:layout_height="wrap_content"
+                    android:text="  ই পি আই ব্লক"
+                    android:textSize="18sp" />
+
+                <Spinner
+                    android:id="@+id/spnEPIBlock"
+                    style="@style/customEdit"
+                    android:layout_width="100sp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:drawSelectorOnTop="true"
+                    android:prompt="@string/planet_prompt"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/vList"
+                style="@style/rowStyle0"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:layout_marginBottom="10sp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:scrollbars="vertical">
+
+                <GridView
+                    android:id="@+id/gridMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="200sp"
+                    android:horizontalSpacing="5sp"
+                    android:numColumns="4" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dip"
+                android:background="#CCCCCC" />
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</ScrollView>

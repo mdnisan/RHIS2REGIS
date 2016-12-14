@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="0sp"
+    android:layout_marginRight="0sp"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
+
+
+
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+    <!--<LinearLayout
+        android:id="@+id/secEPIBlock"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/VlblEPIBlock"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:text="ই পি আই সাব ব্লক"
+            android:textSize="20sp" />
+
+        <Spinner
+            android:id="@+id/spnEPIBlock"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:drawSelectorOnTop="true"
+            android:prompt="@string/planet_prompt"
+            android:textSize="20sp" />
+
+
+
+        <Button android:id="@+id/cmdSchedul" android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="ই পি আই সিডিউল "
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/button_style"/>
+    </LinearLayout>-->
+
+<!--    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+    <LinearLayout
+        android:id="@+id/secdate"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/Vlbldate"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:text="তারিখ"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtdate"
+            style="@style/customEdit"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:background="#D7D7D7"
+            android:gravity="left"
+            android:inputType="text"
+            android:maxLength="50"
+            android:textSize="20sp"/>
+
+
+        <TextView
+            android:id="@+id/Vlblbar"
+            android:layout_width="40sp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtbar"
+
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:inputType="number"
+            android:maxLength="18"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+
+
+
+    <LinearLayout
+        android:id="@+id/secEPICenterName"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/VlblEPICenterName"
+            android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:text="ই পি আই কেন্দ্রের নাম"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/txtCenterName"
+            style="@style/customEdit"
+            android:layout_width="340sp"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10sp"
+            android:background="#D7D7D7"
+            android:gravity="left"
+            android:inputType="text"
+            android:maxLength="50"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+    <LinearLayout
+        android:id="@+id/secEPIRegistration"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button android:id="@+id/cmdEpiReg" android:layout_width="220sp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="NRC ই পি আই রেজিস্ট্রেশন  "
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/button_style"/>
+
+        <TextView
+            android:id="@+id/VlblEPISec1"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textSize="20sp" />
+
+        <Button android:id="@+id/cmdEpisec" android:layout_width="190sp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="ই পি আই সেশন "
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/button_style"/>
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />-->
+
+
+
+
+
+
+
+    <LinearLayout
+        android:id="@+id/secSearch"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/VlblSearch"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="Health ID"
+            android:textSize="20sp" />
+
+        <EditText android:id="@+id/txtSearch"
+            android:maxLength="50"
+            android:layout_width="200sp"
+            android:inputType="text"
+            android:layout_height="wrap_content"
+            style="@style/customEdit" android:layout_marginRight="10sp"
+            android:textSize="20sp" />
+
+
+        <ImageButton android:id="@+id/cmdSearch" android:layout_width="50sp"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="Search "
+            android:layout_marginBottom="10sp"
+            android:background="@drawable/button_style"/>
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/seclblH2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" style="@style/rowHeading">
+        <TextView android:id="@+id/VlblSNo" android:text="  ০ থেকে ১৮ মাসের সকল শিশু"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"/>
+        <TextView android:visibility="visible"
+            android:id="@+id/lblTCount"
+            android:layout_width="120sp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+
+    <LinearLayout android:id="@+id/seclblH3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:visibility="visible"
+            android:id="@+id/VlblSH3" android:text="ই পি আই রেজিস্ট্রেশন সম্পন্ন"
+            android:layout_width="250sp" android:layout_height="wrap_content"
+            android:textSize="20sp" android:textColor="#000000" />
+
+
+        <TextView android:visibility="visible"
+            android:id="@+id/lblRegColor"
+            android:layout_width="10sp"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" android:textColor="#000000" />
+
+        <TextView android:visibility="visible"
+            android:id="@+id/VlblSH4" android:text="ই পি আই রেজিস্ট্রেশন সম্পন্ন হয় নাই "
+            android:layout_width="310sp" android:layout_height="wrap_content"
+            android:textSize="20sp" android:textColor="#000000" />
+    </LinearLayout>
+
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#00B7FB" />
+    <LinearLayout
+        android:id="@+id/seclblepi"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="0sp"
+        android:paddingRight="0sp">
+
+        <HorizontalScrollView
+            android:id="@android:id/tabcontent"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+
+            <ListView
+                android:id="@+id/listepiIndex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:divider="#000000"
+                android:dividerHeight="1px"></ListView>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dip"
+        android:background="#00B7FB" />
+</LinearLayout>

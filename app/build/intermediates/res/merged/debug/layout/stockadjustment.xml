@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@android:id/tabcontent"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:layout_height="wrap_content">
+        <LinearLayout android:id="@+id/seclblH1"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#00B7FB">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/lblHlblH"
+                    android:layout_width="250sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/header"
+        style="@style/rowStyle0"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+        <TextView
+            android:id="@+id/header1"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:text="মজুদ"
+            android:textSize="20sp" android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/header2"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="সংখ্যা"
+            android:textSize="20sp" android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/unitheader"
+            android:layout_width="100sp"
+            android:layout_height="wrap_content"
+            android:text="ইউনিট"
+            android:textSize="20sp" android:layout_gravity="center" />
+        <TextView
+            android:id="@+id/header3"
+            android:layout_width="200sp"
+            android:layout_height="wrap_content"
+            android:text="কারন"
+            android:textSize="20sp" android:layout_gravity="center" />
+
+        <TextView
+            android:id="@+id/header4"
+            android:layout_width="150sp"
+            android:layout_height="wrap_content"
+            android:text="সংখ্যা"
+            android:textSize="20sp" android:layout_gravity="center" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:id="@+id/secDistrict"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row1col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="খাবার বড়ি"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row1qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row1unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+
+            <Spinner
+                android:id="@+id/row1reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/row1col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number" />
+
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/secUpazilla"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row2col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="কনডম"
+                android:textSize="20sp" android:layout_gravity="center"  />
+            <TextView
+                android:id="@+id/row2qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row2unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <Spinner
+                android:id="@+id/row2reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/row2col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number"  />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/secUnion"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row3col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="ইনজেকটেবল"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row3qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row3unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <Spinner
+                android:id="@+id/row3reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/row3col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number"  />
+        </LinearLayout>
+        <!--<View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />-->
+        <!--<LinearLayout
+            android:id="@+id/secWard"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox
+                android:id="@+id/Vlblward"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="ওয়ার্ড"
+                android:textSize="20sp"
+                android:checked="false" />
+
+
+        </LinearLayout>-->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/secVillSearch"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row4col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="মিসোপ্রোস্টোল"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row4qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row4unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <Spinner
+                android:id="@+id/row4reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/row4col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+        <LinearLayout
+            android:id="@+id/secNameSearch"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row5col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text="সিরিঙ্গ"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row5qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row5unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <Spinner
+                android:id="@+id/row5reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/row5col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secFatherSearch"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/row6col1"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:text=" ইসিপি"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row6qty"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="20sp" android:layout_gravity="center" />
+            <TextView
+                android:id="@+id/row6unit"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিট"
+                android:textSize="20sp" android:layout_gravity="center" />
+            <Spinner
+                android:id="@+id/row6reason"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/row6col4"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                style="@style/customEdit"
+                android:textSize="20sp" android:layout_gravity="center" android:inputType="number" />
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+
+        <LinearLayout android:id="@+id/linearLayout1" android:layout_width="fill_parent" android:layout_height="fill_parent" xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="horizontal">
+            <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:gravity="right" android:layout_width="match_parent">
+                <Button android:text="Save" android:id="@+id/cmdSave" android:layout_width="150sp" android:layout_height="wrap_content"></Button>
+                <TextView
+                    android:id="@+id/sb"
+                    android:layout_width="20sp"
+                    android:layout_height="wrap_content"
+                    android:text=""
+                    android:textSize="20sp" android:layout_gravity="center" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</HorizontalScrollView>
+

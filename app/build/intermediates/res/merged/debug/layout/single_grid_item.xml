@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+	<LinearLayout android:layout_marginTop="5sp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+			<Button  android:background="@drawable/button_style"
+		        android:id="@+id/image_name"
+		        android:layout_width="144sp"
+		        android:layout_height="80sp"
+		        android:layout_gravity="left" android:paddingRight="2sp" android:layout_marginRight="2sp"/>
+    </LinearLayout>
+</LinearLayout>

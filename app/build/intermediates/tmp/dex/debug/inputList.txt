@@ -1,6 +1,0 @@
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\classes\debug
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\pre-dexed\debug\sqlcipher-8093f6e78892d29c41dc0c07f544a1c188381ed4.jar
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\pre-dexed\debug\ksoap2-android-assembly-2.4-jar-with-dependencies-6d2da1dd61a495ed21912b9fb6884e078d9538a4.jar
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\pre-dexed\debug\google-collect-snapshot-20080530-dc4e96a14fb002bdec02585d93cecd90d2ebbfc5.jar
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\pre-dexed\debug\sqlcipher-javadoc-98ba3d003480c439b5ace4d1dc1055a061f72e84.jar
-D:\Workspace\RHIS2 REGIS\app\build\intermediates\pre-dexed\debug\joda-time-1.6-5ad9535b401c72fb8cf8f4ce231bf1e46b3a8bc4.jar

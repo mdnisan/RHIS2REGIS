@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.data.rhis2"
+    android:installLocation="auto"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="16"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <!-- <uses-permission android:name="android.permission.RECORD_AUDIO" /> -->
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!--
+    android:allowBackup="true"
+    android:icon="@drawable/govtlogo"    android:icon="@drawable/govtlogo"
+    -->
+    <application
+        android:allowBackup="true"
+        android:clearTaskOnLaunch="true"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:theme="@style/CustomTheme" >
+
+        <!--
+    <activity android:id="@+id/FPI"
+        android:name="com.data.rhis2.LoginActivity"
+       android:label="@string/app_name_FPI" android:icon="@drawable/emislog">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+        -->
+
+        <activity
+            android:id="@+id/AHI"
+            android:name="com.data.rhis2.LoginActivity"
+            android:icon="@drawable/emislog"
+            android:label="@string/app_name_AHI" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!--
+    <activity android:id="@+id/HI"
+        android:name="com.data.rhis2.LoginActivity"
+        android:label="@string/app_name_HI" android:icon="@drawable/emislog">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+    </activity>
+        -->
+        <!--
+     <activity android:id="@+id/HA"
+             android:name="com.data.rhis2.LoginActivity"
+             android:label="@string/app_name_HA" android:icon="@drawable/emislog">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+     </activity>
+     <activity android:id="@+id/FWA"
+             android:name="com.data.rhis2.LoginActivity"
+             android:label="@string/app_name_FWA" android:icon="@drawable/rhislogo">
+             <intent-filter>
+                 <action android:name="android.intent.action.MAIN" />
+                 <category android:name="android.intent.category.LAUNCHER" />
+             </intent-filter>
+         </activity>
+        -->
+        <activity
+            android:name="com.data.rhis2.Villagepopup"
+            android:theme="@android:style/Theme.DeviceDefault.Light.Dialog" >
+        </activity>
+        <activity
+            android:name="com.data.rhis2.VillageList"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HouseholdIndex"
+            android:label="খানার তালিকা" />
+        <activity
+            android:name="com.data.rhis2.MemberList"
+            android:label="সদস্যের  তালিকা" />
+        <activity
+            android:name="com.data.rhis2.MemberListFPI"
+            android:label="খানা / সদস্যের তথ্য যাচাই" />
+        <activity
+            android:name="com.data.rhis2.sesform"
+            android:label="আর্থ-সামাজিক অবস্থা " />
+        <activity
+            android:name="com.data.rhis2.MemberForm"
+            android:label="সদস্যের তথ্য" />
+        <activity
+            android:name="com.data.rhis2.Household"
+            android:label="খানার তথ্য" />
+        <activity
+            android:name="com.data.rhis2.SettingForm"
+            android:label="Setting" />
+        <activity
+            android:name="com.data.rhis2.MemberFormFPI"
+            android:label=" সদস্যের বিভিন্ন তথ্য যাচাই" />
+        <activity
+            android:name="com.data.rhis2.sesformFPI"
+            android:label=" আর্থ-সামাজিক অবস্থার তদারকি " />
+        <activity
+            android:name="com.data.rhis2.FpaWorkPlaning"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FpaWorkPlaningView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FpaWorkPlaningViewFPINotAproved"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HAWorkPlaningViewAHINotAproved"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.AHIWorkPlaningViewHINotAproved"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FpiWorkPlaning"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.AHIWorkPlaning"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.AHIWorkPlaningView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.AHIWorkPlaningViewAproved"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.Aeaadownloaddata"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HAWorkPlaningView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HIWorkPlaning"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HIWorkPlaningView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.HAWorkPlaning"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.EPIBARIVisit"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.EPISESSIONVisit"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FpiWorkPlaningView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FPIMonitoring"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.ELCOFormFPI"
+            android:label="দম্পতি ছক" />
+        <activity
+            android:name="com.data.rhis2.ELCOForm"
+            android:label="দম্পতি ছক" />
+        <activity
+            android:name="com.data.rhis2.Elcoview"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.PregRegView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.ELCOCurrentStock"
+            android:label="মজুদের ছক" />
+        <activity
+            android:name="com.data.rhis2.Death"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.FWAReg"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.PregReg"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.PregRegFPI"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.Child"
+            android:label="নবজাতক সংক্রান্ত তথ্য" />
+        <activity
+            android:name="com.data.rhis2.ChildFPI"
+            android:label="নবজাতক সংক্রান্ত তথ্য" />
+        <activity
+            android:name="com.data.rhis2.ANC"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.ANCFPI"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.Deliv"
+            android:label="প্রসব সংক্রান্ত তথ্য " />
+        <activity
+            android:name="com.data.rhis2.Delivfpi"
+            android:label="প্রসব সংক্রান্ত তথ্য " />
+        <activity
+            android:name="com.data.rhis2.PNCMotherChild"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.PNCMotherChildFPI"
+            android:label="গর্ভবতী মা ও নবজাতকের  তথ্য / সেবা ছক" />
+        <activity
+            android:name="com.data.rhis2.PNC_Mother"
+            android:label="পি এন সি" />
+        <activity
+            android:name="com.data.rhis2.PNC_Child"
+            android:label="পি এন সি" />
+        <activity
+            android:name="com.data.rhis2.ChildImmunization"
+            android:label="নবজাত শিশুদের রেজিস্ট্রেশন ও টিকাদান তথ্য" />
+        <activity
+            android:name="com.data.rhis2.WomanImmunization"
+            android:label="কিশোরী/মহিলাদের রেজিস্ট্রেশন ও টিকাদান তথ্য" />
+        <activity
+            android:name="com.data.rhis2.nrc"
+            android:label="বহিরাগত" />
+        <activity
+            android:name="com.data.rhis2.EpiList"
+            android:label="নবজাত শিশুদের রেজিস্ট্রেশন ও টিকাদান তথ্য" />
+        <!-- <activity android:name=".reports" android:label="তালিকা"></activity> -->
+        <activity
+            android:name="com.data.rhis2.Under5child"
+            android:label="শিশু (০-৫ বৎসরের নিচে)" />
+        <activity
+            android:name="com.data.rhis2.EpiNonRegistration"
+            android:label="বহিরাগত" />
+        <activity
+            android:name="com.data.rhis2.EpiNonRegistrationWomen"
+            android:label="বহিরাগত" />
+        <activity
+            android:name="com.data.rhis2.episession"
+            android:label="ই পি আই সেশন /শিশুদের টিকাদান তথ্য " />
+        <activity
+            android:name="com.data.rhis2.episessionwoman"
+            android:label="কিশোরী/মহিলাদের টিকাদান তথ্যয " />
+        <activity
+            android:name="com.data.rhis2.EpiListWoman"
+            android:label=" কিশোরী/মহিলাদের টিকাদান তথ্য" />
+        <activity
+            android:name="com.data.rhis2.epischdul"
+            android:label=" ই পি আই সিডিউল" />
+        <activity
+            android:name="com.data.rhis2.EpiListViewPage"
+            android:label="শিশুর টিকাদান (তদারকি ছক)" />
+        <activity
+            android:name="com.data.rhis2.epischdulwoman"
+            android:label="ই পি আই সিডিউল" />
+        <activity
+            android:name="com.data.rhis2.SymtomAG02M"
+            android:label="শিশু (০-২ মাসের নিচে)অসুবিধার লক্ষণ" />
+        <activity
+            android:name="com.data.rhis2.SymtomAG2to5Y"
+            android:label="শিশু (২-৫ বছর  নিচে)অসুবিধার লক্ষণ" />
+        <activity
+            android:name="com.data.rhis2.Twolistview"
+            android:label=" লক্ষণ" />
+        <activity
+            android:name="com.data.rhis2.WomanInjectable"
+            android:label="ইনজেকটেবল গ্রহণকারী মহিলাদের  ছক" />
+        <activity
+            android:name="com.data.rhis2.InjectableView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.Under5ChildView"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.StockAdjustment"
+            android:label="মজুদ সমন্বয়" />
+        <activity
+            android:name="com.data.rhis2.Requisition"
+            android:label="" />
+        <activity
+            android:name="com.data.rhis2.ReqAccepted"
+            android:label="চাহিদা অনুমোদন" />
+
+        <receiver android:name="com.data.rhis2.SyncBroadcastReceiver" />
+
+        <service android:name="com.data.rhis2.DataSyncService" />
+    </application>
+
+</manifest>

@@ -1,0 +1,767 @@
+[
+    {
+        "outputFile": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endLine": 8,
+                    "endColumn": 19,
+                    "endOffset": 265
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\arrays.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endLine": 8,
+                        "endColumn": 19,
+                        "endOffset": 273
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 9,
+                    "startColumn": 4,
+                    "startOffset": 270,
+                    "endColumn": 52,
+                    "endOffset": 318
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 1,
+                        "startOffset": 115,
+                        "endColumn": 49,
+                        "endOffset": 163
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 10,
+                    "startColumn": 4,
+                    "startOffset": 323,
+                    "endColumn": 47,
+                    "endOffset": 366
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 47,
+                        "endOffset": 149
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 11,
+                    "startColumn": 4,
+                    "startOffset": 371,
+                    "endColumn": 44,
+                    "endOffset": 411
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 169,
+                        "endColumn": 44,
+                        "endOffset": 209
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 12,
+                    "startColumn": 4,
+                    "startOffset": 416,
+                    "endColumn": 47,
+                    "endOffset": 459
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\colors.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 57,
+                        "endColumn": 47,
+                        "endOffset": 100
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 13,
+                    "startColumn": 4,
+                    "startOffset": 464,
+                    "endColumn": 57,
+                    "endOffset": 517
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 92,
+                        "endColumn": 57,
+                        "endOffset": 145
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 14,
+                    "startColumn": 4,
+                    "startOffset": 522,
+                    "endColumn": 55,
+                    "endOffset": 573
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\dimens.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 151,
+                        "endColumn": 55,
+                        "endOffset": 202
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 15,
+                    "startColumn": 4,
+                    "startOffset": 578,
+                    "endColumn": 41,
+                    "endOffset": 615
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 41,
+                        "endOffset": 92
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 16,
+                    "startColumn": 4,
+                    "startOffset": 620,
+                    "endColumn": 64,
+                    "endOffset": 680
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 162,
+                        "endColumn": 64,
+                        "endOffset": 222
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 17,
+                    "startColumn": 4,
+                    "startOffset": 685,
+                    "endColumn": 64,
+                    "endOffset": 745
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 97,
+                        "endColumn": 64,
+                        "endOffset": 157
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 18,
+                    "startColumn": 4,
+                    "startOffset": 750,
+                    "endColumn": 60,
+                    "endOffset": 806
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 7,
+                        "startColumn": 4,
+                        "startOffset": 352,
+                        "endColumn": 60,
+                        "endOffset": 408
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 19,
+                    "startColumn": 4,
+                    "startOffset": 811,
+                    "endColumn": 60,
+                    "endOffset": 867
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 291,
+                        "endColumn": 60,
+                        "endOffset": 347
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 872,
+                    "endColumn": 63,
+                    "endOffset": 931
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 227,
+                        "endColumn": 63,
+                        "endOffset": 286
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 936,
+                    "endColumn": 50,
+                    "endOffset": 982
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 8,
+                        "startColumn": 4,
+                        "startOffset": 413,
+                        "endColumn": 50,
+                        "endOffset": 459
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 22,
+                    "startColumn": 4,
+                    "startOffset": 987,
+                    "endColumn": 57,
+                    "endOffset": 1040
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 11,
+                        "startColumn": 4,
+                        "startOffset": 530,
+                        "endColumn": 57,
+                        "endOffset": 583
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 23,
+                    "startColumn": 4,
+                    "startOffset": 1045,
+                    "endColumn": 53,
+                    "endOffset": 1094
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 635,
+                        "endColumn": 53,
+                        "endOffset": 684
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 24,
+                    "startColumn": 4,
+                    "startOffset": 1099,
+                    "endColumn": 49,
+                    "endOffset": 1144
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 1,
+                        "startOffset": 585,
+                        "endColumn": 46,
+                        "endOffset": 630
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 25,
+                    "startColumn": 4,
+                    "startOffset": 1149,
+                    "endColumn": 60,
+                    "endOffset": 1205
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "position": {
+                        "startLine": 9,
+                        "startColumn": 4,
+                        "startOffset": 464,
+                        "endColumn": 60,
+                        "endOffset": 520
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 26,
+                    "startColumn": 4,
+                    "startOffset": 1210,
+                    "endColumn": 57,
+                    "endOffset": 1263
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 10,
+                        "startColumn": 1,
+                        "startOffset": 439,
+                        "endColumn": 55,
+                        "endOffset": 493
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 27,
+                    "startColumn": 4,
+                    "startOffset": 1268,
+                    "endLine": 30,
+                    "endColumn": 10,
+                    "endOffset": 1445
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 12,
+                        "startColumn": 4,
+                        "startOffset": 501,
+                        "endLine": 15,
+                        "endColumn": 10,
+                        "endOffset": 681
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 31,
+                    "startColumn": 4,
+                    "startOffset": 1450,
+                    "endLine": 36,
+                    "endColumn": 9,
+                    "endOffset": 1712
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 54,
+                        "startColumn": 1,
+                        "startOffset": 2470,
+                        "endLine": 59,
+                        "endColumn": 9,
+                        "endOffset": 2737
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 1717,
+                    "endLine": 48,
+                    "endColumn": 8,
+                    "endOffset": 2289
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 119,
+                        "startColumn": 1,
+                        "startOffset": 5237,
+                        "endLine": 130,
+                        "endColumn": 8,
+                        "endOffset": 5820
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 49,
+                    "startColumn": 4,
+                    "startOffset": 2294,
+                    "endLine": 60,
+                    "endColumn": 9,
+                    "endOffset": 3087
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 18,
+                        "startColumn": 1,
+                        "startOffset": 697,
+                        "endLine": 29,
+                        "endColumn": 9,
+                        "endOffset": 1501
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 61,
+                    "startColumn": 4,
+                    "startOffset": 3092,
+                    "endLine": 64,
+                    "endColumn": 8,
+                    "endOffset": 3289
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 115,
+                        "startColumn": 0,
+                        "startOffset": 5034,
+                        "endLine": 118,
+                        "endColumn": 8,
+                        "endOffset": 5234
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 65,
+                    "startColumn": 4,
+                    "startOffset": 3294,
+                    "endLine": 67,
+                    "endColumn": 9,
+                    "endOffset": 3423
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 1,
+                        "startOffset": 302,
+                        "endLine": 8,
+                        "endColumn": 9,
+                        "endOffset": 433
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 68,
+                    "startColumn": 4,
+                    "startOffset": 3428,
+                    "endLine": 71,
+                    "endColumn": 9,
+                    "endOffset": 3609
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 42,
+                        "startColumn": 1,
+                        "startOffset": 2005,
+                        "endLine": 45,
+                        "endColumn": 9,
+                        "endOffset": 2189
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 72,
+                    "startColumn": 4,
+                    "startOffset": 3614,
+                    "endColumn": 84,
+                    "endOffset": 3694
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 1,
+                        "startOffset": 212,
+                        "endColumn": 88,
+                        "endOffset": 299
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 73,
+                    "startColumn": 4,
+                    "startOffset": 3699,
+                    "endLine": 76,
+                    "endColumn": 12,
+                    "endOffset": 3872
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 37,
+                        "startColumn": 4,
+                        "startOffset": 1824,
+                        "endLine": 40,
+                        "endColumn": 12,
+                        "endOffset": 2000
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 77,
+                    "startColumn": 4,
+                    "startOffset": 3877,
+                    "endLine": 83,
+                    "endColumn": 12,
+                    "endOffset": 4182
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 30,
+                        "startColumn": 4,
+                        "startOffset": 1507,
+                        "endLine": 36,
+                        "endColumn": 12,
+                        "endOffset": 1818
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 84,
+                    "startColumn": 4,
+                    "startOffset": 4187,
+                    "endLine": 89,
+                    "endColumn": 9,
+                    "endOffset": 4452
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 47,
+                        "startColumn": 1,
+                        "startOffset": 2194,
+                        "endLine": 52,
+                        "endColumn": 9,
+                        "endOffset": 2464
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 4457,
+                    "endLine": 96,
+                    "endColumn": 12,
+                    "endOffset": 4795
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 98,
+                        "startColumn": 4,
+                        "startOffset": 4274,
+                        "endLine": 104,
+                        "endColumn": 12,
+                        "endOffset": 4618
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 4800,
+                    "endLine": 104,
+                    "endColumn": 12,
+                    "endOffset": 5197
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 106,
+                        "startColumn": 4,
+                        "startOffset": 4626,
+                        "endLine": 113,
+                        "endColumn": 12,
+                        "endOffset": 5030
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 5202,
+                    "endLine": 112,
+                    "endColumn": 9,
+                    "endOffset": 5540
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 83,
+                        "startColumn": 1,
+                        "startOffset": 3656,
+                        "endLine": 90,
+                        "endColumn": 9,
+                        "endOffset": 4001
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 5545,
+                    "endLine": 119,
+                    "endColumn": 9,
+                    "endOffset": 5833
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 61,
+                        "startColumn": 1,
+                        "startOffset": 2743,
+                        "endLine": 67,
+                        "endColumn": 9,
+                        "endOffset": 3037
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 120,
+                    "startColumn": 4,
+                    "startOffset": 5838,
+                    "endLine": 126,
+                    "endColumn": 9,
+                    "endOffset": 6126
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 68,
+                        "startColumn": 1,
+                        "startOffset": 3040,
+                        "endLine": 74,
+                        "endColumn": 9,
+                        "endOffset": 3334
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 127,
+                    "startColumn": 4,
+                    "startOffset": 6131,
+                    "endLine": 133,
+                    "endColumn": 12,
+                    "endOffset": 6436
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 76,
+                        "startColumn": 4,
+                        "startOffset": 3342,
+                        "endLine": 82,
+                        "endColumn": 12,
+                        "endOffset": 3653
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 134,
+                    "startColumn": 4,
+                    "startOffset": 6441,
+                    "endLine": 139,
+                    "endColumn": 12,
+                    "endOffset": 6695
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 91,
+                        "startColumn": 4,
+                        "startOffset": 4007,
+                        "endLine": 96,
+                        "endColumn": 12,
+                        "endOffset": 4266
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 140,
+                    "startColumn": 4,
+                    "startOffset": 6700,
+                    "endLine": 149,
+                    "endColumn": 9,
+                    "endOffset": 7250
+                },
+                "from": {
+                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "position": {
+                        "startLine": 132,
+                        "startColumn": 1,
+                        "startOffset": 5825,
+                        "endLine": 141,
+                        "endColumn": 9,
+                        "endOffset": 6384
+                    }
+                }
+            }
+        ]
+    }
+]

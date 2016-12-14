@@ -1,0 +1,823 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+    <!--    <LinearLayout android:id="@+id/secIdno" android:layout_width="fill_parent" android:layout_height="wrap_content" android:visibility="gone" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblIdno" android:text="Idno" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblIdno" android:text="IDNO" android:layout_width="350sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtIdno" android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>-->
+
+         <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblSessionvisit" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblSessionvisit" android:text="টিকা দান সেশন পরিদর্শন (শুরু থেকে শেষ পর্যন্ত টিকা দান সেশন পরিদর্শন করতে হবে)" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+    <LinearLayout android:id="@+id/secname" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+
+        <TextView android:id="@+id/VlblProvname" android:text="স্বাস্থ্য সহকারীর নাম " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <Spinner android:id="@+id/spnProvider" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secEpiSubBlock" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblEpiSubBlock" android:text="ই পি আই সাব-ব্লক " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnEpiSubBlock" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secSessionDate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+
+            <TextView android:id="@+id/VlblSessionDate" android:text="সেশন তারিখ " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnSessionDate" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secBar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblBar" android:text="সেশন অনুষ্ঠিত হওয়ার বার  " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView  android:id="@+id/txtbar"  android:layout_width="150sp" android:layout_height="wrap_content" android:layout_marginRight="10sp"  android:inputType="number"  android:maxLength="18"   android:textSize="20sp" />
+        </LinearLayout>
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secVCenterName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblVCenterName" android:text="টিকা দান কেন্দ্রের নাম " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnEPICenterName" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+         </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secVdate" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblVdate" android:text="পরিদর্শনের তারিখ" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/dtpVdate" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+            <ImageButton android:id="@+id/btnVdate" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
+        </LinearLayout>
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secVisitCom" style="@style/rowStyle0" android:layout_width="fill_parent"  android:layout_height="wrap_content" android:layout_marginTop="20sp" android:background="#FFFFFF"  android:orientation="horizontal" android:paddingTop="10sp">
+            <TextView android:id="@+id/VlblVisitCom" android:text="পূর্বের ভিজিট " android:layout_width="170sp"  android:textColor="#00B7FB" android:layout_height="wrap_content" android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#F3F3F3"
+            android:orientation="horizontal" android:layout_marginBottom="10sp">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <GridView
+                android:id="@+id/gridPVisit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:horizontalSpacing="5sp"
+                android:numColumns="auto_fit"
+                android:scrollbars="horizontal"
+                android:stretchMode="columnWidth" />
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblhowmanyEmp" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblhowmanyEmp" android:text="সেশনে কত জন টিকা দান কর্মী আছে?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVHA" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVHA" android:text="QVHA" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVHA" android:text="স্বাস্থ্য সহকারী " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVHA" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFWA" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVFWA" android:text="QVFWA" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+       -->        <TextView android:id="@+id/VlblQVFWA" android:text="পরিবার কল্যাণ সহকারী " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVFWA" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVN" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVN" android:text="QVN" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQVN" android:text="ভ্যাক সিনেটর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVN" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQPV" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:visibility="gone" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVN" android:text="QVN" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQPV" android:text="পরিবহন কারী " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQPV" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVOth" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVOth" android:text="QVOth" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVOth" android:text="অন্যান্য" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVOth" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclVBCardHave" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlVBCardHave" android:text="নিচের বই এবং কার্ড গুলো কি আছে?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVChReg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVChReg" android:text="QVChReg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVChReg" android:text="শিশু রেজিঃ বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVChReg" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVChReg1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVChReg2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVWReg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVWReg" android:text="QVWReg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVWReg" android:text="মহিলা রেজিঃ বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVWReg" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWReg1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWReg2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVWReg1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:visibility="gone" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVWReg" android:text="QVWReg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVWReg1" android:text="গর্ভবর্তি রেজিঃ বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVWReg1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWReg11" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWReg12" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVChCard" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVChCard" android:text="QVChCard" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->         <TextView android:id="@+id/VlblQVChCard" android:text="শিশু কার্ড" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVChCard" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVChCard1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVChCard2" android:text="2- না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVWCard" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVWCard" android:text="QVWCard" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVWCard" android:text="মহিলা কার্ড" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVWCard" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWCard1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVWCard2" android:text="2- না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVTalBook" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVTalBook" android:text="QVTalBook" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->            <TextView android:id="@+id/VlblQVTalBook" android:text="টালি বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVTalBook" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTalBook1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTalBook2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFIBook" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVFIBook" android:text="QVFIBook" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->           <TextView android:id="@+id/VlblQVFIBook" android:text="এ ই এফ আই রিপোর্ট বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFIBook" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFIBook1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFIBook2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblItem" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblItem" android:text="নিচের সামগ্রী গুলো কি আছে?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVVac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVVac" android:text="QVVac" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->         <TextView android:id="@+id/VlblQVVac" android:text="ভ্যাকসিন" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVVac" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVac1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVac2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVASerice" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVASerice" android:text="QVASerice" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->         <TextView android:id="@+id/VlblQVASerice" android:text="এডি সিরিঞ্জ" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVASerice" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVASerice1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVASerice2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVMSerice" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVMSerice" android:text="QVMSerice" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQVMSerice" android:text="মিক্সিং সিরিজ" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVMSerice" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMSerice1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMSerice2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVMSerice1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVMSerice" android:text="QVMSerice" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQVMSerice1" android:text="বিসিজি মিক্সিং সিরিজ" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVMSerice1" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMSerice11" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMSerice12" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSBox" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSBox" android:text="QVSBox" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVSBox" android:text="সেফটি বক্স" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSBox" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSBox1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSBox2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVVatARed" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVVatARed" android:text="QVVatARed" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVVatARed" android:text="ভিটামিন – এ ক্যাপসুল (লাল) " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVVatARed" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVatARed1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVatARed2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVVatABlue" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVVatABlue" android:text="QVVatABlue" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVVatABlue" android:text="ভিটামিন – এ ক্যাপসুল (নীল) " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVVatABlue" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVatABlue1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVVatABlue2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVIICPac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVIICPac" android:text="QVIICPac" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQVIICPac" android:text="আইস প্যাক কণ্ডিশনিং করা হয়েছে?   " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVIICPac" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVIICPac1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVIICPac2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblIic" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblIic" android:text="ভ্যাকসিন ক্যারিয়ারে কোনো ভ্যাকসিন/ ডায়লুয়েন্ট ঠাণ্ডায় জমে গেছে?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVBCG" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVBCG" android:text="QVBCG" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/VlblQVBCG" android:text="বিসিজি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVBCG" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVBCG1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVBCG2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVPenta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVPenta" android:text="QVPenta" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVPenta" android:text="পেন্টা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVPenta" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPenta1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPenta2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVPolio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--    <TextView android:id="@+id/lblQVPolio" android:text="QVPolio" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->           <TextView android:id="@+id/VlblQVPolio" android:text="পোলিও" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVPolio" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPolio1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPolio2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVPcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQVPcv" android:text="QVPcv" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->         <TextView android:id="@+id/VlblQVPcv" android:text="পিসিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVPcv" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPcv1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVPcv2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVIPV" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVIPV" android:text="QVIPV" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVIPV" android:text="আইপিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVIPV" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVIPV1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVIPV2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVMR" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVMR" android:text="QVMR" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->           <TextView android:id="@+id/VlblQVMR" android:text="এম.আর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVMR" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMR1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVMR2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVTT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVTT" android:text="QVTT" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->       <TextView android:id="@+id/VlblQVTT" android:text="টিটি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVTT" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTT1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTT2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblVacSer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblVacSer" android:text="টিকাদান টেবিলে কোন ভ্যাকসিন কোথায় সাজান আছে?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSbcg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSbcg" android:text="QVSbcg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->           <TextView android:id="@+id/VlblQVSbcg" android:text="বিসিজি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSbcg" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+              <!--  <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSbcg1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSbcg1" android:text="1-আইস প্যাকের বাহিরে" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSbcg2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSbcg3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSPenta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSPenta" android:text="QVSPenta" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->           <TextView android:id="@+id/VlblQVSPenta" android:text="পেন্টা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSPenta" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <!--<RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPenta1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPenta1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPenta2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPenta3" android:text="3-আইস প্যাকের গর্তে" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSPolio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSPolio" android:text="QVSPolio" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVSPolio" android:text="পোলিও" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSPolio" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <!--<RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPolio1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPolio1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPolio2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPolio3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSPcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSPcv" android:text="QVSPcv" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVSPcv" android:text="পিসিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSPcv" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+               <!-- <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPcv1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPcv1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPcv2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSPcv3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSIPV" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQVSIPV" android:text="QVSIPV" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->          <TextView android:id="@+id/VlblQVSIPV" android:text="আইপিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSIPV" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+              <!--  <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSIPV1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSIPV1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSIPV2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSIPV3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSMR" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVSMR" android:text="QVSMR" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->           <TextView android:id="@+id/VlblQVSMR" android:text="এম.আর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSMR" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+               <!-- <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSMR1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSMR1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSMR2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSMR3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSTT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVSTT" android:text="QVSTT" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->        <TextView android:id="@+id/VlblQVSTT" android:text="টিটি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSTT" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+               <!-- <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSTT1" android:text="1-টেবিলের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>-->
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSTT1" android:text="1-আইস প্যাকের বাহিরে " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSTT2" android:text="2-আইস প্যাকের উপর" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSTT3" android:text="3-আইস প্যাকের গর্তে"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblNonTouch" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblNonTouch" android:text="নন- টাচ টেকনিকে টিকা দেয়া হচ্ছে ?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNToubcg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQVNToubcg" android:text="QVNToubcg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+-->            <TextView android:id="@+id/VlblQVNToubcg" android:text="বিসিজি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNToubcg" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToubcg1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToubcg2" android:text="2-না" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNToupant" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVNToupant" android:text="QVNToupant" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->            <TextView android:id="@+id/VlblQVNToupant" android:text="পেন্টা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNToupant" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToupant1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToupant2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNTouPolio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--     <TextView android:id="@+id/lblQVNTouPolio" android:text="QVNTouPolio" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->           <TextView android:id="@+id/VlblQVNTouPolio" android:text="পোলিও" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNTouPolio" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouPolio1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouPolio2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNToupcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVNToupcv" android:text="QVNToupcv" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->        <TextView android:id="@+id/VlblQVNToupcv" android:text="পিসিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNToupcv" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToupcv1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNToupcv2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNTouIPV" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVNTouIPV" android:text="QVNTouIPV" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVNTouIPV" android:text="আইপিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNTouIPV" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouIPV1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouIPV2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNTouMR" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQVNTouMR" android:text="QVNTouMR" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->       <TextView android:id="@+id/VlblQVNTouMR" android:text="এম.আর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNTouMR" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouMR1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouMR2" android:text="2-না" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNTouTT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVNTouTT" android:text="QVNTouTT" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVNTouTT" android:text="টিটি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVNTouTT" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouTT1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVNTouTT2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblroot" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblroot" android:text="টিকাদান পদ্ধতি, ডোজ ও স্থান (রুট) সঠিক ছিল" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVRootbcg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVRootbcg" android:text="QVRootbcg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        -->     <TextView android:id="@+id/VlblQVRootbcg" android:text="বিসিজি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVRootbcg" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootbcg1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootbcg2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNotwhy" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVNotwhy" android:text="QVNotwhy" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+         -->     <TextView android:id="@+id/VlblQVNotwhy" android:text="না হলে কেন?" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVNotwhy" android:drawSelectorOnTop="true" android:layout_width="200sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVRootPenta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVRootPenta" android:text="QVRootPenta" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->           <TextView android:id="@+id/VlblQVRootPenta" android:text="পেন্টা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVRootPenta" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootPenta1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootPenta2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVRootMR" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVRootMR" android:text="QVRootMR" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->         <TextView android:id="@+id/VlblQVRootMR" android:text="এম.আর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVRootMR" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootMR1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootMR2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVRootTT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVRootTT" android:text="QVRootTT" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVRootTT" android:text="টিটি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVRootTT" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootTT1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVRootTT2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSRemoved" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVSRemoved" android:text="QVSRemoved" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->           <TextView android:id="@+id/VlblQVSRemoved" android:text="টিকাদানের পূর্বে এডি সিরিঞ্জের ক্যাপ / ঢাকনা ও টিকাদানের পর ব্যবহৃত সিরিঞ্জ সেফটি বক্সে ফেলা হচ্ছে? " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVSRemoved" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSRemoved1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVSRemoved2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblform" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblform" android:text="টালি ফর্মটিতে  দৈনিক লক্ষ্য মাত্রা আছে লেখা  কিনা?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+     <!--   দৈনিক টালি ফর্মটি  কার মাত্রা ভিত্তিক লক্ষ্য মাত্রা লেখা আছে?-->
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormbcg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVFormbcg" android:text="QVFormbcg" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+       -->       <TextView android:id="@+id/VlblQVFormbcg" android:text="বিসিজি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormbcg" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormbcg1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormbcg2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormpenta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQVFormpenta" android:text="QVFormpenta" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->         <TextView android:id="@+id/VlblQVFormpenta" android:text="পেন্টা" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormpenta" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormpenta1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormpenta2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormPolio" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVFormPolio" android:text="QVFormPolio" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->           <TextView android:id="@+id/VlblQVFormPolio" android:text="পোলিও" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormPolio" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormPolio1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormPolio2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormpcv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVFormpcv" android:text="QVFormpcv" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->       <TextView android:id="@+id/VlblQVFormpcv" android:text="পিসিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormpcv" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormpcv1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormpcv2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormipv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--    <TextView android:id="@+id/lblQVFormipv" android:text="QVFormipv" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->          <TextView android:id="@+id/VlblQVFormipv" android:text="আইপিভি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormipv" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormipv1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormipv2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormmr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVFormmr" android:text="QVFormmr" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVFormmr" android:text="এম.আর" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormmr" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormmr1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormmr2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVFormtt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVFormtt" android:text="QVFormtt" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->        <TextView android:id="@+id/VlblQVFormtt" android:text="টিটি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVFormtt" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormtt1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVFormtt2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblRegVacTCardCur" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblRegVacTCardCur" android:text="রেজিস্ট্রেশন বই এবং টিকাদান কার্ডে তারিখ সঠিক ভাবে লেখা হচ্ছে" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVCardregBook" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--   <TextView android:id="@+id/lblQVCardregBook" android:text="QVCardregBook" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     -->          <TextView android:id="@+id/VlblQVCardregBook" android:text="রেজিস্ট্রেশন বই" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVCardregBook" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCardregBook1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCardregBook2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVCardVac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVCardVac" android:text="QVCardVac" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->        <TextView android:id="@+id/VlblQVCardVac" android:text="টিকা দান কার্ড" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVCardVac" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCardVac1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCardVac2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVTTresearched" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVTTresearched" android:text="QVTTresearched " android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+      -->       <TextView android:id="@+id/VlblQVTTresearched" android:text="শিশুকে বহনকারী মা/ মহিলার টিটি টিকার খোঁজ নিয়ে টিটি টিকা দেয়া হচ্ছে? " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVTTresearched" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTTresearched1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVTTresearched2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVProtectors" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVProtectors" android:text="QVProtectors" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVProtectors" android:text="টিকার সম্ভাব্য পার্শ্ব-প্রতিক্রিয়া সম্পর্কে মহিলা/ অভিভাবক জানানো হচ্ছে?" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVProtectors" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVProtectors1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVProtectors2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVDateOfVac" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVDateOfVac" android:text="QVDateOfVac" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    -->          <TextView android:id="@+id/VlblQVDateOfVac" android:text="পরবর্তী টিকার তারিখ ও হামের টিকার তারিখ মহিলা/ অভিভাবক জানানো হচ্ছে? " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVDateOfVac" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVDateOfVac1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVDateOfVac2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVCard" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVCard" android:text="QVCard" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVCard" android:text="কার্ড সংরক্ষনের গুরুত্ব মহিলা/ অভিভাবক জানানো হচ্ছে? " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQVCard" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCard1" android:text="1-হ্যাঁ" android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQVCard2" android:text="2-না"  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclvlonemonth" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlvlonemonth" android:text="গত ১ মাসে কয়টি সারভিলেন্স রিপোর্টি দিয়েছেন?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVAFP" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVAFP" android:text="QVAFP" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVAFP" android:text="এএফপি" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVAFP" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVMeasles" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVMeasles" android:text="QVMeasles" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVMeasles" android:text="হাম" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVMeasles" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVNewborntetanus" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVNewborntetanus" android:text="QVNewborntetanus" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/VlblQVNewborntetanus" android:text="নবজাতকের ধনুষ্টংকার " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVNewborntetanus" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVOther" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!-- <TextView android:id="@+id/lblQVOther" android:text="QVOther" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/VlblQVOther" android:text="অন্যান্য " android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVOther" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVTodySession" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--  <TextView android:id="@+id/lblQVTodySession" android:text="QVTodySession" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+   -->           <TextView android:id="@+id/VlblQVTodySession" android:text="আজকের টিকাদান সেশনে কতজন শিশু হামের টিকা পেয়েছে" android:layout_width="250sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQVTodySession" android:maxLength="2" android:layout_width="120sp" android:inputType="number" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclblpro" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblpro" android:text="সমস্যা চিহ্নিত ও সমাধান" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVProblem1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--
+ -->            <TextView android:id="@+id/VlblQVProblem1" android:text="     কি সমস্যা পেয়েছেন" android:layout_width="300sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/lblQVProblem1" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblQVSolve1" android:text="কি সমাধান দিয়েছেন" android:layout_width="300sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVProblem2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+             <TextView android:id="@+id/lblQVProblem2" android:text="1." android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <!-- <EditText android:id="@+id/txtQVProblem1" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->            <Spinner android:id="@+id/spnQVProblem2" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <TextView android:id="@+id/lblQVProblem4" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+<!--
+
+            <EditText android:id="@+id/txtQVSolve1" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->
+            <Spinner android:id="@+id/spnQVSolve2" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+             </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSolve2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQVSolve2" android:text="2" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVProblem3" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <!--<EditText android:id="@+id/txtQVProblem2" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+     -->         <TextView android:id="@+id/lblQVProblem5" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVSolve3" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <!--<EditText android:id="@+id/txtQVSolve2" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSolve3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQVSolve3" android:text="3" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVProblem4" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <!-- <EditText android:id="@+id/txtQVProblem3" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+ -->            <TextView android:id="@+id/lblQVProblem6" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+
+           <!-- <EditText android:id="@+id/txtQVSolve3" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->          <Spinner android:id="@+id/spnQVSolve4" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSolve4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQVSolve4" android:text="4" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVProblem5" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <!-- <EditText android:id="@+id/txtQVProblem4" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+    -->         <TextView android:id="@+id/lblQVProblem7" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVSolve5" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+          <!--  <EditText android:id="@+id/txtQVSolve4" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQVSolve5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQVSolve5" android:text="5" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVProblem6" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+            <!--  <EditText android:id="@+id/txtQVProblem5" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+  -->            <TextView android:id="@+id/lblQVProblem8" android:text="" android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQVSolve6" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+          <!--  <EditText android:id="@+id/txtQVSolve5" android:maxLength="50" android:layout_width="220sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+-->        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content"
+                android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

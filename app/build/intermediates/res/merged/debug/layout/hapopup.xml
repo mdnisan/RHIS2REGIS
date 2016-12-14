@@ -1,0 +1,48 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+        <LinearLayout android:id="@+id/seclblepireg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblepireg" android:text="" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+
+        <LinearLayout android:id="@+id/secName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblName" android:text="স্বাস্থ্য সহকারীর নাম" android:layout_width="180sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/txtName"   android:background="#D7D7D7" android:maxLength="50" android:layout_width="300sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secWorkpDT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblWorkpDT" android:text="তারিখ" android:layout_width="180sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/txtWorkpDT"   android:background="#D7D7D7" android:maxLength="10" android:layout_width="200sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secDes" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblDes" android:text=" কর্মসূচী" android:layout_width="180sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/txtDes"   android:background="#D7D7D7" android:maxLength="500" android:layout_width="300sp" android:inputType="textMultiLine" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+
+            <Button android:id="@+id/cmdSave"  android:background="@drawable/button_style"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10sp"
+                android:text="Need to Change"/>
+            <Button android:id="@+id/cmdClose" android:layout_marginLeft="20sp"
+                android:background="@drawable/button_style"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:layout_marginBottom="10sp"
+                android:text="Close"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+

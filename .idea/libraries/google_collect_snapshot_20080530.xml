@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="google-collect-snapshot-20080530">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/libs/google-collect-snapshot-20080530.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -1,0 +1,1126 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:id="@+id/seclblepireg"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHlblepireg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" কর্মসূচী সমূহ"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"/>
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+
+
+        <LinearLayout
+            android:id="@+id/secA1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkIPCVisit"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="IPC কাজ পরিদর্শন    "
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secUnion"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblUnion"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিয়ন"
+                android:textSize="20sp"/>
+            <Spinner android:id="@+id/SpnUnion"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secWord"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblWord"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="ওয়ার্ড"
+                android:textSize="20sp"/>
+            <Spinner android:id="@+id/SpnWord"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secMouza"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblMouza"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="মৌজা /গ্রাম"
+                android:textSize="20sp"/>
+            <Spinner android:id="@+id/SpnMouza"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secPara"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblPara"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="পাড়া"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/txtPara"
+                style="@style/customEdit"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secBarivisit"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblBarivisit"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="বাড়ি পরিদর্শন সংখ্যা "
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/txtBarivisit1"
+                style="@style/customEdit"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="50"
+                android:textSize="20sp"/>
+
+            <TextView
+                android:id="@+id/VlblBarivisit1"
+                android:layout_width="60sp"
+                android:layout_height="wrap_content"
+                android:text="থেকে "
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/txtBarivisit2"
+                style="@style/customEdit"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="number"
+                android:maxLength="50"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/VlblBarivisit2"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="পর্যন্ত "
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+        <LinearLayout
+            android:id="@+id/secB1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkEPIVisit"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="টিকাদান সেশন পরিদর্শন  "
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secname"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblProvname"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="স্বাস্থ্য সহকারীর নাম"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnProvider"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/VlblPrvWord"
+                android:layout_width="80sp"
+                android:layout_height="wrap_content"
+                android:text="ওয়ার্ড"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnPWord"
+                android:layout_width="100sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secHSubBlock"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblHSubBlock"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="ই পি আই সাব-ব্লক"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnEpiSubBlock"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secSessionDate"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSessionDate"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="সেশন তারিখ"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnSessionDate"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/secEPICenterName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblEPICenterName"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="কেন্দ্রের নাম"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnEPICenterName"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secC1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkCCVisit"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="কমিউনিটি ক্লিনিক পরিদর্শন  "
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+
+        <!--<LinearLayout
+            android:id="@+id/secUnion1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblUnion1"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="ইউনিয়ন"
+                android:textSize="20sp"/>
+            <Spinner android:id="@+id/SpnUnion1"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secccWord"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblccWord"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="ওয়ার্ড"
+                android:textSize="20sp"/>
+            <Spinner android:id="@+id/SpnCCWord"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secccName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblccName"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text="কমিউনিটি ক্লিনিকের নাম"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnccName"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>-->
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secD1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkOfficeWork"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="অফিসের  কাজ "
+                android:layout_height="wrap_content"/>
+
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secE1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkUHMMeeting"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="উপজেলা স্বাস্থ্য কমপ্লেক্স এ মাসিক সমন্বয় সভা"
+                android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+        <LinearLayout
+            android:id="@+id/secL"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/chkHDay"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="ছুটি "
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secLeave"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblLeave"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="ধরন"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/spnLeave"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secF1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkMonthlyReportColl"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="মাসিক রিপোর্ট সংগ্রহ করন"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secF2"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:visibility="gone">
+
+            <CheckBox android:id="@+id/chkMonthlyReportCol2"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="মাসিক রিপোর্ট  তৈরিকরণ "
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secG1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkMonthlyWorkPlan"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="মাসিক অগ্রিম কর্মসূচী তৈরিকরণ"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secH1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkTrainingAttended"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="ট্রেনিং এ অংশগ্রহন"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secI1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkNationalProgramAttended"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="জাতীয় প্রোগ্রামে অংশগ্রহন "
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/secNProgram"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblHNProgram"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="অবস্থা"
+                android:textSize="20sp"/>
+            <Spinner
+                android:id="@+id/spnNProgram"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secJ1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkOtherProgram"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="অন্যান্য কার্যক্রম"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/secOther"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblOther"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="অন্যান্য"
+                android:textSize="20sp" />
+
+            <EditText
+                android:id="@+id/txtOther"
+                style="@style/customEdit"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+      <!--  <LinearLayout
+            android:id="@+id/secJ12"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkfpiunmeeting1"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্রে মাসিক সভায় অংশগ্রহন"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>-->
+<!--
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secK1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkfpiuzmeeting"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="উপজেলা পরিবার পরিকল্পনা অফিসে মাসিক সভায় অংশগ্রহন"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>-->
+<!--
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secL1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <CheckBox android:id="@+id/chkfpiothermeeting"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="অন্যান্য সামাজিক কর্মকাণ্ডে অংশগ্রহন "
+                android:layout_height="wrap_content"/>
+
+            &lt;!&ndash;  <CheckBox android:id="@+id/chkfpiothermeeting"
+                  android:layout_width="40sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>
+              <TextView android:text="অন্যান্য সামাজিক কর্মকাণ্ডে অংশগ্রহন "
+                  android:id="@+id/Vfpifpiothermeeting"
+                  android:layout_width="450sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>&ndash;&gt;
+
+        </LinearLayout>-->
+  <!--      <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:id="@+id/secfpiothermeeting"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/Vlblfpiothermeeting"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="ধরন"
+                android:textSize="20sp"/>
+
+            <Spinner
+                android:id="@+id/spnfpiothermeeting"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+        </LinearLayout>-->
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <!-- <LinearLayout
+             android:id="@+id/secA11"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             &lt;!&ndash; <CheckBox android:id="@+id/chkElco"
+                  android:layout_width="40sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>
+              <TextView android:text="দম্পতি পরিদর্শন  "
+                  android:id="@+id/VCC"
+                  android:layout_width="200sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>&ndash;&gt;
+
+             <CheckBox android:id="@+id/chkCC"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="কমিউনিটি ক্লিনিকে সেবা প্রদান  "
+                 android:id="@+id/VElco"
+                 android:layout_width="300sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA2"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             <CheckBox android:id="@+id/chkStC"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="সাটেলাইট ক্লিনিকে উপস্থিত থাকা  "
+                 android:id="@+id/VStC"
+                 android:layout_width="400sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+             &lt;!&ndash;         <CheckBox android:id="@+id/chkEpi"
+                          android:layout_width="40sp"
+                          android:gravity="left"
+                          android:layout_height="wrap_content"/>
+                      <TextView android:text="ইপিআই কার্যক্রমে অংশগ্রহন"
+                          android:id="@+id/VEpi"
+                          android:layout_width="300sp"
+                          android:gravity="left"
+                          android:layout_height="wrap_content"/>&ndash;&gt;
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA22"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             &lt;!&ndash;     <CheckBox android:id="@+id/chkStC"
+                      android:layout_width="40sp"
+                      android:gravity="left"
+                      android:layout_height="wrap_content"/>
+                  <TextView android:text="সাটেলাইটক্লিনিকে উপস্থিত থাকা  "
+                      android:id="@+id/VStC"
+                      android:layout_width="200sp"
+                      android:gravity="left"
+                      android:layout_height="wrap_content"/>&ndash;&gt;
+
+             <CheckBox android:id="@+id/chkEpi"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="ইপিআই কার্যক্রমে অংশগ্রহন"
+                 android:id="@+id/VEpi"
+                 android:layout_width="400sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA3"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             <CheckBox android:id="@+id/chkFpC"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="পরিবার পরিকল্পনা ক্যাম্প এ ক্লাইন্ট নিয়ে যাওয়া"
+                 android:id="@+id/VFpC"
+                 android:layout_width="400sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             &lt;!&ndash;
+                         <CheckBox android:id="@+id/chkFDone"
+                             android:layout_width="40sp"
+                             android:gravity="left"
+                             android:layout_height="wrap_content"/>
+                         <TextView android:text="অগ্রিম কর্মসূচী প্রণয়ন"
+                             android:id="@+id/VFDone"
+                             android:layout_width="300sp"
+                             android:gravity="left"
+                             android:layout_height="wrap_content"/>&ndash;&gt;
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA33"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             &lt;!&ndash;   <CheckBox android:id="@+id/chkFpC"
+                    android:layout_width="40sp"
+                    android:gravity="left"
+                    android:layout_height="wrap_content"/>
+                <TextView android:text="পরিবার পরিকল্পনা ক্যাম্প এ ক্লাইন্ট নিয়ে যাওয়া"
+                    android:id="@+id/VFpC"
+                    android:layout_width="200sp"
+                    android:gravity="left"
+                    android:layout_height="wrap_content"/>&ndash;&gt;
+
+             <CheckBox android:id="@+id/chkFDone"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="অগ্রিম কর্মসূচী প্রণয়ন"
+                 android:id="@+id/VFDone"
+                 android:layout_width="400sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA4"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             <CheckBox android:id="@+id/chkUnFMeeting"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্রে পাক্ষিক সভা"
+                 android:id="@+id/VUnFMeeting"
+                 android:layout_width="500sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+             &lt;!&ndash; <CheckBox android:id="@+id/chkUFMeeting"
+                  android:layout_width="40sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>
+              <TextView android:text="ইউনিয়নপ স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্রে পাক্ষিক সভা"
+                  android:id="@+id/VUFMeeting"
+                  android:layout_width="300sp"
+                  android:gravity="left"
+                  android:layout_height="wrap_content"/>&ndash;&gt;
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>
+         <LinearLayout
+             android:id="@+id/secA44"
+             style="@style/rowStyle0"
+             android:layout_width="fill_parent"
+             android:layout_height="wrap_content"
+             android:orientation="horizontal">
+
+             &lt;!&ndash;        <CheckBox android:id="@+id/chkUnFMeeting"
+                         android:layout_width="40sp"
+                         android:gravity="left"
+                         android:layout_height="wrap_content"/>
+                     <TextView android:text="ইউনিয়নপ স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্রে পাক্ষিক সভা"
+                         android:id="@+id/VUnFMeeting"
+                         android:layout_width="200sp"
+                         android:gravity="left"
+                         android:layout_height="wrap_content"/>&ndash;&gt;
+
+             <CheckBox android:id="@+id/chkUFMeeting"
+                 android:layout_width="40sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+             <TextView android:text="ইউনিয়ন স্বাস্থ্য ও পরিবার কল্যাণ কেন্দ্রে পাক্ষিক সভা"
+                 android:id="@+id/VUFMeeting"
+                 android:layout_width="500sp"
+                 android:gravity="left"
+                 android:layout_height="wrap_content"/>
+
+         </LinearLayout>
+         <View
+             android:layout_width="fill_parent"
+             android:layout_height="1dip"
+             android:background="#CCCCCC"/>-->
+
+      <!--  <LinearLayout
+            android:id="@+id/secM"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkMreport"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="মাসিক রিপোর্ট তৈরি"
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>-->
+      <!--  <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+        <LinearLayout
+            android:id="@+id/secN"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <CheckBox android:id="@+id/chkTraining"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="ট্রেনিং এ অংশগ্রহন "
+                android:layout_height="wrap_content"/>
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+        <LinearLayout
+            android:id="@+id/secO"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <CheckBox android:id="@+id/chkROther"
+                android:layout_width="wrap_content"
+                android:gravity="left" android:text="অন্যান্য কার্যক্রম"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>-->
+
+       <!-- <LinearLayout
+            android:id="@+id/secOther"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblOther"
+                android:layout_width="180sp"
+                android:layout_height="wrap_content"
+                android:text="অন্যান্য"
+                android:textSize="20sp"/>
+
+            <EditText
+                android:id="@+id/txtOther"
+                style="@style/customEdit"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp"/>
+        </LinearLayout>-->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC"/>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingTop="20sp">
+
+            <Button
+                android:id="@+id/cmdSave"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Save"/>
+
+            <Button
+                android:id="@+id/cmdClose"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginLeft="20sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Close"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
+
+

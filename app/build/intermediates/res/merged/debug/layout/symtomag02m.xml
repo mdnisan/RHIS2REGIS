@@ -1,0 +1,218 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"    android:scrollbars="horizontal" >
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+
+        <LinearLayout android:id="@+id/secB" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  style="@style/rowHeading" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkB"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="সাধারন এসেসমেন্ট" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListView" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstData"
+                android:layout_width="fill_parent"
+                android:layout_height="610sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secB1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkB1"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="খুব  মারাত্মক রোগ" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListView1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstData1"
+                android:layout_width="fill_parent"
+                android:layout_height="270sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secB2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkB2" android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="সীমিত সংক্রমন" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secListView2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstData2"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secB3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkB3" android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="খুব মারাত্মক রোগ অথবা সীমিত সংক্রমনের সম্ভাবনা কম" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secListView3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstData3"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+        <!--   </HorizontalScrollView>-->
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secD" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkD"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="ডায়রিযা" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListViewD1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataD1"
+                android:layout_width="fill_parent"
+                android:layout_height="450sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+
+
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secD1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkD1" android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="চরম পানি  স্বল্পতা/ কিছু পানি স্বল্পতা" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secListViewD2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataD2"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secD2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkD2" android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="পানি স্বল্পতা নাই" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secListViewD3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataD3"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secF" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkF"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="খাওয়ানোর সমস্যা" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListViewF1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataF1"
+                android:layout_width="fill_parent"
+                android:layout_height="420sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secF1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkF1"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="খাওয়ানোর সমস্যা আছে" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListViewF2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataF2"
+                android:layout_width="fill_parent"
+                android:layout_height="450sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+        <LinearLayout android:id="@+id/secF2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal"  android:background="#C2E0EC" android:paddingTop="5px" android:paddingBottom="5px">
+            <TextView android:text="" android:layout_width="10dp" android:gravity="left" android:layout_height="wrap_content"/>
+            <CheckBox android:id="@+id/chkF2"  android:layout_width="40sp" android:gravity="left" android:layout_height="wrap_content"/>
+            <TextView android:text="খাওয়ানোর সমস্যা নাই" android:layout_width="570sp" android:gravity="left" android:layout_height="wrap_content"/>
+
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <!-- <HorizontalScrollView  android:layout_width="fill_parent" android:layout_height="850sp">-->
+        <LinearLayout android:id="@+id/secListViewF3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ListView android:scrollbars="vertical"
+                android:id="@+id/lstDataF3"
+                android:layout_width="fill_parent"
+                android:layout_height="200sp"
+                android:divider="#000000"
+                android:dividerHeight="1px"
+                android:clickable="true">
+            </ListView>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content"
+                android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp" android:background="@drawable/button_style"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

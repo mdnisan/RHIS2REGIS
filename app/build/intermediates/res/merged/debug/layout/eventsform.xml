@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="wrap_content"    android:layout_marginLeft="10sp" android:layout_marginRight="10sp"    android:layout_height="wrap_content">
+    <LinearLayout android:layout_width="fill_parent" android:paddingTop="10sp" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="5sp" android:background="#f3f3f3"
+        android:gravity="center_horizontal">
+        <TextView android:text="রেজিস্টার" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="30sp"  android:textColor="#006699"
+            android:layout_gravity="center" android:visibility="gone"  />
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+
+    <LinearLayout style="@style/customEdit" android:layout_width="fill_parent" android:paddingTop="10sp" android:layout_height="wrap_content" android:orientation="horizontal" android:paddingBottom="10sp" android:background="#F3F3F3">
+        <TextView android:text="সদস্যের নাম: " android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#006699"/>
+        <TextView android:id="@+id/memName" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#006699"/>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secEditDelete" android:orientation="horizontal" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp" android:layout_marginBottom="10sp"    android:layout_height="wrap_content" android:background="#F3F3F3"
+        android:gravity="center_horizontal">
+        <LinearLayout android:id="@+id/secEdit" android:layout_width="200sp" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ImageButton android:id="@+id/cmdEdit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@drawable/edit" android:textSize="16sp" android:text="edit"  android:layout_marginBottom="10sp"/>
+            <TextView android:text="   edit" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#006699"/>
+        </LinearLayout>
+        <LinearLayout android:id="@+id/secDelete" android:layout_width="200sp" android:paddingTop="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <ImageButton android:id="@+id/cmdDelete" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@drawable/delete" android:textSize="16sp" android:text="delete"  android:layout_marginBottom="10sp"/>
+            <TextView android:text="   delete" android:layout_width="130sp" android:layout_height="wrap_content" android:textSize="20sp"  android:textColor="#006699"/>
+        </LinearLayout>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp" android:layout_marginBottom="10sp"    android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <LinearLayout android:id="@+id/secmemFPI" android:layout_width="wrap_content" android:paddingTop="10sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button android:id="@+id/cmdmemFPI" android:layout_width="230sp" android:layout_height="80sp" android:background="@drawable/button_style"
+                android:textSize="18sp" android:text="জনসংখ্যা নিবন্ধনের তদারকি ছক"  android:layout_marginBottom="10sp" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/sec6"   android:layout_marginLeft="20sp" android:layout_width="wrap_content" android:paddingTop="10sp" android:layout_height="wrap_content" android:visibility="gone" android:orientation="horizontal">
+            <Button android:id="@+id/cmd6" android:enabled="false" android:layout_width="230sp" android:layout_height="80sp"  android:background="@drawable/button_style"
+                android:textSize="18sp" android:text="মৃত্যু তালিকা ছক"  android:layout_marginBottom="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

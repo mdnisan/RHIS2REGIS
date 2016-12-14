@@ -1,0 +1,7 @@
+#Mon Dec 12 16:07:15 BDT 2016
+base.0=D\:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a6865a7ef5cfd843f3a292092d86412f773977b1
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=D\:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4bdacd1bf15592c41d1dfa2c12daa383a3695f71\\classes.dex
+base.1=D\:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run-bootstrap_4bdacd1bf15592c41d1dfa2c12daa383a3695f71
+file.0=D\:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10\\instant-run_a6865a7ef5cfd843f3a292092d86412f773977b1\\classes.dex

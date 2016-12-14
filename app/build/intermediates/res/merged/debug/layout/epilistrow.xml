@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    <TableLayout
+        android:id="@+id/memtab"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+        <TableRow   android:id="@+id/memtabrow">
+
+            <TextView
+                android:textSize="18sp"
+                android:layout_width="20sp"
+                android:gravity="center"
+                android:layout_column="0"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/HealthID"
+                android:layout_width="150sp"
+                android:gravity="left"
+                android:layout_column="1" android:textSize="16sp"
+                android:layout_height="40sp"/>
+
+
+
+            <TextView  android:id="@+id/name" android:text="শিশুর নাম" android:textSize="18sp"
+                android:layout_width="160sp"
+                android:gravity="left"
+                android:layout_column="4"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/sex" android:text="ছেলে/মেয়ে" android:textSize="18sp"
+                android:layout_width="90sp"
+                android:gravity="left"
+                android:layout_column="5"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/dob" android:text="জন্ম তারিখ" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="6"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/mname" android:text="মাতার নাম" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="7"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/fname" android:text="পিতার নাম" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="8"
+                android:layout_height="40sp"/>
+
+            <TextView  android:id="@+id/regno"  android:text="রেজিঃ নং" android:textSize="18sp"
+                android:layout_width="80sp"
+                android:gravity="left"
+                android:layout_column="2"
+                android:layout_height="40sp"/>
+
+            <TextView  android:id="@+id/regdate"  android:text="রেজিঃ তারিখ" android:textSize="18sp"
+                android:layout_width="140sp"
+                android:gravity="left"
+                android:layout_column="3"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/oname" android:text="অভিভাবকের নাম" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="left"
+                android:layout_column="9"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/vill" android:text="গ্রাম/ পাড়া/ মহল্লা" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="10"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/mobile" android:text="মোবাইল নম্বর" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="11"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/bari" android:text="বাড়ি/জি আর/ হোল্ডিং নম্বর" android:textSize="18sp"
+                android:layout_width="120sp"
+                android:gravity="center"
+                android:layout_column="12"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/vita" android:text="শিশুর মাকে ভিটামিন- এ দেয়ার তারিখ (অবশ্যই শিশুর জন্মের ৪২ দিনের মধ্যে)"
+                android:textSize="18sp"
+                android:layout_width="350sp"
+                android:gravity="center"
+                android:layout_column="13"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/penta" android:text="যে তারিখে পেন্টাভ্যালেন্ট-১ ও পিসিভি -১ দিতে হবে" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="14"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/mr1" android:text="যে তারিখে এম আর(হাম রুবেলা) টিকা দিতে হবে" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="15"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/mr2" android:text="যে তারিখে হাম/ এম আর (২য় ডোজ) টিকা দিতে হবে" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="16"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/bcg" android:text="বিসিজি" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="17"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/penta1" android:text="পেন্টাভ্যালেন্ট(ডিপিটি, হেপ-বি, হিব) ১ম" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="18"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/penta2" android:text="পেন্টাভ্যালেন্ট(ডিপিটি, হেপ-বি, হিব) ২য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="19"
+                android:layout_height="40sp"/>
+            <TextView android:id="@+id/penta3" android:text="পেন্টাভ্যালেন্ট(ডিপিটি, হেপ-বি, হিব) ৩য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="20"
+                android:layout_height="40sp"/>
+
+            <TextView android:id="@+id/pcv1" android:text="পিসিভি ১ম" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="21"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/pcv2" android:text="পিসিভি ২য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="22"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/pcv3" android:text="পিসিভি ৩য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="23"
+                android:layout_height="40sp" />
+
+            <TextView android:id="@+id/opv0" android:text="ওপিভি 0" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="24"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/opv1" android:text="ওপিভি ১ম" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="25"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/opv2" android:text="ওপিভি ২য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="26"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/opv3" android:text="ওপিভি ৩য়" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="27"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/ipv" android:text="আইপিভি"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="28"
+                android:layout_height="40sp"/>
+
+            <TextView  android:id="@+id/mrdate1" android:text="এমআর(হাম ও রুবেলা)" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="29"
+                android:layout_height="40sp" />
+            <TextView android:id="@+id/mrdate2" android:text="হাম/ এম আর(২য় ডোজ)" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="30"
+                android:layout_height="40sp" />
+            <ImageButton  android:id="@+id/age12to23"
+                android:text="শিশুর বয়স ১২-২৩ মাস" android:textSize="14sp"
+                android:layout_width="30sp"
+                android:gravity="center"
+                android:layout_column="31"
+                android:layout_height="20sp"
+                android:layout_marginTop="0sp"
+                android:layout_marginLeft="10sp"
+                android:layout_marginRight="150sp"/>
+            <TextView  android:id="@+id/allimmugiven" android:text="প্রাপ্যতা অনুযায়ী সকল টিকা নেয়া শেষ হয়েছে(হাঁ / না)" android:textSize="18sp"
+                android:layout_width="250sp"
+                android:gravity="center"
+                android:layout_column="32"
+                android:layout_height="40sp" />
+
+            <TextView  android:id="@+id/br" android:text="শিশুর জন্ম নিবন্ধন ফর্ম পূরণ করা হয়েছে" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="33"
+                android:layout_height="40sp" />
+            <TextView  android:id="@+id/brcertificate" android:text="শিশুর জন্ম নিবন্ধন সার্টিফিকেট নম্বর" android:textSize="18sp"
+                android:layout_width="200sp"
+                android:gravity="center"
+                android:layout_column="34"
+                android:layout_height="40sp" />
+            <TextView  android:id="@+id/deathdate" android:text="শিশু মৃত্যুর তারিখ" android:textSize="18sp"
+                android:layout_width="100sp"
+                android:gravity="center"
+                android:layout_column="35"
+                android:layout_height="40sp" />
+            <TextView  android:id="@+id/remarks" android:text="মন্তব্য" android:textSize="18sp"
+                android:layout_width="300sp"
+                android:gravity="center"
+                android:layout_column="36"
+                android:layout_height="40sp" />
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>
+ 

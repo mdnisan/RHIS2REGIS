@@ -1,0 +1,235 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:isScrollContainer="true"
+    android:overScrollMode="always"
+    android:scrollbarAlwaysDrawVerticalTrack="true"
+    android:scrollbarStyle="outsideInset"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10sp"
+        android:layout_marginRight="0sp"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secS10"
+            style="@style/rowHeading"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/lblHS10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="স্বাস্থ্য পরিদর্শকের কর্ম এলাকা ডাউনলোড"
+                android:textSize="20sp" />
+        </LinearLayout>
+        <!-- <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    -->
+        <LinearLayout
+            android:id="@+id/secFpiName"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblSlNo"
+                android:layout_width="260sp"
+                android:layout_height="wrap_content"
+                android:text="সহকারী স্বাস্থ্য পরিদর্শকের নাম"
+                android:textSize="20sp" />
+            <Spinner android:id="@+id/spnfpaCode"
+                android:drawSelectorOnTop="true"
+                android:layout_width="250sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:prompt="@string/planet_prompt" android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+        <LinearLayout
+            android:id="@+id/secFpiWarea"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/VlblFpiWarea"
+                android:layout_width="260sp"
+                android:layout_height="wrap_content"
+                android:text="কর্ম এলাকা "
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/txtFpiWarea"
+                style="@style/customEdit"
+                android:layout_width="150sp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10sp"
+                android:background="#D7D7D7"
+                android:gravity="left"
+                android:inputType="text"
+                android:maxLength="50"
+                android:textSize="20sp" />
+
+
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+
+
+        <!--<LinearLayout
+            android:id="@+id/secFPIPMonth"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:id="@+id/VlblFPIPMonth"
+                android:layout_width="220sp"
+                android:layout_height="wrap_content"
+                android:text=" কর্মসূচীর মাস"
+                android:textSize="20sp" />
+
+
+            <Spinner
+                android:id="@+id/spnFPIPMonth"
+                android:layout_width="200sp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:drawSelectorOnTop="true"
+                android:prompt="@string/planet_prompt"
+                android:scrollbars="horizontal"
+                android:textSize="15sp" />
+
+        </LinearLayout>-->
+   <!--     <LinearLayout
+            android:id="@+id/secFPIDataSyne"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+
+
+            <Button
+                android:id="@+id/cmdApproved"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="অনুমোদিত"/>
+
+            <TextView android:text=""
+                android:layout_width="20dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/cmdNotApproved"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="অননুমোদিত"/>
+
+            <TextView android:text=""
+                android:layout_width="20dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/cmdRequest"
+                android:layout_width="140dip"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="অপেক্ষাধিন"/>
+
+        </LinearLayout>-->
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+        <LinearLayout
+            android:id="@+id/secFPIDataSyne1"
+            style="@style/rowStyle0"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+
+            <Button
+                android:id="@+id/cmdSync"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Upload" android:visibility="gone"/>
+            <TextView android:text=""
+                android:layout_width="260dp"
+                android:gravity="center"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/cmdDownload"
+                android:layout_width="120sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10sp"
+                android:layout_marginTop="10dip"
+                android:background="@drawable/button_style"
+                android:text="Download"/>
+
+            <TextView android:text=""
+                android:layout_width="20dp"
+                android:gravity="center"
+                android:layout_height="wrap_content"/>
+
+
+
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:background="#CCCCCC" />
+
+    </LinearLayout>
+</ScrollView>
+

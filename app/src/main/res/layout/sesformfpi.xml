@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"        android:layout_width="fill_parent"         android:layout_height="fill_parent"         android:overScrollMode="always"         android:isScrollContainer="true"         android:scrollbarAlwaysDrawVerticalTrack="true"         android:scrollbarStyle="outsideInset"         android:scrollbars="vertical">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent"    android:layout_marginLeft="10sp" android:layout_marginRight="0sp"    android:layout_height="wrap_content" android:scrollbars="vertical">
+        <LinearLayout android:id="@+id/seclblSS" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlblSS" android:text="" android:layout_width="140sp" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+            <TextView android:id="@+id/VlblHHNo" android:text="খানা নম্বর   " android:gravity="right" android:textColor="#FFFFFF" android:layout_width="280sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtHHNo" android:maxLength="50" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secstatus" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+
+            <TextView android:id="@+id/Vlblstatus" android:text="আর্থ সামাজিক তথ্যাদি" android:layout_width="200sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <!--<Spinner android:id="@+id/spnstatus" android:drawSelectorOnTop="true" android:layout_width="150sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+            <TextView android:id="@+id/txtstatus"  android:maxLength="100" android:layout_width="140sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+            <RadioGroup android:id="@+id/rdogrpstatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoStatus1" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoStatus2" android:textColor="#006699" android:text="2-সঠিক না"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoStatus3" android:textColor="#006699" android:text="3-সম্পূর্ণ নাই"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+<LinearLayout android:id="@+id/secAll" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQ1" android:text="১." android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblQ1" android:layout_marginBottom="5sp" android:text="আপনার খানার সদস্যদের খাবার পানি পান করার প্রধান উৎস কি ? " android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+    <LinearLayout android:id="@+id/secQ1Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<Spinner android:id="@+id/spnQ1" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <TextView android:id="@+id/txtQ1"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <RadioGroup android:id="@+id/rdogrpQ1Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ1Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ1Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ11" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/VlblQ11" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQ11" android:enabled="false"  android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ11"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ111" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ112" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+    <LinearLayout android:id="@+id/secQ2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ2" android:text="২." android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ2" android:layout_marginBottom="5sp" android:text="এ খানার সদস্যরা সাধারনত কোন ধরনের পায়খানা  ব্যবহার করে ? " android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ2Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<Spinner android:id="@+id/spnQ2" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <TextView android:id="@+id/txtQ2"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <RadioGroup android:id="@+id/rdogrpQ2Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ2Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ2Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ21" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ21" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtQ21"  android:enabled="false" android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ21"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ211" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ212" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+        <!--<View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQ2" android:text="২." android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblQ2" android:layout_marginBottom="5sp" android:text="এ খানার সদস্যরা সাধারনত কোন ধরনের পায়খানা  ব্যবহার করে ? " android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <Spinner android:id="@+id/spnQ2" android:drawSelectorOnTop="true" android:layout_width="250sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ21" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <TextView android:id="@+id/lblQ21" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <TextView android:id="@+id/VlblQ21" android:text="অন্যান্য" android:layout_width="220sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <EditText android:id="@+id/txtQ21" android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        </LinearLayout>-->
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclbl3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlbl3" android:layout_marginBottom="5sp" android:text="৩. আপনার খানায় বা খানার কোন সদস্যের নিন্মে বর্ণিত জিনিস গুলো আছে কি?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+           <!-- <TextView android:id="@+id/lblQ3a" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3a" android:text="a. বিদ্যুৎ " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3a" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3a1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3a2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3aStatus" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3aStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3aStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3b" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3b" android:text="b. সৌর বিদ্যুৎ" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3b" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3b1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3b2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3bStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3bStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3bStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3c" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3c" android:text="c. রেডিও" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3c" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3c1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3c2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3cStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3cStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3cStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3d" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3d" android:text="d. টেলিভিশন" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3d" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3d1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3d2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3dStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3dStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3dStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3e" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3e" android:text="e. মোবাইল ফোন " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3e" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3e1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3e2" android:text="2-না " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3eStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3eStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3eStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3f" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3f" android:text="f. টেলিফোন" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3f" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3f1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3f2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3fStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3fStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3fStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3g" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3g" android:text="g. রেফ্রিজারেটর/ফ্রিজ" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3g" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3g1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3g2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3gStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3gStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3gStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3h" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3h" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3h" android:text="h. আলমারি/ওয়ার্ড্রোব " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3h" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3h1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3h2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3hStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3hStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3hStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3i" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3i" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3i" android:text="i. বৈদ্যুতিক পাখা" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3i" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3i1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3i2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3iStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3iStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3iStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3j" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3j" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3j" android:text="j. পানির পাম্প" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3j" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3j1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3j2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3jStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3jStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3jStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3k" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3k" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3k" android:text="k. টেবিল" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3k" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3k1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3k2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3kStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3kStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3kStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3l" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3l" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3l" android:text="l. চেয়ার" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3l" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3l1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3l2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3lStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3lStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3lStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3m" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3m" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3m" android:text="m. সোফা " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3m" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3m1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3m2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3mStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3mStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3mStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3n" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3n" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3n" android:text="n. আইপিএস/জেনারেটর" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3n" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3n1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3n2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3nStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3nStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3nStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3o" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3o" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3o" android:text="o. এয়ারকন্ডিশনার" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3o" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3o1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3o2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3oStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3oStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3oStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ3p" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ3p" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ3p" android:text="p. কম্পিউটার/ল্যাপটপ" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ3p" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3p1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ3p2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ3pStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3pStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ3pStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ4" android:text="৪." android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ4" android:layout_marginBottom="5sp" android:text="আপনার খানায় রান্নার জন্য প্রধানত কী ধরণের জ্বালানী ব্যবহার করা হয় ? " android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ4Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<Spinner android:id="@+id/spnQ4" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <TextView android:id="@+id/txtQ4"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <RadioGroup android:id="@+id/rdogrpQ4Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ4Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ4Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ41" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ41" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtQ41"  android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ41"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ41Yes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ41No" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ5" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ5" android:text="৫. " android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ5" android:layout_marginBottom="5sp" android:text="বসত ঘরের মেঝের প্রধান নির্মাণ সামগ্রী ? " android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ51Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/txtQ5"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <!--<Spinner android:id="@+id/spnQ5" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <RadioGroup android:id="@+id/rdogrpQ5Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ5Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ5Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ51" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ51" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtQ51"  android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ51"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ51Yes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ51No" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ6" android:text="৬. " android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ6" android:layout_marginBottom="5sp" android:text="বসত ঘরের ছাদের প্রধান নির্মাণ সামগ্রী ?" android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ61Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/txtQ6"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <!--<Spinner android:id="@+id/spnQ6" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <RadioGroup android:id="@+id/rdogrpQ6Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ6Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ6Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ61" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ61" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtQ61"  android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ61"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ61Yes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ61No" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ7" android:text="৭. " android:layout_width="30sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ7" android:layout_marginBottom="5sp" android:text="বসত ঘরের দেয়ালের প্রধান নির্মাণ সামগ্রী ?" android:layout_width="540sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ71Status" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/txtQ7"  android:paddingLeft="90sp" android:maxLength="100" android:layout_width="340sp" android:inputType="textCapCharacters" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp"  />
+        <!--<Spinner android:id="@+id/spnQ7" android:paddingLeft="90sp" android:drawSelectorOnTop="true" android:layout_width="350sp" android:layout_height="wrap_content" android:layout_weight="0" android:prompt="@string/planet_prompt" android:textSize="20sp" />-->
+        <RadioGroup android:id="@+id/rdogrpQ7Status"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ7Status1" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ7Status2" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ71" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ71" android:text="অন্যান্য" android:layout_width="90sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <EditText android:id="@+id/txtQ71"  android:maxLength="50" android:layout_width="250sp" android:inputType="text" android:layout_height="wrap_content" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ71"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ71Yes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ71No" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/seclbl8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowHeading">
+            <TextView android:id="@+id/lblHlbl8" android:text="৮. আপনার খানায়/খানার কোন সদস্যের নিন্মে বর্ণিত জিনিস গুলো আছে কি?" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp" android:textColor="#FFFFFF"/>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ8a1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<TextView android:id="@+id/lblQ8a" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+        <TextView android:id="@+id/VlblQ8a1" android:text="a. কার/ট্রাক/ মাইক্রোবাস " android:layout_width="270sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/secQ8a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ8a" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ8a" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ8a" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8a1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8a2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ8aStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8aStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8aStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+       <LinearLayout android:id="@+id/secQ8b1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<TextView android:id="@+id/lblQ8b" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+        <TextView android:id="@+id/VlblQ8b1" android:text="b. অটোবাইক/টেম্পু/সিএনজি/পাওয়ার টিলার " android:layout_width="370sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/secQ8b" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ8b" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ8b" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ8b" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8b1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8b2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ8bStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8bStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8bStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ8c" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ8c" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ8c" android:text="c. রিক্সা/ভ্যান" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ8c" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8c1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8c2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ8cStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8cStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8cStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:id="@+id/secQ8d" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ8d" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ8d" android:text="d. বাই সাইকেল " android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ8d" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8d1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8d2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ8dStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8dStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8dStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+       <LinearLayout android:id="@+id/secQ8e1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <!--<TextView android:id="@+id/lblQ8e" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+        <TextView android:id="@+id/VlblQ8e1" android:text="e. মটর সাইকেল/স্কুটার" android:layout_width="270sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+        <LinearLayout android:id="@+id/secQ8e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+            <!--<TextView android:id="@+id/lblQ8e" android:text="" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />-->
+            <TextView android:id="@+id/VlblQ8e" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+            <RadioGroup android:id="@+id/rdogrpQ8e" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8e1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+                <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8e2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            </RadioGroup>
+            <RadioGroup android:id="@+id/rdogrpQ8eStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8eStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+                <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8eStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+            </RadioGroup>
+        </LinearLayout>
+
+
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ8f1"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ8f1" android:text="৯. " android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ8f1" android:text="আপনার খানার মালিকানায় বসত ভিটা আছে কি? \n যদি না হয়, PROB করুনঃ আপনাদের খানার অন্য কোথাও বসত ভিটা আছে কি?" android:layout_width="500sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        </LinearLayout>
+    <LinearLayout android:id="@+id/secQ8f"  android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblQ8f" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+         <RadioGroup android:id="@+id/rdogrpQ8f" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8f1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8f2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+        <RadioGroup android:id="@+id/rdogrpQ8fStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8fStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8fStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ8g1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ8g1" android:text="১০. " android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ8g1" android:text="(খানার বসত ভিটা ছাড়া ) আপনাদের কোন জমি আছে কি?" android:layout_width="500sp" android:layout_height="wrap_content" android:textSize="20sp" />
+     </LinearLayout>
+    <LinearLayout android:id="@+id/secQ8g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblQ8g" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ8g" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8g1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ8g2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+        <RadioGroup android:id="@+id/rdogrpQ8gStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8gStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ8gStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+    <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+    <LinearLayout android:id="@+id/secQ9g1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/lblQ9g1" android:text="১১. " android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblQ9g1" android:text="স্থায়ী আয়ের উৎস নেই/দৈনিক নিয়মিত আয় নেই?" android:layout_width="500sp" android:layout_height="wrap_content" android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout android:id="@+id/secQ9g" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblQ9g" android:text="" android:layout_width="170sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <RadioGroup android:id="@+id/rdogrpQ9g" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ9g1" android:text="1-হ্যাঁ " android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+            <RadioButton android:paddingRight="10dp" android:textSize="20sp" android:id="@+id/rdoQ9g2" android:text="2-না "  android:layout_height="wrap_content" android:layout_width="wrap_content"/>
+        </RadioGroup>
+        <RadioGroup android:id="@+id/rdogrpQ9gStatus"  android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textSize="20sp">
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ9gStatusYes" android:textColor="#006699" android:text="1-সঠিক"/>
+            <RadioButton android:paddingRight="10dp" android:layout_height="wrap_content" android:layout_width="wrap_content" android:textSize="16sp" android:id="@+id/rdoQ9gStatusNo" android:textColor="#006699" android:text="2-সঠিক না"/>
+        </RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>
+        <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
+        <LinearLayout android:layout_width="fill_parent" android:paddingTop="20sp" android:paddingBottom="20sp" android:layout_height="wrap_content" android:orientation="horizontal">
+            <Button android:id="@+id/cmdSave" android:layout_width="200sp" android:layout_height="wrap_content" android:background="@drawable/button_style"
+                android:textSize="16sp" android:text=" Save  "  android:layout_marginBottom="10sp"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>
