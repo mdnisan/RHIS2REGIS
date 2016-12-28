@@ -77,14 +77,6 @@ public class SettingForm extends Activity {
                         String[] uid = spnUN.getSelectedItem().toString().split("-");
                         String[] ptype = spnProvider.getSelectedItem().toString().split("-");
 
-                     /*   String SQLStr = "Select cast(ProvCode as varchar(6))||'-'||ProvName from ProviderDB Where ";
-                        SQLStr += " ZillaId='" + zid[0] + "' and";
-                        SQLStr += " Upazilaid='" + upid[0] + "' and";
-                        SQLStr += " Unionid='" + uid[0] + "' and";
-                        SQLStr += " ProvType='" + ptype[0] + "' and";
-                        SQLStr += " Active='1'";*/
-                        //  String SQLStr = "Select DISTINCT \"supervisorCode\"||'-'||\"supervisorName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"supervisorType\"='" + ptype[0] + "' and \"Active\"='1'";
-
                         String SQLStr = "Select DISTINCT \"ProvCode\"||'-'||\"ProvName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"ProvType\"='" + ptype[0] + "' and \"Active\"='1'";
                         SpinnerItem(spnProviderCode, SQLStr);
                     }
@@ -96,19 +88,7 @@ public class SettingForm extends Activity {
                 }
 
             });
-/*
-        final ProgressDialog progDailog = ProgressDialog.show(SettingForm.this, "", "অপেক্ষা করুন. . .", true);
-        new Thread() {
-            public void run() {
-                try {
-                    C.RebuildDatabase(Global.Left(spnDist.getSelectedItem().toString(), 2), Global.Left(spnUpz.getSelectedItem().toString(), 2), Global.Left(spnUN.getSelectedItem().toString(), 2), Global.Left(spnProvider.getSelectedItem().toString(),2), PCode[0]);
-                } catch (Exception e) {
 
-                }
-                progDailog.dismiss();
-            }
-        }.start();
-*/
 
             Button cmdSave = (Button) findViewById(R.id.cmdSave);
             cmdSave.setOnClickListener(new View.OnClickListener() {
@@ -117,40 +97,32 @@ public class SettingForm extends Activity {
 
                         String SQLStr = "";
 
-                        String prType = "";
+                        //String prType = "";
                         final String[] PCode = Connection.split(spnProviderCode.getSelectedItem().toString(), '-');
 
                         final String[] zid = spnDist.getSelectedItem().toString().split("-");
                         final String[] upid = spnUpz.getSelectedItem().toString().split("-");
                         final String[] uid = spnUN.getSelectedItem().toString().split("-");
                         final String[] ptype = spnProvider.getSelectedItem().toString().split("-");
-
-                        //String SQLStr = "Select DISTINCT \"ProvCode\"||'-'||\"ProvName\" from \"ProviderDB\" Where  zillaid='" + zid[0] + "' and upazilaid='" + upid[0] + "' and unionid='" + uid[0] + "' and \"ProvType\"='" + ptype[0] + "' and \"Active\"='1'";
-
-                        /*SQLStr = "Select zillaid from ProviderDB where";
-                        SQLStr += " zillaid='" + zid[0] + "' and";
-                        SQLStr += " upazilaid='" + upid[0] + "' and";
-                        SQLStr += " unionid='" + uid[0] + "' and";
-                        SQLStr += " provtype='" + ptype[0] + "' and";
-                        SQLStr += " provcode='" + PCode[0] + "' and";
-                        SQLStr += " active='1' and DeviceSetting='1'";
-*/
-                        if (ptype[0].equals("10")) {
+                   // ProvType=10 for FPI Code
+                        // ProvType=11 for AHI Code
+                        // ProvType=11 for HI Code
+                       /* if (ptype[0].equals("10")) {
                             prType = "3";
 
-                        } else if (ptype[0].equals("11")) {
+                        }
+
+                        else if (ptype[0].equals("11")) {
                             prType = "2";
 
-                        } else if (ptype[0].equals("12")) {
+                        }
+
+                        else if (ptype[0].equals("12")) {
                             prType = "11";
 
 
-                        }
-                        if (ptype[0].equals("12")) {
-                            SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
-                                    "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
-
-                        } else if (ptype[0].equals("10")) {
+                        }*/
+                         if (ptype[0].equals("10")) {
                             SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
                                     "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
 
@@ -161,34 +133,23 @@ public class SettingForm extends Activity {
                                     "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
 
                         }
-                        else {
+                         else  if (ptype[0].equals("12")) {
                             SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
-                                    "' and unionid='" + uid[0] + "' and \"ProvType\"='" + prType + "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+                                    "' and \"ProvType\"='" + ptype[0] + "' and \"ProvCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
 
                         }
-                        /*SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
-                                "' and unionid='" + uid[0] + "' and \"ProvType\"='" + prType+ "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
-
+                        else {
+                          /*  SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
+                                    "' and unionid='" + uid[0] + "' and \"ProvType\"='" + prType + "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
 */
-                       /*
-                          SQLStr = "Select * from \"ProviderDB\" where zillaid='" + zid[0] + "' and upazilaid='" + upid[0] +
-                                "' and unionid='" + uid[0] + "' and \"ProvType\"='" + 3 + "' and \"supervisorCode\"='" + PCode[0] + "' and \"Active\"='1' and \"DeviceSetting\"='1'";
+                        }
 
-
-                       Select * from "ProviderDB" where zillaid='93' and upazilaid='9' and unionid='11'
-                        and "ProvType"='3' and "supervisorCode"='93041' and "Active"='1' and "DeviceSetting"='1'
-                                */
                         String AreaCode = C.DataStringJSON(SQLStr);
                         if (AreaCode.equals("2")) {
                             Connection.MessageBox(SettingForm.this, "This is not a valid information for device setting or information not available for this provider.");
                             return;
                         }
 
-                        /*String AreaCode = C.ReturnResult("Existence", SQLStr);
-                        if (AreaCode.equals("2")) {
-                            Connection.MessageBox(SettingForm.this, "This is not a valid information for device setting or information not available for this provider.");
-                            return;
-                        }*/
 
                         String ResponseString = "Status:";
 
@@ -209,7 +170,6 @@ public class SettingForm extends Activity {
                                         prType = "11";
 
                                     }
-
                                     if (ptype[0].equals("12")) {
                                         C.RebuildDatabaseHI(zid[0], upid[0], uid[0], prType, PCode[0], ptype[0]);
 

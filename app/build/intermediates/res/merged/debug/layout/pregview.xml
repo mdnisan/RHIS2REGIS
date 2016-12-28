@@ -95,7 +95,7 @@
 
     <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
     <LinearLayout android:id="@+id/secDeathDT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
-        <TextView android:id="@+id/VlblFromDT" android:text="তারিখ" android:layout_width="70sp" android:layout_height="wrap_content" android:textSize="20sp" />
+        <TextView android:id="@+id/VlblFromDT" android:text="তারিখ" android:layout_width="70sp" android:layout_height="wrap_content" android:textSize="20sp"  />
         <EditText android:id="@+id/dtpFromDT" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" />
         <ImageButton android:id="@+id/btnFromDT" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" />
         <TextView android:id="@+id/VlblToDT" android:text="থেকে" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" />
@@ -105,6 +105,19 @@
             android:textSize="16sp" android:text=" Refresh  "  android:layout_marginBottom="10sp"/>
 
     </LinearLayout>
+
+    <!--<LinearLayout android:id="@+id/secDeathDT" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="horizontal" style="@style/rowStyle0">
+        <TextView android:id="@+id/VlblFromDT" android:text="তারিখ" android:layout_width="70sp" android:layout_height="wrap_content" android:textSize="20sp" android:visibility="gone" />
+        <EditText android:id="@+id/dtpFromDT" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:visibility="gone" />
+        <ImageButton android:id="@+id/btnFromDT" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" android:visibility="gone" />
+        <TextView android:id="@+id/VlblToDT" android:text="থেকে" android:layout_width="60sp" android:layout_height="wrap_content" android:textSize="20sp" android:visibility="gone" />
+        <EditText android:id="@+id/dtpToDT" android:layout_width="120sp" android:inputType="text" android:layout_height="wrap_content" android:focusable="false" style="@style/customEdit" android:layout_marginRight="10sp" android:textSize="20sp" android:visibility="gone" />
+        <ImageButton android:id="@+id/btnToDT" android:layout_width="40sp" android:layout_height="40sp" android:src="@drawable/calender" android:layout_gravity="center" android:visibility="gone" />
+        <TextView android:id="@+id/VlblRefresh" android:layout_width="210sp" android:layout_height="wrap_content" android:text="" android:textSize="20sp" />
+        <Button android:id="@+id/cmdRefresh" android:layout_width="100sp" android:layout_height="wrap_content" android:background="@drawable/button_style"
+            android:textSize="16sp" android:text=" Refresh  "  android:layout_marginBottom="10sp"/>
+
+    </LinearLayout>-->
     <View android:layout_height="1dip" android:layout_width="fill_parent" android:background="#CCCCCC" />
 
     <View
@@ -662,10 +675,10 @@
                 <TextView android:text="স্বামীর নাম" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text="মহিলার বয়স" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text=" বিবাহের তারিখ" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
-                <TextView android:text=" এলএমপি তারিখ" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
+               <!-- <TextView android:text=" এলএমপি তারিখ" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text=" ইডিডি তারিখ" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
 
-                <TextView android:text="মোবাইল নম্বর" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
+           -->  <TextView android:text="মোবাইল নম্বর" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text="জীবিত ছেলে" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text="জীবিত মেয়ে" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="150sp" android:gravity="left" android:layout_height="wrap_content"/>
                 <TextView android:text="মহিলার শিক্ষাগত যোগ্যতা" android:textSize="18sp" android:paddingTop="4sp" android:paddingBottom="4sp" android:layout_width="280sp" android:gravity="left" android:layout_height="wrap_content"/>

@@ -111,17 +111,10 @@ public class HAWorkPlaningView extends Activity {
     ArrayList<HashMap<String, String>> dataList = new ArrayList<HashMap<String, String>>();
     private String TableName;
     private String TableNameDetail;
-    //public static String workplanId1;
+
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
-
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -131,7 +124,7 @@ public class HAWorkPlaningView extends Activity {
     TextView lblHS10;
     LinearLayout secReq;
     TextView VlblReqName;
-    // TextView txtReqName;
+
     Spinner spnfpaCode;
     LinearLayout secReqToCode;
     TextView VlblReqToCode;
@@ -142,21 +135,15 @@ public class HAWorkPlaningView extends Activity {
     TextView txtfpaVill;
 
     LinearLayout secRemarks;
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
-    Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
 
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
+    Spinner spnVillage1;
+
     LinearLayout secListRow1;
     Button cmdSync;
     Button cmdDownload;
     Button cmdApproved;
     Button cmdNotApproved;
-   // Button cmdRefresh;
+
     Button cmdRequest;
     String StartTime;
     String DeviceNo;
@@ -171,8 +158,6 @@ public class HAWorkPlaningView extends Activity {
             StartTime = g.CurrentTime24();
 
             list = (ListView) findViewById(R.id.lstData);
-            // View header = getLayoutInflater().inflate(R.layout.fpaworkplanheading, null);
-            // list.addHeaderView(header);
 
             TableName = "workPlanMaster";
             TableNameDetail = "workPlanDetail";
@@ -189,7 +174,7 @@ public class HAWorkPlaningView extends Activity {
             cmdApproved = (Button) findViewById(R.id.cmdApproved);
             cmdNotApproved = (Button) findViewById(R.id.cmdNotApproved);
             cmdRequest = (Button) findViewById(R.id.cmdRequest);
-           // cmdRefresh= (Button) findViewById(R.id.cmdRefresh);
+
             secListRow1 = (LinearLayout) findViewById(R.id.secListRow1);
             secFPIPMonth = (LinearLayout) findViewById(R.id.secFPIPMonth);
             VlblFPIPMonth = (TextView) findViewById(R.id.VlblFPIPMonth);
@@ -430,11 +415,6 @@ public class HAWorkPlaningView extends Activity {
 
 
 
-                   /* Connection.MessageBox(Adolescent.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
-                    finish();
-
-                    Intent f2 = new Intent(getApplicationContext(),MemberList.class);
-                    startActivity(f2);*/
                 }
             });
 
@@ -578,8 +558,7 @@ public class HAWorkPlaningView extends Activity {
                                     new Thread() {
                                         public void run() {
                                             Upload();
-                                            // DownloadFWAWWORKPlAINTables(Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
-                                            progDailog.dismiss();
+                                           progDailog.dismiss();
 
                                         }
                                     }.start();
@@ -602,14 +581,7 @@ public class HAWorkPlaningView extends Activity {
 
             });
 
-        /*    cmdRefresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
 
-                    //  Submit();
-
-                    DownloadStatus();
-                }
-            });*/
         } catch (Exception e) {
             Connection.MessageBox(HAWorkPlaningView.this, e.getMessage());
             return;
@@ -638,9 +610,6 @@ public class HAWorkPlaningView extends Activity {
             cmdNotApproved.setVisibility(View.VISIBLE);
         }
         DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
-       // cmdApproved.setVisibility(View.VISIBLE);
-       // cmdNotApproved.setVisibility(View.VISIBLE);
-        // spnFPIPMonth.setSelection(0);
 
 
 
@@ -653,19 +622,17 @@ public class HAWorkPlaningView extends Activity {
         String val = Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2);
         if (val.length() > 0) {
 
-            //  DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2),Global.Left(spnfpaCode.getSelectedItem().toString(),6));
-            if (val.equals("99")) {
+                   if (val.equals("99")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
-                //cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
+
                 list.setVisibility(View.GONE);
-               // cmdRefresh.setVisibility(View.GONE);
+
                 cmdDownload.setVisibility(View.GONE);
                 cmdApproved.setVisibility(View.GONE);
                 cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
+
                 cmdApproved.setEnabled(false);
                 cmdNotApproved.setEnabled(false);
                 cmdRequest.setEnabled(false);
@@ -673,10 +640,7 @@ public class HAWorkPlaningView extends Activity {
                 cmdNotApproved.setText("অননুমোদিত");
                 cmdApproved.setTextColor(Color.BLACK);
                 cmdApproved.setText("অনুমোদিত");
-                //cmdNotApproved.setBackgroundColor(Color.parseColor(""));
-                //cmdApproved.setBackgroundColor(Color.parseColor(""));
-                // cmdNotApproved.setBackgroundColor(Color.WHITE);
-                //cmdApproved.setBackgroundColor(Color.WHITE);
+
             } else if (!C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
                 // cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
@@ -699,28 +663,22 @@ public class HAWorkPlaningView extends Activity {
                 cmdNotApproved.setText("অননুমোদিত");
                 cmdApproved.setTextColor(Color.BLACK);
                 cmdApproved.setText("অনুমোদিত");
-                // cmdNotApproved.setBackgroundColor(Color.parseColor(""));
-                //cmdApproved.setBackgroundColor(Color.parseColor(""));
-                // cmdNotApproved.setBackgroundColor(Color.WHITE);
-                // cmdApproved.setBackgroundColor(Color.WHITE);
+
             } else if (C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
-                // cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
+
                 list.setVisibility(View.GONE);
                 cmdDownload.setVisibility(View.VISIBLE);
-               // cmdRefresh.setVisibility(View.VISIBLE);
+
                 cmdApproved.setVisibility(View.GONE);
                 cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
-                //secListRow1.setVisibility(View.VISIBLE);
+
                 secRemarks.setVisibility(View.GONE);
-                //  cmdSync.setEnabled(true);
+
                 cmdApproved.setEnabled(true);
                 cmdNotApproved.setEnabled(true);
                 cmdRequest.setEnabled(true);
-                // cmdNotApproved.setBackgroundColor();
-                //cmdApproved.setBackgroundColor(Color.WHITE);
-                // DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2),Global.Left(spnfpaCode.getSelectedItem().toString(),6));
 
             }
         }
@@ -737,29 +695,7 @@ public class HAWorkPlaningView extends Activity {
     }
 
 
-   /* public void DownloadFWAWWORKPlAINTables(String provCode) {
 
-        //workPlanMaster
-        String VariableList = "";
-        String sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", 1 as upload\n" +
-                "from \"workPlanMaster\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, workAreaId, providerId");
-
-        //workPlanDetail
-        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", 1 as upload,status\n" +
-                "from \"workPlanDetail\" \n" +
-                "where status<>'2' and status<>'3' and \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
-        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
-
-
-    }*/
 
 
     public void DownloadFWAWWORKPlAINTables(String provCode) {
@@ -813,27 +749,14 @@ public class HAWorkPlaningView extends Activity {
                 // DV1 = Global.DateValidate(dtpdob.getText().toString());
 
                 SQL = "Update " + TableName + " Set ";
-                // SQL+="schedulerId= '"+schedulerId+"',";
-                //SQL += "healthId = '" + g.getHealthID() + "',";
-                // SQL += "providerId = '" + g.getProvCode() + "',";
-                    /*SQL += "houseNo='',";
-                    SQL += "regNo = '" + txtregisNo.getText().toString() + "',";
-                    SQL += "regDate = '" + Global.DateConvertYMD(VisitDate.getText().toString()) + "',";
-                    SQL += "brCertificateNo ='',";
-                    SQL += "brDate ='',";   */
                 SQL += "status ='2',";
                 SQL += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "',";
                 SQL += "upload ='2'";
                 SQL += "  Where workPlanDate='" + Global.DateConvertYMD(txtWorkpDT.getText().toString()) + "'and providerId='" + Global.Left(txtName.getText().toString(), 6) + "'";
-                // SQL+=" where Cluster='"+ cluster +"' and Block='"+ block +"' and HH='"+ hh +"' and StudyID='"+ txtStudyId.getText() +"'and Visit='"+ txtVisitNo.getText()+"'";
                 C.Save(SQL);
                 Connection.MessageBox(HAWorkPlaningView.this, "তথ্য সফলভাবে সংরক্ষণ হয়েছে।");
                 popupView.cancel();
                 DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
-
-                //finish();
-                // Intent f1 = new Intent(getApplicationContext(),FpaWorkPlaningView.class);
-                // startActivity(f1);
 
             }
         });
@@ -854,20 +777,13 @@ public class HAWorkPlaningView extends Activity {
             SQL = "select distinct ward from ProviderArea WHERE cast(provCode as INT)= '" + ProvCode + "'";
             //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
         else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
+
             SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and cast(p.provCode as INT)='" + ProvCode + "'";
 
         Cursor cur = C.ReadData(SQL);
         String retValue = "";
         cur.moveToFirst();
         while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            /*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            */
 
             retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
 
@@ -878,70 +794,8 @@ public class HAWorkPlaningView extends Activity {
         return retValue;
     }
 
-  /*  private String ProvVill(String ProvCode) {
-        String SQL = "";
-        // SQL="select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode ='"+ ProvCode +"'";
-        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where cast(provCode as INT)='" + ProvCode + "')";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }*/
 
 
-
-    private void DisplayFPALeave() {
-        final Dialog popupView = new Dialog(HAWorkPlaningView.this);
-        popupView.setTitle("ছুটি");
-
-        popupView.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        popupView.setContentView(R.layout.fpiremarkspopup);
-        popupView.setCancelable(true);
-        popupView.setCanceledOnTouchOutside(true);
-
-
-        popupView.show();
-
-        Button cmdSave = (Button) popupView.findViewById(R.id.cmdSave);
-        cmdSave.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                String SQL = "";
-
-            }
-        });
-
-        //   }
-        // else
-        //  {
-
-        // }
-        Button cmdClose = (Button) popupView.findViewById(R.id.cmdClose);
-        cmdClose.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                popupView.cancel();
-            }
-        });
-    }
-
-    private String GetStatus(String month) {
-        String SQL = "";
-
-        SQL = "Select status from workPlanMaster";
-        SQL += " where month='" + month + "'";
-        String mo = C.ReturnSingleValue(SQL);
-        // Serial No auto increment
-        return mo;
-    }
 
     private void DataSearch(String month, String ProvCode) {
         try {
@@ -1036,17 +890,13 @@ public class HAWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '3' And B.status<> '2'\n" +
                         "AND\n" +
                         "       substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate,B.status");
-               /* cur = C.ReadData("select B.cWorkPlanId, B.workPlanDate,C.itemdes from workPlanMaster A " +
-                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId " +
-                        "INNER JOIN fpaItem C ON B.fpaItem = C.itemcode WHERE A.workAreaId = '" +Global.Left(txtFpiWarea.getText().toString(),2) + "' AND C.type='2' AND A.month = '" + month + "'");
 
- */
             } else {
                 cur = C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,ifnull(B.upload, '' ) AS upload,\n" +
                         " B.workPlanDate AS workPlanDate,\n" +
@@ -1134,7 +984,7 @@ public class HAWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '3' And B.status<> '2'\n" +
@@ -1212,7 +1062,7 @@ public class HAWorkPlaningView extends Activity {
             if (o.get("Upload").equals("1")) {
                 cmdSync.setBackgroundColor(Color.parseColor("#99cc33"));
             } else if (o.get("Upload").equals("2")) {
-                //  cmdSync.setBackgroundColor(Color.parseColor(""));
+
             }
 
             if (o.get("Status").equals("1")) {
@@ -1313,25 +1163,6 @@ public class HAWorkPlaningView extends Activity {
             mDay = dayOfMonth;
             EditText dtpDate;
 
-           /* dtpDate = (EditText)findViewById(R.id.dtpAgDT);
-
-            if (VariableID.equals("btnAgDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpAgDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00" + mMonth,2)).append("/")
-                        .append(mYear));
-            }
-
-            if (VariableID.equals("btnItemDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpItemDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00"+mDay,2)).append("/")
-                        .append(Global.Right("00"+mMonth,2)).append("/")
-                        .append(mYear));
-            }
-            */
 
 
         }

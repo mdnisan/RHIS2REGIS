@@ -112,13 +112,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
 
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -140,22 +134,15 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
     LinearLayout secRemarks;
     LinearLayout secListRow1;
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
-    Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
 
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
+    Spinner spnVillage1;
 
     Button cmdSync;
     Button cmdDownload;
     Button cmdApproved;
     Button cmdNotApproved;
     Button cmdRequest;
-   // Button cmdRefresh;
+
     String StartTime;
     String DeviceNo;
     ListView list;
@@ -169,8 +156,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
             StartTime = g.CurrentTime24();
 
             list = (ListView) findViewById(R.id.lstData);
-            // View header = getLayoutInflater().inflate(R.layout.fpaworkplanheading, null);
-            // list.addHeaderView(header);
+
 
             TableName = "workPlanMaster";
             TableNameDetail = "workPlanDetail";
@@ -188,14 +174,165 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
             cmdApproved = (Button) findViewById(R.id.cmdApproved);
             cmdNotApproved = (Button) findViewById(R.id.cmdNotApproved);
             cmdRequest = (Button) findViewById(R.id.cmdRequest);
-           // cmdRefresh= (Button) findViewById(R.id.cmdRefresh);
+
 
             secFPIPMonth = (LinearLayout) findViewById(R.id.secFPIPMonth);
             VlblFPIPMonth = (TextView) findViewById(R.id.VlblFPIPMonth);
             spnFPIPMonth = (Spinner) findViewById(R.id.spnFPIPMonth);
             // spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT strftime('%Y', date('now')) ||','||mName||':-'||substr('0' ||id, -2, 2) as ym from month  where id <=(SELECT strftime('%m','now')+1) order by id Desc"));
-            spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym Union SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id <=(SELECT strftime('%m','now')+1) order by ym Desc"));
+            //spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym Union SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id <=(SELECT strftime('%m','now')+1) order by ym Desc"));
+            String Month=C.ReturnSingleValue("select strftime( '%m', 'now' ) as m");
+            if(Month.equals("12"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        "UNION SELECT ( CASE WHEN id=strftime( '%m', 'now' ) then '01-January,'||cast(strftime( '%Y', date( 'now' )  )+1 as int) else ''  END ) AS ym FROM month where id=12\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE id<>1 and  id<>2 and  id<>3 and  id<>4 and  id<>5 and  id<>6 and id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
 
+            }
+
+            else if(Month.equals("11"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id<>1 and  id<>2 and  id<>3 and  id<>4 and  id<>5  and id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+
+            else if(Month.equals("10"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id<>1 and  id<>2 and  id<>3 and  id<>4  and id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+            else if(Month.equals("09"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id<>1 and  id<>2 and  id<>3   and id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+
+            else if(Month.equals("08"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id<>1 and  id<>2 and id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+            else if(Month.equals("07"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id<>1 and id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+            else if(Month.equals("06"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+
+            }
+
+            else if(Month.equals("05"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        " Union SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || cast(strftime( '%Y', date( 'now' )  )-1 as int)  AS ym  FROM month WHERE  id >=11\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE  id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
+
+            }
+            else if(Month.equals("04"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        " Union SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || cast(strftime( '%Y', date( 'now' )  )-1 as int)  AS ym  FROM month WHERE  id >=10\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE  id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
+
+            }
+
+            else if(Month.equals("03"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        "Union SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || cast(strftime( '%Y', date( 'now' )  )-1 as int)  AS ym  FROM month WHERE  id >=9\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE  id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
+
+            }
+
+            else if(Month.equals("02"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        " Union SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || cast(strftime( '%Y', date( 'now' )  )-1 as int)  AS ym  FROM month WHERE  id >=8\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE  id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
+
+            }
+
+            else if(Month.equals("01"))
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT '99-- সিলেক্ট মাস-' AS ym\n" +
+                        " \n" +
+                        "Union SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || cast(strftime( '%Y', date( 'now' )  )-1 as int)  AS ym  FROM month WHERE  id >=7\n" +
+                        " Union\n" +
+                        "\n" +
+                        "\n" +
+                        "SELECT substr( '0' || id, -2, 2 )  || '-' || mName || ',' || strftime( '%Y', date( 'now' )  )  AS ym\n" +
+                        "  FROM month\n" +
+                        " WHERE  id <=( \n" +
+                        "           SELECT strftime( '%m', 'now' ) + 1 \n" +
+                        "       ) \n" +
+                        "       \n" +
+                        " ORDER BY ym DESC"));
+
+            }
+
+            else
+            {
+                spnFPIPMonth.setAdapter(C.getArrayAdapterMultiline("SELECT substr('0' ||id, -2, 2)||'-'||mName||','||strftime('%Y', date('now'))  as ym from month  where id <=(SELECT strftime('%m','now')+1) order by id Desc"));
+
+            }
             secReq = (LinearLayout) findViewById(R.id.secReq);
             VlblReqName = (TextView) findViewById(R.id.VlblReqName);
             spnfpaCode = (Spinner) findViewById(R.id.spnfpaCode);
@@ -203,7 +340,8 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
             VlblfpaVill = (TextView) findViewById(R.id.VlblfpaVill);
             txtfpaVill = (TextView) findViewById(R.id.txtfpaVill);
             // spnfpaVill=(Spinner) findViewById(R.id.spnfpaVill);
-            spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select ProvCode||'-'||ProvName from ProviderDB where ProvType ='3'"));
+           // spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select ProvCode||'-'||ProvName from ProviderDB where ProvType ='3'"));
+            spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select substr('0' ||ProvCode, -6, 6)||'-'||ProvName from ProviderDB where ProvType ='3'"));
             txtFpiWarea = (TextView) findViewById(R.id.txtFpiWarea);
 
             spnFPIPMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -240,11 +378,11 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
             // txtFpiWarea.setText(g.getFWAUnit());
             DisplaySearch(true);
-            txtFpiWarea.setText(ProvArea("3", Global.Left(spnfpaCode.getSelectedItem().toString(), 5)));
+            txtFpiWarea.setText(ProvArea("3", Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
             secReqToCode = (LinearLayout) findViewById(R.id.secReqToCode);
             VlblReqToCode = (TextView) findViewById(R.id.VlblReqToCode);
 
-            DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 5));
+            DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
             secListRow1.setVisibility(View.GONE);
 
 
@@ -286,15 +424,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
                 }
             });
 
-/*
-            cmdRefresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
 
-                    //  Submit();
-
-                    buttonStatus();
-                }
-            });*/
 
         } catch (Exception e) {
             Connection.MessageBox(FpaWorkPlaningViewFPINotAproved.this, e.getMessage());
@@ -304,67 +434,34 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
     private void buttonStatus()
     {
-        String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 5);
+        String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
         if (val.length() >= 0) {
 
-            txtFpiWarea.setText(ProvArea("3", Global.Left(spnfpaCode.getSelectedItem().toString(), 5)));
+            txtFpiWarea.setText(ProvArea("3", Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
             txtFpiWarea.setEnabled(false);
 
-            txtfpaVill.setText(ProvVill(Global.Left(spnfpaCode.getSelectedItem().toString(), 5)));
-            DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 5));
+            txtfpaVill.setText(ProvVill(Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
+            DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
 
             if (val.equals("99")) {
-               // cmdRefresh.setVisibility(View.GONE);
+
                 cmdSync.setVisibility(View.GONE);
-                cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
-                cmdApproved.setEnabled(false);
-                cmdNotApproved.setEnabled(false);
-                cmdRequest.setEnabled(false);
-                cmdNotApproved.setTextColor(Color.BLACK);
-                cmdNotApproved.setText("অননুমোদিত");
-                cmdApproved.setTextColor(Color.BLACK);
-                cmdApproved.setText("অনুমোদিত");
-                cmdNotApproved.setBackgroundColor(Color.WHITE);
-                cmdApproved.setBackgroundColor(Color.WHITE);
-                cmdRequest.setBackgroundColor(Color.WHITE);
-            } else if (!C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
-                //cmdRefresh.setVisibility(View.GONE);
+
+
+            } else if (!C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
                 cmdSync.setVisibility(View.GONE);
-                cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
-                cmdApproved.setEnabled(false);
-                cmdNotApproved.setEnabled(false);
-                cmdRequest.setEnabled(true);
 
-                cmdNotApproved.setTextColor(Color.BLACK);
-                cmdNotApproved.setText("অননুমোদিত");
-                cmdApproved.setTextColor(Color.BLACK);
-                cmdApproved.setText("অনুমোদিত");
 
-                cmdNotApproved.setBackgroundColor(Color.WHITE);
-                cmdApproved.setBackgroundColor(Color.WHITE);
-                cmdRequest.setBackgroundColor(Color.WHITE);
-            } else if (C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
-               // cmdRefresh.setVisibility(View.VISIBLE);
+            } else if (C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
                 cmdSync.setVisibility(View.VISIBLE);
-                cmdNotApproved.setVisibility(View.GONE);
-                secListRow1.setVisibility(View.VISIBLE);
+                 secListRow1.setVisibility(View.VISIBLE);
                 secRemarks.setVisibility(View.GONE);
-                //  cmdSync.setEnabled(true);
-                cmdApproved.setEnabled(true);
-                cmdNotApproved.setEnabled(true);
-                cmdRequest.setEnabled(true);
-
-                //   ....
-                //  cmdApproved.setTextColor(cmdApproved.getTextColors());//restore original colors
-                //  cmdNotApproved.setTextColor(cmdNotApproved.getTextColors());//restore original colors
 
 
             }
@@ -383,7 +480,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
         // progressHandler.sendMessage(progressHandler.obtainMessage());
         TableName = "workPlanMaster";
         VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.UploadJSON(TableName, VariableList, "workPlanId, workAreaId, providerId");
+        C.UploadJSON(TableName, VariableList, "workPlanId, providerId, month");
 
         // message = "Uploading workPlanDetail";
         // jumpTime += 1;
@@ -396,59 +493,21 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
     }
 
-/*    public void DeleteChangeUPTables()
-    {
-             TableNameDetail = "workPlanDetail";
-             String  SQL = "Delete From " + TableNameDetail + "";
-             SQL += "  Where remarks='U' And substr(workPlanDate, 1, 7 )='"+Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2)+ "'and providerId='" +Global.Left(spnfpaCode.getSelectedItem().toString(), 5)+ "'";
-             C.Save(SQL);
-
-    }*/
-
-    public void DownloadFWAWWORKPlAINTables(String provCode) {
-
-        //workPlanMaster
-        String VariableList = "";
-        String sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", 1 as upload\n" +
-                "from \"workPlanMaster\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, workAreaId, providerId");
-
-        //workPlanDetail
-        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"ipcUN\",\"ipcWord\",\"ipcMouza\",\"ipcVill\",\"ipcPara\", \"ipcBariFrom\",\"ipcBariTo\",\"epiproviderId\",\"epischedulerId\",\"ccWard\",\"ccID\",\"natProgramType\",\"fpiOtherMeeting\",\"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", 1 as upload,status\n" +
-                "from \"workPlanDetail\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,natProgramType,fpiOtherMeeting,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
-        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
-    }
 
 
     private String ProvArea(String ProvType, String ProvCode) {
         String SQL = "";
         if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
+            SQL = "select distinct ward from ProviderArea WHERE Cast(provCode AS INT) = '" + ProvCode + "'";
             //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
         else if (ProvType.equals("3"))
             //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
+            SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and Cast(p.provCode AS INT) ='" + ProvCode + "'";
 
         Cursor cur = C.ReadData(SQL);
         String retValue = "";
         cur.moveToFirst();
         while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            /*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            */
-
             retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
 
             cur.moveToNext();
@@ -461,7 +520,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
     private String ProvVill(String ProvCode) {
         String SQL = "";
         // SQL="select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode ='"+ ProvCode +"'";
-        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode='" + ProvCode + "')";
+        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where Cast(ProvCode AS INT)='" + ProvCode + "')";
 
         Cursor cur = C.ReadData(SQL);
         String retValue = "";
@@ -477,35 +536,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
         return retValue;
     }
 
-    private String ProvAreaS(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
 
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            /*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            */
-
-            retValue = retValue.length() > 0 ? retValue + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
 
     private void DisplaySearch(boolean willdisplaysearch) {
 
@@ -534,15 +565,6 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
     }
 
-    private String GetStatus(String month) {
-        String SQL = "";
-
-        SQL = "Select status from workPlanMaster";
-        SQL += " where month='" + month + "'";
-        String mo = C.ReturnSingleValue(SQL);
-        // Serial No auto increment
-        return mo;
-    }
 
     private void DataSearch(String month, String ProvCode) {
         try {
@@ -603,11 +625,14 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
                         "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
                         "           AND\n" +
                         "           B.leaveType = 8 THEN C.itemdes || ':সরকারী ছুটি' \n" +
+                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
+                        "           AND\n" +
+                        "           B.leaveType = 9 THEN C.itemdes || ':অন্যান্য' \n" +
                         "                ELSE ifnull( C.itemdes, '' ) \n" +
                         "       END )) AS itemdes\n" +
                         "  FROM workPlanMaster A\n" +
                         "       INNER JOIN workPlanDetail B\n" +
-                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
+                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "       INNER JOIN fpaItem C\n" +
                         "               ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '1' And A.status='3' And B.status='2'\n" +
@@ -666,11 +691,14 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
                         "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
                         "           AND\n" +
                         "           B.leaveType = 8 THEN C.itemdes || ':সরকারী ছুটি' \n" +
+                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
+                        "           AND\n" +
+                        "           B.leaveType = 9 THEN C.itemdes || ':অন্যান্য' \n" +
                         "                ELSE ifnull( C.itemdes, '' ) \n" +
                         "       END )) AS itemdes\n" +
                         "  FROM workPlanMaster A\n" +
                         "       INNER JOIN workPlanDetail B\n" +
-                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
+                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "       INNER JOIN fpaItem C\n" +
                         "               ON B.item = C.itemcode\n" +
                         " WHERE B.providerId='" + ProvCode + "' And C.type = '1' And A.status='3' And B.status='2' \n" +
@@ -680,76 +708,7 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
 
             }
 
-               /* cur =C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,\n" +
-                        "       B.workPlanDate AS workPlanDate,\n" +
-                        "       group_concat(\n" +
-                        "       ( CASE\n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 1 THEN C.itemdes || '-' || substr( B.unitNo, 4, 7 ) || '-গ্রাম:' ||( \n" +
-                        "               SELECT VILLAGENAME\n" +
-                        "                 FROM Village\n" +
-                        "                WHERE MOUZAID IN ( \n" +
-                        "                          SELECT substr( B.village, 1, 3 )\n" +
-                        "                            FROM workPlanDetail \n" +
-                        "                      ) \n" +
-                        "                       \n" +
-                        "           ) \n" +
-                        "           || ' ,দম্পতি নম্বর:(' || B.elcoFrom || '-' || B.elcoTo || ')' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 1 THEN C.itemdes || ':বাৎসরিক' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 2 THEN C.itemdes || ':অসুস্থতা জনিত' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 3 THEN C.itemdes || ':মাতৃত্বকালীন' \n" +
-                        "                ELSE ifnull( C.itemdes, '' ) \n" +
-                        "       END )) AS itemdes\n" +
-                        "  FROM workPlanMaster A\n" +
-                        "       INNER JOIN workPlanDetail B\n" +
-                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
-                        "       INNER JOIN fpaItem C\n" +
-                        "               ON B.item = C.itemcode\n" +
-                        " WHERE B.providerId= '" +ProvCode+ "' And C.type = '1' And B.status='2' \n" +
-                        "       AND\n" +
-                        "       substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate,B.status");
-            }
-            else {
-                cur =C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,\n" +
-                        "       B.workPlanDate AS workPlanDate,\n" +
-                        "       group_concat(\n" +
-                        "       ( CASE\n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 1 THEN C.itemdes || '-' || substr( B.unitNo, 4, 7 ) || '-গ্রাম:' ||( \n" +
-                        "               SELECT VILLAGENAME\n" +
-                        "                 FROM Village\n" +
-                        "                WHERE MOUZAID IN ( \n" +
-                        "                          SELECT substr( B.village, 1, 3 )\n" +
-                        "                            FROM workPlanDetail \n" +
-                        "                      ) \n" +
-                        "                       \n" +
-                        "           ) \n" +
-                        "           || ' ,দম্পতি নম্বর:(' || B.elcoFrom || '-' || B.elcoTo || ')' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 1 THEN C.itemdes || ':বাৎসরিক' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 2 THEN C.itemdes || ':অসুস্থতা জনিত' \n" +
-                        "                WHEN CAST ( C.itemcode AS int ) = 9 \n" +
-                        "           AND\n" +
-                        "           B.leaveType = 3 THEN C.itemdes || ':মাতৃত্বকালীন' \n" +
-                        "                ELSE ifnull( C.itemdes, '' ) \n" +
-                        "       END )) AS itemdes\n" +
-                        "  FROM workPlanMaster A\n" +
-                        "       INNER JOIN workPlanDetail B\n" +
-                        "               ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
-                        "       INNER JOIN fpaItem C\n" +
-                        "               ON B.item = C.itemcode\n" +
-                        " WHERE B.providerId='" +ProvCode+ "' And C.type = '1' And B.status='2' \n" +
-                        "       AND\n" +
-                        "       substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate,B.status");
 
-            }*/
             cur.moveToFirst();
             dataList.clear();
             while (!cur.isAfterLast()) {
@@ -821,69 +780,35 @@ public class FpaWorkPlaningViewFPINotAproved extends Activity {
             if (o.get("Upload").equals("1")) {
                 cmdSync.setText("Submitted");
                 cmdSync.setBackgroundColor(Color.parseColor("#99cc33"));
-                // cmdDownload.setVisibility(View.VISIBLE);
+
             } else if (o.get("Upload").equals("2"))
 
             {
                 cmdSync.setText("Submit");
                 cmdSync.setTextColor(Color.BLACK);
-                // cmdDownload.setVisibility(View.GONE);
+
                 cmdSync.setBackgroundColor(Color.parseColor("#C2E0EC"));
 
 
             }
 
-            if (o.get("Status").equals("1")) {
-                //status.setText("অপেক্ষাধিন");
 
-                cmdRequest.setTextColor(Color.BLACK);
-                cmdRequest.setText("অপেক্ষাধিন");
-                cmdRequest.setBackgroundColor(Color.parseColor("#99cc33"));
-
-            } else if (o.get("Status").equals("2")) {
-                // status.setText("অননুমোদিত");
-                /*cmdApproved.setTextColor(Color.BLACK);
-                cmdApproved.setText("অনুমোদিত\n"+Global.DateConvertDMY(o.get("ModifyDate")));
-                cmdApproved.setBackgroundColor(Color.parseColor("#99cc33"));*/
-            } else if (o.get("Status").equals("3")) {
-                cmdNotApproved.setText("অননুমোদিত");
-                // status.setText("অনুমোদিত");
-                cmdNotApproved.setTextColor(Color.BLACK);
-                cmdNotApproved.setText("অননুমোদিত\n" + Global.DateConvertDMY(o.get("ModifyDate")));
-                cmdNotApproved.setBackgroundColor(Color.parseColor("#99cc33"));
-            } else {
-                cmdRequest.setBackgroundColor(Color.parseColor(""));
-                cmdNotApproved.setBackgroundColor(Color.parseColor(""));
-                cmdApproved.setBackgroundColor(Color.parseColor(""));
-            }
 
 
             if (o.get("Dstatus").equalsIgnoreCase("2")) {
                 status.setVisibility(View.VISIBLE);
                 memtab.setBackgroundColor(Color.YELLOW);
                 status.setText("FWA অগ্রিম কর্মসূচী পরিবর্তন  করতে হবে");
-                //workPlanDate.setBackgroundColor(Color.parseColor("#99cc33"));
-                //itemdes.setBackgroundColor(Color.parseColor("#99cc33"));
+
             } else {
                 status.setText("");
                 memtab.setBackgroundColor(Color.WHITE);
-                // memtab.setBackgroundColor(Color.parseColor(""));
-                // itemdes.setBackgroundColor(Color.parseColor(""));
+
 
             }
 
 
-          /*  memtab.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
 
-                    g.setWPProvCode(spnfpaCode.getSelectedItem().toString());
-                    g.setWPDate(Global.DateConvertDMY(o.get("workPlanDate")));
-                    g.setWPDes(o.get("itemdes"));
-                    DisplayNotApprovedItem();
-
-
-                }
-            });*/
             return convertView;
         }
     }

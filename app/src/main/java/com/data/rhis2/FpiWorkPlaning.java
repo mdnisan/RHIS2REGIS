@@ -1741,68 +1741,7 @@ public class FpiWorkPlaning extends Activity {
                     }
 
 
-                    //68 chkUHFPMeeting1
-                 /*   if(chkUHFPMeeting1.isChecked()==true &&  C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+68+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
 
-
-                    }
-                    else   if(chkUHFPMeeting1.isChecked()==true &&  !C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+68+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-
-                        SQL = "Insert into workPlanDetail (workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,fpiOtherMeeting,ipcUN,ipcWord,ipcMouza,ipcVill, ipcPara,ipcBariFrom,ipcBariTo,epischedulerId,epiproviderId,ccWard,ccID,leaveType,natProgramType,providerId,status,systemEntryDate,modifyDate,otherDec,remarks,upload)Values('"+workplanId1+"','"+68+"','"+g.getAreaDate()+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+ "" +"','"+ ""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+ ""+"','"+""+"','"+g.getProvCode()+"','"+1+ "','"+ Global.DateTimeNowYMDHMS() +"','"+""+"','"+ ""+"','"+"','2')";   C.Save(SQL);
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
-                    }
-
-                    else  if(chkUHFPMeeting1.isChecked()==false &&  C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+68+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-
-                        C.Save("Delete from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+68+"' and workPlanDate='"+ g.getAreaDate()+ "'");
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
-                    }
-
-                    //69 chkUHFPMeeting2
-                    if(chkUHFPMeeting2.isChecked()==true &&  C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+69+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
-
-
-                    }
-                    else   if(chkUHFPMeeting2.isChecked()==true &&  !C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+69+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-
-                        SQL = "Insert into workPlanDetail (workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,fpiOtherMeeting,ipcUN,ipcWord,ipcMouza,ipcVill, ipcPara,ipcBariFrom,ipcBariTo,epischedulerId,epiproviderId,ccWard,ccID,leaveType,natProgramType,providerId,status,systemEntryDate,modifyDate,otherDec,remarks,upload)Values('"+workplanId1+"','"+69+"','"+g.getAreaDate()+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+ "" +"','"+ ""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+""+"','"+ ""+"','"+""+"','"+g.getProvCode()+"','"+1+ "','"+ Global.DateTimeNowYMDHMS() +"','"+""+"','"+ ""+"','"+"','2')";   C.Save(SQL);
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
-                    }
-
-                    else  if(chkUHFPMeeting2.isChecked()==false &&  C.Existence("Select workPlanId, providerId, item, workPlanDate from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+69+"' and workPlanDate='"+ g.getAreaDate()+ "'" ))
-                    {
-
-                        C.Save("Delete from " + TableNameDetail+ "  where workPlanId='"+workplanId1+"' and providerId='"+ g.getProvCode() +"' and item = '"+69+"' and workPlanDate='"+ g.getAreaDate()+ "'");
-                        DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-                        Toast.makeText(getApplicationContext(), "Saved", Toast.LENGTH_SHORT).show();
-                        popupView.cancel();
-                    }*/
-
-                   /* runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //stuff that updates ui
-                            DataSearch(Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2));
-
-                        }
-                    });*/
                 }
 
 
@@ -1855,15 +1794,6 @@ public class FpiWorkPlaning extends Activity {
 
 
             final HashMap<String, String> o = (HashMap<String, String>) dataAdapter.getItem(position);
-            // IdNo.setText(o.get("IdNo"));
-            //  cWorkPlanId.setText(o.get("cWorkPlanId"));
-            // RequestBy.setText(C.ReturnSingleValue("Select ProvName from ProviderDB where ProvCode='"+o.get("RequestBy")+"'"));
-            //RequestBy.setText();
-            //;
-            //g.getDay(dtpDate.getText().toString())
-            // workPlanDate.setText(o.get("workPlanDate")+"/03/2016");
-            //workPlanDate.setText(o.get("workPlanDate")+"/"+C.ReturnSingleValue("SELECT id from month where id in (SELECT strftime('%m','now'))")+"/"+ Global.Left(spnFPIPMonth.getSelectedItem().toString(),4));
-
 
             workPlanDate.setText(o.get("workPlanDate") + '/' + o.get("Month") + '/' + o.get("Year") + "           " + g.getDay(o.get("workPlanDate") + '/' + o.get("Month") + '/' + o.get("Year")));
             //itemdes.setText(o.get("itemdes"));
@@ -1879,17 +1809,7 @@ public class FpiWorkPlaning extends Activity {
                 // cmdB2.setBackgroundColor(Color.BLUE);
             }
 
-         /* else  if(g.getDay(o.get("workPlanDate")+'/'+o.get("Month")+'/'+o.get("Year")).equalsIgnoreCase("শনিবার"))
-            {
-                cmdB2.setTextColor(Color.BLACK);
-                cmdB2.setTextSize(20);
-                cmdB2.setText("সাপ্তাহিক ছুটি");
-                cmdB2.setEnabled(false);
-                cmdB2.setBackgroundColor(Color.parseColor("#D7D7D7"));
-              //  cmdB2.setBackgroundColor(Color.parseColor("#ff00ff"));
-                // workPlanDate.setBackgroundColor(Color.parseColor("#99cc33"));
-                // cmdB2.setBackgroundColor(Color.BLUE);
-            }*/
+
 
             else {
                 cmdB2.setTextColor(Color.BLACK);
@@ -1921,89 +1841,8 @@ public class FpiWorkPlaning extends Activity {
                 }
             }
 
-       /*     if(!g.getDay(o.get("workPlanDate")+'/'+o.get("Month")+'/'+o.get("Year")).equalsIgnoreCase("শুক্রবার"))
-            {
-
-            }*/
-
-
-            // Month
-     /*      if(String.valueOf(C.ReturnSingleValue("Select TransactionType from "+ TableName + " where TransactionType='"+o.get("TransactionType")+"'"))=="3")
-           {
-               cmdB2.setEnabled(false);
-           }*/
-
-           /* if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("0"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Done");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-
-            if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("1"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Approved");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-*/
             final AlertDialog.Builder adb = new AlertDialog.Builder(FpiWorkPlaning.this);
-           /* cmdB1.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    adb.setTitle("Message:");
-                    adb.setMessage("Do you want to update this information?[Yes/No]?");
-                    adb.setNegativeButton("No", null);
-                    adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Cursor cur=C.ReadData("Select * from "+ TableName + "  Where requestId='"+o.get("RequestId")+"'");
-                            cur.moveToFirst();
-                            while(!cur.isAfterLast())
-                            {
-                                //txtSlNo.setText(cur.getString(cur.getColumnIndex("requestId")));
-                                txtReqName.setText(C.ReturnSingleValue("Select ProvName from ProviderDB where ProvCode='"+ cur.getString(cur.getColumnIndex("requestBy"))+"'"));
-                                //txtReqToCode.setText(cur.getString(cur.getColumnIndex("requestTo")));
-                                if(cur.getString(cur.getColumnIndex("itemCode")).equals("1"))
-                                {
-                                    spnItem.setSelection(1);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("2"))
-                                {
-                                    spnItem.setSelection(2);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("3"))
-                                {
-                                    spnItem.setSelection(3);
-                                }
-                                else     if(cur.getString(cur.getColumnIndex("itemCode")).equals("9"))
-                                {
-                                    spnItem.setSelection(4);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("5"))
-                                {
-                                    spnItem.setSelection(5);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("8"))
-                                {
-                                    spnItem.setSelection(6);
-                                }
 
-                              //  txtRequestQty.setText(cur.getString(cur.getColumnIndex("requestQty")));
-                              //  txtRemarks.setText(cur.getString(cur.getColumnIndex("requestRemarks")));
-                                cur.moveToNext();
-
-
-
-                            }
-                            cur.close();
-
-                        }});
-                    adb.show();
-                }
-            });*/
 
 
             cmdB2.setOnClickListener(new View.OnClickListener() {
@@ -2030,7 +1869,7 @@ public class FpiWorkPlaning extends Activity {
                         DisplayFPIWorkPlaining();
                     }
 
-                    // DisplayFPIWorkPlain();
+
 
 
                 }
@@ -2069,25 +1908,7 @@ public class FpiWorkPlaning extends Activity {
             mDay = dayOfMonth;
             EditText dtpDate;
 
-           /* dtpDate = (EditText)findViewById(R.id.dtpAgDT);
 
-            if (VariableID.equals("btnAgDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpAgDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00" + mMonth,2)).append("/")
-                        .append(mYear));
-            }
-
-            if (VariableID.equals("btnItemDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpItemDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00"+mDay,2)).append("/")
-                        .append(Global.Right("00"+mMonth,2)).append("/")
-                        .append(mYear));
-            }
-            */
 
 
         }

@@ -1,44 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <instant-run
-    abi="arm64-v8a,armeabi-v7a,armeabi"
-    api-level="22"
+    abi="armeabi-v7a,armeabi"
+    api-level="19"
     density="tvdpi"
     format="8"
     plugin-version="2.2.2"
-    timestamp="3007510148626463"
-    token="7635167156933437004"
-    verifier="METHOD_DELETED" >
+    timestamp="511090701092058"
+    token="417775346745406782"
+    verifier="FULL_BUILD_REQUESTED" >
 
     <task
         name="javac"
-        duration="7956" />
+        duration="11821" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="30" />
+        duration="4047" />
     <task
         name="verifier"
-        duration="10" />
+        duration="1292" />
 
     <artifact
-        location="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-        type="DEX" />
+        location="E:\AndroidStudioProject\RHIS2_REGIS_SUPERVISOR\app\build\outputs\apk\app-debug.apk"
+        type="MAIN" />
 
     <build
-        timestamp="3004972708115047"
+        timestamp="511090701092058"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\outputs\apk\app-debug.apk"
+            location="E:\AndroidStudioProject\RHIS2_REGIS_SUPERVISOR\app\build\outputs\apk\app-debug.apk"
             type="MAIN" />
-    </build>
-    <build
-        timestamp="3007510148626463"
-        verifier="METHOD_DELETED" >
-        <artifact
-            location="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\build\intermediates\transforms\dex\debug\folders\1000\5\slice_9\classes.dex"
-            type="DEX" />
     </build>
 
 </instant-run>

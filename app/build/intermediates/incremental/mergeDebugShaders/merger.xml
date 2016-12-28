@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merger version="3"><dataSet config="main"><source path="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\src\main\shaders"/></dataSet><dataSet config="debug"><source path="D:\Android project\RHIS\Supervisory module\RHIS2 REGIS\app\src\debug\shaders"/></dataSet></merger>
+<merger version="3"><dataSet config="main"><source path="E:\AndroidStudioProject\RHIS2_REGIS_SUPERVISOR\app\src\main\shaders"/></dataSet><dataSet config="debug"><source path="E:\AndroidStudioProject\RHIS2_REGIS_SUPERVISOR\app\src\debug\shaders"/></dataSet></merger>

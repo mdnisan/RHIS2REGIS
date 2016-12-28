@@ -1,6 +1,6 @@
 [
     {
-        "outputFile": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+        "outputFile": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
         "map": [
             {
                 "to": {
@@ -12,7 +12,7 @@
                     "endOffset": 265
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\arrays.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\arrays.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -32,7 +32,7 @@
                     "endOffset": 318
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 1,
@@ -51,7 +51,7 @@
                     "endOffset": 366
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -70,7 +70,7 @@
                     "endOffset": 411
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -89,7 +89,7 @@
                     "endOffset": 459
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\colors.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\colors.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -108,7 +108,7 @@
                     "endOffset": 517
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\dimens.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -127,7 +127,7 @@
                     "endOffset": 573
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\dimens.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\dimens.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -146,7 +146,7 @@
                     "endOffset": 615
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 2,
                         "startColumn": 4,
@@ -165,7 +165,7 @@
                     "endOffset": 680
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
@@ -184,7 +184,7 @@
                     "endOffset": 745
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 3,
                         "startColumn": 4,
@@ -203,7 +203,7 @@
                     "endOffset": 806
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 7,
                         "startColumn": 4,
@@ -222,7 +222,7 @@
                     "endOffset": 867
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 4,
@@ -241,7 +241,7 @@
                     "endOffset": 931
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 4,
@@ -260,7 +260,7 @@
                     "endOffset": 982
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 8,
                         "startColumn": 4,
@@ -279,7 +279,7 @@
                     "endOffset": 1040
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 11,
                         "startColumn": 4,
@@ -298,7 +298,7 @@
                     "endOffset": 1094
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 13,
                         "startColumn": 4,
@@ -317,7 +317,7 @@
                     "endOffset": 1144
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 1,
@@ -336,7 +336,7 @@
                     "endOffset": 1205
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\strings.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\strings.xml",
                     "position": {
                         "startLine": 9,
                         "startColumn": 4,
@@ -355,7 +355,7 @@
                     "endOffset": 1263
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 10,
                         "startColumn": 1,
@@ -375,7 +375,7 @@
                     "endOffset": 1445
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 12,
                         "startColumn": 4,
@@ -396,7 +396,7 @@
                     "endOffset": 1712
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 54,
                         "startColumn": 1,
@@ -417,7 +417,7 @@
                     "endOffset": 2289
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 119,
                         "startColumn": 1,
@@ -438,7 +438,7 @@
                     "endOffset": 3087
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 18,
                         "startColumn": 1,
@@ -459,7 +459,7 @@
                     "endOffset": 3289
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 115,
                         "startColumn": 0,
@@ -480,7 +480,7 @@
                     "endOffset": 3423
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 6,
                         "startColumn": 1,
@@ -501,7 +501,7 @@
                     "endOffset": 3609
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 42,
                         "startColumn": 1,
@@ -521,7 +521,7 @@
                     "endOffset": 3694
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 5,
                         "startColumn": 1,
@@ -541,7 +541,7 @@
                     "endOffset": 3872
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 37,
                         "startColumn": 4,
@@ -562,7 +562,7 @@
                     "endOffset": 4182
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 30,
                         "startColumn": 4,
@@ -583,7 +583,7 @@
                     "endOffset": 4452
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 47,
                         "startColumn": 1,
@@ -604,7 +604,7 @@
                     "endOffset": 4795
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 98,
                         "startColumn": 4,
@@ -625,7 +625,7 @@
                     "endOffset": 5197
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 106,
                         "startColumn": 4,
@@ -646,7 +646,7 @@
                     "endOffset": 5540
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 83,
                         "startColumn": 1,
@@ -667,7 +667,7 @@
                     "endOffset": 5833
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 61,
                         "startColumn": 1,
@@ -688,7 +688,7 @@
                     "endOffset": 6126
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 68,
                         "startColumn": 1,
@@ -709,7 +709,7 @@
                     "endOffset": 6436
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 76,
                         "startColumn": 4,
@@ -730,7 +730,7 @@
                     "endOffset": 6695
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 91,
                         "startColumn": 4,
@@ -751,7 +751,7 @@
                     "endOffset": 7250
                 },
                 "from": {
-                    "file": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\values\\styles.xml",
+                    "file": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\values\\styles.xml",
                     "position": {
                         "startLine": 132,
                         "startColumn": 1,

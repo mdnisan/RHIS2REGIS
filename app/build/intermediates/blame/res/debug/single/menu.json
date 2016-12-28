@@ -1,46 +1,46 @@
 [
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\processtran.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\processtran.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuview.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\mnuview.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuexit.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\mnuexit.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\homemenu.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\homemenu.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuclose.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\mnuclose.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menumember.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\menumember.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuexit1.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\mnuexit1.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menubarivisit.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\menubarivisit.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menubarivisit.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\menubarivisit.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menuhouseholdindex.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\menuhouseholdindex.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuview.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\mnuview.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuclose.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\mnuclose.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nextprev.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\nextprev.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuview1.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\mnuview1.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menuhouseholdindex.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\menuhouseholdindex.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\processtran.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\processtran.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\homemenu.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\homemenu.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuexit.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\mnuexit.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuview1.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\mnuview1.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\nextprev.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\nextprev.xml"
     },
     {
-        "merged": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\build\\intermediates\\res\\merged\\debug\\menu\\menumember.xml",
-        "source": "D:\\Android project\\RHIS\\Supervisory module\\RHIS2 REGIS\\app\\src\\main\\res\\menu\\menumember.xml"
+        "merged": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\build\\intermediates\\res\\merged\\debug\\menu\\mnuexit1.xml",
+        "source": "E:\\AndroidStudioProject\\RHIS2_REGIS_SUPERVISOR\\app\\src\\main\\res\\menu\\mnuexit1.xml"
     }
 ]

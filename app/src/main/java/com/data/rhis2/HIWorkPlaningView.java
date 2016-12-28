@@ -111,13 +111,6 @@ public class HIWorkPlaningView extends Activity {
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
-
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -631,54 +624,7 @@ public class HIWorkPlaningView extends Activity {
         C.UploadJSON(TableName, VariableList, "workPlanId, item, workPlanDate, providerId");
     }
 
-   /* private String ProvArea(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
 
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            *//*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            *//*
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
-
-    private String ProvVill(String ProvCode) {
-        String SQL = "";
-        // SQL="select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode ='"+ ProvCode +"'";
-        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode='" + ProvCode + "')";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }*/
 
     private String ProvAreaS(String ProvType) {
         String SQL = "";
@@ -837,7 +783,7 @@ public class HIWorkPlaningView extends Activity {
                         "INNER JOIN workPlanDetail B\n" +
                         "ON A.workPlanId = B.workPlanId\n" +
                         "INNER JOIN fpaItem C\n" +
-                        "ON B.item = C.itemcode and A.providerId=B.providerId\n" +
+                        "ON B.item = C.itemcode and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "WHERE C.type = '5'\n" +
                         "AND B.providerId='" + ProvCode + "'" +
                         "AND\n" +
@@ -934,7 +880,7 @@ public class HIWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode \n" +
                         "WHERE C.type = '5'\n" +
@@ -1022,26 +968,6 @@ public class HIWorkPlaningView extends Activity {
 
 
             }
-            /*if (o.get("Status").equals("1")) {
-                //status.setText("অপেক্ষাধিন");
-
-                cmdRequest.setTextColor(Color.BLACK);
-                cmdRequest.setText("অপেক্ষাধিন");
-                // cmdRequest.setBackgroundColor(Color.parseColor("#99cc33"));
-
-            } else if (o.get("Status").equals("2")) {
-                // status.setText("অননুমোদিত");
-                cmdApproved.setTextColor(Color.BLACK);
-                cmdApproved.setText("অনুমোদিত\n" + Global.DateConvertDMY(o.get("ModifyDate")));
-                // cmdApproved.setBackgroundColor(Color.parseColor("#99cc33"));
-            } else if (o.get("Status").equals("3")) {
-                // status.setText("অনুমোদিত");
-                cmdNotApproved.setTextColor(Color.BLACK);
-                cmdNotApproved.setText("অননুমোদিত\n" + Global.DateConvertDMY(o.get("ModifyDate")));
-                // cmdNotApproved.setBackgroundColor(Color.parseColor("#99cc33"));
-            } else {
-
-            }*/
 
 
 

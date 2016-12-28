@@ -77,26 +77,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
         return true;
     }
 
-   /* public boolean onOptionsItemSelected(MenuItem item) {
-        AlertDialog.Builder adb = new AlertDialog.Builder(AHIWorkPlaningViewAproved.this);
-        switch (item.getItemId()) {
-            case R.id.menuClose:
-                adb.setTitle("Close");
-                adb.setMessage("আপনি কি এই ফর্ম থেকে বের হতে চান?");
-                adb.setNegativeButton("না", null);
-                adb.setPositiveButton("হ্যাঁ", new AlertDialog.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        finish();
-                    }
-                });
-                adb.show();
-                return true;
-        }
-        return false;
 
-
-    }
-*/
 
     public boolean onOptionsItemSelected(MenuItem item) {
         AlertDialog.Builder adb = new AlertDialog.Builder(AHIWorkPlaningViewAproved.this);
@@ -162,22 +143,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
     LinearLayout secReqToCode;
     TextView VlblReqToCode;
     TextView txtFpiWarea;
-    //  EditText txtRemarks;
-   /* LinearLayout secfpaVill;
-    TextView VlblfpaVill;
-    TextView txtfpaVill;*/
 
-    // LinearLayout secRemarks;
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
-    // Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
-
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
-    //Button cmdRefresh;
     Button cmdSync;
     Button cmdDownload;
     Button cmdApproved;
@@ -379,15 +345,10 @@ public class AHIWorkPlaningViewAproved extends Activity {
             secReq = (LinearLayout) findViewById(R.id.secReq);
             VlblReqName = (TextView) findViewById(R.id.VlblReqName);
             spnfpaCode = (Spinner) findViewById(R.id.spnfpaCode);
-           /* secfpaVill=(LinearLayout)findViewById(R.id.secfpaVill);
-            VlblfpaVill=(TextView) findViewById(R.id.VlblfpaVill);
-            txtfpaVill=(TextView) findViewById(R.id.txtfpaVill);*/
-            // spnfpaVill=(Spinner) findViewById(R.id.spnfpaVill);
+
             spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select substr('0' ||ProvCode, -6, 6)||'-'||ProvName from ProviderDB where ProvType ='11'"));
             txtFpiWarea = (TextView) findViewById(R.id.txtFpiWarea);
-            // C.ReturnSingleValue("select cast(unionid as varchar(2))||','||unionname from Unions where zillaid='"+ g.getDistrict() +"' and upazilaid='"+ g.getUpazila() +"' and unionid='"+ g.getUnion() +"'"
-            // txtFpiWarea.setText("11,বাসাইল");
-            //txtFpiWarea.setText(g.getFWAUnit());
+
             spnFPIPMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
@@ -652,29 +613,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
         }
     }
 
-   /* public void DownloadFWAWWORKPlAINTables(String provCode) {
 
-        //workPlanMaster
-        String VariableList = "";
-        String sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", 1 as upload\n" +
-                "from \"workPlanMaster\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, workAreaId, providerId");
-
-       // ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,leaveType,natProgramType
-
-        //workPlanDetail
-        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\",\"ipcUN\",\"ipcWord\",\"ipcMouza\",\"ipcVill\",\"ipcPara\",\"ipcBariFrom\",\"ipcBariTo\",\"epiproviderId\",\"epischedulerId\",\"ccWard\",\"ccID\", \"leaveType\", \"natProgramType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", 1 as upload\n" +
-                "from \"workPlanDetail\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,leaveType,natProgramType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload";
-        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
-    }*/
    public void DownloadFWAWWORKPlAINTables(String provCode) {
 
        //workPlanMaster
@@ -696,27 +635,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,natProgramType,fpiOtherMeeting,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
    }
-    /*public void DownloadFWAWWORKPlAINTables(String provCode) {
 
-        //workPlanMaster
-        String VariableList = "";
-        String sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", 1 as upload\n" +
-                "from \"workPlanMaster\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, workAreaId, providerId");
-
-        //workPlanDetail
-        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"ipcUN\",\"ipcWord\",\"ipcMouza\",\"ipcVill\",\"ipcPara\", \"ipcBariFrom\",\"ipcBariTo\",\"epiproviderId\",\"epischedulerId\",\"ccWard\",\"ccID\",\"natProgramType\",\"fpiOtherMeeting\",\"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", 1 as upload,status\n" +
-                "from \"workPlanDetail\" \n" +
-                "where status<>'2' and status<>'3' and \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,natProgramType,fpiOtherMeeting,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
-        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
-    }*/
     private void Upload() {
 
         String TableName = "";
@@ -751,12 +670,6 @@ public class AHIWorkPlaningViewAproved extends Activity {
             cmdNotApproved.setVisibility(View.VISIBLE);
         }
         DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(),6));
-        // cmdApproved.setVisibility(View.VISIBLE);
-        // cmdNotApproved.setVisibility(View.VISIBLE);
-        // spnFPIPMonth.setSelection(0);
-
-
-
 
 
     }
@@ -769,30 +682,23 @@ public class AHIWorkPlaningViewAproved extends Activity {
             //  DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2),Global.Left(spnfpaCode.getSelectedItem().toString(),5));
             if (val.equals("99")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
-                //cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
+
                 list.setVisibility(View.GONE);
-                //cmdRefresh.setVisibility(View.GONE);
+
                 cmdDownload.setVisibility(View.GONE);
                 cmdApproved.setVisibility(View.GONE);
                 cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
-            /*    cmdApproved.setEnabled(false);
-                cmdNotApproved.setEnabled(false);
-                cmdRequest.setEnabled(false);*/
+
                 cmdNotApproved.setTextColor(Color.BLACK);
                 cmdNotApproved.setText("অননুমোদিত");
                 cmdApproved.setTextColor(Color.BLACK);
                 cmdApproved.setText("অনুমোদিত");
-                //cmdNotApproved.setBackgroundColor(Color.parseColor(""));
-                //cmdApproved.setBackgroundColor(Color.parseColor(""));
-                // cmdNotApproved.setBackgroundColor(Color.WHITE);
-                //cmdApproved.setBackgroundColor(Color.WHITE);
+
             } else if (!C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
-                // cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
+
                 list.setVisibility(View.GONE);
                 cmdDownload.setVisibility(View.VISIBLE);
                // cmdRefresh.setVisibility(View.VISIBLE);
@@ -800,21 +706,13 @@ public class AHIWorkPlaningViewAproved extends Activity {
                 cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
-           /*     cmdApproved.setEnabled(false);
-                cmdNotApproved.setEnabled(false);
-                cmdRequest.setEnabled(true);*/
+
 
                 cmdNotApproved.setTextColor(Color.BLACK);
                 cmdNotApproved.setText("অননুমোদিত");
                 cmdApproved.setTextColor(Color.BLACK);
                 cmdApproved.setText("অনুমোদিত");
 
-                // cmdNotApproved.setBackgroundColor(Color.parseColor(""));
-                //cmdApproved.setBackgroundColor(Color.parseColor(""));
-                // cmdNotApproved.setBackgroundColor(Color.WHITE);
-                // cmdApproved.setBackgroundColor(Color.WHITE);
             } else if (C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
                 cmdDownload.setBackgroundColor(Color.parseColor("#C2E0EC"));
                 // cmdRefresh.setBackgroundColor(Color.parseColor("#C2E0EC"));
@@ -827,96 +725,12 @@ public class AHIWorkPlaningViewAproved extends Activity {
                 //secListRow1.setVisibility(View.VISIBLE);
                 secRemarks.setVisibility(View.GONE);
                 //  cmdSync.setEnabled(true);
-               /* cmdApproved.setEnabled(true);
-                cmdNotApproved.setEnabled(true);
-                cmdRequest.setEnabled(true);*/
-                // cmdNotApproved.setBackgroundColor();
-                //cmdApproved.setBackgroundColor(Color.WHITE);
-                // DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2),Global.Left(spnfpaCode.getSelectedItem().toString(),5));
 
             }
         }
     }
 
 
-   /* private String ProvArea(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            *//*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            *//*
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
-
-    private String ProvVill(String ProvCode) {
-        String SQL = "";
-        // SQL="select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode ='"+ ProvCode +"'";
-        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode='" + ProvCode + "')";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
-
-    private String ProvAreaS(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            *//*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            *//*
-
-            retValue = retValue.length() > 0 ? retValue + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }*/
     private void DisplayNotApprovedItem() {
         final Dialog popupView = new Dialog(AHIWorkPlaningViewAproved.this);
         popupView.setTitle("Not Approved Item");
@@ -946,14 +760,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
                 // DV1 = Global.DateValidate(dtpdob.getText().toString());
 
                 SQL = "Update " + TableName + " Set ";
-                // SQL+="schedulerId= '"+schedulerId+"',";
-                //SQL += "healthId = '" + g.getHealthID() + "',";
-                // SQL += "providerId = '" + g.getProvCode() + "',";
-                    /*SQL += "houseNo='',";
-                    SQL += "regNo = '" + txtregisNo.getText().toString() + "',";
-                    SQL += "regDate = '" + Global.DateConvertYMD(VisitDate.getText().toString()) + "',";
-                    SQL += "brCertificateNo ='',";
-                    SQL += "brDate ='',";   */
+
                 SQL += "status ='2',";
                 SQL += "modifyDate = '" + Global.DateTimeNowYMDHMS() + "',";
                 SQL += "upload ='2'";
@@ -1117,18 +924,13 @@ public class AHIWorkPlaningViewAproved extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And B.status<> '2'\n" +
                         "AND\n" +
                         "substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate,B.status");
-               /* cur = C.ReadData("select B.cWorkPlanId, B.workPlanDate,C.itemdes from workPlanMaster A " +
-                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId " +
-                        "INNER JOIN fpaItem C ON B.fpaItem = C.itemcode WHERE A.workAreaId = '" +Global.Left(txtFpiWarea.getText().toString(),2) + "' AND C.type='2' AND A.month = '" + month + "'");
-
- */
-            } else {
+        } else {
                 cur = C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,ifnull(B.upload, '' ) AS upload,\n" +
                         " B.workPlanDate AS workPlanDate,\n" +
                         "group_concat(\n" +
@@ -1215,7 +1017,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And B.status<> '2'\n" +
@@ -1224,62 +1026,7 @@ public class AHIWorkPlaningViewAproved extends Activity {
 
 
             }
-            /*    cur = C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,ifnull(B.upload, '' ) AS upload,\n" +
-                        " B.workPlanDate AS workPlanDate,\n" +
-                        "group_concat(\n" +
-                        "distinct( CASE\n" +
-                        "WHEN  CAST ( C.itemcode AS int ) = 6 \n" +
-                        "AND\n" +
-                        "B.leaveType = 1 THEN C.itemdes || ':বাৎসরিক' \n" +
-                        "WHEN CAST ( C.itemcode AS int ) = 6\n" +
-                        "AND\n" +
-                        "B.leaveType = 2 THEN C.itemdes || ':অসুস্থতা জনিত' \n" +
-                        "WHEN CAST ( C.itemcode AS int ) = 6\n" +
-                        "AND\n" +
-                        "B.leaveType = 3 THEN C.itemdes || ':মাতৃত্বকালীন' \n" +
-                        "ELSE ifnull( C.itemdes, '' ) \n" +
-                        "END )) AS itemdes\n" +
-                        "FROM workPlanMaster A\n" +
-                        "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId\n" +
-                        "INNER JOIN fpaItem C\n" +
-                        "ON B.item = C.itemcode\n" +
-                        "WHERE C.type = '4'\n" +
-                        "AND B.providerId='" + ProvCode + "'" +
-                        "AND\n" +
-                        "substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate");
-               *//* cur = C.ReadData("select B.cWorkPlanId, B.workPlanDate,C.itemdes from workPlanMaster A " +
-                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId " +
-                        "INNER JOIN fpaItem C ON B.fpaItem = C.itemcode WHERE A.workAreaId = '" +Global.Left(txtFpiWarea.getText().toString(),2) + "' AND C.type='2' AND A.month = '" + month + "'");
 
- *//*
-            } else {
-                cur = C.ReadData("SELECT A.status AS status,ifnull(B.status, '' ) AS dstatus,ifnull(A.modifyDate, '' ) AS modifyDate,ifnull(B.upload, '' ) AS upload,\n" +
-                        " B.workPlanDate AS workPlanDate,\n" +
-                        "group_concat(\n" +
-                        "distinct( CASE\n" +
-                        "WHEN  CAST ( C.itemcode AS int ) = 6 \n" +
-                        "AND\n" +
-                        "B.leaveType = 1 THEN C.itemdes || ':বাৎসরিক' \n" +
-                        "WHEN CAST ( C.itemcode AS int ) = 6\n" +
-                        "AND\n" +
-                        "B.leaveType = 2 THEN C.itemdes || ':অসুস্থতা জনিত' \n" +
-                        "WHEN CAST ( C.itemcode AS int ) = 6\n" +
-                        "AND\n" +
-                        "B.leaveType = 3 THEN C.itemdes || ':মাতৃত্বকালীন' \n" +
-                        "ELSE ifnull( C.itemdes, '' ) \n" +
-                        "END )) AS itemdes\n" +
-                        "FROM workPlanMaster A\n" +
-                        "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId\n" +
-                        "INNER JOIN fpaItem C\n" +
-                        "ON B.item = C.itemcode\n" +
-                        "WHERE C.type = '4'\n" +
-                        "AND B.providerId='" + ProvCode + "'" +
-                        "AND\n" +
-                        "substr( B.workPlanDate, 1, 7 )='" + month + "' group by B.workPlanDate");
-
-            }*/
             cur.moveToFirst();
             dataList.clear();
             while (!cur.isAfterLast()) {

@@ -199,6 +199,7 @@ public class VillageList extends Activity {
                                     progressHandler.sendMessage(progressHandler.obtainMessage());
                                     sleep(2);
                                     Upload(progress, message, progressHandler, jumpTime);
+                                    Download(progress, message, progressHandler, jumpTime, true);
                                     //Download(progress, message, progressHandler, jumpTime);
                                     progress.dismiss();
                                     //MCH SERVICE
@@ -665,6 +666,76 @@ public class VillageList extends Activity {
         C.DownloadServiceTables(ProvCode, progress, message, progressHandler, jumpTime, DowloadOnlyAppropriateRecords);
 
 
+
+        // AHI
+        message = "Downloading epiSchedulerUpdate";
+        jumpTime += 1;
+        Global.getInstance().setProgressMessage(message);
+        progressHandler.sendMessage(progressHandler.obtainMessage());
+
+        SQLStr = "SELECT \"Div\"\n" +
+                ",\"Dist\"\n" +
+                ",\"Upz\"\n" +
+                ",\"UN\"\n" +
+                ",\"wordOld\"\n" +
+                ",\"subBlockId\"\n" +
+                ",\"scheduleYear\"\n" +
+                ",\"schedulerId\"\n" +
+                ",\"scheduleDate\"\n" +
+                ",\"centerName\"\n" +
+                ",\"centerType\"\n" +
+                ",\"KhanaNoFrom\"\n" +
+                ",\"KhanaNoTo\"\n" +
+                ",\"KhanaTotal\"\n" +
+                ",\"systemEntryDate\"\n" +
+                ",\"modifyDate\"\n" +
+                ",\"upload\"\n" +
+                "FROM \"public\".\"epiSchedulerUpdate\"\n" +
+                "where \"Dist\"='" + Dist + "' and \"Upz\"='" + Upz + "'" +
+                // " and \"UN\"='" + UN + "'" +
+                "and  \"UN\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') ";
+        //  "and \"wordOld\" in(select distinct cast(\"Ward\" as integer) from \"ProviderArea\"\n" +
+        //"where \"provCode\"='" + ProvCode + "')";
+        // "where  \"provCode\" in(Select distinct \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+        //"where \"provCode\"='" + ProvCode + "')";
+        Res = C.DownloadJSON(SQLStr, "epiSchedulerUpdate", "Div,Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId,scheduleDate,centerName,centerType,KhanaNoFrom,KhanaNoTo,KhanaTotal,systemEntryDate,modifyDate,upload", "Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId");
+
+// HI
+        message = "Downloading epiSchedulerUpdate";
+        jumpTime += 1;
+        Global.getInstance().setProgressMessage(message);
+        progressHandler.sendMessage(progressHandler.obtainMessage());
+
+        SQLStr = "SELECT \"Div\"\n" +
+                ",\"Dist\"\n" +
+                ",\"Upz\"\n" +
+                ",\"UN\"\n" +
+                ",\"wordOld\"\n" +
+                ",\"subBlockId\"\n" +
+                ",\"scheduleYear\"\n" +
+                ",\"schedulerId\"\n" +
+                ",\"scheduleDate\"\n" +
+                ",\"centerName\"\n" +
+                ",\"centerType\"\n" +
+                ",\"KhanaNoFrom\"\n" +
+                ",\"KhanaNoTo\"\n" +
+                ",\"KhanaTotal\"\n" +
+                ",\"systemEntryDate\"\n" +
+                ",\"modifyDate\"\n" +
+                ",\"upload\"\n" +
+                " FROM \"public\".\"epiSchedulerUpdate\"\n" +
+                " where \"Dist\"='" + Dist + "' and \"Upz\"='" + Upz + "'" +
+                " and  \"UN\" in(Select distinct \"unionid\" from \"ProviderDB\"\twhere \"supervisorCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='" + ProvCode + "')) ";
+        // " and \"UN\"='" + UN + "'" +
+        // "and  \"UN\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') ";
+        //  "and \"wordOld\" in(select distinct cast(\"Ward\" as integer) from \"ProviderArea\"\n" +
+        //"where \"provCode\"='" + ProvCode + "')";
+        // "where  \"provCode\" in(Select distinct \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+        //"where \"provCode\"='" + ProvCode + "')";
+        Res = C.DownloadJSON(SQLStr, "epiSchedulerUpdate", "Div,Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId,scheduleDate,centerName,centerType,KhanaNoFrom,KhanaNoTo,KhanaTotal,systemEntryDate,modifyDate,upload", "Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId");
+
+
+
 //ElcoEvent
         message = "Downloading Elco event";
         jumpTime += 1;
@@ -776,38 +847,6 @@ public class VillageList extends Activity {
         SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
         SQLStr += " where a.\"provType\"='" + PrType + "' and v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and v.\"UNIONID\"='" + UN + "'";
         Res = C.DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME,close,ward,fwaunit", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");
-
-        message = "Downloading epiSchedulerUpdate";
-        jumpTime += 1;
-        Global.getInstance().setProgressMessage(message);
-        progressHandler.sendMessage(progressHandler.obtainMessage());
-
-        SQLStr = "SELECT \"Div\"\n" +
-                ",\"Dist\"\n" +
-                ",\"Upz\"\n" +
-                ",\"UN\"\n" +
-                ",\"wordOld\"\n" +
-                ",\"subBlockId\"\n" +
-                ",\"scheduleYear\"\n" +
-                ",\"schedulerId\"\n" +
-                ",\"scheduleDate\"\n" +
-                ",\"centerName\"\n" +
-                ",\"centerType\"\n" +
-                ",\"KhanaNoFrom\"\n" +
-                ",\"KhanaNoTo\"\n" +
-                ",\"KhanaTotal\"\n" +
-                ",\"systemEntryDate\"\n" +
-                ",\"modifyDate\"\n" +
-                ",\"upload\"\n" +
-                "FROM \"public\".\"epiSchedulerUpdate\"\n" +
-                "where \"Dist\"='" + Dist + "' and \"Upz\"='" + Upz + "'" +
-                // " and \"UN\"='" + UN + "'" +
-                "and  \"UN\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') ";
-        //  "and \"wordOld\" in(select distinct cast(\"Ward\" as integer) from \"ProviderArea\"\n" +
-        //"where \"provCode\"='" + ProvCode + "')";
-        // "where  \"provCode\" in(Select distinct \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-        //"where \"provCode\"='" + ProvCode + "')";
-        Res = C.DownloadJSON(SQLStr, "epiSchedulerUpdate", "Div,Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId,scheduleDate,centerName,centerType,KhanaNoFrom,KhanaNoTo,KhanaTotal,systemEntryDate,modifyDate,upload", "Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId");
 
 
         //Update Device Setting Status in Server DB

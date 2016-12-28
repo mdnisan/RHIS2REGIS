@@ -137,16 +137,7 @@ public class HIWorkPlaning extends Activity {
     TextView VlblReqToCode;
     TextView txtFpiWarea;
 
-
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
     Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
-
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
 
 
     String StartTime;
@@ -471,23 +462,7 @@ public class HIWorkPlaning extends Activity {
 
         lblHlblepireg.setText(Global.DateConvertDMY(g.getAreaDate()) + ":-" + "কর্মসূচী সমূহ");
 
-        //final Spinner SpnUnion = (Spinner) popupView.findViewById(R.id.SpnUnion);
 
-         /*List<String> fpiothermeeting = new ArrayList<String>();
-
-        fpiothermeeting.add("");
-        fpiothermeeting.add("1-তথ্য");
-        fpiothermeeting.add("2-শিক্ষা ও যোগাযোগ বিষয়ক সভা");
-        fpiothermeeting.add("3-স্বাস্থ্য শিক্ষা ও পুষ্টি বিষয়ক কার্যক্রম");
-        fpiothermeeting.add("4-বৃক্ষরোপণ কার্যক্রম");
-        fpiothermeeting.add("5-উদ্ভুদ্ধকরন কার্যক্রম");
-        fpiothermeeting.add("6-সচেতনতা মূলক কার্যক্রম");
-        fpiothermeeting.add("7-বিভিন্ন পর্যায় ও সংস্থার প্রতিনিধিদের সাথে সমন্বয় বিষয়ক কার্যক্রম");
-
-
-       final Spinner spnfpiothermeeting = (Spinner) popupView.findViewById(R.id.spnfpiothermeeting);
-        ArrayAdapter<String> fpiothermeetingadptr= new ArrayAdapter<String>(this, R.layout.multiline_spinner_dropdown_item, fpiothermeeting);
-        spnfpiothermeeting.setAdapter(fpiothermeetingadptr);*/
 
         List<String> leaves = new ArrayList<String>();
 
@@ -514,32 +489,7 @@ public class HIWorkPlaning extends Activity {
 
         final Spinner spnEPICenterName = (Spinner) popupView.findViewById(R.id.spnEPICenterName);
         final Spinner spnPWord = (Spinner) popupView.findViewById(R.id.spnPWord);
-        // final Spinner spnccName = (Spinner) popupView.findViewById(R.id.spnccName);
-      /*  spnHSubBlock.setAdapter(C.getArrayAdapter("select distinct sb.BCode||'-'||sb.BNameBan from HABlock sb\n" +
-                "left outer join ProviderArea p on sb.BCode=p.FWAUnit"));
-  */      //spnHSubBlock.setAdapter(C.getArrayAdapter("Select ' সকল সাব ব্লক'as BCode union Select BCode||'-'||BNameBan as BCode from HABlock order by BCode asc"));
-        // spnEPICenterName.setAdapter(C.getArrayAdapter("Select subBlockId||'-'||centerName as subBlockId from epiScheduler order by subBlockId asc"));
 
-    /*    spnHSubBlock.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
-                if (spnHSubBlock.getSelectedItemPosition() >= 0) {
-
-                    spnEPICenterName.setAdapter(C.getArrayAdapter("select distinct substr('0' ||schedulerId, -2, 2)||'-'||providerId||'-'||centerName from epiScheduler where subBlockId='"+Global.Left(spnHSubBlock.getSelectedItem().toString(),2)+"'"));
-
-                }
-
-
-
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });*/
 
         List<String> Nprogram = new ArrayList<String>();
 
@@ -577,66 +527,7 @@ public class HIWorkPlaning extends Activity {
         final EditText txtPara = (EditText) popupView.findViewById(R.id.txtPara);
         final EditText txtBarivisit1 = (EditText) popupView.findViewById(R.id.txtBarivisit1);
         final EditText txtBarivisit2 = (EditText) popupView.findViewById(R.id.txtBarivisit2);
-        //SpnUnion.setAdapter(C.getArrayAdapter("select ward from ProviderArea where provCode = '"+ g.getProvCode()+"'"));
-        // SpnUnion.setAdapter(C.getArrayAdapter("select cast(unionid as varchar(2))||'-'||unionname from Unions where zillaid='"+ g.getDistrict() +"' and upazilaid='"+ g.getUpazila() +"' and unionid='"+ g.getUnion() +"'"));
 
-        //  SpnUnion.setText(C.ReturnSingleValue("select cast(unionid as varchar(2))||','||unionname from Unions where zillaid='"+ g.getDistrict() +"' and upazilaid='"+ g.getUpazila() +"' and unionid='"+ g.getUnion() +"'"));
-        // txtWord.setText(g.getFWAUnit());
-        // SpnWord.setText(ProvArea("2",g.getProvCode()));
-        // final Spinner spnVill = (Spinner) popupView.findViewById(R.id.spnVill);
-
-
-        //  spnVill.setAdapter(C.getArrayAdapterMultiline("Select '-' as VILLAGENAME union select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME\n" +
-        //        "from Village"));
-
-      /*  List<String> ccName = new ArrayList<String>();
-
-        ccName.add("");
-        ccName.add("1-Center A");
-        ccName.add("2-Center B");*/
-
-
-      /*  final Spinner SpnCCWord = (Spinner) popupView.findViewById(R.id.SpnCCWord);
-        SpnUnion1.setAdapter(C.getArrayAdapter("select distinct substr('0' ||ifnull(p.unionid,'99'), -2, 2)||'-'||u.unionname from Unions u left outer join ProviderArea p on u.zillaid=p.zillaid and  u.upazilaid=p.upazilaid  and  u.unionid=p.unionid"));
-        SpnUnion1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
-                if (SpnUnion1.getSelectedItemPosition() > 0) {
-
-                    SpnCCWord.setAdapter(C.getArrayAdapter("select '-' wardId from ccInfo Union select distinct wardId from ccInfo where ZILAID='" + g.getDistrict() + "' and UPAZILAID='" + g.getUpazila() + "' and unionid='" + Global.Left(SpnUnion1.getSelectedItem().toString(), 2) + "'"));//+"' and unionid='"+ g.getUnion()
-
-                }
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });*/
-        //SpnCCWord.setAdapter(C.getArrayAdapter("select '-' wardId from ccInfo Union select distinct wardId from ccInfo where ZILAID='"+ g.getDistrict() +"' and UPAZILAID='"+ g.getUpazila()  +"'"));//+"' and unionid='"+ g.getUnion()
-        //final Spinner spnccName = (Spinner) popupView.findViewById(R.id.spnccName);
-       /* ArrayAdapter<String> ccNameadptr= new ArrayAdapter<String>(this, R.layout.multiline_spinner_dropdown_item, ccName);
-        spnccName.setAdapter(ccNameadptr);*/
-
-  /*      SpnCCWord.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-
-                if (SpnCCWord.getSelectedItemPosition() > 0) {
-
-                    spnccName.setAdapter(C.getArrayAdapterMultiline("select distinct substr('0' ||CCID, -2, 2)||'-'||CCNAME from ccInfo where ZILAID='" + g.getDistrict() + "' and UPAZILAID='" + g.getUpazila() + "' and unionid='" + Global.Left(SpnUnion1.getSelectedItem().toString(), 2) + "' and WARDID='" + Global.Left(SpnCCWord.getSelectedItem().toString(), 1) + "'"));
-
-                }
-
-
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-            }
-        });*/
         final CheckBox chkIPCVisit = (CheckBox) popupView.findViewById(R.id.chkIPCVisit);
         final CheckBox chkEPIVisit = (CheckBox) popupView.findViewById(R.id.chkEPIVisit);
         final CheckBox chkCCVisit = (CheckBox) popupView.findViewById(R.id.chkCCVisit);
@@ -1868,89 +1759,9 @@ public class HIWorkPlaning extends Activity {
                 }
             }
 
-       /*     if(!g.getDay(o.get("workPlanDate")+'/'+o.get("Month")+'/'+o.get("Year")).equalsIgnoreCase("শুক্রবার"))
-            {
 
-            }*/
-
-
-            // Month
-     /*      if(String.valueOf(C.ReturnSingleValue("Select TransactionType from "+ TableName + " where TransactionType='"+o.get("TransactionType")+"'"))=="3")
-           {
-               cmdB2.setEnabled(false);
-           }*/
-
-           /* if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("0"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Done");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-
-            if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("1"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Approved");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-*/
             final AlertDialog.Builder adb = new AlertDialog.Builder(HIWorkPlaning.this);
-           /* cmdB1.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    adb.setTitle("Message:");
-                    adb.setMessage("Do you want to update this information?[Yes/No]?");
-                    adb.setNegativeButton("No", null);
-                    adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Cursor cur=C.ReadData("Select * from "+ TableName + "  Where requestId='"+o.get("RequestId")+"'");
-                            cur.moveToFirst();
-                            while(!cur.isAfterLast())
-                            {
-                                //txtSlNo.setText(cur.getString(cur.getColumnIndex("requestId")));
-                                txtReqName.setText(C.ReturnSingleValue("Select ProvName from ProviderDB where ProvCode='"+ cur.getString(cur.getColumnIndex("requestBy"))+"'"));
-                                //txtReqToCode.setText(cur.getString(cur.getColumnIndex("requestTo")));
-                                if(cur.getString(cur.getColumnIndex("itemCode")).equals("1"))
-                                {
-                                    spnItem.setSelection(1);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("2"))
-                                {
-                                    spnItem.setSelection(2);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("3"))
-                                {
-                                    spnItem.setSelection(3);
-                                }
-                                else     if(cur.getString(cur.getColumnIndex("itemCode")).equals("9"))
-                                {
-                                    spnItem.setSelection(4);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("5"))
-                                {
-                                    spnItem.setSelection(5);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("8"))
-                                {
-                                    spnItem.setSelection(6);
-                                }
 
-                              //  txtRequestQty.setText(cur.getString(cur.getColumnIndex("requestQty")));
-                              //  txtRemarks.setText(cur.getString(cur.getColumnIndex("requestRemarks")));
-                                cur.moveToNext();
-
-
-
-                            }
-                            cur.close();
-
-                        }});
-                    adb.show();
-                }
-            });*/
 
 
             cmdB2.setOnClickListener(new View.OnClickListener() {
@@ -2017,25 +1828,6 @@ public class HIWorkPlaning extends Activity {
             mDay = dayOfMonth;
             EditText dtpDate;
 
-           /* dtpDate = (EditText)findViewById(R.id.dtpAgDT);
-
-            if (VariableID.equals("btnAgDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpAgDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00" + mMonth,2)).append("/")
-                        .append(mYear));
-            }
-
-            if (VariableID.equals("btnItemDT"))
-            {
-                dtpDate = (EditText)findViewById(R.id.dtpItemDT);
-                dtpDate.setText(new StringBuilder()
-                        .append(Global.Right("00"+mDay,2)).append("/")
-                        .append(Global.Right("00"+mMonth,2)).append("/")
-                        .append(mYear));
-            }
-            */
 
 
         }

@@ -169,30 +169,7 @@ public class FPIMonitoring extends Activity {
 
     RadioButton rdoneedItems81;
     RadioButton rdoneedItems82;
-  /*  LinearLayout secneedItems1;
-    TextView VlblneedItems1;
-    CheckBox chkneedItems1;
-    LinearLayout secneedItems2;
-    TextView VlblneedItems2;
-    CheckBox chkneedItems2;
-    LinearLayout secneedItems3;
-    TextView VlblneedItems3;
-    CheckBox chkneedItems3;
-    LinearLayout secneedItems4;
-    TextView VlblneedItems4;
-    CheckBox chkneedItems4;
-    LinearLayout secneedItems5;
-    TextView VlblneedItems5;
-    CheckBox chkneedItems5;
-    LinearLayout secneedItems6;
-    TextView VlblneedItems6;
-    CheckBox chkneedItems6;
-    LinearLayout secneedItems7;
-    TextView VlblneedItems7;
-    CheckBox chkneedItems7;
-    LinearLayout secneedItems8;
-    TextView VlblneedItems8;
-    CheckBox chkneedItems8;*/
+
 
     String StartTime;
 
@@ -216,14 +193,6 @@ public class FPIMonitoring extends Activity {
             spnfpaCode = (Spinner) findViewById(R.id.spnfpaCode);
 
 
-          /*  List<String> listfpaCode = new ArrayList<String>();
-
-            listfpaCode.add("");
-            listfpaCode.add("01");
-            listfpaCode.add("02");
-            listfpaCode.add("03");
-            ArrayAdapter<String> adptrfpaCode= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listfpaCode);
-            spnfpaCode.setAdapter(adptrfpaCode);*/
             spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select ProvCode||'-'||ProvName from ProviderDB where ProvType ='3'"));
 
             spnfpaCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -251,9 +220,6 @@ public class FPIMonitoring extends Activity {
 
                         // DataSearch("");
                         txtfpaUnit.setEnabled(false);
-                       /* spnfpaVill.setAdapter(C.getArrayAdapterMultiline(" select '-' as VILLAGENAME union select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME\n" +
-                                "from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode='" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "')"));
-                  */
                         spnfpaVill.setAdapter(C.getArrayAdapterMultiline("Select '-' as VILLAGENAME union select (CASE \n" +
                                 "WHEN Length(MOUZAID)=1 THEN substr('00' ||MOUZAID, -3, 3)||VILLAGEID||'-'||VILLAGENAME \n" +
                                 "WHEN Length(MOUZAID)=2 THEN substr('0' ||MOUZAID, -3, 3)||VILLAGEID||'-'||VILLAGENAME \n" +
@@ -282,18 +248,6 @@ public class FPIMonitoring extends Activity {
             secfpaVill = (LinearLayout) findViewById(R.id.secfpaVill);
             VlblfpaVill = (TextView) findViewById(R.id.VlblfpaVill);
             spnfpaVill = (Spinner) findViewById(R.id.spnfpaVill);
-            /*List<String> listfpaVill = new ArrayList<String>();
-
-            listfpaVill.add("");
-            listfpaVill.add("01");
-            listfpaVill.add("02");
-            ArrayAdapter<String> adptrfpaVill= new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, listfpaVill);
-            spnfpaVill.setAdapter(adptrfpaVill);*/
-
-            //spnfpaVill.setAdapter(C.getArrayAdapterMultiline("select '-' as VILLAGENAME union select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME\n" +
-            //        "from Village"));
-
-
             secfpaAdvance = (LinearLayout) findViewById(R.id.secfpaAdvance);
             VlblfpaAdvance = (TextView) findViewById(R.id.VlblfpaAdvance);
             spnfpaAdvance = (Spinner) findViewById(R.id.spnfpaAdvance);
@@ -355,30 +309,7 @@ public class FPIMonitoring extends Activity {
 
             rdoneedItems81 = (RadioButton) findViewById(R.id.rdoneedItems81);
             rdoneedItems82 = (RadioButton) findViewById(R.id.rdoneedItems82);
-           /* secneedItems1=(LinearLayout)findViewById(R.id.secneedItems1);
-            VlblneedItems1=(TextView) findViewById(R.id.VlblneedItems1);
-            chkneedItems1=(CheckBox) findViewById(R.id.chkneedItems1);
-            secneedItems2=(LinearLayout)findViewById(R.id.secneedItems2);
-            VlblneedItems2=(TextView) findViewById(R.id.VlblneedItems2);
-            chkneedItems2=(CheckBox) findViewById(R.id.chkneedItems2);
-            secneedItems3=(LinearLayout)findViewById(R.id.secneedItems3);
-            VlblneedItems3=(TextView) findViewById(R.id.VlblneedItems3);
-            chkneedItems3=(CheckBox) findViewById(R.id.chkneedItems3);
-            secneedItems4=(LinearLayout)findViewById(R.id.secneedItems4);
-            VlblneedItems4=(TextView) findViewById(R.id.VlblneedItems4);
-            chkneedItems4=(CheckBox) findViewById(R.id.chkneedItems4);
-            secneedItems5=(LinearLayout)findViewById(R.id.secneedItems5);
-            VlblneedItems5=(TextView) findViewById(R.id.VlblneedItems5);
-            chkneedItems5=(CheckBox) findViewById(R.id.chkneedItems5);
-            secneedItems6=(LinearLayout)findViewById(R.id.secneedItems6);
-            VlblneedItems6=(TextView) findViewById(R.id.VlblneedItems6);
-            chkneedItems6=(CheckBox) findViewById(R.id.chkneedItems6);
-            secneedItems7=(LinearLayout)findViewById(R.id.secneedItems7);
-            VlblneedItems7=(TextView) findViewById(R.id.VlblneedItems7);
-            chkneedItems7=(CheckBox) findViewById(R.id.chkneedItems7);
-            secneedItems8=(LinearLayout)findViewById(R.id.secneedItems8);
-            VlblneedItems8=(TextView) findViewById(R.id.VlblneedItems8);
-            chkneedItems8=(CheckBox) findViewById(R.id.chkneedItems8);*/
+
 
             PVisitStatus();
 
@@ -435,7 +366,7 @@ public class FPIMonitoring extends Activity {
                 Connection.MessageBox(FPIMonitoring.this, "Required field:কর্মী অগ্রিম কর্মসূচীর কোন পর্যায়ে .");
                 spnfpaAdvance.requestFocus();
                 return;
-            } else if (!rdoneedItems11.isChecked() & !rdoneedItems12.isChecked() & secneedItems1.isShown()) {
+            } /*else if (!rdoneedItems11.isChecked() & !rdoneedItems12.isChecked() & secneedItems1.isShown()) {
                 Connection.MessageBox(FPIMonitoring.this, "Select anyone options from needItems1.");
                 rdoneedItems11.requestFocus();
                 return;
@@ -466,28 +397,22 @@ public class FPIMonitoring extends Activity {
             } else if (!rdoneedItems81.isChecked() & !rdoneedItems82.isChecked() & secneedItems8.isShown()) {
                 Connection.MessageBox(FPIMonitoring.this, "Select anyone options from needItems8.");
                 rdoneedItems81.requestFocus();
-            }
+            }*/
             String SQL = "";
 
-            if (!C.Existence("Select vDate,fpaCode,fpaUnit,startTime,endTime,userId,enDt,upload from " + TableName + "  Where vDate='" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "' AND  fpaCode = '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "' AND  fpaUnit = '" + Global.Left(txtfpaUnit.getText().toString(), 2) + "'")) {
-                SQL = "Insert into " + TableName + "(vDate,fpaCode,fpaUnit,startTime,endTime,userId,enDt,upload)Values('" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "','" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "','" + Global.Left(txtfpaUnit.getText().toString(), 2) + "','" + StartTime + "','" + g.CurrentTime24() + "','" + g.getUserID() + "','" + Global.DateTimeNowYMDHMS() + "','2')";
+            if (!C.Existence("Select vDate,fpaCode,fpaUnit,startTime,endTime,userId,enDt,upload from " + TableName + "  Where vDate='" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "' AND  fpaCode = '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5)  + "'")) //+ "' AND  fpaUnit = '" + Global.Left(txtfpaUnit.getText().toString(), 2)
+            {
+                SQL = "Insert into " + TableName + "(vDate,fpaCode,fpaUnit,startTime,endTime,userId,enDt,upload)Values('" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "','" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "','" +(txtfpaUnit.getText().length() == 0 ? "" :  Global.Left(txtfpaUnit.getText().toString(), 2)) + "','" + StartTime + "','" + g.CurrentTime24() + "','" + g.getUserID() + "','" + Global.DateTimeNowYMDHMS() + "','2')";
                 C.Save(SQL);
             }
 
             SQL = "Update " + TableName + " Set Upload='2',";
             SQL += "vDate = '" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "',";
             SQL += "fpaCode = '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "',";
-            SQL += "fpaUnit = '" + Global.Left(txtfpaUnit.getText().toString(), 2) + "',";
-            SQL += "fpaVill = '" + (spnfpaVill.getSelectedItemPosition() == 0 ? "" : Global.Left(spnfpaVill.getSelectedItem().toString(), 4)) + "',";
+            SQL += "fpaUnit = '" + (txtfpaUnit.getText().length() == 0 ? "" :  Global.Left(txtfpaUnit.getText().toString(), 2)) + "',";
+            SQL += "fpaVill = '" + Global.Left(spnfpaVill.getSelectedItem().toString(), 4) + "',";
             SQL += "fpaAdvance = '" + (spnfpaAdvance.getSelectedItemPosition() == 0 ? "" : Global.Left(spnfpaAdvance.getSelectedItem().toString(), 2)) + "',";
-            /*SQL+="needItems1 = '"+ (chkneedItems1.isChecked()?"1":"2") +"',";
-            SQL+="needItems2 = '"+ (chkneedItems2.isChecked()?"1":"2") +"',";
-            SQL+="needItems3 = '"+ (chkneedItems3.isChecked()?"1":"2") +"',";
-            SQL+="needItems4 = '"+ (chkneedItems4.isChecked()?"1":"2") +"',";
-            SQL+="needItems5 = '"+ (chkneedItems5.isChecked()?"1":"2") +"',";
-            SQL+="needItems6 = '"+ (chkneedItems6.isChecked()?"1":"2") +"',";
-            SQL+="needItems7 = '"+ (chkneedItems7.isChecked()?"1":"2") +"',";
-            SQL+="needItems8 = '"+ (chkneedItems8.isChecked()?"1":"2") +"'";*/
+
             RadioButton rbneedItems1 = (RadioButton) findViewById(rdogrpneedItems1.getCheckedRadioButtonId());
             SQL += "needItems1 = '" + (rbneedItems1 == null ? "" : (Global.Left(rbneedItems1.getText().toString(), 1))) + "',";
             RadioButton rbneedItems2 = (RadioButton) findViewById(rdogrpneedItems2.getCheckedRadioButtonId());
@@ -504,7 +429,7 @@ public class FPIMonitoring extends Activity {
             SQL += "needItems7 = '" + (rbneedItems7 == null ? "" : (Global.Left(rbneedItems7.getText().toString(), 1))) + "',";
             RadioButton rbneedItems8 = (RadioButton) findViewById(rdogrpneedItems8.getCheckedRadioButtonId());
             SQL += "needItems8 = '" + (rbneedItems8 == null ? "" : (Global.Left(rbneedItems8.getText().toString(), 1))) + "'";
-            SQL += "  Where vDate='" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "' AND  fpaCode = '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5) + "' AND  fpaUnit = '" + Global.Left(txtfpaUnit.getText().toString(), 2) + "'";
+            SQL += "  Where vDate='" + Global.DateConvertYMD(dtpvDate.getText().toString()) + "' AND  fpaCode = '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5)  + "'";
             C.Save(SQL);
             Connection.MessageBox(FPIMonitoring.this, "Saved Successfully");
 
@@ -560,8 +485,7 @@ public class FPIMonitoring extends Activity {
                     while (!cur.isAfterLast()) {
                         vcode[0][i] = "পরিদর্শন " + String.valueOf(i + 1);//String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
                         vcode[1][i] = cur.getString(cur.getColumnIndex("visitDate"));
-                        // vcode[2][i]= cur.getString(cur.getColumnIndex("imucard"));
-                        // vcode[3][i]= String.valueOf(cur.getString(cur.getColumnIndex("imucode")));
+
 
                         i += 1;
                         cur.moveToNext();
@@ -572,16 +496,49 @@ public class FPIMonitoring extends Activity {
                     tv.setTextSize(14);
                     tv.setText(vcode[0][position] + "\n" + vcode[1][position]);
                     final Integer p = position;
+                    tv.setOnLongClickListener(new View.OnLongClickListener() {
+                        @Override
+                        public boolean onLongClick(View v) {
+                            AlertDialog.Builder adb = new AlertDialog.Builder(FPIMonitoring.this);
+
+
+                            adb.setTitle("Close");
+                            adb.setMessage("আপনি কি পরিদর্শন বাতিল করতে  চান[হ্যাঁ/না]?");
+                            adb.setNegativeButton("না", null);
+                            adb.setPositiveButton("হ্যাঁ", new AlertDialog.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String visitDate = String.valueOf(vcode[1][position]);
+                                    if ((Global.DateDifferenceDays(Global.DateNowDMY(), Global.DateConvertDMY(visitDate.toString())) > 3)) {
+                                        Connection.MessageBox(FPIMonitoring.this, "পরিদর্শনের  তথ্য ৩ দিন পর বাতিল করা প্রযোজ্য না");
+                                        return;
+                                    } else {
+                                        String Item = String.valueOf(vcode[0][position]);
+                                        String visit = String.valueOf(vcode[1][position]);
+                                        String dwl = "DELETE FROM fpiMonitoring where fpaCode='" + Global.Left(spnfpaCode.getSelectedItem().toString(), 5)+ "' and strftime('%d/%m/%Y', date(VDate))='" + visit+ "'";
+                                        // String dwl = "DELETE FROM EPISessionVisit WHERE healthId ='" + g.getGeneratedId() + "' and providerId='" + g.getProvCode() + "' and strftime('%d/%m/%Y', date(visitDate))='" + visit + "'";
+                                        C.Save(dwl);
+
+
+                                        PVisitStatus();
+
+
+                                    }
+                                    // ElcoVisitStsatus();
+                                }
+                            });
+                            adb.show();
+                            return true;
+
+
+                        }
+                    });
                     tv.setOnClickListener(new View.OnClickListener() {
                         public void onClick(View v) {
 
                             if (vcode[1][position] == vcode[1][position]) {
 
                                 dtpvDate.setText(vcode[1][position]);
-                                // SearchAdolescent();
-                                // SearchAdolescent(g.getHealthID(),g.getProvCode(),g.getAVDate());
-                                // DataRetrive(g.getGeneratedId(),vcode[1][position]);
-                                // DataRetrive();
+
                                 DataSearch(vcode[1][position]);
 
 
@@ -672,71 +629,7 @@ public class FPIMonitoring extends Activity {
                     else
                         rb.setChecked(false);
                 }
-                /*if(cur.getString(cur.getColumnIndex("needItems1")).equals("1"))
-                {
-                    chkneedItems1.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems1")).equals("2"))
-                {
-                    chkneedItems1.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems2")).equals("1"))
-                {
-                    chkneedItems2.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems2")).equals("2"))
-                {
-                    chkneedItems2.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems3")).equals("1"))
-                {
-                    chkneedItems3.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems3")).equals("2"))
-                {
-                    chkneedItems3.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems4")).equals("1"))
-                {
-                    chkneedItems4.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems4")).equals("2"))
-                {
-                    chkneedItems4.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems5")).equals("1"))
-                {
-                    chkneedItems5.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems5")).equals("2"))
-                {
-                    chkneedItems5.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems6")).equals("1"))
-                {
-                    chkneedItems6.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems6")).equals("2"))
-                {
-                    chkneedItems6.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems7")).equals("1"))
-                {
-                    chkneedItems7.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems7")).equals("2"))
-                {
-                    chkneedItems7.setChecked(false);
-                }
-                if(cur.getString(cur.getColumnIndex("needItems8")).equals("1"))
-                {
-                    chkneedItems8.setChecked(true);
-                }
-                else if(cur.getString(cur.getColumnIndex("needItems8")).equals("2"))
-                {
-                    chkneedItems8.setChecked(false);
-                }
-*/
+
                 cur.moveToNext();
             }
             cur.close();

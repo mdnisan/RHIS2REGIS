@@ -51,6 +51,8 @@ public class Connection extends SQLiteOpenHelper {
 
     private Context dbContext;
 
+    private static Context ud_context;
+
     public Connection(Context context) {
         super(context, DBLocation, null, DATABASE_VERSION);
         dbContext=context;
@@ -1122,26 +1124,12 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "fpaItem", "itemCode, itemDes, type", "itemCode,type");
 
             //ccInfo
-            SQLStr = "SELECT * FROM \"ccInfo\"";
+     /*       SQLStr = "SELECT * FROM \"ccInfo\"";
             Res = DownloadJSON(SQLStr, "ccInfo", "zilaid, upazilaid, unionid, unionname, wardid, ward, ccid, ccname, hprovdername, mobailno", "ccid");
-
+      */
 
             //Service Provider
 
-          /*  SQLStr = "Select zillaid,upazilaid,unionid,\"ProvType\",\"ProvCode\",\"ProvName\",\"EnDate\",\"ExDate\",\"Active\",\"DeviceSetting\" from \"ProviderDB\" where ";
-            SQLStr += " zillaid='" + Dist + "' and";
-            SQLStr += " upazilaid='" + Upz + "' and";
-            SQLStr += " unionid='" + UN + "' and";
-            SQLStr += " \"ProvType\"='" + ProvType + "' and";
-            SQLStr += " \"supervisorCode\"='" + ProvCode + "' and";
-            SQLStr += " \"Active\"='1' UNION ALL Select DISTINCT zillaid,upazilaid,unionid,\"ProvType\" AS \"ProvType\"\n" +
-                    "\t,\"ProvCode\" AS \"ProvCode\"\n" +
-                    "\t,\"ProvName\" AS \"ProvName\",\"EnDate\",\"ExDate\",\"Active\",\"DeviceSetting\" from \"ProviderDB\" where ";
-            SQLStr += " zillaid='" + Dist + "' and";
-            SQLStr += " upazilaid='" + Upz + "' and";
-            SQLStr += " unionid='" + UN + "' and";
-            SQLStr += " \"ProvType\"='" + Stype + "' and";
-            SQLStr += " \"ProvCode\"='" + ProvCode + "' and \"Active\"='1'";*/
             SQLStr = "Select zillaid,upazilaid,unionid,\"ProvType\",\"ProvCode\",\"ProvName\",\"EnDate\",\"ExDate\",\"Active\",\"DeviceSetting\" from \"ProviderDB\" where ";
             SQLStr += " zillaid='" + Dist + "' and";
             SQLStr += " upazilaid='" + Upz + "' and";
@@ -1161,57 +1149,16 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "ProviderDB", "zillaid,upazilaid,unionid,ProvType,ProvCode,ProvName,EnDate,ExDate,Active,DeviceSetting", "zillaid,upazilaid,unionid,ProvType,ProvCode");
 
             //Service Provider Area
-           /* SQLStr = "Select a.zillaid, a.upazilaid, a.unionid, a.mouzaid, a.villageid, a.\"FWAUnit\", a.\"Ward\", a.\"WardNew\", a.\"Block\",a.\"provType\",a.\"provCode\"";
-            SQLStr += " from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr += " Where a.zillaid='" + Dist + "' and";
-            SQLStr += " a.upazilaid='" + Upz + "' and";
-            SQLStr += " a.unionid='" + UN + "' and";
-            SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-           // SQLStr += " a.\"provCode\"='" + ProvCode + "'";
 
-      */
 
 
             SQLStr = "Select a.zillaid, a.upazilaid, a.unionid, a.mouzaid, a.villageid, a.\"FWAUnit\", a.\"Ward\", a.\"WardNew\", a.\"Block\",a.\"provType\",a.\"provCode\"";
             SQLStr += " from \"ProviderArea\" a";
             SQLStr += " Where a.\"provType\"='" + ProvType + "' and";
             SQLStr += "  a.\"provCode\" in(Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-
             Res = DownloadJSON(SQLStr, "ProviderArea", "zillaid, upazilaid, unionid, mouzaid, villageid, FWAUnit, Ward, WardNew, Block,provType,provCode", "zillaid, upazilaid, unionid, mouzaid, villageid,provCode");
 
-            // SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-           // SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-
-           // SQLStr += " a.upazilaid='" + Upz + "' and";
-           // SQLStr += " a.unionid='" + UN + "' and";
-            //SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-
-            //Service Provider Area
-           /* SQLStr = "Select a.zillaid, a.upazilaid, a.unionid, a.mouzaid, a.villageid, a.\"FWAUnit\", a.\"Ward\", a.\"WardNew\", a.\"Block\",a.\"provType\",a.\"provCode\"";
-            SQLStr += " from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr+=" Where PDB.\"supervisorCode\" in(select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='"+ProvCode+"') order by \"provCode\"";
-*/          /*  SQLStr += " Where a.zillaid='" + Dist + "' and";
-            SQLStr += " a.upazilaid='" + Upz + "' and";
-            SQLStr += " a.unionid";
-            SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
-      */      //SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;
-            // and";
-            // SQLStr += " a.\"provCode\"='" + ProvCode + "'";
-
-            // Res = DownloadJSON(SQLStr, "ProviderArea", "zillaid, upazilaid, unionid, mouzaid, villageid, FWAUnit, Ward, WardNew, Block,provType,provCode", "zillaid, upazilaid, unionid, mouzaid, villageid");
-
-
-
-
-
-
-
-
-            //DeviceNo
+           //DeviceNo
             Save("Delete from DeviceNo");
             Save("Insert into DeviceNo(DeviceNo)Values('" + (ProvType + ProvCode) + "')");
 
@@ -1231,7 +1178,7 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "Division", "id, division", "id");
 
 
-            //District
+            //District/Zilla
             SQLStr = "Select \"DIVID\", \"ZILLAID\", \"ZILLANAMEENG\", \"ZILLANAME\" from \"Zilla\" where \"ZILLAID\"='" + Dist + "'";
             Res = DownloadJSON(SQLStr, "Zilla", "DIVID, ZILLAID, ZILLANAMEENG, ZILLANAME", "ZillaID");
 
@@ -1240,77 +1187,44 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "Upazila", "ZILLAID, UPAZILAID, UPAZILANAMEENG, UPAZILANAME", "ZillaID,UPAZILAID");
 
             //Unions
-           /* SQLStr = "Select \"ZILLAID\", \"UPAZILAID\", \"MUNICIPALITYID\", \"UNIONID\", \"UNIONNAMEENG\", \"UNIONNAME\" from \"Unions\" where \"ZILLAID\"='" + Dist + "' and \"UPAZILAID\"='" + Upz + "' and \"UNIONID\"='" + UN + "'";
+             SQLStr = "Select \"ZILLAID\", \"UPAZILAID\", \"MUNICIPALITYID\", \"UNIONID\", \"UNIONNAMEENG\", \"UNIONNAME\" from \"Unions\" where \"ZILLAID\"='" + Dist + "' and \"UPAZILAID\"='" + Upz + "' and";
+            SQLStr += "  \"UNIONID\" in (Select distinct \"unionid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "'))";
             Res = DownloadJSON(SQLStr, "Unions", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, UNIONNAMEENG, UNIONNAME", "ZillaID,UPAZILAID,UnionId");
-*/
-            SQLStr = "Select \"ZILLAID\", \"UPAZILAID\", \"MUNICIPALITYID\", \"UNIONID\", \"UNIONNAMEENG\", \"UNIONNAME\" from \"Unions\" where \"ZILLAID\"='" + Dist + "' and \"UPAZILAID\"='" + Upz + "' and";
-            SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-            Res = DownloadJSON(SQLStr, "Unions", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, UNIONNAMEENG, UNIONNAME", "ZillaID,UPAZILAID,UnionId");
+
            // in (Select distinct "unionid" from "ProviderDB" where "supervisorCode" = '93124')
             //Mouza
-           /* SQLStr = "Select m.\"ZILLAID\", m.\"UPAZILAID\", m.\"MUNICIPALITYID\", m.\"UNIONID\", m.\"MOUZAID\", m.\"RMO\", m.\"MOUZANAMEENG\", m.\"MOUZANAME\" from \"Mouza\" m";
-            SQLStr += " inner join \"ProviderArea\" a on m.\"ZILLAID\"=a.zillaid and m.\"UPAZILAID\"=a.upazilaid and m.\"UNIONID\"=a.unionid and m.\"MOUZAID\"=a.mouzaid";
-            SQLStr+=" \tINNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"'  AND PDB.\"supervisorCode\"='" + ProvCode + "' and m.\"ZILLAID\"='" + Dist + "' and m.\"UPAZILAID\"='" + Upz + "' and m.\"UNIONID\"='" + UN + "'";
-            Res = DownloadJSON(SQLStr, "Mouza", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, MOUZAID, RMO, MOUZANAMEENG, MOUZANAME", "ZillaID,UPAZILAID,UnionId,MOUZAID");
-*/
-//Mouza
-            /*SQLStr = "Select m.\"ZILLAID\", m.\"UPAZILAID\", m.\"MUNICIPALITYID\", m.\"UNIONID\", m.\"MOUZAID\", m.\"RMO\", m.\"MOUZANAMEENG\", m.\"MOUZANAME\" from \"Mouza\" m";
-            SQLStr += " inner join \"ProviderArea\" a on m.\"ZILLAID\"=a.zillaid and m.\"UPAZILAID\"=a.upazilaid and m.\"UNIONID\"=a.unionid and m.\"MOUZAID\"=a.mouzaid";
-            SQLStr+=" \tINNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"'  AND PDB.\"supervisorCode\"='" + ProvCode + "' and m.\"ZILLAID\"='" + Dist + "' and m.\"UPAZILAID\"='" + Upz + "' and";
-            SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-            Res = DownloadJSON(SQLStr, "Mouza", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, MOUZAID, RMO, MOUZANAMEENG, MOUZANAME", "ZillaID,UPAZILAID,UnionId,MOUZAID");
-*/
-            //Mouza
+
             SQLStr = "Select m.\"ZILLAID\", m.\"UPAZILAID\", m.\"MUNICIPALITYID\", m.\"UNIONID\", m.\"MOUZAID\", m.\"RMO\", m.\"MOUZANAMEENG\", m.\"MOUZANAME\" from \"Mouza\" m";
             SQLStr += " inner join \"ProviderArea\" a on m.\"ZILLAID\"=a.zillaid and m.\"UPAZILAID\"=a.upazilaid and m.\"UNIONID\"=a.unionid and m.\"MOUZAID\"=a.mouzaid";
             SQLStr+=" \tINNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
             SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"'  AND PDB.\"supervisorCode\"='" + ProvCode + "' and m.\"ZILLAID\"='" + Dist + "' and m.\"UPAZILAID\"='" + Upz + "' and";
-            SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
-            SQLStr += "  \"MOUZAID\" in(Select distinct \"mouzaid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+            SQLStr += "  \"UNIONID\" in (Select distinct \"unionid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')) and";
+            //SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
+            //SQLStr += "  \"MOUZAID\" in(Select distinct \"mouzaid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+            SQLStr += "  \"MOUZAID\" in (Select distinct \"mouzaid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "'))";
             Res = DownloadJSON(SQLStr, "Mouza", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, MOUZAID, RMO, MOUZANAMEENG, MOUZANAME", "ZillaID,UPAZILAID,UnionId,MOUZAID");
 
-            //Village
-/*            SQLStr = "Select v.\"ZILLAID\", v.\"UPAZILAID\", v.\"UNIONID\", v.\"MOUZAID\", v.\"VILLAGEID\", v.\"RMO\", v.\"VILLAGENAMEENG\", v.\"VILLAGENAME\", coalesce(v.\"CRRVILLAGENAME\",'')CRRVILLAGENAME from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+=" INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"' AND PDB.\"supervisorCode\"='" + ProvCode + "' and v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and v.\"UNIONID\"='" + UN + "'";
-            Res = DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");*/
 
-           /* SQLStr = "Select v.\"ZILLAID\", v.\"UPAZILAID\", v.\"UNIONID\", v.\"MOUZAID\", v.\"VILLAGEID\", v.\"RMO\", v.\"VILLAGENAMEENG\", v.\"VILLAGENAME\", coalesce(v.\"CRRVILLAGENAME\",'')CRRVILLAGENAME from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+=" INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"' AND PDB.\"supervisorCode\"='" + ProvCode + "' and v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and";
-            SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-            Res = DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");
-*/
+            // SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
+            //Village
+
+
+
             SQLStr = "Select v.\"ZILLAID\", v.\"UPAZILAID\", v.\"UNIONID\", v.\"MOUZAID\", v.\"VILLAGEID\", v.\"RMO\", v.\"VILLAGENAMEENG\", v.\"VILLAGENAME\", coalesce(v.\"CRRVILLAGENAME\",'')CRRVILLAGENAME from \"Village\" v";
             SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
             SQLStr+=" INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
             SQLStr += " where PDB.\"ProvType\" = '"+ ProvType +"' AND PDB.\"supervisorCode\"='" + ProvCode + "' and v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and";
-            SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
-            SQLStr += "  \"MOUZAID\" in(Select distinct \"mouzaid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
-            SQLStr += "  \"VILLAGEID\" in(Select distinct \"villageid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+            SQLStr += "  \"UNIONID\" in (Select distinct \"unionid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')) and";
+            //SQLStr += "  \"UNIONID\" in(Select distinct \"unionid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
+            SQLStr += "  \"MOUZAID\" in (Select distinct \"mouzaid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')) and";
+           //SQLStr += "  \"MOUZAID\" in(Select distinct \"mouzaid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "') and";
+            //SQLStr += "  \"VILLAGEID\" in(Select distinct \"villageid\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
+            SQLStr += "  \"VILLAGEID\" in (Select distinct \"villageid\" from \"ProviderArea\" where \"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "'))";
+
             Res = DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");
 
 
-
-         /*   // epiScheduler
-            SQLStr = "Select epis.\"schedulerId\",epis.\"scheduleDate\",epis.\"providerId\",epis.\"subBlockId\",epis.\"centerName\",epis.\"systemEntryDate\",epis.\"modifyDate\",epis.\"upload\"";
-            SQLStr += " from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr+="  INNER JOIN \"epiScheduler\" epis ON epis.\"providerId\" = a.\"provCode\" ";
-            SQLStr += " Where a.zillaid='" + Dist + "' and";
-            SQLStr += " a.upazilaid='" + Upz + "' and";
-            SQLStr += " a.unionid='" + UN + "' and";
-            SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-            // SQLStr += " a.\"provCode\"='" + ProvCode + "'";
-
-            Res = DownloadJSON(SQLStr, "epiScheduler", "schedulerId, scheduleDate, providerId, subBlockId, centerName, systemEntryDate, modifyDate, upload", "schedulerId, providerId");
-
-*/
+            // epiScheduler
 
             //Download EPI Scheduler by New Table
            // jumpTime += 1;
@@ -1379,17 +1293,17 @@ public class Connection extends SQLiteOpenHelper {
             SQLStr = "SELECT * FROM \"AttendantDesignation\"";
             Res = DownloadJSON(SQLStr, "AttendantDesignation", "attendantCode, attendantDesig", "attendantCode");
 
-           /* //fpaItem
-            SQLStr = "select \"itemCode\",\"itemDes\", \"type\" from fpaItem";
-            Res = DownloadJSON(SQLStr, "fpaItem", "itemCode, itemDes, type", "itemCode,type");*/
+
 
             //currentStock
             SQLStr = "select \"providerId\",\"itemCode\",\"stockQty\", \"systemEntryDate\", \"modifyDate\", \"upload\" from \"currentStock\" where \"providerId\"='" + ProvCode + "'";
             Res = DownloadJSON(SQLStr, "currentStock", "providerId, itemCode, stockQty, systemEntryDate, modifyDate, upload", "providerId,itemCode");
 
+            //download ServiceTables
+            DownloadServiceTables(ProvCode);
 
-            // jumpTime +=1;
-           // progressHandler.sendMessage(progressHandler.obtainMessage());
+
+
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -1433,11 +1347,6 @@ public class Connection extends SQLiteOpenHelper {
             SQLStr += " UNION ALL Select DISTINCT zillaid,upazilaid,unionid,\"ProvType\" AS \"ProvType\"\n" +
                     "\t,\"ProvCode\" AS \"ProvCode\"\n" +
                     "\t,\"ProvName\" AS \"ProvName\",\"EnDate\",\"ExDate\",\"Active\",\"DeviceSetting\" from \"ProviderDB\" where \"supervisorCode\" in (select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ProvCode+"')";
-           /* SQLStr += " zillaid='" + Dist + "' and";
-            SQLStr += " upazilaid='" + Upz + "' and";
-            // SQLStr += " unionid='" + UN + "' and";
-            SQLStr += " \"ProvType\"='" + Stype + "' and";
-            SQLStr += " \"ProvCode\"='" + ProvCode + "' and \"Active\"='1'";*/
 
 
             Res = DownloadJSON(SQLStr, "ProviderDB", "zillaid,upazilaid,unionid,ProvType,ProvCode,ProvName,EnDate,ExDate,Active,DeviceSetting", "zillaid,upazilaid,unionid,ProvType,ProvCode");
@@ -1450,25 +1359,6 @@ public class Connection extends SQLiteOpenHelper {
             SQLStr += " in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" in ( Select \"ProvCode\" from \"ProviderDB\"where \"supervisorCode\"='" + ProvCode + "'))";
 
             Res = DownloadJSON(SQLStr, "ProviderArea", "zillaid, upazilaid, unionid, mouzaid, villageid, FWAUnit, Ward, WardNew, Block,provType,provCode", "zillaid, upazilaid, unionid, mouzaid, villageid,provCode");
-
-
-           /*
-            SQLStr = "Select a.zillaid, a.upazilaid, a.unionid, a.mouzaid, a.villageid, a.\"FWAUnit\", a.\"Ward\", a.\"WardNew\", a.\"Block\",a.\"provType\",a.\"provCode\"";
-            SQLStr += " from \"ProviderArea\" a";
-            SQLStr+=" Where a.\"provCode\" in (Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" in ( Select \"ProvCode\" from \"ProviderDB\"where \"supervisorCode\"='" + ProvCode + "')";
-            Res = DownloadJSON(SQLStr, "ProviderArea", "zillaid, upazilaid, unionid, mouzaid, villageid, FWAUnit, Ward, WardNew, Block,provType,provCode", "zillaid, upazilaid, unionid, mouzaid, villageid,provCode");
-        */
-            // SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            // SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            //SQLStr += " Where a.\"provType\"='" + ProvType + "' and";
-            // SQLStr += " a.upazilaid='" + Upz + "' and";
-            // SQLStr += " a.unionid='" + UN + "' and";
-            //SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-           // SQLStr += " Where a.\"provCode\" in(Select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='" + ProvCode + "')";
-
-
-
-
 
 
 
@@ -1487,10 +1377,10 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "Login", "UserId,UserName,Pass", "UserId");
 
 
-            //Division
+          /*  //Division
             SQLStr = "SELECT * FROM \"ccInfo\"";
             Res = DownloadJSON(SQLStr, "ccInfo", "zilaid, upazilaid,unionid,unionname,wardid,ward,ccid,ccname,hprovdername,mobailno", "ccid");
-
+*/
             //Division
             SQLStr = "SELECT * FROM \"Division\"";
             Res = DownloadJSON(SQLStr, "Division", "id, division", "id");
@@ -1530,26 +1420,6 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");
 
 
-           /* //Mouza
-            SQLStr = "Select m.\"ZILLAID\", m.\"UPAZILAID\", m.\"MUNICIPALITYID\", m.\"UNIONID\", m.\"MOUZAID\", m.\"RMO\", m.\"MOUZANAMEENG\", m.\"MOUZANAME\" from \"Mouza\" m";
-            SQLStr += " inner join \"ProviderArea\" a on m.\"ZILLAID\"=a.zillaid and m.\"UPAZILAID\"=a.upazilaid and m.\"UNIONID\"=a.unionid and m.\"MOUZAID\"=a.mouzaid";
-            SQLStr+=" \tINNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            // SQLStr+=" Where PDB.\"supervisorCode\" in(select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='"+ProvCode+"') order by \"provCode\"";
-            SQLStr += " where  m.\"ZILLAID\"='" + Dist + "' and m.\"UPAZILAID\"='" + Upz + "' and m.\"UNIONID\"";
-            SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
-            Res = DownloadJSON(SQLStr, "Mouza", "ZILLAID, UPAZILAID, MUNICIPALITYID, UNIONID, MOUZAID, RMO, MOUZANAMEENG, MOUZANAME", "ZillaID,UPAZILAID,UnionId,MOUZAID");
-
-            //Village
-            SQLStr = "Select v.\"ZILLAID\", v.\"UPAZILAID\", v.\"UNIONID\", v.\"MOUZAID\", v.\"VILLAGEID\", v.\"RMO\", v.\"VILLAGENAMEENG\", v.\"VILLAGENAME\", coalesce(v.\"CRRVILLAGENAME\",'')CRRVILLAGENAME from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+=" INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            //SQLStr+=" Where PDB.\"supervisorCode\" in(select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='"+ProvCode+"') order by \"provCode\"";
-            SQLStr += " where  v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and v.\"UNIONID\"";
-            SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
-            Res = DownloadJSON(SQLStr, "Village", "ZILLAID, UPAZILAID, UNIONID, MOUZAID, VILLAGEID, RMO, VILLAGENAMEENG, VILLAGENAME, CRRVILLAGENAME", "ZillaID,UPAZILAID,UnionId,MOUZAID,VillageID");
-
-*/
-
             //month
             SQLStr = "SELECT * FROM \"FWAUnit\"";
             Res = DownloadJSON(SQLStr, "FWAUnit", "UCode, UName, UNameBan", "UCode");
@@ -1560,14 +1430,7 @@ public class Connection extends SQLiteOpenHelper {
             //fpaItem
             SQLStr = "SELECT * FROM \"fpaItem\"";
             Res = DownloadJSON(SQLStr, "fpaItem", "itemCode, itemDes, type", "itemCode,type");
-
-
-
-            //ccInfo
-            SQLStr = "SELECT * FROM \"ccInfo\"";
-            Res = DownloadJSON(SQLStr, "ccInfo", "zilaid, upazilaid, unionid, unionname, wardid, ward, ccid, ccname, hprovdername, mobailno", "ccid");
-
-            //ElcoEvent
+           //ElcoEvent
             SQLStr = "select \"EVCode\", \"EVName\" from \"ElcoEvent\"";
             Res = DownloadJSON(SQLStr, "ElcoEvent", "EVCode, EVName", "EVCode");
 
@@ -1589,9 +1452,6 @@ public class Connection extends SQLiteOpenHelper {
             Res = DownloadJSON(SQLStr, "item", "itemCode, itemName, brand, unit, status", "itemCode");
 
 
-    /*        //fpaItem
-            SQLStr = "select \"itemCode\",\"itemDes\", \"type\" from fpaItem";
-            Res = DownloadJSON(SQLStr, "fpaItem", "itemCode, itemDes, type", "itemCode,type");*/
 
             //currentStock
             SQLStr = "select \"providerId\",\"itemCode\",\"stockQty\", \"systemEntryDate\", \"modifyDate\", \"upload\" from \"currentStock\" where \"providerId\"='" + ProvCode + "'";
@@ -1599,21 +1459,7 @@ public class Connection extends SQLiteOpenHelper {
 
 
             // epiScheduler
-          /*  SQLStr = "Select epis.\"schedulerId\",epis.\"scheduleDate\",epis.\"providerId\",epis.\"subBlockId\",epis.\"centerName\",epis.\"systemEntryDate\",epis.\"modifyDate\",epis.\"upload\"";
-            SQLStr += " from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr+="  INNER JOIN \"epiScheduler\" epis ON epis.\"providerId\" = a.\"provCode\" ";
-            SQLStr += " Where a.zillaid='" + Dist + "' and";
-            SQLStr += " a.upazilaid='" + Upz + "' and";
-            SQLStr += " a.\"unionid\"";
-            //SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-            // SQLStr += " a.\"provCode\"='" + ProvCode + "'";
-            //SQLStr += " where v.\"ZILLAID\"='" + Dist + "' and v.\"UPAZILAID\"='" + Upz + "' and v.\"UNIONID\"";
-            SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
 
-            Res = DownloadJSON(SQLStr, "epiScheduler", "schedulerId, scheduleDate, providerId, subBlockId, centerName, systemEntryDate, modifyDate, upload", "schedulerId, providerId");
-*/
 
             SQLStr = "SELECT \"Div\"\n" +
                     ",\"Dist\"\n" +
@@ -1642,133 +1488,53 @@ public class Connection extends SQLiteOpenHelper {
             //"where \"provCode\"='" + ProvCode + "')";
             Res = DownloadJSON(SQLStr, "epiSchedulerUpdate", "Div,Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId,scheduleDate,centerName,centerType,KhanaNoFrom,KhanaNoTo,KhanaTotal,systemEntryDate,modifyDate,upload", "Dist,Upz,UN,wordOld,subBlockId,scheduleYear,schedulerId");
 
-
-            // epiScheduler
-            /*SQLStr = "Select epis.\"schedulerId\",epis.\"scheduleDate\",epis.\"providerId\",epis.\"subBlockId\",epis.\"centerName\",epis.\"systemEntryDate\",epis.\"modifyDate\",epis.\"upload\"";
-            SQLStr += " from \"Village\" v";
-            SQLStr += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
-            SQLStr+= " INNER JOIN \"ProviderDB\" PDB ON PDB.\"ProvCode\" = a.\"provCode\" ";
-            SQLStr+="  INNER JOIN \"epiScheduler\" epis ON epis.\"providerId\" = a.\"provCode\" ";
-           // SQLStr+=" Where PDB.\"supervisorCode\" in(select \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\"='"+ProvCode+"') order by \"provCode\"";
-           SQLStr += " Where a.zillaid='" + Dist + "' and";
-            SQLStr += " a.upazilaid='" + Upz + "' and";
-            SQLStr += " a.unionid";
-            SQLStr+=" in (select distinct unionid from \"ProviderArea\" where \"provCode\" in (\tselect \"ProvCode\" from \"ProviderDB\"\twhere \"supervisorCode\" in (\tselect \"ProvCode\" from \"ProviderDB\" where \"supervisorCode\" ='"+ ProvCode+"')))";
-            //SQLStr += " PDB.\"ProvType\"='"+ ProvType +"'" ;// and";
-            // SQLStr += " a.\"provCode\"='" + ProvCode + "'";
-
-            Res = DownloadJSON(SQLStr, "epiScheduler", "schedulerId, scheduleDate, providerId, subBlockId, centerName, systemEntryDate, modifyDate, upload", "schedulerId, providerId");
-*/
-
-
-            // jumpTime +=1;
-            // progressHandler.sendMessage(progressHandler.obtainMessage());
-
+            DownloadServiceTables(ProvCode);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    public static void Sync_HealthID(String PType, String PCode)
+    {
+        Connection C = new Connection(ud_context);
+        String SQL = "";
+
+        //Trigger for updating client map
+        SQL = "create trigger if not exists tri_hid_update after";
+        SQL += " update on Member";
+        SQL += " for each row";
+        SQL += " when (New.HealthId<>Old.HealthId)";
+        SQL += " begin";
+        SQL += "    Update ClientMap set HealthId=New.HealthId where HealthId=Old.HealthId;";
+        SQL += " end";
+        C.Save(SQL);
+
+        //Total number of records need to dowload
+        SQL = "Select count(*)totalRecord from \"Member\" as t";
+        SQL += " inner join \"ProviderArea\" a on t.\"Dist\"=a.\"zillaid\" and t.\"Upz\"=a.\"upazilaid\" and t.\"UN\"=a.\"unionid\" and t.\"Mouza\"=a.\"mouzaid\" and t.\"Vill\"=a.\"villageid\" and a.\"provType\"='" + PType + "' and a.\"provCode\"='" + PCode + "'";
+        SQL += " where not exists(select * from data_sync_management where";
+        SQL += " lower(\"tableName\")  = 'member' and";
+        SQL += " to_date(\"modifyDate\",'yyyy-mm-dd') = to_date(t.\"EnDt\",'yyyy-mm-dd') and";
+        SQL += " \"recordId\" = cast(\"Dist\" as text)||cast(\"Upz\" as text)||cast(\"UN\" as text)||cast(\"Mouza\" as text)||cast(\"Vill\" as text)||cast(\"HHNo\" as text)||cast(\"SNo\" as text)";
+        SQL += " and cast(\"provType\" as text)='" + PType + "' and cast(\"provCode\" as text)='" + PCode + "')";
+        int totalRecord = Integer.valueOf(C.ReturnSingleValueJSON(SQL));
+
+        int batchSize = 5000;
+        int totalBatch = (totalRecord/batchSize)+1;
+        for(int i = 0; i < totalBatch; i++) {
+            SQL = "Select \"Dist\", \"Upz\", \"UN\", \"Mouza\", \"Vill\", \"HHNo\", \"SNo\",\"HealthID\",to_date(\"EnDt\",'yyyy-mm-dd')modifyDate from \"Member\" as t";
+            SQL += " inner join \"ProviderArea\" a on t.\"Dist\"=a.\"zillaid\" and t.\"Upz\"=a.\"upazilaid\" and t.\"UN\"=a.\"unionid\" and t.\"Mouza\"=a.\"mouzaid\" and t.\"Vill\"=a.\"villageid\" and a.\"provType\"='" + PType + "' and a.\"provCode\"='" + PCode + "'";
+            SQL += " where not exists(select * from data_sync_management where";
+            SQL += " lower(\"tableName\")  = 'member' and";
+            SQL += " to_date(\"modifyDate\",'yyyy-mm-dd') = to_date(t.\"EnDt\",'yyyy-mm-dd') and";
+            SQL += " \"recordId\" = cast(\"Dist\" as text)||cast(\"Upz\" as text)||cast(\"UN\" as text)||cast(\"Mouza\" as text)||cast(\"Vill\" as text)||cast(\"HHNo\" as text)||cast(\"SNo\" as text)";
+            SQL += " and cast(\"provType\" as text)='" + PType + "' and cast(\"provCode\" as text)='" + PCode + "') limit " + batchSize;
+
+            C.DownloadJSON_HealthID(SQL, "Member", "Dist, Upz, UN, Mouza, Vill, HHNo, SNo, HealthID, modifyDate", "Dist, Upz, UN, Mouza, Vill, HHNo, SNo");
+        }
 
 
-   /* public void GenerateElco() {
-        //Updating ElcoInformation group_concat( ifnull( A.NameENG, '' ) || '(' || ifnull( B.NameEng, '' ) || ')' ) AS ElcoName
-        String SQL = "Create table elcodetails as\n" +
-                "SELECT A.DisT,\n" +
-                "       A.Upz,\n" +
-                "       A.UN,\n" +
-                "       A.MOUZA,\n" +
-                "       A.Vill,\n" +
-                "       A.HHno AS hhno,\n" +
-                "       A.ElcoName AS Elco\n" +
-                "  FROM ( \n" +
-                "  \n" +
-                "    SELECT A.DisT,\n" +
-                "           A.Upz,\n" +
-                "           A.UN,\n" +
-                "           A.MOUZA,\n" +
-                "           A.Vill,\n" +
-                "           A.HHno,\n" +
-                "           group_concat( ifnull( ' ' || A.NameENG, '' ) || ' (' || ifnull( B.NameEng, '' ) || ') ' ) AS ElcoName\n" +
-                "      FROM Member A\n" +
-                "           LEFT OUTER JOIN Member B\n" +
-                "                        ON a.dist = b.dist \n" +
-                "    AND\n" +
-                "    a.upz = b.upz \n" +
-                "    AND\n" +
-                "    a.un = b.un \n" +
-                "    AND\n" +
-                "    a.mouza = b.mouza \n" +
-                "    AND\n" +
-                "    a.vill = b.vill \n" +
-                "    AND\n" +
-                "    a.hhno = b.hhno \n" +
-                "    AND\n" +
-                "    CAST ( a.spno1 AS int ) = b.sno\n" +
-                "     WHERE A.MS = '2' \n" +
-                "           AND\n" +
-                "           A.Sex = 2\n" +
-                "     GROUP BY A.DisT,\n" +
-                "              A.Upz,\n" +
-                "              A.UN,\n" +
-                "              A.MOUZA,\n" +
-                "              A.Vill,\n" +
-                "              A.HHno \n" +
-                ") \n" +
-                "AS A\n" +
-                "       INNER JOIN Household household\n" +
-                "               ON A.HHNo = household.HHNo\n" +
-                " WHERE A.dist = household.dist \n" +
-                "       AND\n" +
-                "       A.upz = household.upz \n" +
-                "       AND\n" +
-                "       A.un = household.un \n" +
-                "       AND\n" +
-                "       A.mouza = household.mouza \n" +
-                "       AND\n" +
-                "       A.vill = household.vill \n" +
-                "       AND\n" +
-                "       A.hhno = household.hhno\n" +
-                " ORDER BY A.DisT,\n" +
-                "           A.Upz,\n" +
-                "           A.UN,\n" +
-                "           A.MOUZA,\n" +
-                "           A.Vill,\n" +
-                "           A.HHno;\n";
-        Save(SQL);
-        SQL = " update Household set Elco = \n" +
-                "(select Elco from elcodetails h \n" +
-                "where h.DisT = Household.DisT and\n" +
-                "       \n" +
-                "       h.Upz = Household.Upz and\n" +
-                "       h.UN = Household.UN and \n" +
-                "       h.MOUZA = Household.MOUZA and\n" +
-                "       h.Vill = Household.Vill and h.hhno= household.hhno);";
-        Save(SQL);
-        SQL = "DROP TABLE elcodetails;";
-        Save(SQL);
-
-        //String SQL = "";
-
-        //SQL = "Create table totalmem as";
-       // SQL += " select dist,upz,un,mouza,vill,hhno,count(*)totalmem from Member";
-       // SQL += " group by dist,upz,un,mouza,vill,hhno";
-
-        //Save(SQL);
-
-     *//*   SQL = "Create table headName as";
-        SQL += " select dist,upz,un,mouza,vill,provtype,provcode,hhno,nameeng headname from Member where rth='01' and length(extype)=0";
-        Save(SQL);
-
-        SQL = "update household set HHHead=(select headname from headname h where h.dist=household.dist and h.upz=household.upz and h.un=household.un and h.mouza=household.mouza and h.vill=household.vill and  h.hhno=household.hhno)";
-        Save(SQL);*//*
-
-       // SQL = "update household set TotalMem=(select totalmem from totalmem h where h.dist=household.dist and h.upz=household.upz and h.un=household.un and h.mouza=household.mouza and h.vill=household.vill  and h.hhno=household.hhno)";
-      // Save(SQL);
-
-       // Save("drop table totalmem");
-        //Save("drop table headName");
     }
-*/
+
     public void GenerateElco() {
         //Updating ElcoInformation group_concat( ifnull( A.NameENG, '' ) || '(' || ifnull( B.NameEng, '' ) || ')' ) AS ElcoName
         String SQL = "Create table elcodetails as\n" +
@@ -1869,6 +1635,174 @@ public class Connection extends SQLiteOpenHelper {
         Save("drop table headName");
 
     }
+
+    public void DownloadServiceTables(String provCode){
+
+
+
+        //fpaWorkPlanMaster
+        String VariableList = "";
+        String  sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", \"upload\" \n" +
+                "from \"workPlanMaster\" \n" +
+                "where \"providerId\" =" + provCode;
+
+        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
+        DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, providerId, month");
+
+        //fpaWorkPlanDetail
+
+        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", \"upload\" \n" +
+                "from \"workPlanDetail\" \n" +
+                "where \"providerId\" =" + provCode;
+
+        VariableList = "workPlanId,fpaItem,workPlanDate,unitNo,village,elcoFrom,elcoTo,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload";
+        DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, fpaItem, workPlanDate, providerId");
+
+        // fpiMonitoring
+        sql = "select  \"vDate\", \"fpaCode\", \"fpaUnit\", \"fpaVill\", \"fpaAdvance\", \"needItems1\", \"needItems2\", \"needItems3\", \"needItems4\", \"needItems5\", \"needItems6\", \"needItems7\", \"needItems8\", \"startTime\", \"endTime\", \"userId\" , \"enDt\" , \"upload\"  \n" +
+                "from \"fpiMonitoring\" \n" +
+                "where cast(\"userId\" as Integer) =" + provCode;
+        VariableList = "vDate,fpaCode,fpaUnit,fpaVill,fpaAdvance,needItems1,needItems2,needItems3,needItems4,needItems5,needItems6,needItems7,needItems8,startTime,endTime,userId,enDt,upload";
+        DownloadJSON(sql, "fpiMonitoring", VariableList, "vDate, fpaCode");
+
+
+        // HouseholdFPI
+        sql = "select  \"Dist\", \"Upz\", \"UN\", \"Mouza\", \"Vill\", \"ProvCode\", \"HHNo\", \"houseHoldStatus\", \"causeOfHouseHoldStatus\", \"subBlockStatus\", \"pAddrStatus\", \"permaAddressStatus\", \"religionStatus\", \"StartTime\", \"EndTime\", \"Lat\" , \"Lon\" , \"UserId\", \"EnDt\", \"Upload\"  \n" +
+                "from \"HouseholdFPI\" \n" +
+                "where cast(\"UserId\" as Integer) =" + provCode;
+        VariableList = "Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,houseHoldStatus,causeOfHouseHoldStatus,subBlockStatus,pAddrStatus,permaAddressStatus,religionStatus,StartTime,EndTime,Lat,Lon,UserId,EnDt,Upload";
+        DownloadJSON(sql, "HouseholdFPI", VariableList, "Dist,  Upz, UN,Mouza,Vill,HHNo");
+
+        // memberfpi
+        sql = "select  \"dist\", \"upz\", \"un\", \"mouza\", \"vill\", \"provtype\", \"provcode\", \"hhno\", \"sno\", \"healthid\", \"nameengstatus\", \"rthstatus\", \"havenidstatus\", \"nidstatus\", \"havebrstatus\", \"bridstatus\" , \"mobileno1status\" , \"mobileno2status\", \"dobstatus\", \"agestatus\", \"dobsourcestatus\", \"bplacestatus\", \"fnostatus\", \"fatherstatus\", \"mnostatus\", \"motherstatus\", \"sexstatus\", \"msstatus\", \"spno1status\", \"spno2status\", \"spno3status\", \"spno4status\", \"edustatus\", \"relstatus\", \"nationalitystatus\", \"ocpstatus\", \"starttime\", \"entype\", \"endate\", \"extype\" , \"exdate\" , \"endtime\" , \"lat\" , \"lon\" , \"userid\", \"endt\", \"upload\"  \n" +
+                "from \"memberfpi\" \n" +
+                "where cast(\"userid\" as Integer) =" + provCode;
+        VariableList = "dist,upz,un,mouza,vill,provtype,provcode,hhno,sno,healthid,nameengstatus,rthstatus,havenidstatus,nidstatus,havebrstatus,bridstatus,mobileno1status,mobileno2status,dobstatus,agestatus,dobsourcestatus,bplacestatus,fnostatus,fatherstatus,mnostatus,motherstatus,sexstatus,msstatus,spno1status,spno2status,spno3status,spno4status,edustatus,relstatus,nationalitystatus,ocpstatus,starttime,entype,endate,extype,exdate,endtime,lat,lon,userid,endt,upload";
+        DownloadJSON(sql, "memberfpi", VariableList, "dist,upz,un,mouza,vill, hhno, sno");
+
+
+
+        // sesfpi
+        sql = "select  \"dist\", \"upz\", \"un\", \"mouza\", \"vill\", \"provtype\", \"provcode\", \"hhno\", \"sesstatus\", \"q1status\", \"q11status\", \"q2status\", \"q21status\", \"q3astatus\", \"q3bstatus\", \"q3cstatus\" , \"q3dstatus\" , \"q3estatus\", \"q3fstatus\", \"q3gstatus\", \"q3hstatus\", \"q3istatus\", \"q3jstatus\", \"q3kstatus\", \"q3lstatus\", \"q3mstatus\", \"q3nstatus\", \"q3ostatus\", \"q3pstatus\", \"q4status\", \"q41status\", \"q5status\", \"q51status\", \"q6status\", \"q61status\", \"q7status\", \"q71status\", \"q8astatus\", \"q8bstatus\", \"q8cstatus\", \"q8dstatus\", \"q8estatus\", \"q9status\", \"q10status\", \"q11astatus\", \"starttime\", \"endtime\", \"userid\", \"endt\", \"upload\"  \n" +
+                "from \"sesfpi\" \n" +
+                "where cast(\"userid\" as Integer) =" + provCode;
+        VariableList = "dist,upz,un,mouza,vill,provtype,provcode,hhno,sesstatus,q1status,q11status,q2status,q21status,q3astatus,q3bstatus,q3cstatus,q3dstatus,q3estatus,q3fstatus,q3gstatus,q3hstatus,q3istatus,q3jstatus,q3kstatus,q3lstatus,q3mstatus,q3nstatus,q3ostatus,q3pstatus,q4status,q41status,q5status,q51status,q6status,q61status,q7status,q71status,q8astatus,q8bstatus,q8cstatus,q8dstatus,q8estatus,q9status,q10status,q11astatus,starttime,endtime,userid,endt,upload";
+        DownloadJSON(sql, "sesfpi", VariableList, "dist,upz,un,mouza,vill, hhno");
+
+// elcoFPI
+        sql = "select  \"healthId\", \"providerId\", \"hhStatus\", \"haHHNo\", \"elcoNo\", \"husbandName\", \"husbandAge\", \"domSource\", \"marrDate\", \"marrAge\", \"son\", \"dau\", \"regDT\", \"systemEntryDate\", \"modifyDate\", \"tt1\" , \"tt2\" , \"tt3\", \"tt4\", \"tt5\", \"upload\"   \n" +
+                "from \"elcoFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, providerId, hhStatus, haHHNo, elcoNo, husbandName,husbandAge,domSource, marrDate, marrAge, son, dau, regDT, systemEntryDate,modifyDate,tt1,tt2,tt3,tt4,tt5, upload";
+        DownloadJSON(sql, "elcoFPI", VariableList, "healthId");
+
+
+        // elcoVisitFPI
+        sql = "select  \"healthId\", \"pregNo\", \"providerId\", \"transactionId\", \"visit\", \"vDate\", \"visitStatus\", \"currStatus\", \"newOld\", \"mDate\", \"sSource\", \"qty\", \"unit\", \"brand\", \"validity\", \"dayMonYear\" , \"referPlace\" , \"syrinsQty\", \"mrSource\", \"MRDate\", \"MRAge\", \"systemEntryDate\" , \"modifyDate\" , \"upload\"    \n" +
+                "from \"elcoVisitFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId,pregNo,providerId,transactionId,visit,vDate,visitStatus,currStatus,newOld,mDate,sSource,qty,unit,brand,validity,dayMonYear,referPlace,syrinsQty,mrSource,MRDate,MRAge,systemEntryDate,modifyDate,upload";
+        DownloadJSON(sql, "elcoVisitFPI", VariableList, "healthId,visit");
+
+
+        // pregWomenFPI
+        sql = "select  \"healthId\", \"pregNo\", \"providerId\", \"LMP\", \"EDD\", \"para\", \"gravida\", \"lastChildAge\", \"riskHistoryNote\", \"pregRefer\", \"systemEntryDate\", \"upload\" \n" +
+                "from \"pregWomenFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, pregNo, providerId,LMP, EDD, para, gravida, lastChildAge, riskHistoryNote,pregRefer, systemEntryDate, upload";
+        DownloadJSON(sql, "pregWomenFPI", VariableList, "healthId, pregNo");
+
+
+        // ancServiceFPI
+        sql = "select  \"healthId\", \"pregNo\", \"serviceId\", \"providerId\", \"visitSource\", \"visitDate\", \"visitMonth\", \"ironFolStatus\", \"misoStatus\", \"systemEntryDate\", \"upload\" \n" +
+                "from \"ancServiceFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId,pregNo,serviceId,providerId,visitSource,visitDate,visitMonth,ironFolStatus,misoStatus,systemEntryDate,upload";
+        DownloadJSON(sql, "ancServiceFPI", VariableList, "healthId, pregNo, serviceId");
+
+
+        // deliveryFPI
+        sql = "select  \"healthId\", \"pregNo\", \"providerId\", \"outcomePlace\", \"outcomeDate\", \"outcomeType\", \"liveBirth\", \"stillBirth\", \"abortion\", \"misoprostol\", \"attendantDesignation\", \"systemEntryDate\", \"upload\" \n" +
+                "from \"deliveryFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, pregNo, providerId, outcomePlace, outcomeDate,  outcomeType,liveBirth, stillBirth, abortion, misoprostol, attendantDesignation,systemEntryDate, upload";
+        DownloadJSON(sql, "deliveryFPI", VariableList, "healthId, pregNo");
+
+
+        // newBornFPI
+        sql = "select  \"healthId\", \"pregNo\", \"childNo\", \"providerId\", \"birthWeight\", \"immatureBirth\", \"dryingAfterBirth\", \"resassitation\", \"stimulation\", \"bagNMask\", \"chlorehexidin\", \"skinTouch\", \"breastFeed\", \"bathThreeDays\" , \"systemEntryDate\" , \"modifyDate\" , \"upload\"  \n" +
+                "from \"newBornFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, pregNo, childNo, providerId, birthWeight, immatureBirth,dryingAfterBirth, resassitation, stimulation, bagNMask, chlorehexidin,skinTouch, breastFeed,bathThreeDays, systemEntryDate, modifyDate, upload";
+        DownloadJSON(sql, "newBornFPI", VariableList, "healthId, pregNo, childNo");
+
+        // pncServiceChildFPI
+        sql = "select  \"healthId\", \"pregNo\", \"childNo\", \"serviceId\", \"providerId\", \"visitSource\", \"visitDate\", \"visitMonth\", \"systemEntryDate\", \"modifyDate\", \"upload\" \n" +
+                "from \"pncServiceChildFPI\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, pregNo, childNo, serviceId,providerId,visitSource,visitDate,visitMonth, systemEntryDate, modifyDate, upload";
+        DownloadJSON(sql, "pncServiceChildFPI", VariableList, "healthId, pregNo, childNo, serviceId");
+
+
+        // pncServiceMother
+        sql = "select  \"healthId\", \"pregNo\", \"serviceId\", \"providerId\", \"visitSource\", \"visitDate\", \"visitMonth\", \"systemEntryDate\", \"modifyDate\", \"upload\" \n" +
+                "from \"pncServiceMother\" \n" +
+                "where \"providerId\" =" + provCode;
+        VariableList = "healthId, pregNo, serviceId, providerId,visitSource,visitDate,visitMonth,systemEntryDate, modifyDate, upload";
+        DownloadJSON(sql, "pncServiceMother", VariableList, "healthId, pregNo, serviceId");
+
+        // epiBariVisit
+        sql = "select  \"dist\", \"upz\", \"un\", \"un\", \"vill\", \"provType\", \"provCode\", \"hHNo\", \"qBHHNo\", \"qBHEndDate\", \"qBPVisitEPI1\", \"qBPVisitEPI2\", \"qBPVisitEPI3\", \"qBPVisitEPI4\", \"qBPVisitEPI5\", \"qBNextDoss\", \"qB1stDoss1\", \"qB1stDoss2\", \"qB1stDoss3\", \"qB1stDoss4\", \"qB1stDoss5\", \"qBCNoSessiondossY\", \"qBCNoSessiondoss\", \"qBWNoSessiondossY\", \"qBWNoSessiondoss\" , \"qBVitmA\", \"qBChildCard\", \"qBWomenCard\", \"startTime\", \"endTime\", \"userId\", \"enDt\", \"upload\"\n" +
+                "from \"epiBariVisit\" \n" +
+                "where \"userId\" =" + provCode;
+        VariableList = "dist,upz,un,mouza,vill,provType,provCode,hHNo,vDate,qBHHNo,qBHEndDate,qBPVisitEPI1,qBPVisitEPI2,qBPVisitEPI3,qBPVisitEPI4,qBPVisitEPI5,qBNextDoss,qB1stDoss1,qB1stDoss2,qB1stDoss3,qB1stDoss4,qB1stDoss5,qBCNoSessiondossY,qBCNoSessiondoss,qBWNoSessiondossY,qBWNoSessiondoss,qBVitmA,qBChildCard,qBWomenCard,startTime,endTime,userId,enDt,upload";
+        DownloadJSON(sql, "epiBariVisit", VariableList, "dist,upz,un,mouza,vill,provCode,hHNo,vDate");
+
+// epiSessionVisit
+        sql = "select  \"subBlockId\", \"schedulerId\", \"providerId\", \"vDate\", \"qVHA\", \"qVFWA\", \"qVN\", \"qVOth\", \"qVChReg\", \"qVWReg\", \"qVChCard\", \"qVWCard\", \"qVTalBook\", \"qVFIBook\", \"qVVac\", \"qVASerice\", \"qVMSerice\", \"qVSBox\", \"qVVatARed\", \"qVVatABlue\", \"qVIICPac\", \"qVBCG\", \"qVPenta\", \"qVPolio\", \"qVPcv\" , \"qVIPV\", \"qVMR\", \"qVTT\", \"qVSbcg\", \"qVSPenta\", \"qVSPolio\", \"qVSPcv\", \"qVSIPV\", \"qVSMR\", \"qVSTT\", \"qVNToubcg\", \"qVNToupant\", \"qVNTouPolio\", \"qVNToupcv\", \"qVNTouIPV\", \"qVNTouMR\", \"qVNTouTT\", \"qVRootbcg\", \"qVNotwhy\", \"qVRootPenta\", \"qVRootMR\", \"qVRootTT\", \"qVSRemoved\", \"qVFormbcg\", \"qVFormpenta\", \"qVFormPolio\", \"qVFormpcv\", \"qVFormipv\", \"qVFormmr\", \"qVFormtt\", \"qVCardregBook\", \"qVCardVac\", \"qVTTresearched\", \"qVProtectors\", \"qVDateOfVac\", \"qVCard\", \"qVAFP\", \"qVMeasles\", \"qVNewborntetanus\", \"qVOther\", \"qVTodySession\", \"qVProblem1\", \"qVProblem2\", \"qVProblem3\", \"qVProblem4\", \"qVProblem5\", \"qVSolve1\", \"qVSolve2\", \"qVSolve3\", \"qVSolve3\", \"qVSolve4\", \"qVSolve5\", \"startTime\", \"endTime\", \"userId\", \"enDt\", \"upload\" \n" +
+                "from \"epiSessionVisit\" \n" +
+                "where \"userId\" =" + provCode;
+        VariableList = "subBlockId,schedulerId,providerId,vDate,qVHA,qVFWA,qVN,qVOth,qVChReg,qVWReg,qVChCard,qVWCard,qVTalBook,qVFIBook,qVVac,qVASerice,qVMSerice,qVSBox,qVVatARed,qVVatABlue,qVIICPac,qVBCG,qVPenta,qVPolio,qVPcv,qVIPV,qVMR,qVTT,qVSbcg,qVSPenta,qVSPolio,qVSPcv,qVSIPV,qVSMR,qVSTT,qVNToubcg,qVNToupant,qVNTouPolio,qVNToupcv,qVNTouIPV,qVNTouMR,qVNTouTT,qVRootbcg,qVNotwhy,qVRootPenta,qVRootMR,qVRootTT,qVSRemoved,qVFormbcg,qVFormpenta,qVFormPolio,qVFormpcv,qVFormipv,qVFormmr,qVFormtt,qVCardregBook,qVCardVac,qVTTresearched,qVProtectors,qVDateOfVac,qVCard,qVAFP,qVMeasles,qVNewborntetanus,qVOther,qVTodySession,qVProblem1,qVProblem2,qVProblem3,qVProblem4,qVProblem5,qVSolve1,qVSolve2,qVSolve3,qVSolve4,qVSolve5,startTime,endTime,userId,enDt,upload";
+        DownloadJSON(sql, "epiSessionVisit", VariableList, "subBlockId,schedulerId,providerId,vDate");
+
+
+        //ClientMap
+
+      sql = "select  B.\"generatedId\", B.\"name\",  B.\"age\", B.\"divisionId\", B.\"zillaId\", B.\"upazilaId\",  B.\"unionId\", B.\"mouzaId\",B.\"villageId\", B.\"houseGRHoldingNo\", B.\"mobileNo\",  B.\"systemEntryDate\", B.\"modifyDate\", B.\"providerId\",  B.\"healthId\",  B.\"gender\", B.\"fatherName\", B.\"motherName\", B.\"husbandName\", B.\"dob\", B.\"ownMobile\", B.\"epiBlock\",   '1' Upload \n" +
+                "from \"ProviderArea\" pa \n" +
+                "INNER JOIN \"Member\" A ON A.\"Dist\" = pa.zillaid and A.\"Upz\" = pa.upazilaid and A.\"UN\" = pa.unionid\n" +
+                "and A.\"Mouza\" = pa.mouzaid and A.\"Vill\" = pa.villageid \n" +
+                "INNER JOIN \"clientMap\" B ON A.\"HealthID\" = B.\"healthId\"\n" +
+                "where pa.\"provCode\" =" + provCode ;
+
+
+
+        DownloadJSON(sql, "clientMap", "generatedId, name,  age, divisionId, zillaId, upazilaId,  unionId, mouzaId,villageId, houseGRHoldingNo, mobileNo,  systemEntryDate, modifyDate, providerId,  healthId,  gender, fatherName, motherName, husbandName, dob, ownMobile, epiBlock,  upload", "generatedId");
+
+
+        //Member Data
+        sql = " Select distinct h.\"Dist\", h.\"Upz\", h.\"UN\", h.\"Mouza\", h.\"Vill\", h.\"ProvType\", h.\"ProvCode\", h.\"HHNo\", h.\"SNo\", h.\"HealthID\", h.\"NameEng\", h.\"NameBang\", h.\"Rth\", h.\"HaveNID\", h.\"NID\", h.\"NIDStatus\", h.\"HaveBR\",";
+        sql += " h.\"BRID\", h.\"BRIDStatus\", h.\"MobileNo1\", h.\"MobileNo2\",h.mobileyn, h.\"DOB\", h.\"Age\", h.\"DOBSource\", h.\"BPlace\", h.\"FNo\", h.\"Father\", h.\"FDontKnow\", h.\"MNo\", h.\"Mother\", h.\"MDontKnow\", h.\"Sex\", h.\"MS\", h.\"SPNO1\",";
+        sql += " h.\"SPNO2\", h.\"SPNO3\", h.\"SPNO4\", h.\"ELCONo\", h.\"ELCODontKnow\", h.\"EDU\", h.\"Rel\", h.\"Nationality\", h.\"OCP\", h.\"StartTime\", h.\"EnType\", h.\"EnDate\", coalesce(h.\"ExType\", '')  AS \"ExType\", h.\"ExDate\", h.\"EndTime\", h.\"Lat\", h.\"Lon\", h.\"UserId\", h.\"EnDt\" , h.\"hidDistributed\"\n" +
+                "\t,h.\"hidDistributionDate\", '1' Upload";
+        sql += " from \"Village\" v";
+        sql += " inner join \"ProviderArea\" a on v.\"ZILLAID\"=a.zillaid and v.\"UPAZILAID\"=a.upazilaid and v.\"UNIONID\"=a.unionid and v.\"MOUZAID\"=a.mouzaid and v.\"VILLAGEID\"=a.villageid";
+        sql += " inner join \"Member\" h on a.zillaid=h.\"Dist\" and a.upazilaid=h.\"Upz\" and a.unionid=h.\"UN\" and a.mouzaid=h.\"Mouza\" and a.villageid=h.\"Vill\""+
+                "INNER JOIN \"clientMap\" B ON h.\"HealthID\" = B.\"healthId\""+
+                "INNER JOIN \"pregWomen\" C ON C.\"healthId\" = B.\"generatedId\""+
+            /*    "where a.\"mouzaid\" ='" + mouzaid  + "'\n" +
+                "\tand a.\"villageid\" = '" + villageid + "'\n" +
+                "\tand a.\"zillaid\" = '" + zillaid + "'\n" +
+                "\tand a.\"upazilaid\" = '" + upazilaid + "'\n" +
+                "\tand a.\"unionid\" = '" + unionid+ "'"+*/
+                "\twhere h.\"HealthID\" in(Select \"HealthID\" from \"clientMap\" where \"HealthID\" = B.\"healthId\")";
+
+        DownloadJSON(sql, "Member", "Dist, Upz, UN, Mouza, Vill, ProvType, ProvCode, HHNo, SNo, HealthID, NameEng, NameBang, Rth, HaveNID, NID, NIDStatus, HaveBR, BRID, BRIDStatus, MobileNo1, MobileNo2,MobileYN, DOB, Age, DOBSource, BPlace, FNo, Father, FDontKnow, MNo, Mother, MDontKnow, Sex, MS, SPNO1, SPNO2, SPNO3, SPNO4, ELCONo, ELCODontKnow, EDU, Rel, Nationality, OCP, StartTime, EnType, EnDate, ExType, ExDate, EndTime, Lat, Lon, UserId, EnDt, hidDistributed, hidDistributionDate, Upload", "Dist, Upz, UN, Mouza, Vill, HHNo, SNo");
+
+
+
+
+    }
     public void DownloadServiceTables(String provCode, ProgressDialog progress, String message, Handler progressHandler,int jumpTime, boolean DowloadOnlyAppropriateRecords){
 
         jumpTime += 1;
@@ -1878,40 +1812,40 @@ public class Connection extends SQLiteOpenHelper {
         //fpaWorkPlanMaster
         String VariableList = "";
         String  sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", \"upload\" \n" +
-                "from \"fpaWorkPlanMaster\" \n" +
-                 "where \"providerId\" =" + provCode;
+                "from \"workPlanMaster\" \n" +
+                "where \"providerId\" =" + provCode;
 
         VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, providerId, workAreaId");
+        DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, providerId, month");
 
         //fpaWorkPlanDetail
 
-          sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", \"upload\" \n" +
+        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", \"upload\" \n" +
                 "from \"workPlanDetail\" \n" +
                 "where \"providerId\" =" + provCode;
 
         VariableList = "workPlanId,fpaItem,workPlanDate,unitNo,village,elcoFrom,elcoTo,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload";
-        DownloadJSON(sql, "fpaWorkPlanDetail", VariableList, "workPlanId, fpaItem, workPlanDate, providerId");
+        DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, fpaItem, workPlanDate, providerId");
 
-       // fpiMonitoring
+        // fpiMonitoring
         sql = "select  \"vDate\", \"fpaCode\", \"fpaUnit\", \"fpaVill\", \"fpaAdvance\", \"needItems1\", \"needItems2\", \"needItems3\", \"needItems4\", \"needItems5\", \"needItems6\", \"needItems7\", \"needItems8\", \"startTime\", \"endTime\", \"userId\" , \"enDt\" , \"upload\"  \n" +
                 "from \"fpiMonitoring\" \n" +
-                "where \"userId\" =" + provCode;
+                "where cast(\"userId\" as Integer) =" + provCode;
         VariableList = "vDate,fpaCode,fpaUnit,fpaVill,fpaAdvance,needItems1,needItems2,needItems3,needItems4,needItems5,needItems6,needItems7,needItems8,startTime,endTime,userId,enDt,upload";
-        DownloadJSON(sql, "fpiMonitoring", VariableList, "vDate, fpaCode, fpaUnit");
+        DownloadJSON(sql, "fpiMonitoring", VariableList, "vDate, fpaCode");
 
 
         // HouseholdFPI
         sql = "select  \"Dist\", \"Upz\", \"UN\", \"Mouza\", \"Vill\", \"ProvCode\", \"HHNo\", \"houseHoldStatus\", \"causeOfHouseHoldStatus\", \"subBlockStatus\", \"pAddrStatus\", \"permaAddressStatus\", \"religionStatus\", \"StartTime\", \"EndTime\", \"Lat\" , \"Lon\" , \"UserId\", \"EnDt\", \"Upload\"  \n" +
                 "from \"HouseholdFPI\" \n" +
-                "where \"UserId\" =" + provCode;
+                "where cast(\"UserId\" as Integer) =" + provCode;
         VariableList = "Dist,Upz,UN,Mouza,Vill,ProvType,ProvCode,HHNo,houseHoldStatus,causeOfHouseHoldStatus,subBlockStatus,pAddrStatus,permaAddressStatus,religionStatus,StartTime,EndTime,Lat,Lon,UserId,EnDt,Upload";
         DownloadJSON(sql, "HouseholdFPI", VariableList, "Dist,  Upz, UN,Mouza,Vill,HHNo");
 
         // memberfpi
         sql = "select  \"dist\", \"upz\", \"un\", \"mouza\", \"vill\", \"provtype\", \"provcode\", \"hhno\", \"sno\", \"healthid\", \"nameengstatus\", \"rthstatus\", \"havenidstatus\", \"nidstatus\", \"havebrstatus\", \"bridstatus\" , \"mobileno1status\" , \"mobileno2status\", \"dobstatus\", \"agestatus\", \"dobsourcestatus\", \"bplacestatus\", \"fnostatus\", \"fatherstatus\", \"mnostatus\", \"motherstatus\", \"sexstatus\", \"msstatus\", \"spno1status\", \"spno2status\", \"spno3status\", \"spno4status\", \"edustatus\", \"relstatus\", \"nationalitystatus\", \"ocpstatus\", \"starttime\", \"entype\", \"endate\", \"extype\" , \"exdate\" , \"endtime\" , \"lat\" , \"lon\" , \"userid\", \"endt\", \"upload\"  \n" +
                 "from \"memberfpi\" \n" +
-                "where \"upload\" =" + provCode;
+                "where cast(\"userid\" as Integer) =" + provCode;
         VariableList = "dist,upz,un,mouza,vill,provtype,provcode,hhno,sno,healthid,nameengstatus,rthstatus,havenidstatus,nidstatus,havebrstatus,bridstatus,mobileno1status,mobileno2status,dobstatus,agestatus,dobsourcestatus,bplacestatus,fnostatus,fatherstatus,mnostatus,motherstatus,sexstatus,msstatus,spno1status,spno2status,spno3status,spno4status,edustatus,relstatus,nationalitystatus,ocpstatus,starttime,entype,endate,extype,exdate,endtime,lat,lon,userid,endt,upload";
         DownloadJSON(sql, "memberfpi", VariableList, "dist,upz,un,mouza,vill, hhno, sno");
 
@@ -1920,7 +1854,7 @@ public class Connection extends SQLiteOpenHelper {
         // sesfpi
         sql = "select  \"dist\", \"upz\", \"un\", \"mouza\", \"vill\", \"provtype\", \"provcode\", \"hhno\", \"sesstatus\", \"q1status\", \"q11status\", \"q2status\", \"q21status\", \"q3astatus\", \"q3bstatus\", \"q3cstatus\" , \"q3dstatus\" , \"q3estatus\", \"q3fstatus\", \"q3gstatus\", \"q3hstatus\", \"q3istatus\", \"q3jstatus\", \"q3kstatus\", \"q3lstatus\", \"q3mstatus\", \"q3nstatus\", \"q3ostatus\", \"q3pstatus\", \"q4status\", \"q41status\", \"q5status\", \"q51status\", \"q6status\", \"q61status\", \"q7status\", \"q71status\", \"q8astatus\", \"q8bstatus\", \"q8cstatus\", \"q8dstatus\", \"q8estatus\", \"q9status\", \"q10status\", \"q11astatus\", \"starttime\", \"endtime\", \"userid\", \"endt\", \"upload\"  \n" +
                 "from \"sesfpi\" \n" +
-                "where \"userid\" =" + provCode;
+                "where cast(\"userid\" as Integer) =" + provCode;
         VariableList = "dist,upz,un,mouza,vill,provtype,provcode,hhno,sesstatus,q1status,q11status,q2status,q21status,q3astatus,q3bstatus,q3cstatus,q3dstatus,q3estatus,q3fstatus,q3gstatus,q3hstatus,q3istatus,q3jstatus,q3kstatus,q3lstatus,q3mstatus,q3nstatus,q3ostatus,q3pstatus,q4status,q41status,q5status,q51status,q6status,q61status,q7status,q71status,q8astatus,q8bstatus,q8cstatus,q8dstatus,q8estatus,q9status,q10status,q11astatus,starttime,endtime,userid,endt,upload";
         DownloadJSON(sql, "sesfpi", VariableList, "dist,upz,un,mouza,vill, hhno");
 
@@ -2002,7 +1936,141 @@ public class Connection extends SQLiteOpenHelper {
 
 
 
+    }
 
+   //Download Data from Server
+    public String DownloadJSON_HealthID(String SQL, String TableName, String ColumnList, String UniqueField) {
+        DownloadRequestClass dr = new DownloadRequestClass();
+        dr.setmethodname("DownloadData");
+        dr.setSQL(SQL);
+        Gson gson = new Gson();
+        String json = gson.toJson(dr);
+
+        String WhereClause = "";
+        int varPos = 0;
+
+        String response = "";
+        String resp = "";
+        String IDNO = "";
+        try {
+            //For Web Api
+            //--------------------------------------------------------------------------------------
+            DownloadJSONData dload = new DownloadJSONData();
+            response = dload.execute(json).get();
+            downloadClass responseData = (downloadClass) gson.fromJson(response, downloadClass.class);
+            //--------------------------------------------------------------------------------------
+
+
+            String UField[] = UniqueField.toString().replace(" ", "").split(",");
+            String VarList[] = ColumnList.toString().replace(" ", "").split(",");
+            String InsertSQL = "";
+
+            List<String> dataStatus = new ArrayList<String>();
+            List<DataClassProperty> data = new ArrayList<DataClassProperty>();
+            DataClassProperty d;
+            String DataList = "";
+
+            String modify_Date = "";
+            if (responseData != null) {
+                for (int i = 0; i < responseData.getdata().size(); i++) {
+                    String VarData[] = split(responseData.getdata().get(i).toString(), '^');
+
+                    //Generate where clause
+                    SQL = "";
+                    WhereClause = "";
+                    varPos = 0;
+                    for (int j = 0; j < UField.length; j++) {
+                        varPos = VarPosition(UField[j].toString(), VarList);
+                        if (j == 0) {
+                            WhereClause = UField[j].toString() + "=" + "'" + VarData[varPos].toString() + "'";
+                            IDNO += VarData[varPos].toString();
+                        } else {
+                            WhereClause += " and " + UField[j].toString() + "=" + "'" + VarData[varPos].toString() + "'";
+                            IDNO += VarData[varPos].toString();
+                        }
+                    }
+
+                    //Update command
+                    int hid_var_pos = VarPosition("HealthId", VarList);
+                    int modifydt_var_pos = VarPosition("modifyDate", VarList);
+                    modify_Date = VarData[modifydt_var_pos].toString().replace("null", "");
+
+                    Save("Update Member set HealthId='"+ VarData[hid_var_pos].toString() +"' Where " + WhereClause);
+                    //Save("Update ClientMap set HealthId='"+ VarData[varPos].toString() +"' Where " + WhereClause);
+                /*
+                if (Existence("Select " + VarList[0] + " from " + TableName + " Where " + WhereClause)) {
+                    for (int r = 0; r < VarList.length; r++) {
+                        if (r == 0) {
+                            SQL = "Update " + TableName + " Set ";
+                            SQL += VarList[r] + " = '" + VarData[r].toString() + "'";
+                        } else {
+                            if (r == VarData.length - 1) {
+                                SQL += "," + VarList[r] + " = '" + VarData[r].toString() + "'";
+                                SQL += " Where " + WhereClause;
+                            } else {
+                                SQL += "," + VarList[r] + " = '" + VarData[r].toString() + "'";
+                            }
+                        }
+                        if ("modifyDate".equalsIgnoreCase(VarList[r])) {
+                            modify_Date = VarData[r].toString().replace("null", "");
+                        }
+                    }
+
+                    Save(SQL);
+                }*/
+
+                    //Insert command
+                /*else {
+                    for (int r = 0; r < VarList.length; r++) {
+                        if (r == 0) {
+                            SQL = "Insert into " + TableName + "(" + ColumnList + ")Values(";
+                            SQL += "'" + VarData[r].toString() + "'";
+                        } else {
+                            SQL += ",'" + VarData[r].toString() + "'";
+                        }
+                        if (VarList[r].toString().equalsIgnoreCase("modifyDate")) {
+                            modify_Date = VarData[r].toString().replace("null", "");
+                        }
+                    }
+                    SQL += ")";
+
+                    Save(SQL);
+                }*/
+                    DataList = TableName + "^" + IDNO + "^" + modify_Date + "^" + Global.getInstance().getProvType() + "^" + Global.getInstance().getProvCode();
+                    d = new DataClassProperty();
+                    d.setdatalist(DataList);
+                    d.setuniquefieldwithdata("\"recordId\"='" + IDNO + "' and \"modifyDate\"='" + modify_Date + "' and \"provCode\"='" + Global.getInstance().getProvCode() + "'");
+                    data.add(d);
+
+                    IDNO = "";
+                }
+
+                //Upload status to data_sync_management
+                DataClass dt = new DataClass();
+                dt.setmethodname("UploadData_For_Sync");
+                dt.settablename("data_sync_management");
+                dt.setcolumnlist("tableName,recordId,modifyDate,provType,provCode");
+                dt.setdata(data);
+
+                Gson gson1   = new Gson();
+                String json1 = gson1.toJson(dt);
+                String response1 = "";
+
+                UploadJSONData u = new UploadJSONData();
+
+                try{
+                    response1=u.execute(json1).get();
+                } catch (Exception e) {
+                    //  Toast.makeText(dbContext, "All data did not upload. Try again.", Toast.LENGTH_LONG).show();
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            resp = e.getMessage();
+            e.printStackTrace();
+        }
+
+        return resp;
     }
 
         //To get the list of columns(string) in table

@@ -31,29 +31,28 @@
         android:label="@string/app_name"
         android:largeHeap="true"
         android:theme="@style/CustomTheme" >
-
-        <!--
-    <activity android:id="@+id/FPI"
-        android:name="com.data.rhis2.LoginActivity"
-       android:label="@string/app_name_FPI" android:icon="@drawable/emislog">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
-        -->
-
         <activity
-            android:id="@+id/AHI"
+            android:id="@+id/FPI"
             android:name="com.data.rhis2.LoginActivity"
             android:icon="@drawable/emislog"
-            android:label="@string/app_name_AHI" >
+            android:label="@string/app_name_FPI" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+<activity android:id="@+id/AHI"
+    android:name="com.data.rhis2.LoginActivity"
+    android:label="@string/app_name_AHI" android:icon="@drawable/emislog">
+    <intent-filter>
+        <action android:name="android.intent.action.MAIN" />
+        <category android:name="android.intent.category.LAUNCHER" />
+    </intent-filter>
+</activity>
+        -->
         <!--
     <activity android:id="@+id/HI"
         android:name="com.data.rhis2.LoginActivity"

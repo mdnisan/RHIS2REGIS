@@ -113,13 +113,7 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
 
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -141,15 +135,8 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
 
     LinearLayout secRemarks;
     LinearLayout secListRow1;
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
-    Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
 
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
+    Spinner spnVillage1;
 
     Button cmdSync;
     Button cmdDownload;
@@ -441,14 +428,6 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
             });
 
 
-            /*cmdRefresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-
-                    //  Submit();
-
-                    buttonStatus();
-                }
-            });*/
 
         } catch (Exception e) {
             Connection.MessageBox(HAWorkPlaningViewAHINotAproved.this, e.getMessage());
@@ -461,6 +440,43 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
         String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
         if (val.length() >= 0) {
 
+            txtFpiWarea.setText(ProvArea("3", Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
+            txtFpiWarea.setEnabled(false);
+
+            txtfpaVill.setText(ProvVill(Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
+            DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
+
+            if (val.equals("99")) {
+
+                cmdSync.setVisibility(View.GONE);
+                secListRow1.setVisibility(View.GONE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            } else if (!C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
+                cmdSync.setVisibility(View.GONE);
+                secListRow1.setVisibility(View.GONE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            } else if (C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
+                cmdSync.setVisibility(View.VISIBLE);
+                secListRow1.setVisibility(View.VISIBLE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            }
+
+        }
+    }
+
+   /* private void buttonStatus()
+    {
+        String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
+        if (val.length() >= 0) {
+
             txtFpiWarea.setText(ProvArea("2", Global.Left(spnfpaCode.getSelectedItem().toString(), 6)));
             txtFpiWarea.setEnabled(false);
 
@@ -468,13 +484,12 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
             DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
 
             if (val.equals("99")) {
-                //cmdRefresh.setVisibility(View.GONE);
+
                 cmdSync.setVisibility(View.GONE);
                 cmdNotApproved.setVisibility(View.GONE);
                 secListRow1.setVisibility(View.GONE);
                 secRemarks.setVisibility(View.GONE);
-                //secFPIDataSyne.setVisibility(View.GONE);
-                // cmdSync.setEnabled(false);
+
                 cmdApproved.setEnabled(false);
                 cmdNotApproved.setEnabled(false);
                 cmdRequest.setEnabled(false);
@@ -524,7 +539,7 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
             }
 
         }
-    }
+    }*/
 
     private void Upload() {
 
@@ -537,7 +552,7 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
         // progressHandler.sendMessage(progressHandler.obtainMessage());
         TableName = "workPlanMaster";
         VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.UploadJSON(TableName, VariableList, "workPlanId, workAreaId, providerId");
+        C.UploadJSON(TableName, VariableList, "workPlanId, providerId, month");
 
         // message = "Uploading workPlanDetail";
         // jumpTime += 1;
@@ -550,36 +565,7 @@ public class HAWorkPlaningViewAHINotAproved extends Activity {
 
     }
 
-/*    public void DeleteChangeUPTables()
-    {
-             TableNameDetail = "workPlanDetail";
-             String  SQL = "Delete From " + TableNameDetail + "";
-             SQL += "  Where remarks='U' And substr(workPlanDate, 1, 7 )='"+Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4)+"-"+Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2)+ "'and providerId='" +Global.Left(spnfpaCode.getSelectedItem().toString(), 5)+ "'";
-             C.Save(SQL);
 
-    }*/
-
-    public void DownloadFWAWWORKPlAINTables(String provCode) {
-
-        //workPlanMaster
-        String VariableList = "";
-        String sql = "select  \"workPlanId\", \"workAreaId\", \"providerId\", \"month\", \"status\", \"systemEntryDate\", \"modifyDate\", 1 as upload\n" +
-                "from \"workPlanMaster\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.DownloadJSON(sql, "workPlanMaster", VariableList, "workPlanId, workAreaId, providerId");
-
-        //workPlanDetail
-        sql = "select  \"workPlanId\", \"item\", \"workPlanDate\", \"unitNo\", \"village\", \"elcoFrom\", \"elcoTo\", \"ipcUN\",\"ipcWord\",\"ipcMouza\",\"ipcVill\",\"ipcPara\", \"ipcBariFrom\",\"ipcBariTo\",\"epiproviderId\",\"epischedulerId\",\"ccWard\",\"ccID\",\"natProgramType\",\"fpiOtherMeeting\",\"leaveType\", \"providerId\", \"systemEntryDate\", \"modifyDate\", \"otherDec\", \"remarks\", 1 as upload,status\n" +
-                "from \"workPlanDetail\" \n" +
-                "where \"providerId\" =" + provCode + "";
-
-
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,natProgramType,fpiOtherMeeting,leaveType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
-        C.DownloadJSON(sql, "workPlanDetail", VariableList, "workPlanId, item, workPlanDate, providerId");
-    }
 
 
     private String ProvArea(String ProvType, String ProvCode) {

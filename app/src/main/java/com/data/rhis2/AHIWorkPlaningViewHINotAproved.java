@@ -113,13 +113,7 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
 
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -189,7 +183,7 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
             cmdApproved = (Button) findViewById(R.id.cmdApproved);
             cmdNotApproved = (Button) findViewById(R.id.cmdNotApproved);
             cmdRequest = (Button) findViewById(R.id.cmdRequest);
-            // cmdRefresh= (Button) findViewById(R.id.cmdRefresh);
+
 
             secFPIPMonth = (LinearLayout) findViewById(R.id.secFPIPMonth);
             VlblFPIPMonth = (TextView) findViewById(R.id.VlblFPIPMonth);
@@ -358,26 +352,6 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
             spnfpaCode.setAdapter(C.getArrayAdapterMultiline("Select substr('0' ||ProvCode, -6, 6)||'-'||ProvName from ProviderDB where ProvType ='11'"));
            txtFpiWarea = (TextView) findViewById(R.id.txtFpiWarea);
 
-   /*         spnfpaCode.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
-                    if (val.length() >= 0) {
-                        String union = C.ReturnSingleValue("Select unionid from ProviderDB where ProvCode ='" + val + "'");
-                        txtFpiWarea.setText(C.ReturnSingleValue("select cast(unionid as varchar(2))||','||unionname from Unions where zillaid='" + g.getDistrict() + "' and upazilaid='" + g.getUpazila() + "' and unionid='" + union + "'"));
-                        txtFpiWarea.setEnabled(false);
-                        buttonStatus();
-
-                    }
-
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> adapterView) {
-
-                }
-            });*/
 
 
             spnFPIPMonth.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -474,22 +448,46 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
             });
 
 
-            /*cmdRefresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-
-                    //  Submit();
-
-                    buttonStatus();
-                }
-            });*/
 
         } catch (Exception e) {
             Connection.MessageBox(AHIWorkPlaningViewHINotAproved.this, e.getMessage());
             return;
         }
     }
-
     private void buttonStatus()
+    {
+        String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
+        if (val.length() >= 0) {
+
+        DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), Global.Left(spnfpaCode.getSelectedItem().toString(), 6));
+
+            if (val.equals("99")) {
+
+                cmdSync.setVisibility(View.GONE);
+                secListRow1.setVisibility(View.GONE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            } else if (!C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
+                cmdSync.setVisibility(View.GONE);
+                secListRow1.setVisibility(View.GONE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            } else if (C.Existence("Select * FROM workPlanMaster A INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId WHERE A.status='3' and B.providerId= '" + Global.Left(spnfpaCode.getSelectedItem().toString(), 6) + "' AND substr( B.workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
+
+                cmdSync.setVisibility(View.VISIBLE);
+                secListRow1.setVisibility(View.VISIBLE);
+                secRemarks.setVisibility(View.GONE);
+
+
+            }
+
+        }
+    }
+
+   /* private void buttonStatus()
     {
         String val = Global.Left(spnfpaCode.getSelectedItem().toString(), 6);
         if (val.length() >= 0) {
@@ -558,7 +556,7 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
 
         }
     }
-
+*/
     private void Upload() {
 
         String TableName = "";
@@ -822,7 +820,7 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And A.status='3' And B.status='2'\n" +
@@ -915,7 +913,7 @@ public class AHIWorkPlaningViewHINotAproved extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And A.status='3' And B.status='2'\n" +

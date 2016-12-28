@@ -859,128 +859,7 @@ public class AHIWorkPlaningView extends Activity {
 
     }
 
-  /*  private String ProvArea(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE provCode = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit||'-'||u.UNameBan from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and p.provCode ='" + ProvCode + "'";
 
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            *//*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            *//*
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
-
-    private String ProvVill(String ProvCode) {
-        String SQL = "";
-        // SQL="select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode ='"+ ProvCode +"'";
-        SQL = " select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME from Village where mouzaid||VILLAGEID in (Select mouzaid||VILLAGEID from ProviderArea where ProvCode='" + ProvCode + "')";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-
-            retValue = retValue.length() > 0 ? retValue + ", " + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }*/
-
-    private String ProvAreaS(String ProvType, String ProvCode) {
-        String SQL = "";
-        if (ProvType.equals("2"))
-            SQL = "select distinct ward from ProviderArea WHERE cast(provCode as INT) = '" + ProvCode + "'";
-            //SQL="select distinct p.ward||' সাব ব্লক :'||p.Block||'-'||u.BNameBan from ProviderArea p,HABlock u WHERE u.BCode=p.block and p.provCode= '"+ ProvCode +"'";
-        else if (ProvType.equals("3"))
-            //SQL = "select distinct fwaunit from ProviderArea WHERE provCode = '"+ ProvCode +"'";
-            SQL = "select distinct p.fwaunit from ProviderArea p,FWAUnit u where u.UCode=p.fwaunit and cast(p.provCode as INT) ='" + ProvCode + "'";
-
-        Cursor cur = C.ReadData(SQL);
-        String retValue = "";
-        cur.moveToFirst();
-        while (!cur.isAfterLast()) {
-            //retValue=cur.getString(0);
-
-            /*if(ProvCode.equals("02"))
-                retValue=cur.getString(0);
-            else if(ProvCode.equals("03"))
-                retValue=cur.getString(0);
-            */
-
-            retValue = retValue.length() > 0 ? retValue + cur.getString(0) : cur.getString(0);
-
-            cur.moveToNext();
-        }
-        cur.close();
-
-        return retValue;
-    }
-
-    private void DisplayFPALeave() {
-        final Dialog popupView = new Dialog(AHIWorkPlaningView.this);
-        popupView.setTitle("ছুটি");
-
-        popupView.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        popupView.setContentView(R.layout.fpiremarkspopup);
-        popupView.setCancelable(true);
-        popupView.setCanceledOnTouchOutside(true);
-
-
-        popupView.show();
-
-        Button cmdSave = (Button) popupView.findViewById(R.id.cmdSave);
-        cmdSave.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                String SQL = "";
-
-            }
-        });
-
-        //   }
-        // else
-        //  {
-
-        // }
-        Button cmdClose = (Button) popupView.findViewById(R.id.cmdClose);
-        cmdClose.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View arg0) {
-                // TODO Auto-generated method stub
-                popupView.cancel();
-            }
-        });
-    }
-
-    private String GetStatus(String month) {
-        String SQL = "";
-
-        SQL = "Select status from workPlanMaster";
-        SQL += " where month='" + month + "'";
-        String mo = C.ReturnSingleValue(SQL);
-        // Serial No auto increment
-        return mo;
-    }
     //NotApproved
     private void DataSearch(String month, String ProvCode) {
         try {
@@ -1075,7 +954,7 @@ public class AHIWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' \n" +
@@ -1173,7 +1052,7 @@ public class AHIWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' \n" +
@@ -1307,7 +1186,7 @@ public class AHIWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And B.status<> '2' And B.status<> '3'\n" +
@@ -1405,7 +1284,7 @@ public class AHIWorkPlaningView extends Activity {
                         "END )) AS itemdes\n" +
                         "FROM workPlanMaster A\n" +
                         "INNER JOIN workPlanDetail B\n" +
-                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId\n" +
+                        "ON A.workPlanId = B.workPlanId and A.providerId=B.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C\n" +
                         "ON B.item = C.itemcode\n" +
                         " WHERE B.providerId= '" + ProvCode + "' And C.type = '4' And B.status<> '2' And B.status<> '3'\n" +

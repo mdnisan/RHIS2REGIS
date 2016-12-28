@@ -96,7 +96,6 @@ public final class R {
         public static final int watch_epi=0x7f020043;
     }
     public static final class id {
-        public static final int AHI=0x7f0a0e9d;
         public static final int Age=0x7f0a00c8;
         public static final int AppName=0x7f0a06a3;
         public static final int BPlace=0x7f0a07c2;
@@ -130,6 +129,7 @@ public final class R {
         public static final int EntryDate=0x7f0a00c9;
         public static final int FName=0x7f0a00c6;
         public static final int FNo=0x7f0a07b3;
+        public static final int FPI=0x7f0a0e9d;
         public static final int FPMethod=0x7f0a07c4;
         public static final int Father=0x7f0a07b4;
         public static final int HHHead=0x7f0a068f;

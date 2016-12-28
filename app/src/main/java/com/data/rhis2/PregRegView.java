@@ -238,7 +238,9 @@ public class PregRegView extends Activity {
                             Type = "2";
                         }
 
-                        ((Spinner) findViewById(R.id.txtVillSearch1)).setAdapter(C.getArrayAdapter("Select '  ' VillageName from Village union Select ' All ' VillageName from Village  union select  substr('0' || v.MOUZAID , -3, 3)||substr('0' || v.VILLAGEID, -3, 3)||'-'||v.VILLAGENAMEENG as VILLAGENAME from Village  v INNER JOIN ProviderArea PA ON PA.zillaid = v.zillaid " +
+                        // union Select ' All ' VillageName from Village
+
+                        ((Spinner) findViewById(R.id.txtVillSearch1)).setAdapter(C.getArrayAdapter("Select '  ' VillageName from Village union select  substr('0' || v.MOUZAID , -3, 3)||substr('0' || v.VILLAGEID, -3, 3)||'-'||v.VILLAGENAMEENG as VILLAGENAME from Village  v INNER JOIN ProviderArea PA ON PA.zillaid = v.zillaid " +
                                 "AND PA.upazilaid = v.UPAZILAID " +
                                 "AND PA.unionid = v.UNIONID " +
                                 "AND PA.mouzaid = v.MOUZAID " +
@@ -370,18 +372,25 @@ public class PregRegView extends Activity {
                     list.setAdapter(null);
                     String val = (((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItemPosition() == 0 ? "" : Global.Left(((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItem().toString(), 3));
                     String villageCode = "";
-                    if (!val.equalsIgnoreCase("All") & !val.equalsIgnoreCase("")) {
-                        String vill = (((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItemPosition() == 0 ? "" : Global.Left(((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItem().toString(), 6));
+                   // if (!val.equalsIgnoreCase("All") & !val.equalsIgnoreCase(""))
+                   // !val.equalsIgnoreCase(" Al") &
+                    if (!val.equalsIgnoreCase("")) {
+                       String vill = (((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItemPosition() == 0 ? "" : Global.Left(((Spinner) findViewById(R.id.txtVillSearch1)).getSelectedItem().toString(), 6));
                         villageCode = vill.toString().substring(3, 5);
-                    }
-                    if (val.length() > 0) {
-                        totalCount = 0;
-                        dataList.clear();
-                        list.setAdapter(null);
-                        SearchVillageWise(val, villageCode);
-                        lblTCount.setText(":" + String.valueOf(totalCount) + "");
+                        if (val.length() > 0) {
+                            totalCount = 0;
+                            dataList.clear();
+                            list.setAdapter(null);
+                            SearchVillageWise(val, villageCode);
+                            lblTCount.setText(":" + String.valueOf(totalCount) + "");
 
+                        }
                     }
+                    else if (val.equalsIgnoreCase(" Al")||val.equalsIgnoreCase(""))
+                    {
+                        // SearchVillageWise("", "");
+                    }
+
                   /*  if (val.length() == 0) {
                         totalCount = 0;
                         dataList.clear();

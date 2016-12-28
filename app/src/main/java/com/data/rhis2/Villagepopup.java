@@ -71,9 +71,7 @@ public class Villagepopup extends Activity {
             conxt = this;
             setContentView(R.layout.villagepopup);
             setFinishOnTouchOutside(false);
-           /* secUnit = (LinearLayout) findViewById(R.id.secUnit);
-            secWord = (LinearLayout) findViewById(R.id.secWord);
-            spnProvider= (Spinner) findViewById(R.id.spnProvider);*/
+
             Villagepopup.setLocalContext(getApplicationContext());
             FillProvider();
 

@@ -86,20 +86,23 @@ public class LoginActivity extends Activity {
 
 
 
-
+          //  SystemUpdateDT="03/10/2016";
+            //AHI,HI
             SystemUpdateDT="21/11/2016";
-
+            //FPI
+           // SystemUpdateDT="29/09/2016";
             lblSystemDate.setText("Version: 1.0");
             lblSystemDate1.setText("Release Date: " + SystemUpdateDT);
 
 
-            //C.Save("Alter table Household add column HHHead varchar(100)");
-            //C.Save("Alter table Household add column TotalMem varchar(2)");
-            //C.Save("Alter table Member add column MobileYN varchar(1)");
-
             //Check for Internet connectivity
             if (Connection.haveNetworkConnection(LoginActivity.this)) {
                 networkAvailable = true;
+
+                //Health id replace by SHR
+                Intent syncService = new Intent(this, SyncHealthID_Service.class);
+                startService(syncService);
+                //stopService(syncService);
             } else {
                 networkAvailable = false;
             }
@@ -126,10 +129,10 @@ public class LoginActivity extends Activity {
 
             //FPI New ProvType Change
 
-            if (C.Existence("Select * from ProviderDB where ProvType='4'")) {
+     /*       if (C.Existence("Select * from ProviderDB where ProvType='4'")) {
                 UpdateProvType();
             }
-
+       */
 
             //Assign Global Variable
             String PType = C.ReturnSingleValue("Select ProvType from ProviderDB where ProvCode=(Select UserID from Login)");
@@ -151,59 +154,18 @@ public class LoginActivity extends Activity {
                 C.Save("CREATE TABLE DataLengthTable ( \n" +
                         "  tableName VARCHAR( 20 )     PRIMARY KEY,\n" +
                         "dataLength INT);");
-                           /* C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('Household', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('Member', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('ses', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('visits', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('vaccineCause', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('womanInjectable', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('itemRequest', 20)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('childImmunization', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('epiSchedulerWoman', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('epiScheduler', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('sessionMasterWoman', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('sessionMaster', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('epiMasterWoman', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('epiMaster', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('under5ChildAdvice', 1000)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('under5ChildProblem', 100)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('under5Child', 100)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('adolescentProblem', 100)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('adolescent', 20)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('womanImmunization', 40)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('itemAdjustmentMinus', 40)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('pncServiceChild', 40)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('delivery', 20)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('ancService', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('PregRefer', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('elcoVisit', 60)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('immunizationHistory', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('stockTransaction', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('newBorn', 70)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('pregWomen', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('pncServiceMother', 30)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('elco', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('clientMap', 100)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('death', 20)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('fpaWorkPlanMaster', 50)");
-                            C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('fpaWorkPlanDetail', 50)");*/
+
 
                 C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('workPlanMaster', 50)");
                 C.Save("INSERT INTO DataLengthTable (tableName, dataLength) VALUES('workPlanDetail', 50)");
+
+                C.Save("update workPlanDetail set epischedulerId=substr( epischedulerId, 1, 1 ) ||( \n" +
+                        "           SELECT DISTINCT cast(ward as int)\n" +
+                        "                      FROM ProviderArea\n" +
+                        "                     WHERE CAST ( provCode AS INT ) = epiproviderId \n" +
+                        "       )||2016||substr( epischedulerId, 2, 3 ) WHERE Length( epischedulerId ) = 3;");
             }
-            if (Global.DateNowDMY().equals("26/10/2016") & g.getDistrict().equals("93") & (g.getUpazila().equals("47") || g.getUpazila().equals("57")) & (g.getProvType().equals("10")))//| g.getProvType().equals("3")
-            {
 
-//Code
-
-                C.Save("Delete from workPlanMaster where date(systemEntryDate) < '2016-10-27'");
-                C.Save("Delete from workPlanDetail where date(systemEntryDate) < '2016-10-27'");
-                C.Save("Delete from fpiMonitoring where date(enDt) < '2016-10-27'");
-                C.Save("Delete from HouseholdFPI where date(EnDt) < '2016-10-27'");
-                C.Save("Delete from memberfpi where date(endt) < '2016-10-27'");
-                C.Save("Delete from sesfpi where date(endt) < '2016-10-27'");
-
-            }
 
             if (g.getProvType().equalsIgnoreCase("10")) {
                 AppName = (TextView) findViewById(R.id.AppName);
@@ -260,21 +222,21 @@ public class LoginActivity extends Activity {
                         g.setUserID(U[0]);
 
                         //use for administration: 12 Mar 2015
-                        if (pass.getText().toString().equals("rhis2015admin")) {
+                    /*    if (pass.getText().toString().equals("rhis2015admin")) {
                             //Call Setting Form
                             //finish();
                             //Intent f1 = new Intent(getApplicationContext(), SettingForm.class);
                             //startActivity(f1);
 
-                        }
+                        }*/
 
-                        //stop for development
+                    /*    //stop for development
                         if (pass.getText().toString().equals("123")) {
                             C.AlterStockTransaction();
                             //Connection.MessageBox(LoginActivity.this,"পাসওয়ার্ড সঠিক নয়, পুনরায় চেষ্টা করুন।");
                             //pass.requestFocus();
                             //return;
-                        }
+                        }*/
 
 
                         //Store Last Login information
@@ -284,20 +246,7 @@ public class LoginActivity extends Activity {
 
                         if (Connection.haveNetworkConnection(LoginActivity.this)) {
                             networkAvailable = true;
-                            /*
-                            //Download health ID if necessary
-                            String hidcound = C.ReturnSingleValue("select Count(*)Total from HealthIDRepository where ifnull(Status,'1')='1'");
-                            if(Integer.parseInt(hidcound)==0)
-                            {
-                                //Request for 100 new Health ID
-                                C.DownloadHealthID(g.getDistrict().toString(), g.getUpazila().toString(), g.getUnion().toString(), g.getProvType().toString(), g.getProvCode().toString(),500);
-                            }
-                            else if(Integer.parseInt(hidcound)<100)
-                            {
-                                //Request for 100 new Health ID
-                                C.DownloadHealthID(g.getDistrict().toString(), g.getUpazila().toString(), g.getUnion().toString(), g.getProvType().toString(), g.getProvCode().toString(),400);
-                            }
-                            */
+
                         } else {
                             networkAvailable = false;
                         }
@@ -316,278 +265,10 @@ public class LoginActivity extends Activity {
 
                             String ServerDate = ServerVal[0].toString();
                             String UpdateDT = ServerVal[1].toString();
-                            String HIDRequest = ServerVal[2].toString(); //Health ID Request
+                           // String HIDRequest = ServerVal[2].toString(); //Health ID Request
                             String TableStructureRequest = ServerVal[3].toString(); //Table structure update request
                             String AreaUpdateRequest = ServerVal[4].toString(); //Area update request
-
-                            //Download health ID if necessary
-                         /*   String hidcound = C.ReturnSingleValue("select Count(*)Total from HealthIDRepository where ifnull(Status,'1')='1'");
-                            if(Integer.parseInt(hidcound)==0)
-                            {
-                                //Request for 500 new Health ID
-                                C.DownloadHealthID(g.getDistrict().toString(), g.getUpazila().toString(), g.getUnion().toString(), g.getProvType().toString(), g.getProvCode().toString(),1000);
-                            }
-                            else if(Integer.parseInt(hidcound)<500)
-                            {
-                                //Request for 400 new Health ID
-                                C.DownloadHealthID(g.getDistrict().toString(), g.getUpazila().toString(), g.getUnion().toString(), g.getProvType().toString(), g.getProvCode().toString(),400);
-                            }*/
-
-                            Cursor hhold = C.ReadData("Select * from HouseholdFPI limit 1");
-                            if (hhold.getColumnCount() == 21) {
-
-                                C.Save("alter table HouseholdFPI add causeOfHouseHoldStatusOther varchar(100)");
-
-
-
-                            }
-
-                            Cursor wd = C.ReadData("Select * from workPlanDetail limit 1");
-                            if (wd.getColumnCount() == 28) {
-
-                                C.Save("alter table workPlanDetail add epiSubBlock varchar(2)");
-                                C.Save("alter table workPlanDetail add epiSessionDate  DATE");
-
-
-
-                            }
-
-
-                            String fpaWorkPlanMaster = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'workPlanMaster'");
-                            if (fpaWorkPlanMaster.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE workPlanMaster (\n" +
-                                        "                        workPlanId      BIGINT,\n" +
-                                        "                        workAreaId      BIGINT,\n" +
-                                        "                        providerId      INTEGER,\n" +
-                                        "                        month           VARCHAR( 10 ),\n" +
-                                        "                        status          INTEGER,\n" +
-                                        "                        systemEntryDate DATE,\n" +
-                                        "                        modifyDate      DATE,\n" +
-                                        "                        upload          INTEGER,\n" +
-                                        "                        PRIMARY KEY ( workPlanId, providerId, month )\n" +
-                                        "                );");
-                            }
-                            String workPlanDetail = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'workPlanDetail'");
-                            if (workPlanDetail.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE workPlanDetail ( \n" +
-                                        "    workPlanId      BIGINT,\n" +
-                                        "    item            INTEGER,\n" +
-                                        "    workPlanDate    DATE,\n" +
-                                        "    unitNo          VARCHAR( 100 ),\n" +
-                                        "    village         VARCHAR( 100 ),\n" +
-                                        "    elcoFrom        VARCHAR( 3 ),\n" +
-                                        "    elcoTo          VARCHAR( 3 ),\n" +
-                                        "    fpiOtherMeeting INT,\n" +
-                                        "    ipcUN           INTEGER,\n" +
-                                        "    ipcWord         INTEGER,\n" +
-                                        "    ipcMouza        INTEGER,\n" +
-                                        "    ipcVill         INTEGER,\n" +
-                                        "    ipcPara         VARCHAR( 100 ),\n" +
-                                        "    ipcBariFrom     VARCHAR( 100 ),\n" +
-                                        "    ipcBariTo       VARCHAR( 100 ),\n" +
-                                        "    epiproviderId   INT,\n" +
-                                        "    epischedulerId  INT,\n" +
-                                        "    ccWard          INT,\n" +
-                                        "    ccID            INT,\n" +
-                                        "    leaveType       INTEGER,\n" +
-                                        "    natProgramType  INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    modifyDate      DATE,\n" +
-                                        "    otherDec        VARCHAR( 100 ),\n" +
-                                        "    remarks         VARCHAR( 200 ),\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( workPlanId, item, workPlanDate, providerId ) \n" +
-                                        ");");
-                            }
-
-
-                            String fpiMonitoring = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'fpiMonitoring'");
-                            if (fpiMonitoring.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE fpiMonitoring ( \n" +
-                                        "    vDate      VARCHAR( 10 ),\n" +
-                                        "    fpaCode    VARCHAR( 4 ),\n" +
-                                        "    fpaUnit    VARCHAR( 2 ),\n" +
-                                        "    fpaVill    VARCHAR( 4 ),\n" +
-                                        "    fpaAdvance VARCHAR( 2 ),\n" +
-                                        "    needItems1 VARCHAR( 1 ),\n" +
-                                        "    needItems2 VARCHAR( 1 ),\n" +
-                                        "    needItems3 VARCHAR( 1 ),\n" +
-                                        "    needItems4 VARCHAR( 1 ),\n" +
-                                        "    needItems5 VARCHAR( 1 ),\n" +
-                                        "    needItems6 VARCHAR( 1 ),\n" +
-                                        "    needItems7 VARCHAR( 1 ),\n" +
-                                        "    needItems8 VARCHAR( 1 ),\n" +
-                                        "    startTime  VARCHAR( 5 ),\n" +
-                                        "    endTime    VARCHAR( 5 ),\n" +
-                                        "    userId     VARCHAR( 10 ),\n" +
-                                        "    enDt       VARCHAR( 20 ),\n" +
-                                        "    upload     VARCHAR( 1 ),\n" +
-                                        "    PRIMARY KEY ( vDate, fpaCode, fpaUnit ) \n" +
-                                        ");");
-                            }
-                            String ancServiceFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'ancServiceFPI'");
-                            if (ancServiceFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE ancServiceFPI ( \n" +
-                                        "    healthId        BIGINT,\n" +
-                                        "    pregNo          INTEGER,\n" +
-                                        "    serviceId       INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    visitSource     INTEGER,\n" +
-                                        "    visitDate       INTEGER,\n" +
-                                        "    visitMonth      INTEGER,\n" +
-                                        "    ironFolStatus   INTEGER,\n" +
-                                        "    misoStatus      INTEGER,\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo, serviceId ) \n" +
-                                        ");");
-                            }
-
-
-                            String newBornFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'newBornFPI'");
-                            if (newBornFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE newBornFPI ( \n" +
-                                        "    healthId         BIGINT,\n" +
-                                        "    pregNo           INTEGER,\n" +
-                                        "    childNo          INTEGER,\n" +
-                                        "    providerId       INTEGER,\n" +
-                                        "    birthWeight      DOUBLE,\n" +
-                                        "    immatureBirth    INTEGER,\n" +
-                                        "    dryingAfterBirth INTEGER,\n" +
-                                        "    resassitation    INTEGER,\n" +
-                                        "    stimulation      INTEGER,\n" +
-                                        "    bagNMask         INTEGER,\n" +
-                                        "    chlorehexidin    INTEGER,\n" +
-                                        "    skinTouch        INTEGER,\n" +
-                                        "    breastFeed       INTEGER,\n" +
-                                        "    bathThreeDays        INTEGER,\n" +
-                                        "    systemEntryDate  DATE,\n" +
-                                        "    modifyDate       DATE,\n" +
-                                        "    upload           INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo, childNo ) \n" +
-                                        ");");
-                            }
-                            String deliveryFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'deliveryFPI'");
-                            if (deliveryFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE deliveryFPI ( \n" +
-                                        "    healthId             BIGINT,\n" +
-                                        "    pregNo               INTEGER,\n" +
-                                        "    providerId           INTEGER,\n" +
-                                        "    outcomePlace         INTEGER,\n" +
-                                        "    outcomeDate          INTEGER,\n" +
-                                        "    outcomeType          INTEGER,\n" +
-                                        "    liveBirth            INTEGER,\n" +
-                                        "    stillBirth           INTEGER,\n" +
-                                        "    abortion             INTEGER,\n" +
-                                        "    misoprostol          INTEGER,\n" +
-                                        "    attendantDesignation INTEGER,\n" +
-                                        "    systemEntryDate      DATE,\n" +
-                                        "    upload               INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo ) \n" +
-                                        ");");
-                            }
-
-                            String elcoVisitFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'elcoVisitFPI'");
-                            if (elcoVisitFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE elcoVisitFPI ( \n" +
-                                        "    healthId        BIGINT,\n" +
-                                        "    pregNo          INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    transactionId   VARCHAR( 30 ),\n" +
-                                        "    visit           INTEGER,\n" +
-                                        "    vDate           VARCHAR( 1 ),\n" +
-                                        "    visitStatus     INTEGER,\n" +
-                                        "    currStatus      VARCHAR( 1 ),\n" +
-                                        "    newOld          VARCHAR( 1 ),\n" +
-                                        "    mDate           DATE,\n" +
-                                        "    sSource         INTEGER,\n" +
-                                        "    qty             INTEGER,\n" +
-                                        "    unit            INTEGER,\n" +
-                                        "    brand           INTEGER,\n" +
-                                        "    validity        INTEGER,\n" +
-                                        "    dayMonYear      INTEGER,\n" +
-                                        "    referPlace      INTEGER,\n" +
-                                        "    syrinsQty       INTEGER,\n" +
-                                        "    mrSource        INTEGER,\n" +
-                                        "    MRDate          DATE,\n" +
-                                        "    MRAge           INTEGER,\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    modifyDate      DATE,\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, visit ) \n" +
-                                        ");");
-                            }
-
-                            String pncServiceChildFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'pncServiceChildFPI'");
-                            if (pncServiceChildFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE pncServiceChildFPI ( \n" +
-                                        "    healthId        BIGINT,\n" +
-                                        "    pregNo          INTEGER,\n" +
-                                        "    childNo         INTEGER,\n" +
-                                        "    childHealthId   BIGINT,\n" +
-                                        "    serviceId       INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    visitSource     INTEGER,\n" +
-                                        "    visitDate       INTEGER,\n" +
-                                        "    visitMonth      INTEGER,\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    modifyDate      DATE,\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo, childNo, serviceId ) \n" +
-                                        ");");
-                            }
-
-                            String pncServiceMotherFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'pncServiceMotherFPI'");
-                            if (pncServiceMotherFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE pncServiceMotherFPI ( \n" +
-                                        "    healthId        BIGINT,\n" +
-                                        "    pregNo          INTEGER,\n" +
-                                        "    serviceId       INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    visitSource     INTEGER,\n" +
-                                        "    visitDate       INTEGER,\n" +
-                                        "    visitMonth      INTEGER,\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    modifyDate      DATE,\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo, serviceId ) \n" +
-                                        ");");
-                            }
-                            String pregWomenFPI = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'pregWomenFPI'");
-                            if (pregWomenFPI.equalsIgnoreCase("0")) {
-                                C.Save("CREATE TABLE pregWomenFPI ( \n" +
-                                        "    healthId        BIGINT,\n" +
-                                        "    pregNo          INTEGER,\n" +
-                                        "    providerId      INTEGER,\n" +
-                                        "    LMP             VARCHAR( 1 ),\n" +
-                                        "    EDD             VARCHAR( 1 ),\n" +
-                                        "    para            VARCHAR( 1 ),\n" +
-                                        "    gravida         VARCHAR( 1 ),\n" +
-                                        "    lastChildAge    VARCHAR( 1 ),\n" +
-                                        "    riskHistoryNote VARCHAR( 1 ),\n" +
-                                        "    pregRefer       VARCHAR( 1 ),\n" +
-                                        "    systemEntryDate DATE,\n" +
-                                        "    upload          INTEGER,\n" +
-                                        "    PRIMARY KEY ( healthId, pregNo ) \n" +
-                                        ");");
-                            }
-                            String ccInfo = C.ReturnSingleValue("SELECT count(*) FROM sqlite_master WHERE type = 'table' AND name = 'ccInfo'");
-                            if (ccInfo.equalsIgnoreCase("0")) {
-                                C.CreateTable("ccInfo", "CREATE TABLE ccInfo ( \n" +
-                                        "    ZILAID       INTEGER,\n" +
-                                        "    UPAZILAID    INTEGER,\n" +
-                                        "    UNIONID      INTEGER,\n" +
-                                        "    UNIONNAME    VARCHAR( 100 ),\n" +
-                                        "    WARDID       INTEGER,\n" +
-                                        "    WARD         VARCHAR( 5 ),\n" +
-                                        "    CCID         INTEGER,\n" +
-                                        "    CCNAME       VARCHAR( 100 ),\n" +
-                                        "    HProvderName VARCHAR( 50 ),\n" +
-                                        "    MOBAILNO     VARCHAR( 12 ) \n" +
-                                        ");");
-                            }
-
+/*
                             C.Save("DROP TABLE IF EXISTS month");
                             C.Save("CREATE TABLE month ( \n" +
                                     "id INT PRIMARY KEY,\n" +
@@ -607,20 +288,34 @@ public class LoginActivity extends Activity {
                                 C.Save("Insert into month(id,mName)Values(10,'October')");
                                 C.Save("Insert into month(id,mName)Values(11,'November')");
                                 C.Save("Insert into month(id,mName)Values(12,'December')");
+                            }*/
+
+                            Cursor hhold = C.ReadData("Select * from HouseholdFPI limit 1");
+                            if (hhold.getColumnCount() == 21) {
+
+                                C.Save("alter table HouseholdFPI add causeOfHouseHoldStatusOther varchar(100)");
+
+
+
                             }
 
+
+
+
+
+
                             //Table structure update request: 12 Apr 2015
-                            if (TableStructureRequest.equals("1")) {
+                        /*    if (TableStructureRequest.equals("1")) {
                                 try {
-                                    /*
-                                    //**ready to use and need to check before use: 12 apr 2015
+                                    *//*
+                                    /*//**ready to use and need to check before use: 12 apr 2015
                                     C.TableStructureSync();
                                     String SQLStr = "Update ProviderDB set TableStructureRequest='2' where  Zillaid='"+ g.getDistrict().toString() +"' and UpazilaID='"+ g.getUpazila().toString() +"' and UnionID='"+ g.getUnion().toString() +"' and ProvType='"+ g.getProvType().toString() +"' and ProvCode='"+ g.getProvCode().toString() +"'";
-                                    C.ExecuteCommandOnServer(SQLStr);*/
+                                    C.ExecuteCommandOnServer(SQLStr);*//*
                                 } catch (Exception ex) {
 
                                 }
-                            }
+                           } */
 
 
                             //Area setting update request: 24 May 2015
@@ -745,14 +440,14 @@ public class LoginActivity extends Activity {
         }
     }
 
-    private void UpdateProvType() {
+ /*   private void UpdateProvType() {
         C.Save("Update ProviderDB set ProvType='10' where ProvType='4'");
-    }
+    }*/
 
-    private void setupInitialDB() {
-   /* C.Save("drop table totalmem");
+   /* private void setupInitialDB() {
+   *//* C.Save("drop table totalmem");
     C.Save("drop table headName");
-*/
+*//*
 
         C.Save("delete from PregRefer");
         C.Save("delete from adolescent");
@@ -792,9 +487,9 @@ public class LoginActivity extends Activity {
         C.Save(SQL);
 
 
-   /* SQL = "Create table elcodetails as";
+   *//* SQL = "Create table elcodetails as";
     SQL += " select dist,upz,un,mouza,vill, hhno, nameeng headname from Member where rth='01' and length(extype)=0";
-    C.Save(SQL);*/
+    C.Save(SQL);*//*
 
         SQL = "update household set HHHead=(select headname from headname h where h.dist=household.dist and h.upz=household.upz and h.un=household.un and h.mouza=household.mouza and h.vill=household.vill and  h.hhno=household.hhno)";
         C.Save(SQL);
@@ -808,7 +503,7 @@ public class LoginActivity extends Activity {
                 "LEFt JOIN currentStock B ON A.ItemCode = B.ItemCode");
 
 
-    }
+    }*/
 
     //Install application
     private void InstallApplication() {

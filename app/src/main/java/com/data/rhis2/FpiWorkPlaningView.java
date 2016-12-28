@@ -108,13 +108,7 @@ public class FpiWorkPlaningView extends Activity {
     LinearLayout secS10;
     LinearLayout secSlNo;
     TextView VlblSlNo;
-    // EditText txtSlNo;
 
-    /*LinearLayout secUnit;
-    LinearLayout secVill;
-    LinearLayout secElcono;
-    LinearLayout secName;
-    LinearLayout secOther;*/
 
 
     LinearLayout secFPIPMonth;
@@ -129,17 +123,8 @@ public class FpiWorkPlaningView extends Activity {
     TextView VlblReqToCode;
     TextView txtFpiWarea;
 
-
-    //LinearLayout secItem;
-    //TextView VlblItem;
-    // Spinner spnItem;
     Spinner spnVillage1;
-    // EditText dtpAgDT;
-    // ImageButton btnAgDT;
 
-    //EditText dtpItemDT;
-    // ImageButton btnItemDT;
-   // Button cmdRefresh;
     Button cmdSync;
     String StartTime;
     String DeviceNo;
@@ -442,14 +427,7 @@ public class FpiWorkPlaningView extends Activity {
 
                 }
             });
-       /*     cmdRefresh.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
 
-                    //  Submit();
-
-                    buttonStatus();
-                }
-            });*/
         } catch (Exception e) {
             Connection.MessageBox(FpiWorkPlaningView.this, e.getMessage());
             return;
@@ -468,28 +446,18 @@ public class FpiWorkPlaningView extends Activity {
         }
 
         if (val.equalsIgnoreCase("99")) {
-            //cmdRefresh.setVisibility(View.GONE);
-            //cmdDownload.setVisibility(View.GONE);
+
             cmdSync.setVisibility(View.GONE);
-            // cmdRequest.setVisibility(View.GONE);
-            // cmdApproved.setVisibility(View.GONE);
-            // cmdNotApproved.setVisibility(View.GONE);
+
 
         } else if (!C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + g.getProvCode() + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
-            //cmdDownload.setVisibility(View.GONE);
-           // cmdRefresh.setVisibility(View.GONE);
+
             cmdSync.setVisibility(View.GONE);
-            // cmdRequest.setVisibility(View.GONE);
-            // cmdApproved.setVisibility(View.GONE);
-            // cmdNotApproved.setVisibility(View.GONE);
+
         } else if (C.Existence("Select * FROM workPlanDetail WHERE providerId= '" + g.getProvCode() + "' AND substr( workPlanDate, 1, 7 )='" + Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2) + "'")) {
             DataSearch(Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), g.getProvCode());
-            // cmdDownload.setVisibility(View.VISIBLE);
-            //cmdRefresh.setVisibility(View.VISIBLE);
             cmdSync.setVisibility(View.VISIBLE);
-            // cmdRequest.setVisibility(View.GONE);
-            //cmdApproved.setVisibility(View.GONE);
-            // cmdNotApproved.setVisibility(View.GONE);
+
         }
 
 
@@ -505,9 +473,13 @@ public class FpiWorkPlaningView extends Activity {
         // message = "Uploading workPlanMaster";
         // jumpTime += 1;
         // progressHandler.sendMessage(progressHandler.obtainMessage());
+      /*  TableName = "workPlanMaster";
+        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
+        C.UploadJSON(TableName, VariableList, "workPlanId, workAreaId, providerId");*/
+
         TableName = "workPlanMaster";
         VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.UploadJSON(TableName, VariableList, "workPlanId, workAreaId, providerId");
+        C.UploadJSON(TableName, VariableList, "workPlanId, providerId, month");
 
         // message = "Uploading workPlanDetail";
         // jumpTime += 1;
@@ -517,28 +489,6 @@ public class FpiWorkPlaningView extends Activity {
         C.UploadJSON(TableName, VariableList, "workPlanId, item, workPlanDate, providerId");
     }
 
-
-    private void UploadFWA1() {
-
-        String TableName = "";
-        String VariableList = "";
-
-
-        // message = "Uploading workPlanMaster";
-        // jumpTime += 1;
-        // progressHandler.sendMessage(progressHandler.obtainMessage());
-        TableName = "workPlanMaster";
-        VariableList = "workPlanId,workAreaId,providerId,month,status,systemEntryDate,modifyDate,upload";
-        C.UploadJSONworkPlanMaster(TableName, VariableList, "workPlanId, workAreaId, providerId", Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), g.getProvCode());
-
-        // message = "Uploading workPlanDetail";
-        // jumpTime += 1;
-        // progressHandler.sendMessage(progressHandler.obtainMessage());
-        TableName = "workPlanDetail";
-        VariableList = "workPlanId,item,workPlanDate,unitNo,village,elcoFrom,elcoTo,ipcUN,ipcWord,ipcMouza,ipcVill,ipcPara,ipcBariFrom,ipcBariTo,epiproviderId,epischedulerId,ccWard,ccID,leaveType,natProgramType,providerId,systemEntryDate,modifyDate,otherDec,remarks,upload,status";
-        C.UploadJSONworkPlanDetail(TableName, VariableList, "workPlanId, item, workPlanDate, providerId", Global.Right(spnFPIPMonth.getSelectedItem().toString(), 4) + "-" + Global.Left(spnFPIPMonth.getSelectedItem().toString(), 2), g.getProvCode());
-
-    }
 
 
     private void DataSearch(String month, String ProvCode) {
@@ -593,7 +543,7 @@ public class FpiWorkPlaningView extends Activity {
                         "ELSE ifnull( C.itemdes, '' ) \n" +
                         "END \n" +
                         ")) AS itemdes from workPlanMaster A \n" +
-                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
+                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId and B.providerId=A.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C ON B.item = C.itemcode where  B.providerId= '" + ProvCode + "' And C.type='2' And substr(B.workPlanDate, 1, 7)='" + month + "' group by B.workPlanDate");
 
             } else {
@@ -643,7 +593,7 @@ public class FpiWorkPlaningView extends Activity {
                         "ELSE ifnull( C.itemdes, '' ) \n" +
                         "END \n" +
                         ")) AS itemdes from workPlanMaster A \n" +
-                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId and B.providerId=A.providerId\n" +
+                        "INNER JOIN workPlanDetail B ON A.workPlanId = B.workPlanId and B.providerId=A.providerId and A.month=substr( B.workPlanDate, 1, 7 )\n" +
                         "INNER JOIN fpaItem C ON B.item = C.itemcode where B.providerId= '" + ProvCode + "' And C.type='2' And substr(B.workPlanDate, 1, 7)='" + month + "' group by B.workPlanDate");
 
 

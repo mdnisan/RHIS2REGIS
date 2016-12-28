@@ -830,47 +830,7 @@ public class AHIWorkPlaning extends Activity {
             public void onNothingSelected(AdapterView<?> parentView) {
             }
         });
-                   /* spnSessionDate.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        @Override
-                        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
 
-                            if (spnSessionDate.getSelectedItemPosition() > 0) {
-
-                                // spnEpiSubBlock.setVisibility(View.VISIBLE);
-                                // spnEPICenterName.setVisibility(View.VISIBLE);
-                                spnEpiSubBlock.setAdapter(C.getArrayAdapter("select distinct sb.BCode||'-'||sb.BNameBan from HABlock sb left outer join epiScheduler epib on sb.BCode=epib.subBlockId where  providerId='" + Global.Left(spnProvider.getSelectedItem().toString(), 5) + "' and scheduleDate='" + Global.Right(spnSessionDate.getSelectedItem().toString(), 4) + "-" + Global.Mid(spnSessionDate.getSelectedItem().toString(), 3, 5) + "-" + Global.Left(spnSessionDate.getSelectedItem().toString(), 2) + "'"));
-                                //Select '-' BNameBan from HABlock Union
-
-                            }
-
-
-                        }
-
-                        @Override
-                        public void onNothingSelected(AdapterView<?> parentView) {
-                        }
-                    });*/
-
-
-
-       /* chkCCVisit.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                if (chkCCVisit.isChecked()) {
-                    secUnion1.setVisibility(View.VISIBLE);
-                    secccWord.setVisibility(View.VISIBLE);
-                    secccName.setVisibility(View.VISIBLE);
-
-
-                } else {
-                    secUnion1.setVisibility(View.GONE);
-                    secccWord.setVisibility(View.GONE);
-                    secccName.setVisibility(View.GONE);
-                    spnccName.setSelection(0);
-
-
-                }
-            }
-        });*/
 
         chkNationalProgramAttended.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -977,17 +937,6 @@ public class AHIWorkPlaning extends Activity {
                             txtPara.setText(cur1.getString(cur1.getColumnIndex("ipcPara")));
                             txtBarivisit1.setText(cur1.getString(cur1.getColumnIndex("ipcBariFrom")));
                             txtBarivisit2.setText(cur1.getString(cur1.getColumnIndex("ipcBariTo")));
-                            /*SpnUnion.setAdapter(C.getArrayAdapter("select distinct substr('0' ||p.unionid, -2, 2)||'-'||u.unionname from Unions u left outer join ProviderArea p on u.zillaid=p.zillaid and  u.upazilaid=p.upazilaid"));
-                            SpnWord.setAdapter(C.getArrayAdapter("select distinct ward from ProviderArea where zillaid='" + g.getDistrict() + "' and upazilaid='" + g.getUpazila() + "' and unionid='" + g.getUnion() + "'"));
-                            SpnMouza.setAdapter(C.getArrayAdapterMultiline("select MOUZAID||VILLAGEID||'-'||VILLAGENAME as VILLAGENAME\n" +
-                                    "from Village where MOUZAID='" + cur1.getString(cur1.getColumnIndex("ipcMouza")) + "'"));
-                            txtPara.setText(cur1.getString(cur1.getColumnIndex("ipcPara")));
-                            txtBarivisit1.setText(cur1.getString(cur1.getColumnIndex("ipcBariFrom")));
-                            txtBarivisit2.setText(cur1.getString(cur1.getColumnIndex("ipcBariTo")));*/
-                           /* SpnMouza.setAdapter(C.getArrayAdapterMultiline("Select '  ' VILLAGENAME from Village union select substr('0' ||v.MOUZAID, -3, 3)||v.VILLAGEID||'-'||v.VILLAGENAME as VILLAGENAME from Village v\n" +
-                                    "left outer join ProviderArea p on v.ZILLAID=p.zillaid and  v.UPAZILAID=p.upazilaid and\n" +
-                                    " v.MOUZAID||v.VILLAGEID=p.mouzaid||p.villageid where p.Ward='"+Global.Left(SpnWord.getSelectedItem().toString(),2)+"'"));
-*/
                             cur1.moveToNext();
                         }
                         cur1.close();
@@ -1014,19 +963,12 @@ public class AHIWorkPlaning extends Activity {
                             String schedulerId=Global.Right(cur1.getString(cur1.getColumnIndex("epischedulerId")),2);
                             String ward=Global.Mid(cur1.getString(cur1.getColumnIndex("epischedulerId")),1,2);
                             spnProvider.setAdapter(C.getArrayAdapter("Select substr('0' ||ProvCode, -6, 6)||'-'||provName from ProviderDb WHERE cast(provCode as Int)='" + cur1.getString(cur1.getColumnIndex("epiproviderId")) + "'"));
-                            // select distinct substr('0' ||ward, -2, 2)ward from ProviderArea where zillaid='" + g.getDistrict() + "' and upazilaid='" + g.getUpazila() + "' and unionid='" + g.getUnion() + "'"
-
-                            spnPWord.setAdapter(C.getArrayAdapter("select distinct substr('0' ||wordOld, -2, 2)ward from epiSchedulerUpdate WHERE wordOld='" +ward+ "'"));
+                           spnPWord.setAdapter(C.getArrayAdapter("select distinct substr('0' ||wordOld, -2, 2)ward from epiSchedulerUpdate WHERE wordOld='" +ward+ "'"));
                             spnEpiSubBlock.setAdapter(C.getArrayAdapter("select distinct sb.BCode||'-'||sb.BNameBan from HABlock sb left outer join epiSchedulerUpdate epib on sb.BCode=epib.subBlockId where epib.subBlockId='" +EpiSubBlock+ "'"));
                             spnSessionDate.setAdapter(C.getArrayAdapter("select strftime('%d/%m/%Y', date(scheduleDate)) as scheduleDate from epiSchedulerUpdate where subBlockId='" +EpiSubBlock+"'And schedulerId='" +schedulerId+ "'"));
                             spnEPICenterName.setAdapter(C.getArrayAdapter("select substr('0' ||schedulerId, -2, 2)||'-'||centerName from epiSchedulerUpdate where subBlockId='" + EpiSubBlock+"'And schedulerId='" +schedulerId+ "'"));
 
-                            /*
-                            spnProvider.setAdapter(C.getArrayAdapter("Select provCode||'-'||provName from ProviderDb WHERE provCode='" + cur1.getString(cur1.getColumnIndex("epiproviderId")) + "'"));
-                            spnEpiSubBlock.setAdapter(C.getArrayAdapter("select distinct sb.BCode||'-'||sb.BNameBan from HABlock sb left outer join epiSchedulerUpdate epib on sb.BCode=epib.subBlockId where epib.subBlockId='" + cur1.getString(cur1.getColumnIndex("epiSubBlock")) + "'"));
-                            spnSessionDate.setAdapter(C.getArrayAdapter("select strftime('%d/%m/%Y', date(scheduleDate)) as scheduleDate from epiSchedulerUpdate where subBlockId='" + cur1.getString(cur1.getColumnIndex("epiSubBlock"))+"'And schedulerId='" + cur1.getString(cur1.getColumnIndex("epischedulerId")) + "'"));
-                            spnEPICenterName.setAdapter(C.getArrayAdapter("select substr('0' ||schedulerId, -2, 2)||'-'||centerName from epiSchedulerUpdate where subBlockId='" + cur1.getString(cur1.getColumnIndex("epiSubBlock"))+"'And schedulerId='" + cur1.getString(cur1.getColumnIndex("epischedulerId"))+ "'"));
-                             */
+
                             cur1.moveToNext();
                         }
                         cur1.close();
@@ -1035,53 +977,7 @@ public class AHIWorkPlaning extends Activity {
                     chkEPIVisit.setChecked(false);
 
                 }
-/*
-                if (cur.getString(cur.getColumnIndex("P2")).equals("2")) {
-                    chkEPIVisit.setChecked(true);
-                    if (chkEPIVisit.isChecked()) {
-                        secname.setVisibility(View.VISIBLE);
-                        secSessionDate.setVisibility(View.VISIBLE);
-                        secHSubBlock.setVisibility(View.VISIBLE);
-                        secEPICenterName.setVisibility(View.VISIBLE);
 
-                        Cursor cur1 = C.ReadData("select epiproviderId,epischedulerId FROM workPlanDetail where item=2 and workPlanId='" + workplanId1 + "' and providerId='" + g.getProvCode() + "' and workPlanDate='" + g.getAreaDate() + "'");
-                        cur1.moveToFirst();
-                        while (!cur1.isAfterLast()) {
-                            spnProvider.setAdapter(C.getArrayAdapter("Select provCode||'-'||provName from ProviderDb WHERE provCode='" + cur1.getString(cur1.getColumnIndex("epiproviderId")) + "'"));
-                            spnSessionDate.setAdapter(C.getArrayAdapter("select strftime('%d/%m/%Y', date(scheduleDate)) as scheduleDate from epiSchedulerUpdate where schedulerId='" + cur1.getString(cur1.getColumnIndex("epischedulerId")) + "'"));
-                            spnEpiSubBlock.setAdapter(C.getArrayAdapter("select distinct sb.BCode||'-'||sb.BNameBan from HABlock sb left outer join epiSchedulerUpdate epib on sb.BCode=epib.subBlockId where schedulerId='" + cur1.getString(cur1.getColumnIndex("epischedulerId")) + "'"));
-                            spnEPICenterName.setAdapter(C.getArrayAdapter("select substr('0' ||schedulerId, -2, 2)||'-'||centerName from epiSchedulerUpdate where schedulerId='" + cur1.getString(cur1.getColumnIndex("epischedulerId")) + "'"));
-
-                            cur1.moveToNext();
-                        }
-                        cur1.close();
-                    }
-                } else {
-                    chkEPIVisit.setChecked(false);
-
-                }*/
-
-               /* if (cur.getString(cur.getColumnIndex("P3")).equals("3")) {
-                    chkCCVisit.setChecked(true);
-
-                    if (chkCCVisit.isChecked()) {
-                        secccWord.setVisibility(View.VISIBLE);
-                        secccName.setVisibility(View.VISIBLE);
-
-                        Cursor cur1 = C.ReadData("select ccWard,ccID FROM workPlanDetail where item=3 and workPlanId='" + workplanId1 + "' and providerId='" + g.getProvCode() + "' and workPlanDate='" + g.getAreaDate() + "'");
-                        cur1.moveToFirst();
-                        while (!cur1.isAfterLast()) {
-                            SpnCCWord.setAdapter(C.getArrayAdapter("select distinct WARDID from ccInfo WHERE WARDID='" + cur1.getString(cur1.getColumnIndex("ccWard")) + "'"));
-                            spnccName.setAdapter(C.getArrayAdapterMultiline("select distinct CCID||'-'||CCNAME from ccInfo WHERE CCID='" + cur1.getString(cur1.getColumnIndex("ccID")) + "'"));
-
-                            cur1.moveToNext();
-                        }
-                        cur1.close();
-                    }
-                } else {
-                    chkCCVisit.setChecked(false);
-
-                }*/
                 if (cur.getString(cur.getColumnIndex("P3")).equals("3")) {
                     chkCCVisit.setChecked(true);
                 } else {
@@ -1180,13 +1076,7 @@ public class AHIWorkPlaning extends Activity {
 
                 }
 
-               /* if (cur.getString(cur.getColumnIndex("P11")).equals("11")) {
-                    chkOtherProgram.setChecked(true);
-                } else {
-                    chkOtherProgram.setChecked(false);
 
-
-                }*/
 
                 if (cur.getString(cur.getColumnIndex("P11")).equals("11")) {
                     chkOtherProgram.setChecked(true);
@@ -1859,89 +1749,8 @@ public class AHIWorkPlaning extends Activity {
                 }
             }
 
-       /*     if(!g.getDay(o.get("workPlanDate")+'/'+o.get("Month")+'/'+o.get("Year")).equalsIgnoreCase("শুক্রবার"))
-            {
 
-            }*/
-
-
-            // Month
-     /*      if(String.valueOf(C.ReturnSingleValue("Select TransactionType from "+ TableName + " where TransactionType='"+o.get("TransactionType")+"'"))=="3")
-           {
-               cmdB2.setEnabled(false);
-           }*/
-
-           /* if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("0"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Done");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-
-            if(String.valueOf(o.get("Upload")).equals("1") && o.get("RequestStatus").equals("1"))
-            {
-                cmdB2.setEnabled(false);
-                cmdB1.setEnabled(false);
-                cmdB2.setText("Approved");
-                cmdB2.setBackgroundColor(Color.BLUE);
-
-            }
-*/
             final AlertDialog.Builder adb = new AlertDialog.Builder(AHIWorkPlaning.this);
-           /* cmdB1.setOnClickListener(new View.OnClickListener() {
-                public void onClick(View v) {
-                    adb.setTitle("Message:");
-                    adb.setMessage("Do you want to update this information?[Yes/No]?");
-                    adb.setNegativeButton("No", null);
-                    adb.setPositiveButton("Yes", new AlertDialog.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            Cursor cur=C.ReadData("Select * from "+ TableName + "  Where requestId='"+o.get("RequestId")+"'");
-                            cur.moveToFirst();
-                            while(!cur.isAfterLast())
-                            {
-                                //txtSlNo.setText(cur.getString(cur.getColumnIndex("requestId")));
-                                txtReqName.setText(C.ReturnSingleValue("Select ProvName from ProviderDB where ProvCode='"+ cur.getString(cur.getColumnIndex("requestBy"))+"'"));
-                                //txtReqToCode.setText(cur.getString(cur.getColumnIndex("requestTo")));
-                                if(cur.getString(cur.getColumnIndex("itemCode")).equals("1"))
-                                {
-                                    spnItem.setSelection(1);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("2"))
-                                {
-                                    spnItem.setSelection(2);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("3"))
-                                {
-                                    spnItem.setSelection(3);
-                                }
-                                else     if(cur.getString(cur.getColumnIndex("itemCode")).equals("9"))
-                                {
-                                    spnItem.setSelection(4);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("5"))
-                                {
-                                    spnItem.setSelection(5);
-                                }
-                                else if(cur.getString(cur.getColumnIndex("itemCode")).equals("8"))
-                                {
-                                    spnItem.setSelection(6);
-                                }
-
-                              //  txtRequestQty.setText(cur.getString(cur.getColumnIndex("requestQty")));
-                              //  txtRemarks.setText(cur.getString(cur.getColumnIndex("requestRemarks")));
-                                cur.moveToNext();
-
-
-
-                            }
-                            cur.close();
-
-                        }});
-                    adb.show();
-                }
-            });*/
 
 
             cmdB2.setOnClickListener(new View.OnClickListener() {
